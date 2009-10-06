@@ -27,9 +27,8 @@ Installing procedure:
 Coming soon...
 
 == Screenshots ==
-
-1. The example of "Thank You" button in blue color
-2. The "Thank You" Counter Button Settings Page
+1. screenshot-1.png
+2. screenshot-2.png
 
 == Changelog ==
 
