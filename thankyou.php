@@ -36,7 +36,7 @@ global $wp_version;
 
 $exit_msg = 'Thank You Counter Button requires WordPress 2.7.1 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please update!</a>';
 
-if (version_compare($wp_version,"2.3","<"))
+if (version_compare($wp_version,"2.7.1","<"))
 {
 	exit ($exit_msg);
 }
