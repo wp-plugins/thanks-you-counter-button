@@ -1,0 +1,52 @@
+/* 
+    Document   : thankyou
+    Created on : 05.10.2009, 9:08:06
+    Author     : user
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.thanks_large {
+  border: none;
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.thanks_compact {
+  border: none;
+  width: 100px;
+  height: 26px;
+  font-size: 12px;
+}
+
+.thanks_black {
+  color: #FFFFFF;
+}
+
+.thanks_blue {
+  color: #FFFFFF;
+}
+
+
+.thanks_red {
+  color: #FFFFFF;
+}
+
+.thanks_white {
+  color: #FFFFFF;
+}
+
+.thanks_grey {
+  color: #000000;
+}
+
+input.thanks_button {
+  cursor: pointer;
+}
+
