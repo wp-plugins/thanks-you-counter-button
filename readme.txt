@@ -12,7 +12,7 @@ Adds "Thank You" button to every post, counts and shows a total number of the un
 
 This is the simple visitor's 'Thank you' or 'I like it' click counter. Every time a new visitor clicks
 the "Thank you" button one point is added to the total "thanks" counter for this post.
-The plugin stores its counters in MySQL table. Only one "thank" for this IP-address is permitted. Plugin skips all futher
+The plugin stores its counters in MySQL table. Only one "thank" for this IP-address is permitted. Plugin skips all further
 "Thank you" clicks from this IP-addres once it is automatically registered.
 
 == Installation ==
