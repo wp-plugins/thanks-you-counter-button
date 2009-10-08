@@ -1,10 +1,10 @@
 === Thank You Counter Button ===
 Contributors: shinephp
 Donate link:
-Tags: thanks counter tracker
+Tags: thanks counter button tracker
 Requires at least: 2.7.1
 Tested up to: 2.8.4
-Stable tag: 1.0
+Stable tag: 1.0.01
 
 Adds "Thank You" button to every post, counts and shows a total number of the unique visitors "thank you" clicks for this post.
 
@@ -31,6 +31,9 @@ Coming soon...
 2. screenshot-2.png The "Thank You" Counter Button Settings Page
 
 == Changelog ==
+
+= 1.0.01 =
+* 08.10.2009 Position shortcode [thankyou] bug fix. I documented [thankyou] shortcode but in the code [thanksyou] string was checked. Now it is fixed. Working shortcode to place "Thank You" button in the post by the 'shortcode' position is [thankyou].
 
 = 1.0 =
 * First stable release

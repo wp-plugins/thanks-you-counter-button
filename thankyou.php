@@ -227,7 +227,7 @@ function thanks_button_insert($content) {
     $html = '';
     
     if ($thanks_position=='shortcode') {
-      $html .= str_replace('[thanksyou]', $button, $content);
+      $html .= str_replace('[thankyou]', $button, $content);
     } else if ($thanks_position=='beforeandafter') {
       $html .= $button.$content.$button;
     } else if ($thanks_position=='before') {
