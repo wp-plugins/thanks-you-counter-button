@@ -18,15 +18,22 @@ function thankYouButtonClick(post_id) {
    },
    success: function(msg){
      if (msg.indexOf('error')<0) {
-       //alert('success: '+ msg);
        el = document.getElementById('thanksButton_'+ post_id);
        if (el!=undefined) {
-         el.value = msg;
+         beginTag = msg.indexOf('<thankyou>');
+         endTag = msg.indexOf('</thankyou>');
+         if (beginTag>=0 && endTag>0) {
+           msg = msg.substring(beginTag + 10);
+           endTag = msg.indexOf('</thankyou>');
+           msg = msg.substring(0, endTag);
+           el.value = msg;
+         } else {
+           alert('Wrong answer format: '+ msg);
+         }
        }
        el = document.getElementById('ajax_loader_'+ post_id);
        if (el!=undefined) {
          el.style.visibility = 'hidden';
-         //el.style.display = 'none';
        }
      } else {
        alert(msg);
