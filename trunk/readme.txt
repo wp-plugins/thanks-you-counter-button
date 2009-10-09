@@ -4,7 +4,7 @@ Donate link:
 Tags: thanks counter button tracker
 Requires at least: 2.7.1
 Tested up to: 2.8.4
-Stable tag: 1.0.01
+Stable tag: 1.0.02
 
 Adds "Thank You" button to every post, counts and shows a total number of the unique visitors "thank you" clicks for this post.
 
@@ -33,7 +33,7 @@ Coming soon...
 == Changelog ==
 
 = 1.0.02 =
-* 09.10.2009 Ajax request answer and its processing fix. Some hosting providers automatically adds data to every http request answer, e.g. traffic tracking javascript code, etc. In such case part of that additional code was visible on the "Thank You" button just after the "Thanks" quant. Button caption and "thanks" quant is now properly tagged inside <thankyou></thankyou> tags and will be shown properly.
+* 09.10.2009 Ajax request answer and its processing enhancement. Some hosting providers automatically adds data to every http request answer, e.g. traffic tracking javascript code, etc. In such case part of that additional code was visible on the "Thank You" button just after the "Thanks" quant. Button caption and "thanks" quant is now properly tagged inside <thankyou></thankyou> tags and will be shown properly.
 
 = 1.0.01 =
 * 08.10.2009 Position shortcode [thankyou] bug fix. I documented [thankyou] shortcode but in the code [thanksyou] string was checked. Now it is fixed. Working shortcode to place "Thank You" button in the post by the 'shortcode' position is [thankyou].
