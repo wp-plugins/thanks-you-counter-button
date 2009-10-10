@@ -34,16 +34,16 @@ if (!function_exists("get_option")) {
 
 global $wp_version;
 
-$exit_msg = 'Thank You Counter Button requires WordPress 2.7.1 or newer. <a href="http://codex.wordpress.org/Upgrading_WordPress">Please update!</a>';
+$exit_msg = __('Thank You Counter Button requires WordPress 2.7.1 or newer.').'<a href="http://codex.wordpress.org/Upgrading_WordPress">'.__('Please update!').'</a>';
 
 if (version_compare($wp_version,"2.7.1","<"))
 {
 	exit ($exit_msg);
 }
 
-
-
 require_once('thankyou_lib.php');
+
+load_plugin_textdomain('thankyou','', $thanksPluginDirName.'/lang');
 
 
 function thanks_optionsPage() {
@@ -62,9 +62,9 @@ function thanks_optionsPage() {
 ?>
 <div class="wrap">
   <div class="icon32" id="icon-options-general"><br/></div>
-  <h2><?php _e('Settings for Thank You Counter Button Plugin', 'thanks'); ?></h2>
+  <h2><?php _e('Settings for Thank You Counter Button Plugin', 'thankyou'); ?></h2>
   <p><?php _e('This plugin installs the Thank You Counter Button for each of your blog post.
-                It can have custom style in your blog posts.','thanks'); ?>
+                It can have custom style in your blog posts.','thankyou'); ?>
   </p>
   <form method="post" action="options.php">
 <?php
@@ -81,7 +81,7 @@ function thanks_optionsPage() {
         <table class="form-table">
           <tr>
             <th scope="row">
-	             <label for="thanks_caption"><?php _e('Button Caption','thanks'); ?></label>
+	             <label for="thanks_caption"><?php _e('Button Caption','thankyou'); ?></label>
             </th>
             <td>
                <input type="text" value="<?php echo $thanks_caption; ?>" name="thanks_caption" id="thanks_caption" />
@@ -89,88 +89,88 @@ function thanks_optionsPage() {
           </tr>
           <tr>
             <th scope="row">
-	             <?php _e('Display','thanks'); ?>
+	             <?php _e('Display','thankyou'); ?>
             </th>
             <td>
                 <input type="checkbox" value="1" <?php echo ($thanks_display_page=='1') ? 'checked="checked"' : ''; ?>
                        name="thanks_display_page" id="thanks_display_page" />
-                <label for="thanks_display_page"><?php _e('Display button at Pages','thanks'); ?></label><br/>
+                <label for="thanks_display_page"><?php _e('Display button at Pages','thankyou'); ?></label><br/>
                 <input type="checkbox" value="1" <?php echo ($thanks_display_home=='1') ? 'checked="checked"' : ''; ?>
                        name="thanks_display_home" id="thanks_display_home" />
-                <label for="thanks_display_home"><?php _e('Display button at Home page','thanks'); ?></label>
+                <label for="thanks_display_home"><?php _e('Display button at Home page','thankyou'); ?></label>
             </td>
           </tr>
           <tr>
           <th scope="row">
-            <?php _e('Position', 'thanks'); ?>
+            <?php _e('Position', 'thankyou'); ?>
           </th>
           <td>
               <select name="thanks_position">
                 <option <?php echo ($thanks_position=='before') ? 'selected="selected"' : ''; ?> value="before">
-                    <?php _e('Before', 'thanks'); ?></option>
+                    <?php _e('Before', 'thankyou'); ?></option>
                 <option <?php echo ($thanks_position=='after') ? 'selected="selected"' : ''; ?> value="after">
-                    <?php _e('After', 'thanks'); ?></option>
+                    <?php _e('After', 'thankyou'); ?></option>
                 <option <?php echo ($thanks_position=='beforeandafter') ? 'selected="selected"' : ''; ?> value="beforeandafter">
-                    <?php _e('Before and After','thanks'); ?></option>
+                    <?php _e('Before and After','thankyou'); ?></option>
                 <option <?php echo ($thanks_position=='shortcode') ? 'selected="selected"' : ''; ?> value="shortcode">
-                  <?php _e('Shortcode [thankyou]','thanks'); ?></option>
+                  <?php _e('Shortcode [thankyou]','thankyou'); ?></option>
                 <option <?php ($thanks_position=='manual') ? 'selected="selected"' : ''; ?> value="manual">
-                  <?php _e('Manual','thanks'); ?></option>
+                  <?php _e('Manual','thankyou'); ?></option>
               </select>
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="thanks_style"><?php _e('Styling','thanks'); ?></label></th>
+          <th scope="row"><label for="thanks_style"><?php _e('Styling','thankyou'); ?></label></th>
           <td>
             <input type="text" value="<?php echo htmlspecialchars($thanks_style); ?>" name="thanks_style" id="thanks_style" size="30"/>
-            <span class="setting-description"><?php _e('Add style to the Thank You button\'s div, e.g.,','thanks');?> <code>float: left; margin-right: 10px;</code></span>
+            <span class="setting-description"><?php _e('Add style to the Thank You button\'s div, e.g.,','thankyou');?> <code>float: left; margin-right: 10px;</code></span>
           </td>
         </tr>
         <tr>
           <th scope="row">
-            <?php _e('Size','thanks'); ?>
+            <?php _e('Size','thankyou'); ?>
           </th>
           <td>
               <input type="radio" value="large" <?php echo ($thanks_size=='large') ? 'checked="checked"' : ''; ?>
                      name="thanks_size" id="thanks_size_large" />
-              <label for="thanks_size_large"><?php _e('Normal size','thanks'); ?></label><br>
+              <label for="thanks_size_large"><?php _e('Normal size','thankyou'); ?></label><br>
               <input type="radio" value="compact" <?php echo ($thanks_size=='compact') ? 'checked="checked"' : ''; ?>
                      name="thanks_size" id="thanks_size_compact" />
-              <label for="thanks_size_compact"><?php _e('Compact','thanks'); ?></label>
+              <label for="thanks_size_compact"><?php _e('Compact','thankyou'); ?></label>
           </td>
         </tr>
         <tr>
           <th scope="row">
-              <?php _e('Color', 'thanks'); ?>
+              <?php _e('Color', 'thankyou'); ?>
           </th>
           <td>
             <select name="thanks_color">
               <option <?php echo ($thanks_color=='blue') ? 'selected="selected"' : ''; ?> value="blue" style="background: blue; color: white;">
-                <?php _e('Blue', 'thanks'); ?></option>
+                <?php _e('Blue', 'thankyou'); ?></option>
               <option <?php echo ($thanks_color=='red') ? 'selected="selected"' : ''; ?> value="red" style="background: red;">
-                <?php _e('Red', 'thanks'); ?></option>
+                <?php _e('Red', 'thankyou'); ?></option>
               <option <?php echo ($thanks_color=='green') ? 'selected="selected"' : ''; ?> value="green" style="background: green;">
-                <?php _e('Green','thanks'); ?></option>
+                <?php _e('Green','thankyou'); ?></option>
               <option <?php echo ($thanks_color=='grey') ? 'selected="selected"' : ''; ?> value="grey" style="background: grey; color: #white;">
-                <?php _e('Grey','thanks'); ?></option>
+                <?php _e('Grey','thankyou'); ?></option>
               <option <?php ($thanks_color=='black') ? 'selected="selected"' : ''; ?> value="black" style="background: black; color: white;">
-                <?php _e('Black','thanks'); ?></option>
+                <?php _e('Black','thankyou'); ?></option>
             </select>
           </td>
         </tr>
         <tr>
           <th scope="row">
-              <?php _e('Check IP-address','thanks'); ?>
+              <?php _e('Check IP-address','thankyou'); ?>
           </th>
           <td>
             <input type="checkbox" value="1" <?php echo ($thanks_check_ip_address=='1') ? 'checked="checked"' : ''; ?>
                    name="thanks_check_ip_address" id="thanks_check_ip_address" />
-            <label for="thanks_check_ip_address"><?php _e('Only one Thanks for post for one IP-address limit','thanks'); ?></label><br/>
+            <label for="thanks_check_ip_address"><?php _e('Only one Thanks for post for one IP-address limit','thankyou'); ?></label><br/>
           </td>
         </tr>
         </table>
         <p class="submit">
-          <input type="submit" name="Submit" value="<?php _e('Save Changes') ?>" />
+          <input type="submit" name="Submit" value="<?php _e('Save Changes', 'thankyou') ?>" />
         </p>
     </form>
     </div>
@@ -182,7 +182,7 @@ function thanks_optionsPage() {
 
 function thanks_settings_menu() {
 	if ( function_exists('add_options_page') ) {
-		add_options_page(__('Thank You','thanks'), __('Thank You','thanks'), 9, basename(__FILE__), 'thanks_optionsPage');
+		add_options_page(__('Thank You','thankyou'), __('Thank You','thankyou'), 9, basename(__FILE__), 'thanks_optionsPage');
 	}
 }
 // end of thanks_settings_menu()
@@ -295,7 +295,7 @@ function thanks_install() {
   add_option('thanks_color', 'blue');
 	add_option('thanks_check_ip_address', 1);
 	add_option('thanks_show_last_date', 1);
-	add_option('thanks_caption', __('Thank You','thanks'));
+	add_option('thanks_caption', __('Thank You','thankyou'));
   
 }
 // end of thanks_install()
