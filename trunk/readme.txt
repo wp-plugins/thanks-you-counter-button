@@ -34,6 +34,11 @@ Coming soon...
 * Russian: I made myself :)
 * Spanish: Thanks to Omi  http://equipajedemano.inf
 
+Dear plugin User,
+if you wish to help me with this plugin translation I very appreciate it. Please send your languge .po and .mo files to
+vladimir@shinephp.com email. Do not forget include you site link in order I can show it with thanks for the translation help at shinephp.com
+and in this readme.txt file.
+
 == Changelog ==
 
 = 1.0.02 =
