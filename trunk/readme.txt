@@ -30,6 +30,10 @@ Coming soon...
 1. screenshot-1.png The example of "Thank You" button in blue color
 2. screenshot-2.png The "Thank You" Counter Button Settings Page
 
+== Translations ==
+* Russian: I made myself :)
+* Spanish: Thanks to Omi  http://equipajedemano.inf
+
 == Changelog ==
 
 = 1.0.02 =
