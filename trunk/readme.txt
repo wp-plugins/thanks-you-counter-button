@@ -32,7 +32,7 @@ Coming soon...
 
 == Translations ==
 * Russian: I made myself :)
-* Spanish: Thanks to Omi  http://equipajedemano.inf
+* Spanish: Thanks to Omi  http://equipajedemano.info
 
 Dear plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your languge .po and .mo files to
