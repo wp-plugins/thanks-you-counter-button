@@ -1,0 +1,136 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Thank You Counter Button 1.0.02\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-10 14:45+0600\n"
+"PO-Revision-Date: \n"
+"Last-Translator: vladimir <vladimir@shinephp.com>\n"
+"Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: ../thankyou.php:37
+msgid "Thank You Counter Button requires WordPress 2.7.1 or newer."
+msgstr "Для работы кнопки подсчета благодарностей нужна версия WordPress не ниже 2.7.1"
+
+#: ../thankyou.php:37
+msgid "Please update!"
+msgstr "Пожалуйста, обновите!"
+
+#: ../thankyou.php:65
+msgid "Settings for Thank You Counter Button Plugin"
+msgstr "Установки для плагина Спасибо: кнопка подсчета благодарностей"
+
+#: ../thankyou.php:66
+msgid ""
+"This plugin installs the Thank You Counter Button for each of your blog post.\n"
+"                It can have custom style in your blog posts."
+msgstr ""
+"Этот плагин добавляет кнопку подсчета благодарностей к каждой статье Вашего блога.\n"
+"                Стиль и расположение кнопки могут быть адаптированы к стилю вашего блога."
+
+#: ../thankyou.php:84
+msgid "Button Caption"
+msgstr "Надпись на кнопке"
+
+#: ../thankyou.php:92
+msgid "Display"
+msgstr "Отображение"
+
+#: ../thankyou.php:97
+msgid "Display button at Pages"
+msgstr "Отображать на Страницах"
+
+#: ../thankyou.php:100
+msgid "Display button at Home page"
+msgstr "Отображать на Домашней странице"
+
+#: ../thankyou.php:105
+msgid "Position"
+msgstr "Расположение"
+
+#: ../thankyou.php:110
+msgid "Before"
+msgstr "До"
+
+#: ../thankyou.php:112
+msgid "After"
+msgstr "После"
+
+#: ../thankyou.php:114
+msgid "Before and After"
+msgstr "До и После"
+
+#: ../thankyou.php:116
+msgid "Shortcode [thankyou]"
+msgstr "Аббревиатура [thankyou]"
+
+#: ../thankyou.php:118
+msgid "Manual"
+msgstr "Вручную"
+
+#: ../thankyou.php:123
+msgid "Styling"
+msgstr "Стиль"
+
+#: ../thankyou.php:126
+msgid "Add style to the Thank You button's div, e.g.,"
+msgstr "Добавить стиль в раздел div кнопки Спасибо"
+
+#: ../thankyou.php:131
+msgid "Size"
+msgstr "Размер"
+
+#: ../thankyou.php:136
+msgid "Normal size"
+msgstr "Нормальный размер"
+
+#: ../thankyou.php:139
+msgid "Compact"
+msgstr "Компактный размер"
+
+#: ../thankyou.php:144
+msgid "Color"
+msgstr "Цвет"
+
+#: ../thankyou.php:149
+msgid "Blue"
+msgstr "Синий"
+
+#: ../thankyou.php:151
+msgid "Red"
+msgstr "Красный"
+
+#: ../thankyou.php:153
+msgid "Green"
+msgstr "Зеленый"
+
+#: ../thankyou.php:155
+msgid "Grey"
+msgstr "Серый"
+
+#: ../thankyou.php:157
+msgid "Black"
+msgstr "Черный"
+
+#: ../thankyou.php:163
+msgid "Check IP-address"
+msgstr "Контролировать IP-адрес"
+
+#: ../thankyou.php:168
+msgid "Only one Thanks for post for one IP-address limit"
+msgstr "Только одно Спасибо на статью с одного IP-адреса"
+
+#: ../thankyou.php:173
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: ../thankyou.php:185
+#: ../thankyou.php:298
+msgid "Thank You"
+msgstr "Спасибо"
+
