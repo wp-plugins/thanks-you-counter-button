@@ -55,8 +55,13 @@ function thanks_optionsPage() {
   $thanks_display_home = get_option('thanks_display_home');
   $thanks_position = get_option('thanks_position');
   $thanks_style = get_option('thanks_style');
+  $thanks_caption_style = get_option('thanks_caption_style');
   $thanks_size = get_option('thanks_size');
   $thanks_color = get_option('thanks_color');
+  $thanks_custom = get_option('thanks_custom');
+  $thanks_custom_URL = get_option('thanks_custom_url');
+  $thanks_custom_width = get_option('thanks_custom_width');
+  $thanks_custom_height = get_option('thanks_custom_height');
   $thanks_check_ip_address = get_option('thanks_check_ip_address');
 
 ?>
@@ -68,17 +73,9 @@ function thanks_optionsPage() {
   </p>
   <form method="post" action="options.php">
 <?php
-      if (function_exists('settings_fields')) {
-        settings_fields('thankyoubutton-options');
-      } else {
-        wp_nonce_field('thankyoubutton-options');
+    settings_fields('thankyoubutton-options');
 ?>
-        <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="thanks_caption,thanks_display_page,thanks_display_home,thanks_position,thanks_style,thanks_size,thanks_color,thanks_check_ip_address" />
-<?php
-        }
-?>
-        <table class="form-table">
+        <table class="form-table" cellpadding="0" cellspacing="0">
           <tr>
             <th scope="row">
 	             <label for="thanks_caption"><?php _e('Button Caption','thankyou'); ?></label>
@@ -94,7 +91,7 @@ function thanks_optionsPage() {
             <td>
                 <input type="checkbox" value="1" <?php echo ($thanks_display_page=='1') ? 'checked="checked"' : ''; ?>
                        name="thanks_display_page" id="thanks_display_page" />
-                <label for="thanks_display_page"><?php _e('Display button at Pages','thankyou'); ?></label><br/>
+                <label for="thanks_display_page"><?php _e('Display button at Pages','thankyou'); ?></label>&nbsp;
                 <input type="checkbox" value="1" <?php echo ($thanks_display_home=='1') ? 'checked="checked"' : ''; ?>
                        name="thanks_display_home" id="thanks_display_home" />
                 <label for="thanks_display_home"><?php _e('Display button at Home page','thankyou'); ?></label>
@@ -102,7 +99,7 @@ function thanks_optionsPage() {
           </tr>
           <tr>
           <th scope="row">
-            <?php _e('Position', 'thankyou'); ?>
+            <?php _e('Position in the Post text', 'thankyou'); ?>
           </th>
           <td>
               <select name="thanks_position">
@@ -120,10 +117,19 @@ function thanks_optionsPage() {
           </td>
         </tr>
         <tr>
-          <th scope="row"><label for="thanks_style"><?php _e('Styling','thankyou'); ?></label></th>
+          <th scope="row"><label for="thanks_style"><?php _e('Button Styling','thankyou'); ?></label></th>
+          <td>            
+            <span class="setting-description"><?php _e('Add style to the div:','thankyou');?></span>
+            <input type="text" value="<?php echo htmlspecialchars($thanks_style); ?>" name="thanks_style" id="thanks_style" size="40"/>
+            <span class="setting-description"><?php _e(', e.g.,','thankyou');?> <code>float: left; margin-right: 10px;</code></span>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
           <td>
-            <input type="text" value="<?php echo htmlspecialchars($thanks_style); ?>" name="thanks_style" id="thanks_style" size="30"/>
-            <span class="setting-description"><?php _e('Add style to the Thank You button\'s div, e.g.,','thankyou');?> <code>float: left; margin-right: 10px;</code></span>
+            <span class="setting-description"><?php _e('to the Caption font:','thankyou');?></span>
+            <input type="text" value="<?php echo htmlspecialchars($thanks_caption_style); ?>" name="thanks_caption_style" id="thanks_caption_style" size="40"/>
+            <span class="setting-description"><?php _e(', e.g.,','thankyou');?> <code>font-family: Sans-Serif; font-size: 14px; font-weight: normal;</code></span>
           </td>
         </tr>
         <tr>
@@ -131,31 +137,123 @@ function thanks_optionsPage() {
             <?php _e('Size','thankyou'); ?>
           </th>
           <td>
-              <input type="radio" value="large" <?php echo ($thanks_size=='large') ? 'checked="checked"' : ''; ?>
-                     name="thanks_size" id="thanks_size_large" />
-              <label for="thanks_size_large"><?php _e('Normal size','thankyou'); ?></label><br>
-              <input type="radio" value="compact" <?php echo ($thanks_size=='compact') ? 'checked="checked"' : ''; ?>
-                     name="thanks_size" id="thanks_size_compact" />
+              <input type="radio" name="thanks_size" id="thanks_size_large"<?php echo ($thanks_size=='large') ? 'checked="checked"' : ''; ?>
+                     value="large"/>
+              <label for="thanks_size_large"><?php _e('Normal','thankyou'); ?></label>&nbsp;
+              <input type="radio" name="thanks_size" id="thanks_size_compact" <?php echo ($thanks_size=='compact') ? 'checked="checked"' : ''; ?>
+                     value="compact" />
               <label for="thanks_size_compact"><?php _e('Compact','thankyou'); ?></label>
           </td>
         </tr>
         <tr>
           <th scope="row">
-              <?php _e('Color', 'thankyou'); ?>
+              <?php _e('Form and Color', 'thankyou'); ?>
           </th>
           <td>
-            <select name="thanks_color">
-              <option <?php echo ($thanks_color=='blue') ? 'selected="selected"' : ''; ?> value="blue" style="background: blue; color: white;">
-                <?php _e('Blue', 'thankyou'); ?></option>
-              <option <?php echo ($thanks_color=='red') ? 'selected="selected"' : ''; ?> value="red" style="background: red;">
-                <?php _e('Red', 'thankyou'); ?></option>
-              <option <?php echo ($thanks_color=='green') ? 'selected="selected"' : ''; ?> value="green" style="background: green;">
-                <?php _e('Green','thankyou'); ?></option>
-              <option <?php echo ($thanks_color=='grey') ? 'selected="selected"' : ''; ?> value="grey" style="background: grey; color: #white;">
-                <?php _e('Grey','thankyou'); ?></option>
-              <option <?php ($thanks_color=='black') ? 'selected="selected"' : ''; ?> value="black" style="background: black; color: white;">
-                <?php _e('Black','thankyou'); ?></option>
-            </select>
+            <div style="border: 1px solid #cccccc; width: 40%">
+            <table cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='brown') ? 'checked="checked"' : ''; ?> value="brown" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_brown.png" alt="brown" title="brown"/><br/>
+                </td>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='brown1') ? 'checked="checked"' : ''; ?> value="brown1" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_brown1.png" alt="brown1" title="brown1"/><br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='blue') ? 'checked="checked"' : ''; ?> value="blue" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_blue.png" alt="blue" title="blue"/><br/>
+                </td>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='blue1') ? 'checked="checked"' : ''; ?> value="blue1" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_blue1.png" alt="blue1" title="blue1"/><br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='red') ? 'checked="checked"' : ''; ?> value="red" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_red.png" alt="red" title="red"/><br/>
+                </td>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='red1') ? 'checked="checked"' : ''; ?> value="red1" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_red1.png" alt="red1" title="red1"/><br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='green') ? 'checked="checked"' : ''; ?> value="green" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_green.png" alt="green" title="green"/><br/>
+                </td>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='green1') ? 'checked="checked"' : ''; ?> value="green1" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_green1.png" alt="green1" title="green1"/><br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='grey') ? 'checked="checked"' : ''; ?> value="grey" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_grey.png" alt="grey" title="grey"/><br/>
+                </td>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='grey1') ? 'checked="checked"' : ''; ?> value="grey1" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_grey1.png" alt="grey1" title="grey1"/><br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='black') ? 'checked="checked"' : ''; ?> value="black" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_black.png" alt="black" title="black"/><br/>
+                </td>
+                <td>
+                  <input type="radio" name="thanks_color" <?php echo ($thanks_color=='black1') ? 'checked="checked"' : ''; ?> value="black1" />
+                </td>
+                <td>
+                  <img src="<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_compact_black1.png" alt="black1" title="black1"/><br/>
+                </td>
+              </tr>
+            </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" name="thanks_custom" value="1" <?php echo ($thanks_custom=='1') ? 'checked="checked"' : ''; ?>/> <?php _e('Custom button image URL', 'thankyou'); ?>
+          </td>
+          <td>
+            <input type="text" name="thanks_custom_url" value="<?php echo $thanks_custom_URL; ?>"  size="50" />
+            <?php _e(', e.g.,','thankyou'); ?> <code>http://yourblog.com/wp-content/uploads/2009/10/your-button.png</code>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <?php _e('Width, px', 'thankyou'); ?> <input type="text" name="thanks_custom_width" value="<?php echo $thanks_custom_width; ?>" />
+            <?php _e('Height, px', 'thankyou'); ?> <input type="text" name="thanks_custom_height" value="<?php echo $thanks_custom_height; ?>" />
           </td>
         </tr>
         <tr>
@@ -191,17 +289,43 @@ function thanks_settings_menu() {
 function thanks_buildButtonCode() {
 
   global $post;
-    
-  $thanks_size = get_option('thanks_size');
-  $thanks_color = get_option('thanks_color');
-  $imageName = 'thanks_'.$thanks_size.'_'.$thanks_color.'.png';
-  $buttonSizeClass = 'thanks_'.$thanks_size;
-  $buttonColorClass = 'thanks_'.$thanks_color;
+
+  $thanks_custom = get_option('thanks_custom');
+  if ($thanks_custom) {
+    $thanks_custom_URL = get_option('thanks_custom_url');
+    $thanks_custom_width = get_option('thanks_custom_width');
+    if ($thanks_custom_width) {
+      if (strpos($thanks_custom_width, 'px')===false) {
+        $thanks_custom_width = trim($thanks_custom_width).'px';
+      }
+      $thanks_custom_width = 'width:'.$thanks_custom_width.';';
+    }
+    $thanks_custom_height = get_option('thanks_custom_height');
+    if ($thanks_custom_height) {
+      if (strpos($thanks_custom_height, 'px')===false) {
+        $thanks_custom_height = trim($thanks_custom_height).'px';
+      }
+      $thanks_custom_height = 'height:'.$thanks_custom_height.';';
+    }
+    $imageURL = $thanks_custom_URL;
+    $buttonSizeClass = 'thanks_custom_button';
+    $buttonColorClass = '';
+  } else {
+    $thanks_custom_width = '';
+    $thanks_custom_height = '';
+    $thanks_size = get_option('thanks_size');
+    $thanks_color = get_option('thanks_color');
+    $imageName = 'thanks_'.$thanks_size.'_'.$thanks_color.'.png';
+    $imageURL = THANKS_PLUGIN_URL.'/images/'.$imageName;
+    $buttonSizeClass = 'thanks_'.$thanks_size;
+    $buttonColorClass = 'thanks_'.$thanks_color;
+  }
+  
 
   $button = '<div class="thanks_button_div" style="'.get_option('thanks_style').'">
                 <input type="button" onclick="thankYouButtonClick('.$post->ID.')" value="'.getThanksCaption($post->ID).'"
                   class="thanks_button '.$buttonSizeClass.' '.$buttonColorClass.'"
-                  style="background-image:url('.THANKS_PLUGIN_URL.'/images/'.$imageName.');"
+                  style="background-image:url('.$imageURL.');'.$thanks_custom_width.' '.$thanks_custom_height.' '.get_option('thanks_caption_style').'"
                   id="thanksButton_'.$post->ID.'"/>
                 <div id="ajax_loader_'.$post->ID.'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>
              </div>';
@@ -291,9 +415,14 @@ function thanks_install() {
   add_option('thanks_display_home', 1);
   add_option('thanks_position', 'after');
   add_option('thanks_style', 'float: left; margin-right: 10px;');
+  add_option('thanks_caption_style', 'font-family: Verdana, Arial, Sans-Serif; font-size: 14px; font-weight: normal;');
   add_option('thanks_size', 'large');
   add_option('thanks_color', 'blue');
-	add_option('thanks_check_ip_address', 1);
+  add_option('thanks_custom', 0);
+  add_option('thanks_custom_url', '');
+  add_option('thanks_custom_width', 100);
+  add_option('thanks_custom_height', 26);
+  add_option('thanks_check_ip_address', 1);
 	add_option('thanks_show_last_date', 1);
 	add_option('thanks_caption', __('Thank You','thankyou'));
   
@@ -303,15 +432,20 @@ function thanks_install() {
 
 function thanks_init(){
   if(function_exists('register_setting')) {
+    register_setting('thankyoubutton-options', 'thanks_caption');
     register_setting('thankyoubutton-options', 'thanks_display_page');
     register_setting('thankyoubutton-options', 'thanks_display_home');
     register_setting('thankyoubutton-options', 'thanks_position');
     register_setting('thankyoubutton-options', 'thanks_style');
+    register_setting('thankyoubutton-options', 'thanks_caption_style');
     register_setting('thankyoubutton-options', 'thanks_size');
     register_setting('thankyoubutton-options', 'thanks_color');
+    register_setting('thankyoubutton-options', 'thanks_custom');
+    register_setting('thankyoubutton-options', 'thanks_custom_url');
+    register_setting('thankyoubutton-options', 'thanks_custom_width');
+    register_setting('thankyoubutton-options', 'thanks_custom_height');
     register_setting('thankyoubutton-options', 'thanks_check_ip_address');
-    register_setting('thankyoubutton-options', 'thanks_caption');
-
+    
   }
 }
 // end of thanks_init()

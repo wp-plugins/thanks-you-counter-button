@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.0.02\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-10 14:45+0600\n"
+"POT-Creation-Date: 2009-10-14 20:09+0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: vladimir <vladimir@shinephp.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
@@ -24,114 +24,116 @@ msgstr ""
 msgid "Please update!"
 msgstr ""
 
-#: ../thankyou.php:65
+#: ../thankyou.php:70
 msgid "Settings for Thank You Counter Button Plugin"
 msgstr ""
 
-#: ../thankyou.php:66
+#: ../thankyou.php:71
 msgid ""
 "This plugin installs the Thank You Counter Button for each of your blog post.\n"
 "                It can have custom style in your blog posts."
 msgstr ""
 
-#: ../thankyou.php:84
+#: ../thankyou.php:81
 msgid "Button Caption"
 msgstr ""
 
-#: ../thankyou.php:92
+#: ../thankyou.php:89
 msgid "Display"
 msgstr ""
 
-#: ../thankyou.php:97
+#: ../thankyou.php:94
 msgid "Display button at Pages"
 msgstr ""
 
-#: ../thankyou.php:100
+#: ../thankyou.php:97
 msgid "Display button at Home page"
 msgstr ""
 
-#: ../thankyou.php:105
-msgid "Position"
+#: ../thankyou.php:102
+msgid "Position in the Post text"
 msgstr ""
 
-#: ../thankyou.php:110
+#: ../thankyou.php:107
 msgid "Before"
 msgstr ""
 
-#: ../thankyou.php:112
+#: ../thankyou.php:109
 msgid "After"
 msgstr ""
 
-#: ../thankyou.php:114
+#: ../thankyou.php:111
 msgid "Before and After"
 msgstr ""
 
-#: ../thankyou.php:116
+#: ../thankyou.php:113
 msgid "Shortcode [thankyou]"
 msgstr ""
 
-#: ../thankyou.php:118
+#: ../thankyou.php:115
 msgid "Manual"
 msgstr ""
 
-#: ../thankyou.php:123
-msgid "Styling"
+#: ../thankyou.php:120
+msgid "Button Styling"
 msgstr ""
 
-#: ../thankyou.php:126
-msgid "Add style to the Thank You button's div, e.g.,"
+#: ../thankyou.php:122
+msgid "Add style to the div:"
 msgstr ""
 
-#: ../thankyou.php:131
+#: ../thankyou.php:124
+#: ../thankyou.php:132
+#: ../thankyou.php:249
+msgid ", e.g.,"
+msgstr ""
+
+#: ../thankyou.php:130
+msgid "to the Caption font:"
+msgstr ""
+
+#: ../thankyou.php:137
 msgid "Size"
 msgstr ""
 
-#: ../thankyou.php:136
-msgid "Normal size"
+#: ../thankyou.php:142
+msgid "Normal"
 msgstr ""
 
-#: ../thankyou.php:139
+#: ../thankyou.php:145
 msgid "Compact"
 msgstr ""
 
-#: ../thankyou.php:144
-msgid "Color"
+#: ../thankyou.php:150
+msgid "Form and Color"
 msgstr ""
 
-#: ../thankyou.php:149
-msgid "Blue"
+#: ../thankyou.php:245
+msgid "Custom button image URL"
 msgstr ""
 
-#: ../thankyou.php:151
-msgid "Red"
+#: ../thankyou.php:255
+msgid "Width, px"
 msgstr ""
 
-#: ../thankyou.php:153
-msgid "Green"
+#: ../thankyou.php:256
+msgid "Height, px"
 msgstr ""
 
-#: ../thankyou.php:155
-msgid "Grey"
-msgstr ""
-
-#: ../thankyou.php:157
-msgid "Black"
-msgstr ""
-
-#: ../thankyou.php:163
+#: ../thankyou.php:261
 msgid "Check IP-address"
 msgstr ""
 
-#: ../thankyou.php:168
+#: ../thankyou.php:266
 msgid "Only one Thanks for post for one IP-address limit"
 msgstr ""
 
-#: ../thankyou.php:173
+#: ../thankyou.php:271
 msgid "Save Changes"
 msgstr ""
 
-#: ../thankyou.php:185
-#: ../thankyou.php:298
+#: ../thankyou.php:283
+#: ../thankyou.php:427
 msgid "Thank You"
 msgstr ""
 

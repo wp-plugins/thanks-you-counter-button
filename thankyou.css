@@ -11,15 +11,13 @@
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
-.thanks_large {
-  border: none;
+.thanks_large {    
   width: 120px;
   height: 40px;
   font-size: 14px;
 }
 
-.thanks_compact {
-  border: none;
+.thanks_compact {  
   width: 100px;
   height: 26px;
   font-size: 12px;
@@ -46,7 +44,10 @@
   color: #000000;
 }
 
+
 input.thanks_button {
   cursor: pointer;
+  border: none;
+  background: transparent;
 }
 

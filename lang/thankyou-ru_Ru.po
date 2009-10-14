@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.0.02\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-10 14:45+0600\n"
+"POT-Creation-Date: 2009-10-14 20:09+0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: vladimir <vladimir@shinephp.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
@@ -21,11 +21,11 @@ msgstr "Для работы кнопки подсчета благодарнос
 msgid "Please update!"
 msgstr "Пожалуйста, обновите!"
 
-#: ../thankyou.php:65
+#: ../thankyou.php:70
 msgid "Settings for Thank You Counter Button Plugin"
 msgstr "Установки для плагина Спасибо: кнопка подсчета благодарностей"
 
-#: ../thankyou.php:66
+#: ../thankyou.php:71
 msgid ""
 "This plugin installs the Thank You Counter Button for each of your blog post.\n"
 "                It can have custom style in your blog posts."
@@ -33,104 +33,125 @@ msgstr ""
 "Этот плагин добавляет кнопку подсчета благодарностей к каждой статье Вашего блога.\n"
 "                Стиль и расположение кнопки могут быть адаптированы к стилю вашего блога."
 
-#: ../thankyou.php:84
+#: ../thankyou.php:81
 msgid "Button Caption"
 msgstr "Надпись на кнопке"
 
-#: ../thankyou.php:92
+#: ../thankyou.php:89
 msgid "Display"
 msgstr "Отображение"
 
-#: ../thankyou.php:97
+#: ../thankyou.php:94
 msgid "Display button at Pages"
 msgstr "Отображать на Страницах"
 
-#: ../thankyou.php:100
+#: ../thankyou.php:97
 msgid "Display button at Home page"
 msgstr "Отображать на Домашней странице"
 
-#: ../thankyou.php:105
-msgid "Position"
-msgstr "Расположение"
+#: ../thankyou.php:102
+msgid "Position in the Post text"
+msgstr "Расположение в статье"
 
-#: ../thankyou.php:110
+#: ../thankyou.php:107
 msgid "Before"
 msgstr "До"
 
-#: ../thankyou.php:112
+#: ../thankyou.php:109
 msgid "After"
 msgstr "После"
 
-#: ../thankyou.php:114
+#: ../thankyou.php:111
 msgid "Before and After"
 msgstr "До и После"
 
-#: ../thankyou.php:116
+#: ../thankyou.php:113
 msgid "Shortcode [thankyou]"
 msgstr "Аббревиатура [thankyou]"
 
-#: ../thankyou.php:118
+#: ../thankyou.php:115
 msgid "Manual"
 msgstr "Вручную"
 
-#: ../thankyou.php:123
-msgid "Styling"
-msgstr "Стиль"
+#: ../thankyou.php:120
+msgid "Button Styling"
+msgstr "Стиль для Кнопки"
 
-#: ../thankyou.php:126
-msgid "Add style to the Thank You button's div, e.g.,"
-msgstr "Добавить стиль в раздел div кнопки Спасибо"
+#: ../thankyou.php:122
+msgid "Add style to the div:"
+msgstr "Cтиль для div"
 
-#: ../thankyou.php:131
+#: ../thankyou.php:124
+#: ../thankyou.php:132
+#: ../thankyou.php:249
+msgid ", e.g.,"
+msgstr ", например, "
+
+#: ../thankyou.php:130
+msgid "to the Caption font:"
+msgstr "для шрифта:"
+
+#: ../thankyou.php:137
 msgid "Size"
 msgstr "Размер"
 
-#: ../thankyou.php:136
-msgid "Normal size"
-msgstr "Нормальный размер"
+#: ../thankyou.php:142
+msgid "Normal"
+msgstr "Нормальный"
 
-#: ../thankyou.php:139
+#: ../thankyou.php:145
 msgid "Compact"
 msgstr "Компактный размер"
 
-#: ../thankyou.php:144
-msgid "Color"
-msgstr "Цвет"
+#: ../thankyou.php:150
+msgid "Form and Color"
+msgstr "Форма и Цвет"
 
-#: ../thankyou.php:149
-msgid "Blue"
-msgstr "Синий"
+#: ../thankyou.php:245
+msgid "Custom button image URL"
+msgstr "URL изображения собственной кнопки"
 
-#: ../thankyou.php:151
-msgid "Red"
-msgstr "Красный"
+#: ../thankyou.php:255
+msgid "Width, px"
+msgstr "Ширина, px"
 
-#: ../thankyou.php:153
-msgid "Green"
-msgstr "Зеленый"
+#: ../thankyou.php:256
+msgid "Height, px"
+msgstr "Высота, px"
 
-#: ../thankyou.php:155
-msgid "Grey"
-msgstr "Серый"
-
-#: ../thankyou.php:157
-msgid "Black"
-msgstr "Черный"
-
-#: ../thankyou.php:163
+#: ../thankyou.php:261
 msgid "Check IP-address"
 msgstr "Контролировать IP-адрес"
 
-#: ../thankyou.php:168
+#: ../thankyou.php:266
 msgid "Only one Thanks for post for one IP-address limit"
 msgstr "Только одно Спасибо на статью с одного IP-адреса"
 
-#: ../thankyou.php:173
+#: ../thankyou.php:271
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: ../thankyou.php:185
-#: ../thankyou.php:298
+#: ../thankyou.php:283
+#: ../thankyou.php:427
 msgid "Thank You"
 msgstr "Спасибо"
+
+#~ msgid "Position"
+#~ msgstr "Расположение"
+#~ msgid "Styling"
+#~ msgstr "Стиль"
+#~ msgid "Add style to the Thank You button's div, e.g.,"
+#~ msgstr "Добавить стиль в раздел div кнопки Спасибо"
+#~ msgid "Color"
+#~ msgstr "Цвет"
+#~ msgid "Blue"
+#~ msgstr "Синий"
+#~ msgid "Red"
+#~ msgstr "Красный"
+#~ msgid "Green"
+#~ msgstr "Зеленый"
+#~ msgid "Grey"
+#~ msgstr "Серый"
+#~ msgid "Black"
+#~ msgstr "Черный"
 

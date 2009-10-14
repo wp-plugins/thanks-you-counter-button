@@ -32,7 +32,7 @@ Coming soon...
 
 == Translations ==
 * Russian: I made myself :)
-* Spanish: Thanks to Omi  http://equipajedemano.info
+* Spanish: Thanks to Omi  http://equipajedemano.inf
 
 Dear plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your languge .po and .mo files to
@@ -40,6 +40,9 @@ vladimir@shinephp.com email. Do not forget include you site link in order I can 
 and in this readme.txt file.
 
 == Changelog ==
+
+= 1.1 =
+* 14.10.2009 Settings page interface updated. Additions: button caption text style field, 7 new rounded corner buttons, custom button image URL field.
 
 = 1.0.02 =
 * 09.10.2009 Ajax request answer and its processing enhancement. Some hosting providers automatically adds data to every http request answer, e.g. traffic tracking javascript code, etc. In such case part of that additional code was visible on the "Thank You" button just after the "Thanks" quant. Button caption and "thanks" quant is now properly tagged inside <thankyou></thankyou> tags and will be shown properly.
