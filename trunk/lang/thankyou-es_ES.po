@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Thank You Counter Button 1.0.02\n"
+"Project-Id-Version: Thank You Counter Button\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-14 20:09+0600\n"
 "PO-Revision-Date: \n"
-"Last-Translator: vladimir <vladimir@shinephp.com>\n"
+"Last-Translator: Omi <equipajedemano@gmail.com>\n"
 "Language-Team: Omi <equipajedemano@gmail.com | http://equipajedemano.info>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +54,7 @@ msgstr "Mostrar el botón en la portada"
 
 #: ../thankyou.php:102
 msgid "Position in the Post text"
-msgstr "Position in the Post text"
+msgstr "Posición el en texto del artículo"
 
 #: ../thankyou.php:107
 msgid "Before"
@@ -78,21 +78,21 @@ msgstr "Manual"
 
 #: ../thankyou.php:120
 msgid "Button Styling"
-msgstr "Button Styling"
+msgstr "Estilo del bóton"
 
 #: ../thankyou.php:122
 msgid "Add style to the div:"
-msgstr "Add style to the div:"
+msgstr "Estilo del div:"
 
 #: ../thankyou.php:124
 #: ../thankyou.php:132
 #: ../thankyou.php:249
 msgid ", e.g.,"
-msgstr ", e.g.,"
+msgstr ", ej.,"
 
 #: ../thankyou.php:130
 msgid "to the Caption font:"
-msgstr "to the Caption font:"
+msgstr "Estilo del texto:"
 
 #: ../thankyou.php:137
 msgid "Size"
@@ -108,19 +108,19 @@ msgstr "Tamaño reducido"
 
 #: ../thankyou.php:150
 msgid "Form and Color"
-msgstr "Form and Color"
+msgstr "Color y Forma"
 
 #: ../thankyou.php:245
 msgid "Custom button image URL"
-msgstr "Custom button image URL"
+msgstr "URL con la imagen personalizada para el botón"
 
 #: ../thankyou.php:255
 msgid "Width, px"
-msgstr "Width, px"
+msgstr "Ancho (píxeles)"
 
 #: ../thankyou.php:256
 msgid "Height, px"
-msgstr "Height, px"
+msgstr "Alto (píxeles)"
 
 #: ../thankyou.php:261
 msgid "Check IP-address"
@@ -137,7 +137,7 @@ msgstr "Grabar cambios"
 #: ../thankyou.php:283
 #: ../thankyou.php:427
 msgid "Thank You"
-msgstr "Gracias"
+msgstr "Conf. Thank You"
 
 #~ msgid "Position"
 #~ msgstr "Posición"
