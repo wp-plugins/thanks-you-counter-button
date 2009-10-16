@@ -1,0 +1,160 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Thank You Counter Button\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-14 20:09+0600\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Omi <equipajedemano@gmail.com>\n"
+"Language-Team: Omi <equipajedemano@gmail.com | http://equipajedemano.info>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../thankyou.php:37
+msgid "Thank You Counter Button requires WordPress 2.7.1 or newer."
+msgstr "Thank You Counter Button requiere de WordPress 2.7.1 o superior."
+
+#: ../thankyou.php:37
+msgid "Please update!"
+msgstr "Por favor, ¡actualice!"
+
+#: ../thankyou.php:70
+msgid "Settings for Thank You Counter Button Plugin"
+msgstr "Configuración de Thank You Counter Button"
+
+#: ../thankyou.php:71
+msgid ""
+"This plugin installs the Thank You Counter Button for each of your blog post.\n"
+"                It can have custom style in your blog posts."
+msgstr ""
+"Este plugin instalará un botón contador de agradecimientos en cada entrada de su blog.\n"
+"                Su estilo puede personalizarse según su conveniencia."
+
+#: ../thankyou.php:81
+msgid "Button Caption"
+msgstr "Texto del botón"
+
+#: ../thankyou.php:89
+msgid "Display"
+msgstr "Ubicación"
+
+#: ../thankyou.php:94
+msgid "Display button at Pages"
+msgstr "Mostrar el botón en las páginas"
+
+#: ../thankyou.php:97
+msgid "Display button at Home page"
+msgstr "Mostrar el botón en la portada"
+
+#: ../thankyou.php:102
+msgid "Position in the Post text"
+msgstr "Posición el en texto del artículo"
+
+#: ../thankyou.php:107
+msgid "Before"
+msgstr "Antes del texto"
+
+#: ../thankyou.php:109
+msgid "After"
+msgstr "Después del texto"
+
+#: ../thankyou.php:111
+msgid "Before and After"
+msgstr "Antes y después"
+
+#: ../thankyou.php:113
+msgid "Shortcode [thankyou]"
+msgstr "Código abreviado [thankyou]"
+
+#: ../thankyou.php:115
+msgid "Manual"
+msgstr "Manual"
+
+#: ../thankyou.php:120
+msgid "Button Styling"
+msgstr "Estilo del bóton"
+
+#: ../thankyou.php:122
+msgid "Add style to the div:"
+msgstr "Estilo del div:"
+
+#: ../thankyou.php:124
+#: ../thankyou.php:132
+#: ../thankyou.php:249
+msgid ", e.g.,"
+msgstr ", ej.,"
+
+#: ../thankyou.php:130
+msgid "to the Caption font:"
+msgstr "Estilo del texto:"
+
+#: ../thankyou.php:137
+msgid "Size"
+msgstr "Tamaño"
+
+#: ../thankyou.php:142
+msgid "Normal"
+msgstr "Normal"
+
+#: ../thankyou.php:145
+msgid "Compact"
+msgstr "Tamaño reducido"
+
+#: ../thankyou.php:150
+msgid "Form and Color"
+msgstr "Color y Forma"
+
+#: ../thankyou.php:245
+msgid "Custom button image URL"
+msgstr "URL con la imagen personalizada para el botón"
+
+#: ../thankyou.php:255
+msgid "Width, px"
+msgstr "Ancho (píxeles)"
+
+#: ../thankyou.php:256
+msgid "Height, px"
+msgstr "Alto (píxeles)"
+
+#: ../thankyou.php:261
+msgid "Check IP-address"
+msgstr "Comprobar dirección IP"
+
+#: ../thankyou.php:266
+msgid "Only one Thanks for post for one IP-address limit"
+msgstr "Limitar a un agradecimiento por artículo e IP"
+
+#: ../thankyou.php:271
+msgid "Save Changes"
+msgstr "Grabar cambios"
+
+#: ../thankyou.php:283
+#: ../thankyou.php:427
+msgid "Thank You"
+msgstr "Conf. Thank You"
+
+#~ msgid "Position"
+#~ msgstr "Posición"
+#~ msgid "Styling"
+#~ msgstr "Estilo"
+#~ msgid "Add style to the Thank You button's div, e.g.,"
+#~ msgstr "Personalice el estilo de su botón, por ejemplo:"
+#~ msgid "Color"
+#~ msgstr "Color"
+#~ msgid "Blue"
+#~ msgstr "Azul"
+#~ msgid "Red"
+#~ msgstr "Rojo"
+#~ msgid "Green"
+#~ msgstr "Verde"
+#~ msgid "Grey"
+#~ msgstr "Gris"
+#~ msgid "Black"
+#~ msgstr "Negro"
+

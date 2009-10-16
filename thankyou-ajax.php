@@ -90,7 +90,7 @@ $postId = $_POST['post_id'];
 thanks_add_count($postId);
 $result = getThanksCaption($postId);
 
-echo $result;
+echo '<thankyou>'.$result.'</thankyou>';
 
 
 ?>
