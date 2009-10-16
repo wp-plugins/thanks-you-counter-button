@@ -4,7 +4,7 @@ Donate link:
 Tags: thanks counter button tracker
 Requires at least: 2.7.1
 Tested up to: 2.8.4
-Stable tag: 1.0.02
+Stable tag: 1.1
 
 Adds "Thank You" button to every post, counts and shows a total number of the unique visitors "thank you" clicks for this post.
 
@@ -32,7 +32,7 @@ Coming soon...
 
 == Translations ==
 * Russian: I made myself :)
-* Spanish: Thanks to Omi  http://equipajedemano.inf
+* Spanish: (Omi)[http://equipajedemano.info]
 
 Dear plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your languge .po and .mo files to
@@ -40,7 +40,8 @@ vladimir@shinephp.com email. Do not forget include you site link in order I can 
 and in this readme.txt file.
 
 == Thanks ==
-Thanks to (www.supersite.me) [http://www.supersite.me/website-building/jquery-free-color-picker/] for the excelent JQuery color picker.
+* Thanks to (Omi)[http://equipajedemano.info] for the help with new versions testing.
+* Thanks to (Simon)[http://www.supersite.me/website-building/jquery-free-color-picker/] for the excelent JQuery color picker.
 
 == Changelog ==
 
