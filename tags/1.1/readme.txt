@@ -1,7 +1,7 @@
 === Thank You Counter Button ===
 Contributors: shinephp
 Donate link:
-Tags: thanks counter button tracker
+Tags: thanks, counter, button, tracker
 Requires at least: 2.7.1
 Tested up to: 2.8.4
 Stable tag: 1.1
