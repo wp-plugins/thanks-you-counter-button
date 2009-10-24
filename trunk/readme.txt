@@ -3,7 +3,7 @@ Contributors: shinephp
 Donate link:
 Tags: thanks, counter, button, tracker
 Requires at least: 2.7.1
-Tested up to: 2.8.4
+Tested up to: 2.8.5
 Stable tag: 1.1
 
 Adds "Thank You" button to every post, counts and shows a total number of the unique visitors "thank you" clicks for this post.
