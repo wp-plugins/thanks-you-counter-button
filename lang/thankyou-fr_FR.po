@@ -1,0 +1,149 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Thank You Counter Button\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-14 20:09+0600\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Whiler <webmaster@blogs.wittwer.fr>\n"
+"Language-Team: Whiler <webmaster@blogs.wittwer.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+
+#: ../thankyou.php:37
+msgid "Thank You Counter Button requires WordPress 2.7.1 or newer."
+msgstr "Thank You Counter Button n&eacute;cessite au minimum une version <strong>2.7.1</strong> de WordPress."
+
+#: ../thankyou.php:37
+msgid "Please update!"
+msgstr "Veuillez mettre &agrave; jour l&apos;extension&nbsp;!"
+
+#: ../thankyou.php:70
+msgid "Settings for Thank You Counter Button Plugin"
+msgstr "R&eacute;glages pour l&apos;extension <strong>Thank You Counter Button</strong>"
+
+#: ../thankyou.php:71
+msgid ""
+"This plugin installs the Thank You Counter Button for each of your blog post.\n"
+"                It can have custom style in your blog posts."
+msgstr ""
+"Cette extension installe le <code>Thank You Counter Button</code> pour chaque article de votre blog.\n"
+"                Vous pouvez personnaliser le style utilis&eacute; dans les articles de votre blog."
+
+#: ../thankyou.php:81
+msgid "Button Caption"
+msgstr "Libell&eacute; du bouton&nbsp;:"
+
+#: ../thankyou.php:89
+msgid "Display"
+msgstr "Affichage&nbsp;:"
+
+#: ../thankyou.php:94
+msgid "Display button at Pages"
+msgstr "Afficher le bouton sur les <code>Pages</code>"
+
+#: ../thankyou.php:97
+msgid "Display button at Home page"
+msgstr "Afficher le bouton sur la <code>page d&apos;accueil</code>"
+
+#: ../thankyou.php:102
+msgid "Position in the Post text"
+msgstr "Emplacement dans le texte de l&apos;article&nbsp;:"
+
+#: ../thankyou.php:107
+msgid "Before"
+msgstr "Avant"
+
+#: ../thankyou.php:109
+msgid "After"
+msgstr "Apr&egrave;s"
+
+#: ../thankyou.php:111
+msgid "Before and After"
+msgstr "Avant et apr&egrave;s"
+
+#: ../thankyou.php:113
+msgid "Shortcode [thankyou]"
+msgstr "Code [thankyou]"
+
+#: ../thankyou.php:115
+msgid "Manual"
+msgstr "Manuel"
+
+#: ../thankyou.php:120
+msgid "Button Styling"
+msgstr "Style du bouton&nbsp;:"
+
+#: ../thankyou.php:122
+msgid "Add style to the div:"
+msgstr "Style ajout&eacute; au <code>DIV</code>&nbsp;:"
+
+#: ../thankyou.php:124
+#: ../thankyou.php:132
+#: ../thankyou.php:249
+msgid ", e.g.,"
+msgstr ",&nbsp;par exemple,&nbsp;"
+
+#: ../thankyou.php:130
+msgid "to the Caption font:"
+msgstr "&agrave; la police du libell&eacute;&nbsp;:"
+
+#: ../thankyou.php:137
+msgid "Size"
+msgstr "Taille&nbsp;:"
+
+#: ../thankyou.php:142
+msgid "Normal"
+msgstr "Normale"
+
+#: ../thankyou.php:145
+msgid "Compact"
+msgstr "Compacte"
+
+#: ../thankyou.php:150
+msgid "Form and Color"
+msgstr "Forme et couleur&nbsp;:"
+
+#: ../thankyou.php:245
+msgid "Custom button image URL"
+msgstr "URL d&apos;un bouton personnalis&eacute;&nbsp;:"
+
+#: ../thankyou.php:255
+msgid "Width, px"
+msgstr "Largeur&nbsp;(px)"
+
+#: ../thankyou.php:256
+msgid "Height, px"
+msgstr "Hauteur&nbsp;(px)"
+
+#: ../thankyou.php:261
+msgid "Check IP-address"
+msgstr "V&eacute;rifier l&apos;adresse IP&nbsp;:"
+
+#: ../thankyou.php:266
+msgid "Only one Thanks for post for one IP-address limit"
+msgstr "Limiter &agrave; 1 seul <code>Merci</code> pour un article par adresse IP"
+
+#: ../thankyou.php:271
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: ../thankyou.php:283
+#: ../thankyou.php:427
+msgid "Thank You"
+msgstr "Merci&nbsp;"
+
+#: ../thankyou.php:225
+msgid "What"
+msgstr "Article<em>s</em>"
+
+#: ../thankyou.php:228
+msgid "Number"
+msgstr "Merci<em>s</em>"
+
+#: ../thankyou.php:275
+msgid "No Thank You yet"
+msgstr "Pas encore de Merci"
+
