@@ -33,9 +33,9 @@ Coming soon...
 4. screenshot-4.png The "Thank You" Counter Button Settings Page French translation
 
 == Translations ==
-* Russian: [ShinePHP] (http://shinephp.com/)
-* Spanish: [Omi] (http://equipajedemano.info/)
-* French: [Whiler] (http://blogs.wittwer.fr/whiler/)
+* Russian: [ShinePHP](http://shinephp.com/)
+* Spanish: [Omi](http://equipajedemano.info/)
+* French: [Whiler](http://blogs.wittwer.fr/whiler/)
 
 Dear plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your languge .po and .mo files to
@@ -43,9 +43,9 @@ vladimir@shinephp.com email. Do not forget include you site link in order I can 
 and in this readme.txt file.
 
 == Special Thanks ==
-* Thanks to [Omi] (http://equipajedemano.info) for the help with Spanish translation and new versions testing.
-* Thanks to [Simon] (http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
-* Thanks to [Whiler] (http://blogs.wittwer.fr/whiler/) for the help with French translation.
+* Thanks to [Omi](http://equipajedemano.info) for the help with Spanish translation and new versions testing.
+* Thanks to [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
+* Thanks to [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation.
 
 == Changelog ==
 
