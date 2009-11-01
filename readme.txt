@@ -1,10 +1,10 @@
 === Thank You Counter Button ===
 Contributors: shinephp
-Donate link:
+Donate link: shinephp.com
 Tags: thanks, counter, button, tracker
 Requires at least: 2.7.1
 Tested up to: 2.8.5
-Stable tag: 1.1
+Stable tag: 1.1.01
 
 Adds "Thank You" button to every post, counts and shows a total number of the unique visitors "thank you" clicks for this post.
 
@@ -29,26 +29,33 @@ Coming soon...
 == Screenshots ==
 1. screenshot-1.png The example of "Thank You" button in blue color
 2. screenshot-2.png The "Thank You" Counter Button Settings Page
+3. screenshot-3.png The "Thank You" Counter Button Settings Page Spanish translation
+4. screenshot-4.png The "Thank You" Counter Button Settings Page French translation
 
 == Translations ==
-* Russian: I made myself :)
-* Spanish: (Omi)[http://equipajedemano.info]
+* Russian: (I made myself) [http://shinephp.com/]
+* Spanish: (Omi) [http://equipajedemano.info/]
+* French: (Whiler) [http://blogs.wittwer.fr/whiler/]
 
 Dear plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your languge .po and .mo files to
 vladimir@shinephp.com email. Do not forget include you site link in order I can show it with thanks for the translation help at shinephp.com
 and in this readme.txt file.
 
-== Thanks ==
-* Thanks to (Omi)[http://equipajedemano.info] for the help with new versions testing.
-* Thanks to (Simon)[http://www.supersite.me/website-building/jquery-free-color-picker/] for the excelent JQuery color picker.
+== Special Thanks ==
+* Thanks to (Omi) [http://equipajedemano.info] for the help with Spanish translation and new versions testing.
+* Thanks to (Simon) [http://www.supersite.me/website-building/jquery-free-color-picker/] for the excelent JQuery color picker.
+* Thanks to (Whiler) [http://blogs.wittwer.fr/whiler/] for the help with French translation.
 
 == Changelog ==
 
+= 1.1.01 =
+* 01.11.2009 French translation for the Settings page was added.
+
 = 1.1 =
-* 14.10.2009 
+* 14.10.2009: 
 - Settings page interface updated. Additions: button caption text style field including text color picker, 7 new rounded corner buttons, custom button image URL field. 
-- Russian and Spanish translations added.
+- Russian and Spanish translations were added.
 
 = 1.0.02 =
 * 09.10.2009 Ajax request answer and its processing enhancement. Some hosting providers automatically adds data to every http request answer, e.g. traffic tracking javascript code, etc. In such case part of that additional code was visible on the "Thank You" button just after the "Thanks" quant. Button caption and "thanks" quant is now properly tagged inside <thankyou></thankyou> tags and will be shown properly.
