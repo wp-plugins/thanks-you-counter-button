@@ -18,11 +18,11 @@ msgstr "Thank You Counter Button n&eacute;cessite au minimum une version <strong
 
 #: ../thankyou.php:37
 msgid "Please update!"
-msgstr "Veuillez mettre &agrave; jour l&apos;extension&nbsp;!"
+msgstr "Veuillez mettre &agrave; jour l'extension&nbsp;!"
 
 #: ../thankyou.php:70
 msgid "Settings for Thank You Counter Button Plugin"
-msgstr "R&eacute;glages pour l&apos;extension <strong>Thank You Counter Button</strong>"
+msgstr "R&eacute;glages pour l'extension <strong>Thank You Counter Button</strong>"
 
 #: ../thankyou.php:71
 msgid ""
@@ -46,11 +46,11 @@ msgstr "Afficher le bouton sur les <code>Pages</code>"
 
 #: ../thankyou.php:97
 msgid "Display button at Home page"
-msgstr "Afficher le bouton sur la <code>page d&apos;accueil</code>"
+msgstr "Afficher le bouton sur la <code>page d'accueil</code>"
 
 #: ../thankyou.php:102
 msgid "Position in the Post text"
-msgstr "Emplacement dans le texte de l&apos;article&nbsp;:"
+msgstr "Emplacement dans le texte de l'article&nbsp;:"
 
 #: ../thankyou.php:107
 msgid "Before"
@@ -108,7 +108,7 @@ msgstr "Forme et couleur&nbsp;:"
 
 #: ../thankyou.php:245
 msgid "Custom button image URL"
-msgstr "URL d&apos;un bouton personnalis&eacute;&nbsp;:"
+msgstr "URL d'un bouton personnalis&eacute;&nbsp;:"
 
 #: ../thankyou.php:255
 msgid "Width, px"
@@ -120,7 +120,7 @@ msgstr "Hauteur&nbsp;(px)"
 
 #: ../thankyou.php:261
 msgid "Check IP-address"
-msgstr "V&eacute;rifier l&apos;adresse IP&nbsp;:"
+msgstr "V&eacute;rifier l'adresse IP&nbsp;:"
 
 #: ../thankyou.php:266
 msgid "Only one Thanks for post for one IP-address limit"
