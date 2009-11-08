@@ -1,5 +1,5 @@
 === Thank You Counter Button ===
-Contributors: [Whiler](http://blogs.wittwer.fr/whiler/)
+Contributors: ShinePHP, Whiler
 Donate link: shinephp.com
 Tags: thanks, counter, button, tracker, dashboard, widget, plugin, shortcode, statistics
 Requires at least: 2.7.1
