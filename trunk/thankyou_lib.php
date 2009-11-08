@@ -31,6 +31,65 @@ global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 $thanksCountersTable = $wpdb->prefix .'thanks_counters';
 $thanksPostReadersTable = $wpdb->prefix .'thanks_readers';
 
+// returns client machine IP address
+function thanks_getVisitorIP() {
+  if (!empty($_SERVER['HTTP_CLIENT_IP'])) {  //check ip from share internet
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+  } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  //to check ip is pass from proxy
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+  } else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+  }
+  return $ip;
+}
+// end of thanks_getVisitorIP()
+
+
+// check if post is thanked already from This IP
+function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
+
+  global $wpdb, $thanksPostReadersTable;
+
+  $query = "select id, UNIX_TIMESTAMP(updated) as updated
+              from $thanksPostReadersTable
+              where post_id=$postId and ip_address='$visitorIP'
+              limit 0, 1";
+  $record = $wpdb->get_results($query);
+  if ($wpdb->last_error) {
+      echo 'error: '.$wpdb->last_error;
+      exit;
+  }
+  $id = $record[0]->id;
+  if ($id) {
+    if ($register) {
+      $query = "update $thanksPostReadersTable set updated=CURRENT_TIMESTAMP where id=$id";
+      $wpdb->query($query);
+      if ($wpdb->last_error) {
+        echo 'error: '.$wpdb->last_error;
+        return;
+      }
+    }
+    $thanks_time_limit = get_option('thanks_time_limit');
+    if ($thanks_time_limit[0]==1) { // forever
+      $ipFound = true;
+    } else {
+      $thanks_time_limit_seconds = get_option('thanks_time_limit_seconds');
+      $now = time();
+      $diff = $now - $record[0]->updated;
+      if ($diff>$thanks_time_limit_seconds) {
+        $ipFound = false;
+      } else {
+        $ipFound = true;
+      }
+    }
+  } else {    
+    $ipFound = false;
+  }
+  
+  return $ipFound;
+}
+// end of thanks_checkVisitorIP()
+
 
 function getThanksCaption($postId) {
 
@@ -56,5 +115,14 @@ return $caption;
 }
 // end of getThanksCaption()
 
+
+function thanks_optionSelected($value, $etalon) {
+  $selected = '';
+  if ($value==$etalon) {
+    $selected = 'selected="selected"';
+  }
+
+  return $selected;
+}
 
 ?>
