@@ -1,0 +1,266 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Thank You Counter Button\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-09 20:52+0600\n"
+"PO-Revision-Date: \n"
+"Last-Translator: vladimir <vladimir@shinephp.com>\n"
+"Language-Team: Whiler <webmaster@blogs.wittwer.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+
+#: ../thankyou.php:37
+msgid "Thank You Counter Button requires WordPress 2.7.1 or newer."
+msgstr "Thank You Counter Button n&eacute;cessite au minimum une version <strong>2.7.1</strong> de WordPress."
+
+#: ../thankyou.php:37
+msgid "Please update!"
+msgstr "Veuillez mettre &agrave; jour l'extension&nbsp;!"
+
+#: ../thankyou.php:81
+msgid "Thank You Counter Button Plugin"
+msgstr "Options de l'extension <strong>Thank You Counter Button</strong>"
+
+#: ../thankyou.php:82
+msgid ""
+"This plugin installs the Thank You Counter Button for each of your blog post.\n"
+"                It can have custom style in your blog posts."
+msgstr ""
+"Cette extension installe le <code>Thank You Counter Button</code> pour chaque article de votre blog.<br/>\n"
+"                Vous pouvez &eacute;galement personnaliser le style utilis&eacute; dans les articles de votre blog."
+
+#: ../thankyou.php:100
+msgid "Settings"
+msgstr "R&eacute;glages"
+
+#: ../thankyou.php:101
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: ../thankyou.php:186
+msgid "You left &ldquo;Thanks&rdquo; already for this post"
+msgstr ""
+
+#: ../thankyou.php:189
+msgid "Click to left &ldquo;Thanks&rdquo; for this post"
+msgstr ""
+
+#: ../thankyou.php:367
+msgid "Thank You"
+msgstr "Merci&nbsp;"
+
+#: ../thankyou.php:472
+msgid "No thanks yet"
+msgstr "Pas encore de Merci"
+
+#: ../thankyou.php:478
+msgid "Latest Thanks"
+msgstr "Derniers Mercis"
+
+#: ../thankyou_options.php:14
+msgid "Button Caption"
+msgstr "Libell&eacute; du bouton&nbsp;:"
+
+#: ../thankyou_options.php:22
+msgid "Display"
+msgstr "Affichage&nbsp;:"
+
+#: ../thankyou_options.php:27
+msgid "Display button at Pages"
+msgstr "Afficher le bouton sur les <code>Pages</code>."
+
+#: ../thankyou_options.php:30
+msgid "Display button at Home page, Categories/Tags archive pages"
+msgstr "Afficher le bouton sur la <code>page d'accueil</code> ainsi que sur les pages des <code>cat&eacute;gories</code>, <code>Tags</code> et <code>archives</code>."
+
+#: ../thankyou_options.php:34
+msgid "Do not show button for selected categories"
+msgstr "Ne pas afficher le bouton pour les cat&eacute;gories s&eacute;lectionn&eacute;es."
+
+#: ../thankyou_options.php:103
+msgid "Position in the Post text"
+msgstr "Emplacement dans le texte de l'article&nbsp;:"
+
+#: ../thankyou_options.php:108
+msgid "Before"
+msgstr "Avant"
+
+#: ../thankyou_options.php:110
+msgid "After"
+msgstr "Apr&egrave;s"
+
+#: ../thankyou_options.php:112
+msgid "Before and After"
+msgstr "Avant et apr&egrave;s"
+
+#: ../thankyou_options.php:114
+msgid "Shortcode [thankyou]"
+msgstr "Code [thankyou]"
+
+#: ../thankyou_options.php:116
+msgid "Manual"
+msgstr "Manuel"
+
+#: ../thankyou_options.php:121
+msgid "Button Styling"
+msgstr "Style du bouton&nbsp;:"
+
+#: ../thankyou_options.php:123
+msgid "Add style to the div:"
+msgstr "Style ajout&eacute; au <code>DIV</code>&nbsp;:"
+
+#: ../thankyou_options.php:125
+#: ../thankyou_options.php:133
+#: ../thankyou_options.php:200
+msgid ", e.g.,"
+msgstr ",&nbsp;par exemple,&nbsp;"
+
+#: ../thankyou_options.php:131
+msgid "to the Caption font:"
+msgstr "&agrave; la police du libell&eacute;&nbsp;:"
+
+#: ../thankyou_options.php:139
+msgid "Size"
+msgstr "Taille&nbsp;:"
+
+#: ../thankyou_options.php:144
+msgid "Normal"
+msgstr "Normale"
+
+#: ../thankyou_options.php:147
+msgid "Compact"
+msgstr "Compacte"
+
+#: ../thankyou_options.php:152
+msgid "Form and Color"
+msgstr "Forme et couleur&nbsp;:"
+
+#: ../thankyou_options.php:196
+msgid "Custom button image URL"
+msgstr "URL d'un bouton personnalis&eacute;&nbsp;:"
+
+#: ../thankyou_options.php:201
+msgid "Width, px"
+msgstr "Largeur&nbsp;(px)"
+
+#: ../thankyou_options.php:202
+msgid "Height, px"
+msgstr "Hauteur&nbsp;(px)"
+
+#: ../thankyou_options.php:207
+msgid "Check IP-address"
+msgstr "V&eacute;rifier l'adresse IP&nbsp;:"
+
+#: ../thankyou_options.php:212
+msgid "Only one Thanks for post for one IP-address limit"
+msgstr "Limiter &agrave; 1 seul <code>Merci</code> pour un article par adresse IP"
+
+#: ../thankyou_options.php:213
+msgid "Time limit:"
+msgstr "Limite de temps&nbsp;:"
+
+#: ../thankyou_options.php:214
+msgid "Forever"
+msgstr "Aucune"
+
+#: ../thankyou_options.php:216
+msgid "Only for this period"
+msgstr "Pendant cette dur&eacute;e&nbsp;:"
+
+#: ../thankyou_options.php:218
+msgid "seconds"
+msgstr "secondes"
+
+#: ../thankyou_options.php:223
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: ../thankyou_options.php:224
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../thankyou_statistics.php:177
+msgid "Show all post dates"
+msgstr "Voir toutes les dates"
+
+#: ../thankyou_statistics.php:198
+msgid "View all categories"
+msgstr "Voir toutes les cat&eacute;gories"
+
+#: ../thankyou_statistics.php:208
+msgid "Show Posts without Thanks"
+msgstr "Afficher les Articles sans Merci"
+
+#: ../thankyou_statistics.php:209
+msgid "Rows per page: "
+msgstr "Lignes par page&nbsp;:"
+
+#: ../thankyou_statistics.php:220
+msgid "Refresh"
+msgstr "Rafra&icirc;chir"
+
+#: ../thankyou_statistics.php:227
+#: ../thankyou_statistics.php:338
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr "Affichage %s&#8211;%s sur %s"
+
+#: ../thankyou_statistics.php:255
+#: ../thankyou_statistics.php:270
+msgid "descending"
+msgstr "d&eacute;croissant"
+
+#: ../thankyou_statistics.php:256
+#: ../thankyou_statistics.php:271
+msgid "Ascending order"
+msgstr "Ordre croissant"
+
+#: ../thankyou_statistics.php:260
+#: ../thankyou_statistics.php:275
+msgid "ascending"
+msgstr "croissant"
+
+#: ../thankyou_statistics.php:261
+#: ../thankyou_statistics.php:276
+msgid "Descending order"
+msgstr "Ordre d&eacute;croissant"
+
+#: ../thankyou_statistics.php:283
+#, php-format
+msgid "Click to sort in %s order"
+msgstr "Cliquer pour trier dans l'ordre %s"
+
+#: ../thankyou_statistics.php:293
+msgid "Post Id"
+msgstr "Identifiant"
+
+#: ../thankyou_statistics.php:294
+msgid "Post Title"
+msgstr "Titre de l'article"
+
+#: ../thankyou_statistics.php:295
+msgid "Thanks Quant"
+msgstr "Nb Merci"
+
+#: ../thankyou_statistics.php:296
+msgid "Last Thank Date"
+msgstr "Date du dernier Merci"
+
+#: ../thankyou_statistics.php:355
+msgid "No posts found"
+msgstr "Aucun article trouv&eacute;"
+
+#~ msgid "Filter"
+#~ msgstr "Filtrer"
+#~ msgid "&laquo;"
+#~ msgstr "&laquo;"
+#~ msgid "&raquo;"
+#~ msgstr "&raquo;"
+#~ msgid "What"
+#~ msgstr "Article<em>s</em>"
+#~ msgid "Number"
+#~ msgstr "Merci<em>s</em>"
+
