@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-09 20:52+0600\n"
+"POT-Creation-Date: 2009-11-08 15:22+0600\n"
 "PO-Revision-Date: \n"
-"Last-Translator: vladimir <vladimir@shinephp.com>\n"
+"Last-Translator: Whiler <webmaster@blogs.wittwer.fr>\n"
 "Language-Team: Whiler <webmaster@blogs.wittwer.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,23 +40,15 @@ msgstr "R&eacute;glages"
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: ../thankyou.php:186
-msgid "You left &ldquo;Thanks&rdquo; already for this post"
-msgstr ""
-
-#: ../thankyou.php:189
-msgid "Click to left &ldquo;Thanks&rdquo; for this post"
-msgstr ""
-
-#: ../thankyou.php:367
+#: ../thankyou.php:340
 msgid "Thank You"
 msgstr "Merci&nbsp;"
 
-#: ../thankyou.php:472
+#: ../thankyou.php:445
 msgid "No thanks yet"
 msgstr "Pas encore de Merci"
 
-#: ../thankyou.php:478
+#: ../thankyou.php:451
 msgid "Latest Thanks"
 msgstr "Derniers Mercis"
 
@@ -253,14 +245,18 @@ msgstr "Date du dernier Merci"
 msgid "No posts found"
 msgstr "Aucun article trouv&eacute;"
 
+#: ../thankyou.php:186
+msgid "You left &ldquo;Thanks&rdquo; already for this post"
+msgstr "Vous avez d&eacute;j&agrave; remerci&eacute; cet article&nbsp;!"
+
+#: ../thankyou.php:189
+msgid "Click to left &ldquo;Thanks&rdquo; for this post"
+msgstr "Cliquer pour dire &ldquo;Merci&rdquo; pour cet article&nbsp;!"
+
 #~ msgid "Filter"
 #~ msgstr "Filtrer"
 #~ msgid "&laquo;"
 #~ msgstr "&laquo;"
 #~ msgid "&raquo;"
 #~ msgstr "&raquo;"
-#~ msgid "What"
-#~ msgstr "Article<em>s</em>"
-#~ msgid "Number"
-#~ msgstr "Merci<em>s</em>"
 
