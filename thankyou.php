@@ -183,10 +183,10 @@ function thanks_buildButtonCode() {
   }
   if ($ipFound) {
     $onButtonClick = 'return false;';
-    $buttonTitle = 'You left &ldquo;Thanks&rdquo; already for this post';
+    $buttonTitle = __('You left &ldquo;Thanks&rdquo; already for this post', 'thankyou');
   } else {
     $onButtonClick = 'thankYouButtonClick('.$post->ID.')';
-    $buttonTitle = 'Click to left &ldquo;Thanks&rdquo; for this post';
+    $buttonTitle = __('Click to left &ldquo;Thanks&rdquo; for this post', 'thankyou');
   }
 
   $button = '<div class="thanks_button_div" style="'.get_option('thanks_style').'">

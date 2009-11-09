@@ -66,7 +66,7 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
       $wpdb->query($query);
       if ($wpdb->last_error) {
         echo 'error: '.$wpdb->last_error;
-        return;
+        return false;
       }
     }
     $thanks_time_limit = get_option('thanks_time_limit');
@@ -82,7 +82,15 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
         $ipFound = true;
       }
     }
-  } else {    
+  } else {
+    if ($register) {
+      $query = "insert into $thanksPostReadersTable (post_id, ip_address) values ($postId, '$visitorIP')";
+      $wpdb->query($query);
+      if ($wpdb->last_error) {
+        echo 'error: '.$wpdb->last_error;
+        return false;
+      }
+    }
     $ipFound = false;
   }
   

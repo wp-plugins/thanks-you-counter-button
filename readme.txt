@@ -1,10 +1,10 @@
 === Thank You Counter Button ===
-Contributors: ShinePHP, Whiler
+Contributors: [Whiler](http://blogs.wittwer.fr/whiler/)
 Donate link: shinephp.com
 Tags: thanks, counter, button, tracker, dashboard, widget, plugin, shortcode, statistics
 Requires at least: 2.7.1
 Tested up to: 2.8.5
-Stable tag: 1.2
+Stable tag: 1.2.01
 
 Plugin adds "Thank You" button to every post/page, counts and shows a total number of the unique visitors "thank you" clicks for this post/page.
 Plugin has wide choice of settings to customize its presentation and behaviour. "Statistics" table (Post title, Thanks Quant, Last Thanks Date) will help you to analyze which posts and how much are liked by your blog visitors.
@@ -52,6 +52,11 @@ and in this readme.txt file.
 * Thanks to [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
 
 == Changelog ==
+
+= 1.2.01 =
+* 10.11.2009
+- bug when thanks send date and time was not updated is fixed;
+- minor fixes for the translation files.
 
 = 1.2. =
 * 08.11.2009
