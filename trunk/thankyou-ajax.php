@@ -25,14 +25,6 @@ function thanks_add_count($postId) {
   if ($checkIP=='1') {
     $visitorIP = thanks_getVisitorIP();
     $ipFound = thanks_checkVisitorIP($postId, $visitorIP, true);  // id of the visitor record for this IP and post
-    if (!$ipFound) {
-      $query = "insert into $thanksPostReadersTable (post_id, ip_address) values ($postId, '$visitorIP')";
-      $wpdb->query($query);
-      if ($wpdb->last_error) {
-        echo 'error: '.$wpdb->last_error;
-        return;
-      }
-    }
   } else {
     $ipFound = false;
   }
@@ -48,7 +40,7 @@ function thanks_add_count($postId) {
       return;
     }
     if ($id) {
-      $query = "update $thanksCountersTable set quant=quant+1
+      $query = "update $thanksCountersTable set quant=quant+1, updated=CURRENT_TIMESTAMP
                 where id=$id
                 limit 1";
     } else {
