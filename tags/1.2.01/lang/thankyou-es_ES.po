@@ -51,7 +51,7 @@ msgstr "Ya diste las &ldquo;gracias&rdquo; por este artículo"
 
 #: ../thankyou.php:189
 msgid "Click to left &ldquo;Thanks&rdquo; for this post"
-msgstr "Pincha aquí para dar las &ldquo;gracias&rdquo; por este artículo"
+msgstr "Pincha aquí si quieres dar las &ldquo;gracias&rdquo; por este artículo"
 
 #: ../thankyou.php:367
 msgid "Thank You"
@@ -59,7 +59,7 @@ msgstr "Conf. Thank You"
 
 #: ../thankyou.php:472
 msgid "No thanks yet"
-msgstr "No  agradecimiento"
+msgstr "Todavía sin agradecimientos"
 
 #: ../thankyou.php:478
 msgid "Latest Thanks"
@@ -87,7 +87,7 @@ msgstr "No mostrar el botón en las siguientes categorías (se listarán al sele
 
 #: ../thankyou_options.php:103
 msgid "Position in the Post text"
-msgstr "Posición el en texto del artículo"
+msgstr "Posición en el texto del artículo"
 
 #: ../thankyou_options.php:108
 msgid "Before"
@@ -111,7 +111,7 @@ msgstr "Manual"
 
 #: ../thankyou_options.php:121
 msgid "Button Styling"
-msgstr "Estilo del bóton"
+msgstr "Estilo del botón"
 
 #: ../thankyou_options.php:123
 msgid "Add style to the div:"
@@ -216,7 +216,7 @@ msgstr "Mostrando %s&#8211;%s de %s"
 #: ../thankyou_statistics.php:255
 #: ../thankyou_statistics.php:270
 msgid "descending"
-msgstr "descendiente"
+msgstr "descendente"
 
 #: ../thankyou_statistics.php:256
 #: ../thankyou_statistics.php:271
