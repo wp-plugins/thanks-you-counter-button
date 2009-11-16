@@ -24,12 +24,14 @@
             <td>
                 <input type="checkbox" value="1" <?php echo ($thanks_display_page=='1') ? 'checked="checked"' : ''; ?>
                        name="thanks_display_page" id="thanks_display_page" />
-                <label for="thanks_display_page"><?php _e('Display button at Pages','thankyou'); ?></label>&nbsp;
+                <label for="thanks_display_page"><?php _e('Display button at Pages','thankyou'); ?></label><br/>
                 <input type="checkbox" value="1" <?php echo ($thanks_display_home=='1') ? 'checked="checked"' : ''; ?>
                        name="thanks_display_home" id="thanks_display_home" />
                 <label for="thanks_display_home"><?php _e('Display button at Home page, Categories/Tags archive pages','thankyou'); ?></label><br/>
+                <code><?php _e('To exclude Thank You button from particular post use shortcode [nothankyou] there', 'thankyou'); ?></code><br/>
                 <input type="checkbox" value="1" <?php echo ($thanks_not_display_for_categories=='1') ? 'checked="checked"' : ''; ?>
                        name="thanks_not_display_for_categories" id="thanks_not_display_for_categories" onclick="thanks_hideShowDiv(this)"/>
+                
                 <label for="thanks_not_display_for_categories">
 <?php _e('Do not show button for selected categories','thankyou');
   $categories = get_terms('category', array('hierarchical' => true));
@@ -103,18 +105,10 @@
             <?php _e('Position in the Post text', 'thankyou'); ?>
           </th>
           <td>
-              <select name="thanks_position">
-                <option <?php echo ($thanks_position=='before') ? 'selected="selected"' : ''; ?> value="before">
-                    <?php _e('Before', 'thankyou'); ?></option>
-                <option <?php echo ($thanks_position=='after') ? 'selected="selected"' : ''; ?> value="after">
-                    <?php _e('After', 'thankyou'); ?></option>
-                <option <?php echo ($thanks_position=='beforeandafter') ? 'selected="selected"' : ''; ?> value="beforeandafter">
-                    <?php _e('Before and After','thankyou'); ?></option>
-                <option <?php echo ($thanks_position=='shortcode') ? 'selected="selected"' : ''; ?> value="shortcode">
-                  <?php _e('Shortcode [thankyou]','thankyou'); ?></option>
-                <option <?php ($thanks_position=='manual') ? 'selected="selected"' : ''; ?> value="manual">
-                  <?php _e('Manual','thankyou'); ?></option>
-              </select>
+            <input type="checkbox" name="thanks_position_before" value="1" <?php echo thanks_optionChecked($thanks_position_before, 1); ?> /> <?php _e('Before', 'thankyou'); ?>
+            <input type="checkbox" name="thanks_position_after" value="1" <?php echo thanks_optionChecked($thanks_position_after, 1); ?> /> <?php _e('After', 'thankyou'); ?>
+            <input type="checkbox" name="thanks_position_shortcode" value="1" <?php echo thanks_optionChecked($thanks_position_shortcode, 1); ?> /> <?php _e('Shortcode [thankyou]','thankyou'); ?>
+            <input type="checkbox" name="thanks_position_manual" value="1" <?php echo thanks_optionChecked($thanks_position_manual, 1); ?> /> <?php _e('Manual','thankyou'); ?>
           </td>
         </tr>
         <tr>

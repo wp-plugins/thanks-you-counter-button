@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-08 15:22+0600\n"
+"POT-Creation-Date: 2009-11-16 20:30+0600\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Whiler <webmaster@blogs.wittwer.fr>\n"
+"Last-Translator: vladimir <vladimir@shinephp.com>\n"
 "Language-Team: Whiler <webmaster@blogs.wittwer.fr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +20,11 @@ msgstr "Thank You Counter Button n&eacute;cessite au minimum une version <strong
 msgid "Please update!"
 msgstr "Veuillez mettre &agrave; jour l'extension&nbsp;!"
 
-#: ../thankyou.php:81
+#: ../thankyou.php:84
 msgid "Thank You Counter Button Plugin"
 msgstr "Options de l'extension <strong>Thank You Counter Button</strong>"
 
-#: ../thankyou.php:82
+#: ../thankyou.php:85
 msgid ""
 "This plugin installs the Thank You Counter Button for each of your blog post.\n"
 "                It can have custom style in your blog posts."
@@ -32,25 +32,26 @@ msgstr ""
 "Cette extension installe le <code>Thank You Counter Button</code> pour chaque article de votre blog.<br/>\n"
 "                Vous pouvez &eacute;galement personnaliser le style utilis&eacute; dans les articles de votre blog."
 
-#: ../thankyou.php:100
+#: ../thankyou.php:103
+#: ../thankyou.php:436
 msgid "Settings"
 msgstr "R&eacute;glages"
 
-#: ../thankyou.php:101
+#: ../thankyou.php:104
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: ../thankyou.php:340
+#: ../thankyou.php:189
+msgid "You left &ldquo;Thanks&rdquo; already for this post"
+msgstr "Vous avez d&eacute;j&agrave; remerci&eacute; cet article&nbsp;!"
+
+#: ../thankyou.php:192
+msgid "Click to left &ldquo;Thanks&rdquo; for this post"
+msgstr "Cliquer pour dire &ldquo;Merci&rdquo; pour cet article&nbsp;!"
+
+#: ../thankyou.php:367
 msgid "Thank You"
 msgstr "Merci&nbsp;"
-
-#: ../thankyou.php:445
-msgid "No thanks yet"
-msgstr "Pas encore de Merci"
-
-#: ../thankyou.php:451
-msgid "Latest Thanks"
-msgstr "Derniers Mercis"
 
 #: ../thankyou_options.php:14
 msgid "Button Caption"
@@ -68,11 +69,15 @@ msgstr "Afficher le bouton sur les <code>Pages</code>."
 msgid "Display button at Home page, Categories/Tags archive pages"
 msgstr "Afficher le bouton sur la <code>page d'accueil</code> ainsi que sur les pages des <code>cat&eacute;gories</code>, <code>Tags</code> et <code>archives</code>."
 
-#: ../thankyou_options.php:34
+#: ../thankyou_options.php:31
+msgid "To exclude Thank You button from particular post use shortcode [nothankyou] there"
+msgstr "Pour supprimer le bouton Merci d'un article sp&eacute;cifique, ajoutez dans son contenu le code <em>[nothankyou]</em>."
+
+#: ../thankyou_options.php:36
 msgid "Do not show button for selected categories"
 msgstr "Ne pas afficher le bouton pour les cat&eacute;gories s&eacute;lectionn&eacute;es."
 
-#: ../thankyou_options.php:103
+#: ../thankyou_options.php:105
 msgid "Position in the Post text"
 msgstr "Emplacement dans le texte de l'article&nbsp;:"
 
@@ -80,97 +85,93 @@ msgstr "Emplacement dans le texte de l'article&nbsp;:"
 msgid "Before"
 msgstr "Avant"
 
-#: ../thankyou_options.php:110
+#: ../thankyou_options.php:109
 msgid "After"
 msgstr "Apr&egrave;s"
 
-#: ../thankyou_options.php:112
-msgid "Before and After"
-msgstr "Avant et apr&egrave;s"
-
-#: ../thankyou_options.php:114
+#: ../thankyou_options.php:110
 msgid "Shortcode [thankyou]"
-msgstr "Code [thankyou]"
+msgstr "Code <code>[thankyou]</code>"
 
-#: ../thankyou_options.php:116
+#: ../thankyou_options.php:111
 msgid "Manual"
 msgstr "Manuel"
 
-#: ../thankyou_options.php:121
+#: ../thankyou_options.php:115
 msgid "Button Styling"
 msgstr "Style du bouton&nbsp;:"
 
-#: ../thankyou_options.php:123
+#: ../thankyou_options.php:117
 msgid "Add style to the div:"
 msgstr "Style ajout&eacute; au <code>DIV</code>&nbsp;:"
 
-#: ../thankyou_options.php:125
-#: ../thankyou_options.php:133
-#: ../thankyou_options.php:200
+#: ../thankyou_options.php:119
+#: ../thankyou_options.php:127
+#: ../thankyou_options.php:194
 msgid ", e.g.,"
 msgstr ",&nbsp;par exemple,&nbsp;"
 
-#: ../thankyou_options.php:131
+#: ../thankyou_options.php:125
 msgid "to the Caption font:"
 msgstr "&agrave; la police du libell&eacute;&nbsp;:"
 
-#: ../thankyou_options.php:139
+#: ../thankyou_options.php:133
 msgid "Size"
 msgstr "Taille&nbsp;:"
 
-#: ../thankyou_options.php:144
+#: ../thankyou_options.php:138
 msgid "Normal"
 msgstr "Normale"
 
-#: ../thankyou_options.php:147
+#: ../thankyou_options.php:141
 msgid "Compact"
 msgstr "Compacte"
 
-#: ../thankyou_options.php:152
+#: ../thankyou_options.php:146
 msgid "Form and Color"
 msgstr "Forme et couleur&nbsp;:"
 
-#: ../thankyou_options.php:196
+#: ../thankyou_options.php:190
 msgid "Custom button image URL"
 msgstr "URL d'un bouton personnalis&eacute;&nbsp;:"
 
-#: ../thankyou_options.php:201
+#: ../thankyou_options.php:195
 msgid "Width, px"
 msgstr "Largeur&nbsp;(px)"
 
-#: ../thankyou_options.php:202
+#: ../thankyou_options.php:196
 msgid "Height, px"
 msgstr "Hauteur&nbsp;(px)"
 
-#: ../thankyou_options.php:207
+#: ../thankyou_options.php:201
 msgid "Check IP-address"
 msgstr "V&eacute;rifier l'adresse IP&nbsp;:"
 
-#: ../thankyou_options.php:212
+#: ../thankyou_options.php:206
 msgid "Only one Thanks for post for one IP-address limit"
 msgstr "Limiter &agrave; 1 seul <code>Merci</code> pour un article par adresse IP"
 
-#: ../thankyou_options.php:213
+#: ../thankyou_options.php:207
 msgid "Time limit:"
 msgstr "Limite de temps&nbsp;:"
 
-#: ../thankyou_options.php:214
+#: ../thankyou_options.php:208
 msgid "Forever"
 msgstr "Aucune"
 
-#: ../thankyou_options.php:216
+#: ../thankyou_options.php:210
 msgid "Only for this period"
 msgstr "Pendant cette dur&eacute;e&nbsp;:"
 
-#: ../thankyou_options.php:218
+#: ../thankyou_options.php:212
 msgid "seconds"
 msgstr "secondes"
 
-#: ../thankyou_options.php:223
+#: ../thankyou_options.php:217
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
-#: ../thankyou_options.php:224
+#: ../thankyou_options.php:218
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -245,14 +246,76 @@ msgstr "Date du dernier Merci"
 msgid "No posts found"
 msgstr "Aucun article trouv&eacute;"
 
-#: ../thankyou.php:186
-msgid "You left &ldquo;Thanks&rdquo; already for this post"
-msgstr "Vous avez d&eacute;j&agrave; remerci&eacute; cet article&nbsp;!"
+#: ../thankyou_widgets.php:14
+msgid "the latest or the most thanked post titles with total thanks quant"
+msgstr "Les titres des articles remerci&eacute;s, le plus ou en dernier, avec le nombre total de Mercis"
 
-#: ../thankyou.php:189
-msgid "Click to left &ldquo;Thanks&rdquo; for this post"
-msgstr "Cliquer pour dire &ldquo;Merci&rdquo; pour cet article&nbsp;!"
+#: ../thankyou_widgets.php:15
+#: ../thankyou_widgets.php:25
+msgid "Thanks Stat"
+msgstr "Statisques des Mercis&nbsp;"
 
+#: ../thankyou_widgets.php:91
+msgid "Title:"
+msgstr "Titre&nbsp;:"
+
+#: ../thankyou_widgets.php:94
+msgid "Number of posts to show:"
+msgstr "Nombre d'articles &agrave; afficher&nbsp;:"
+
+#: ../thankyou_widgets.php:96
+msgid "(at most 15)"
+msgstr "(Maximum 15)"
+
+#: ../thankyou_widgets.php:97
+#: ../thankyou_widgets.php:265
+msgid "What posts to show:"
+msgstr "Les articles à afficher&nbsp;:"
+
+#: ../thankyou_widgets.php:99
+#: ../thankyou_widgets.php:267
+msgid "Latest thanked"
+msgstr "Les derniers remerci&eacute;s"
+
+#: ../thankyou_widgets.php:100
+#: ../thankyou_widgets.php:268
+msgid "Most thanked"
+msgstr "Les plus remerci&eacute;s"
+
+#: ../thankyou_widgets.php:203
+msgid "Check Full Statistics"
+msgstr "Voir toutes les Statistiques"
+
+#: ../thankyou_widgets.php:207
+msgid "Plugin author home page"
+msgstr "Site Web de l'auteur de l'extension"
+
+#: ../thankyou_widgets.php:214
+msgid "No thanks yet"
+msgstr "Pas encore de Merci"
+
+#: ../thankyou_widgets.php:261
+msgid "Posts number to show:"
+msgstr "Nombre d'articles &agrave; afficher&nbsp;:"
+
+#: ../thankyou_widgets.php:274
+msgid "Display Full Statistics link"
+msgstr "Afficher le lien pour afficher toutes les Statistiques"
+
+#: ../thankyou_widgets.php:279
+msgid "Display plugin author link"
+msgstr "Afficher le lien de l'auteur de l'extension"
+
+#: ../thankyou_widgets.php:290
+msgid "Latest Thanks"
+msgstr "Derniers Mercis"
+
+#: ../thankyou_widgets.php:292
+msgid "Most Thanked"
+msgstr "Les plus remerci&eacute;s"
+
+#~ msgid "Before and After"
+#~ msgstr "Avant et apr&egrave;s"
 #~ msgid "Filter"
 #~ msgstr "Filtrer"
 #~ msgid "&laquo;"

@@ -1,7 +1,8 @@
 <?php
 /* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Thank You Counter Button WordPress plugin AJAX request processing staff
+ * Author: Vladimir Garagulya vladimir@shinephp.com
+ *
  */
 
 if (! (isset($_POST['post_id']) && $_POST['post_id'] && is_numeric($_POST['post_id']))) {
