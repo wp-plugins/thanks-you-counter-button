@@ -2,6 +2,7 @@
 /* 
  * Thank You Counter Button plugin Lirary
  * general staff used in more than one .php file
+ * Author: Vladimir Garagulya vladimir@shinephp.com
  *
  */
 
@@ -131,6 +132,16 @@ function thanks_optionSelected($value, $etalon) {
   }
 
   return $selected;
+}
+
+
+function thanks_optionChecked($value, $etalon) {
+  $checked = '';
+  if ($value==$etalon) {
+    $checked = 'checked="checked"';
+  }
+
+  return $checked;
 }
 
 ?>
