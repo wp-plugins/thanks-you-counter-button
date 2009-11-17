@@ -13,25 +13,12 @@ Admin dashboard and sidebar widgets shows you the from 5 to 15 post titles for w
 == Description ==
 
 This is the simple visitor's 'Thank you' or 'I like it' clicks counter button. Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
+
 The plugin stores its counters in the MySQL table. Only one "thank" for this IP-address can be permitted. Plugin can to skip all further "Thank you" clicks from this IP-addres once it is automatically registered. IP-address click limit can be set to the time interval in seconds.
+
 Plugin has Statistics data table which shows posts list with total thanks quant for every post and time of the latest thank. Rows in the table can be filtered by posting month, category, can be sorted by thanks quant or time of latest thank in the descending or ascending order.
+
 Admin dashboard and sidebar widgets with list of from 5 to 15 latest thanked or the most thanked posts is available. Use widgets control panels to change settings according to your preferences. Admin dashboard widget has Configure link on its title bar, just move mouse over it.
-Side bar Thanks Stat widget has filter hook 'thanks_stat_sidebar' for its content.
-Admin dashboard Thanks widget has filter hook 'thanks_stat_dashboard' for its content.
-Thank You button has filter hook 'thanks_thankyou_button' for its html code now.
-You can use those hooks in your plugins or just in function.php of your WP theme. Look on this code sample for your reference:
-
-function thankStatModify($output) {
-  // $output is the code of widget or button to modify. I add text to it here, from the begin and to the end.
-
-  return 'before '.$output.' after';
-
-}
-add_filter('thanks_stat_sidebar', thankStatModify);
-// and / or
-add_filter('thanks_stat_dashboard', thankStatModify);
-// and / or
-add_filter('thanks_thankyou_button', thankStatModify);
 
 == Installation ==
 
@@ -77,7 +64,6 @@ and in this readme.txt file.
 - Settings link is added to the TYCB plugin actions list at the Plugins page;
 - Button exclusion shortcode [nothankyou] is added. When this shortcode is included to the post text 'Thank You' button is not shown for this post.
 - Button position control at the plugin Settings page is changed to the list of checkboxes. So you can use those positions together not on the alternate base only as earlier.
-You can find the examples for using plugin content filters at http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 
 = 1.2.01 =
 * 10.11.2009
@@ -112,6 +98,32 @@ You can find the examples for using plugin content filters at http://www.shineph
 * 06.10.2009 First stable release
 
 == Documentation and Support ==
+
+Side bar Thanks Stat widget has filter hook 'thanks_stat_sidebar' for its content.
+
+Admin dashboard Thanks widget has filter hook 'thanks_stat_dashboard' for its content.
+
+Thank You button has filter hook 'thanks_thankyou_button' for its html code now.
+
+You can use those hooks in your plugins or just in function.php of your WP theme. Look on this code sample for your reference:
+
+function thankStatModify($output) {
+// $output is the code of widget or button to modify. I add text to it here, from the begin and to the end.
+
+  return 'before '.$output.' after';
+
+}
+
+add_filter('thanks_stat_sidebar', thankStatModify);
+
+// and/or
+
+add_filter('thanks_stat_dashboard', thankStatModify);
+
+//and/or
+
+add_filter('thanks_thankyou_button', thankStatModify);
+
 
 You can find more information about "Thank You Counter Button" plugin at this page
 http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
