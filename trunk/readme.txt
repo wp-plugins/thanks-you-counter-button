@@ -3,12 +3,10 @@ Contributors: ShinePHP, Whiler
 Donate link: shinephp.com
 Tags: thanks, counter, button, tracker, dashboard, widget, plugin, shortcode, statistics
 Requires at least: 2.7.1
-Tested up to: 2.8.6 & MU 2.8.5.2
+Tested up to: 2.8.6 and MU 2.8.5.2
 Stable tag: 1.3.01
 
-Plugin adds "Thank You" button to every post/page, counts and shows a total number of the unique visitors "thank you" clicks for this post/page.
-Plugin has wide choice of settings to customize its presentation and behaviour. "Statistics" table (Post title, Thanks Quant, Last Thanks Date) will help you to analyze which posts and how much are liked by your blog visitors.
-Admin dashboard and sidebar widgets show you from 5 to 15 posts titles for which blog visitors left their latest thanks or the largest quant of thanks.
+Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
 == Description ==
 
@@ -20,7 +18,7 @@ Plugin has Statistics data table which shows posts list with total thanks quant 
 
 Admin dashboard and sidebar widgets with list of from 5 to 15 latest thanked or the largests thanked posts are available. Use widgets control panels to change settings according to your preferences. Admin dashboard widget has a Configure link on its title bar, just move mouse over it.
 
-Testing 'Thank You Counter Button' plugin with Wordpress MU 2.8.5.2 is finished. We are proud to declare that plugin works with WP MU too.
+We are proud to declare that plugin works with WordPress MU 2.8.5.2too.
 
 == Installation ==
 
