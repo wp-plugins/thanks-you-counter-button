@@ -58,7 +58,7 @@ and in this readme.txt file.
 
 == Changelog ==
 
-= 1.3.01
+= 1.3.01 =
 * 18.11.2009
 - Testing 'Thank You Counter Button' plugin with Wordpress MU 2.8.5.2 is finished. We are proud to declare that plugin works with WP MU too.
 - Button was not displayed on the Home page inside the post's excerpts for the multi-paged posts if button position was set to the 'After' only. This but is fixed now.
@@ -117,7 +117,9 @@ Thank You button has filter hook 'thanks_thankyou_button' for its html code now.
 You can use those hooks in your plugins or just in function.php of your WP theme. Look on this code sample for your reference:
 
 function thankStatModify($output) {
-// $output is the code of widget or button to modify. I add text to it here, from the begin and to the end.
+
+// $output is the code of widget or button to modify. 
+// I add text to it here, from the begin and to the end.
 
   return 'before '.$output.' after';
 
