@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.3
+Version: 1.3.01
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 */
@@ -51,8 +51,12 @@ function thanks_optionsPage() {
   global $thanksCountersTable, $thanksPostReadersTable;
 
   if (!session_id()) {
+    $display_errors = ini_get("display_errors");
+	  ini_set( "display_errors", 0);
     session_start();
+	  ini_set( "display_errors", $display_errors);
   }
+  
 
   $thanks_caption = get_option('thanks_caption');
   $thanks_display_page = get_option('thanks_display_page');
@@ -264,12 +268,12 @@ function thanks_button_insert($content) {
       $html = $content;
     }
     if ($thanks_position_before) {
-      if (!$multipage || $page==1) {
+      if (!$multipage || $page==1 || is_home()) {
         $html = $button.$html;
       }
     } 
     if ($thanks_position_after) {
-      if (!$multipage || $page==$numpages) {
+      if (!$multipage || $page==$numpages || is_home()) {
           $html = $html.$button;
       }
     }
