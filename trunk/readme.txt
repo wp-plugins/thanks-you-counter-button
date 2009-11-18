@@ -3,34 +3,38 @@ Contributors: ShinePHP, Whiler
 Donate link: shinephp.com
 Tags: thanks, counter, button, tracker, dashboard, widget, plugin, shortcode, statistics
 Requires at least: 2.7.1
-Tested up to: 2.8.6
-Stable tag: 1.3
+Tested up to: 2.8.6 & MU 2.8.5.2
+Stable tag: 1.3.01
 
 Plugin adds "Thank You" button to every post/page, counts and shows a total number of the unique visitors "thank you" clicks for this post/page.
 Plugin has wide choice of settings to customize its presentation and behaviour. "Statistics" table (Post title, Thanks Quant, Last Thanks Date) will help you to analyze which posts and how much are liked by your blog visitors.
-Admin dashboard and sidebar widgets shows you the from 5 to 15 post titles for which blog visitors left their latest thanks or the largerst quant of thanks.
+Admin dashboard and sidebar widgets show you from 5 to 15 posts titles for which blog visitors left their latest thanks or the largest quant of thanks.
 
 == Description ==
 
 This is the simple visitor's 'Thank you' or 'I like it' clicks counter button. Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
 
-The plugin stores its counters in the MySQL table. Only one "thank" for this IP-address can be permitted. Plugin can to skip all further "Thank you" clicks from this IP-addres once it is automatically registered. IP-address click limit can be set to the time interval in seconds.
+The plugin stores its counters in the MySQL tables. Only one "thank" for this IP-address can be permitted. Plugin can skip all further "Thank you" clicks from this IP-address once it is automatically registered. IP-address click limit can be set to a time interval in seconds.
 
 Plugin has Statistics data table which shows posts list with total thanks quant for every post and time of the latest thank. Rows in the table can be filtered by posting month, category, can be sorted by thanks quant or time of latest thank in the descending or ascending order.
 
-Admin dashboard and sidebar widgets with list of from 5 to 15 latest thanked or the most thanked posts is available. Use widgets control panels to change settings according to your preferences. Admin dashboard widget has Configure link on its title bar, just move mouse over it.
+Admin dashboard and sidebar widgets with list of from 5 to 15 latest thanked or the largests thanked posts are available. Use widgets control panels to change settings according to your preferences. Admin dashboard widget has a Configure link on its title bar, just move mouse over it.
+
+Testing 'Thank You Counter Button' plugin with Wordpress MU 2.8.5.2 is finished. We are proud to declare that plugin works with WP MU too.
 
 == Installation ==
 
 Installing procedure:
 
-1. Deactivate plugin if you have the previous version installed. (It is important requirement for switching on 1.3 version from the previouse one.)
-2. Extract "thanks-you-counter-button.1.3.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
-3. Activate "Thank You Counter Button" plugin via 'Plugins' menu in WordPress admin menu. (If you updated from one of previouse versions, please check that Button Position setting is valid).
+1. Deactivate plugin if you have the previous version installed. (It is important requirement for switching to 1.3 version from a previous one.)
+2. Extract "thanks-you-counter-button.1.3.01.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
+3. Activate "Thank You Counter Button" plugin via 'Plugins' menu in WordPress admin menu. (If you updated from one of previous versions, please check that Button Position setting is valid).
 4. Go to the "Settings"-"Thanks CB" menu item and setup your preferences for this plugin.
 
 == Frequently Asked Questions ==
-There are no questions from the plugin users yet :).
+
+- Does this plugin work with Wordpress MU?
+  Yes, it does. Plugin is tested with WordPress MU 2.8.5.2. Thanks to WP MU developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Screenshots ==
 1. screenshot-1.png The example of "Thank You" button in blue color
@@ -55,6 +59,13 @@ and in this readme.txt file.
 * Thanks to [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
 
 == Changelog ==
+
+= 1.3.01
+* 18.11.2009
+- Testing 'Thank You Counter Button' plugin with Wordpress MU 2.8.5.2 is finished. We are proud to declare that plugin works with WP MU too.
+- Button was not displayed on the Home page inside the post's excerpts for the multi-paged posts if button position was set to the 'After' only. This but is fixed now.
+- Due to conflict with some other plugins are installed PHP warning message about problem with PHP session start was shown on the plugin Setting page. That warning (if exists) is hidden now.
+- Some typos are corrected in this readme.txt file. Possibly new mistakes were added :), so do not hesitate to correct me, if typos still exist in this text or in the plugin text labels.
 
 = 1.3 =
 * 16.11.2009
