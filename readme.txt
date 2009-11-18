@@ -61,7 +61,7 @@ and in this readme.txt file.
 = 1.3.01 =
 * 18.11.2009
 - Testing 'Thank You Counter Button' plugin with Wordpress MU 2.8.5.2 is finished. We are proud to declare that plugin works with WP MU too.
-- Button was not displayed on the Home page inside the post's excerpts for the multi-paged posts if button position was set to the 'After' only. This but is fixed now.
+- Button was not displayed on the Home page inside the post's excerpts for the multi-paged posts if button position was set to the 'After' only. This bug is fixed now.
 - Due to conflict with some other plugins are installed PHP warning message about problem with PHP session start was shown on the plugin Setting page. That warning (if exists) is hidden now.
 - Some typos are corrected in this readme.txt file. Possibly new mistakes were added :), so do not hesitate to correct me, if typos still exist in this text or in the plugin text labels.
 
