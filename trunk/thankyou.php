@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.3.01
+Version: 1.3.02
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 */
@@ -447,26 +447,40 @@ function thanks_plugin_action_links($links, $file) {
 
 function thanks_settings_scriptsAction() {
 
-  wp_enqueue_script('thanks_script', THANKS_PLUGIN_URL.'/iColorPicker.js.php?plugin_url='.THANKS_PLUGIN_URL, array('jquery', 'jquery-ui-tabs'));
-
+  wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/iColorPicker.js.php?plugin_url='.THANKS_PLUGIN_URL, array('jquery', 'jquery-ui-tabs'));
+  wp_enqueue_script('thanks_js_script2', THANKS_PLUGIN_URL.'/dhtmlgoodies_slider.js.php?plugin_url='.THANKS_PLUGIN_URL);
 }
 // end of thanks_settings_scriptsAction()
 
 require_once('thankyou_widgets.php');
 
+function thanks_adminCssAction() {
+
+  echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou_admin.css" type="text/css" media="screen" />'."\n";
+
+}
+
+
 if (is_admin()) {
   // activation action
   register_activation_hook(__FILE__, "thanks_install");
 
+  add_action('admin_init', 'thanks_init');
   add_action('admin_head', 'thanks_adminCssAction');
   add_action('admin_print_scripts', 'thanks_settings_scriptsAction');
-  // add 'Thanks CB' item into WP Admin Settings menu to get access to the Thank You Button options page
-  add_action('admin_menu', 'thanks_settings_menu');
   // add a Settings link in the installed plugins page
   add_filter('plugin_action_links', 'thanks_plugin_action_links', 10, 2);
-
-  add_action('admin_init', 'thanks_init');  
+    
 }
+
+
+$activePlugins = get_option('active_plugins');
+$wpAdminBarActive = in_array('wordpress-admin-bar/wordpress-admin-bar.php', $activePlugins);
+if (is_admin() || $wpAdminBarActive) { 
+// add 'Thanks CB' item into WP Admin Settings menu to get access to the Thank You Button options page
+  add_action('admin_menu', 'thanks_settings_menu');
+}
+
 
 add_action('wp_head', 'thanks_cssAction');
 add_action('wp_print_scripts', 'thanks_scriptsAction');

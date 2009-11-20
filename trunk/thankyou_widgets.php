@@ -91,9 +91,17 @@ function widget($args, $instance) {
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','thankyou'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of posts to show:','thankyou'); ?></label>
-		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /><br />
-		<small><?php _e('(at most 15)','thankyou'); ?></small></p>
+		<label for="<?php echo $this->get_field_id('number'); ?>" style="font-size:12px;"><?php _e('Number of posts to show:','thankyou'); ?></label>
+    <table>
+      <tr>
+        <td id="<?php $sliderDivId = $this->get_field_id('slider'); echo $sliderDivId;?>" width="80%"></td>
+        <td><input id="<?php $numberFieldId = $this->get_field_id('number'); echo $numberFieldId; ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></td>
+      </tr>
+    </table>		
+<script type="text/javascript">
+      form_widget_amount_slider('<?php echo $sliderDivId;?>', document.getElementById('<?php echo $numberFieldId; ?>'), 140, 3, 15);
+</script>
+
     <p><label for="<?php echo $this->get_field_id('content'); ?>"><?php _e('What posts to show:', 'thankyou'); ?></label>
     <select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" style="font-size: 0.9em;">
     <option value="latest_thanked" <?php echo thanks_optionSelected($content, 'latest_thanked'); ?>><?php _e('Latest thanked','thankyou');?></option>
@@ -115,6 +123,7 @@ function thanks_widgets_init() {
 
 add_action('init', 'thanks_widgets_init', 1);
 
+//------------------------------------------------------------
 
 // dashboard widget staff
 define(TD_ROWS_NUMBER, 'thanks_dashboard_rows_number');
@@ -257,17 +266,26 @@ function thanks_dashboard_setup() {
   $authorLinkChecked = get_option(TD_AUTHOR_LINK);
 ?>
 
-<label for="thanks_dashboard_rows_number">
-  <?php _e('Posts number to show:', 'thankyou'); ?>
-  <input type="text" id="thanks_dashboard_rows_number" name="thanks_dashboard_rows_number" value="<?php echo $number; ?>" />
-</label><br/>
-<label for="thanks_dashboard_content">
-  <?php _e('What posts to show:', 'thankyou'); ?>
-  <select id="thanks_dashboard_content" name="thanks_dashboard_content" style="font-size: 0.9em;">
-    <option value="latest_thanked" <?php echo thanks_optionSelected($content, 'latest_thanked'); ?>><?php _e('Latest thanked','thankyou');?></option>
-    <option value="most_thanked" <?php echo thanks_optionSelected($content, 'most_thanked'); ?>><?php _e('Most thanked','thankyou');?></option>
-  </select>
-</label><br/>
+<table>
+	<tr>
+		<td><label for="thanks_dashboard_rows_number"><?php _e('Posts number to show:', 'thankyou'); ?></label></td>
+		<td id="thanks_dashboard_slider_rows_number"></td>
+		<td><input type="text" id="thanks_dashboard_rows_number" style="text-align:right;"  maxlength="2" name="thanks_dashboard_rows_number" size="3" value="<?php echo $number; ?>"></td>
+	</tr>
+	<tr>
+		<td><label for="thanks_dashboard_content"><?php _e('What posts to show:', 'thankyou'); ?></label></td>
+		<td colspan="2">
+      <select id="thanks_dashboard_content" name="thanks_dashboard_content" style="font-size: 0.9em;">
+        <option value="latest_thanked" <?php echo thanks_optionSelected($content, 'latest_thanked'); ?>><?php _e('Latest thanked','thankyou');?></option>
+        <option value="most_thanked" <?php echo thanks_optionSelected($content, 'most_thanked'); ?>><?php _e('Most thanked','thankyou');?></option>
+      </select>
+    </td>
+	</tr>
+</table>
+<script type="text/javascript">
+	form_widget_amount_slider('thanks_dashboard_slider_rows_number', document.getElementById('thanks_dashboard_rows_number'), 121, 3, 15);
+</script>
+
 <label for="thanks_dashboard_statistics_link_show">
   <input type="checkbox" id="thanks_dashboard_statistics_link_show" name="thanks_dashboard_statistics_link_show" value="1"
     <?php echo thanks_optionChecked($statLinkChecked, 1); ?> />
@@ -296,12 +314,6 @@ function add_thanks_dashboard_widget() {
 }
 //  end of dashboard widget staff
 
-
-function thanks_adminCssAction() {
-
-  echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou_admin.css" type="text/css" media="screen" />'."\n";
-
-}
 
 if (is_admin()) {
   add_action('wp_dashboard_setup','add_thanks_dashboard_widget');
