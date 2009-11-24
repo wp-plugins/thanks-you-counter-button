@@ -297,9 +297,52 @@ function thShow($linkQuant, $linkUpdated, $newSortDirTitle, $newSortDirTitle, $q
   </tr>
 <?php
 }
-// end of theadShow()
+// end of thShow()
 
 ?>
+<script language="javascript" type="text/javascript">
+  function resetCounter(post_id, message, page) {
+    if (!confirm(message)) {
+      return false;
+    }
+
+    el = document.getElementById('ajax_loader_stat');
+    if (el!=undefined) {
+      el.style.visibility = 'visible';
+    }
+
+    jQuery.ajax({
+      type: "POST",
+      url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
+      data: { post_id: post_id,
+              page: page,
+              action: 'reset',
+              _ajax_nonce: ThanksSettings.ajax_nonce
+    },
+    success: function(msg){
+      if (msg.indexOf('error')<0) {
+        el = document.getElementById('thanksQuant_'+ post_id);
+        if (el!=undefined) {
+          el.innerHTML = '0';
+        }
+        el = document.getElementById('ajax_loader_stat');
+        if (el!=undefined) {
+          el.style.visibility = 'hidden';
+        }
+      } else {
+        alert(msg);
+      }
+    },
+    error: function(msg) {
+      alert(msg);
+    }
+    });
+
+  }
+  // resetCounter()
+
+</script>
+<div id="ajax_loader_stat" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div>
 <table class="widefat fixed" cellspacing="0">
    <thead>
 <?php thShow($linkQuant, $linkUpdated, $newSortDirTitle, $newSortDirTitle, $quantSortDirImg, $updatedSortDirImg); ?>
@@ -319,8 +362,20 @@ foreach ($records as $record) {
 ?>
   <tr class="<?php echo $rowClass; ?>">
     <td class="txt_right" width="5%"><?php echo $record->ID; ?></td>
-    <td class="txt_left" style="padding-left:10px;"><a href="<?php echo get_permalink($record->ID);?>"><?php echo $record->post_title; ?></a></td>
-    <td class="txt_right" width="5%"><?php echo ($record->quant) ? $record->quant : 0; ?></td>
+    <td class="txt_left" style="padding-left:10px;"><a href="<?php echo get_permalink($record->ID);?>"><?php echo $record->post_title; ?></a>
+<?php
+					$thankyou_actions = array();
+					if ( current_user_can('edit_post', $record->ID) ) {
+						$thankyou_actions['reset'] = '<span class="delete"><a class="submitdelete" title="'.attribute_escape(__('Reset this post counter', 'thankyou')).'"
+                                            href="javascript:void(0);" onclick="resetCounter('.$record->ID.',\''.js_escape(sprintf( __("You are about to reset this post '%s' thanks counter.\n Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $record->post_title )).'\','.$_GET['paged'].');">'.__('Reset Counter', 'thankyou').'</a>';
+					}
+					$thankyou_actions['view'] = '<span class="view"><a href="' . get_permalink($record->ID) . '" title="' . attribute_escape(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
+					echo '<div class="row-actions">';
+					echo implode(' | </span>', $thankyou_actions);
+					echo '</div>';
+?>
+    </td>
+    <td class="txt_right" width="5%" id="<?php echo 'thanksQuant_'.$record->ID; ?>"><?php echo ($record->quant) ? $record->quant : 0; ?></td>
     <td class="txt_center" width="5%"><?php echo $updated; ?></td>
   </tr>
 <?php

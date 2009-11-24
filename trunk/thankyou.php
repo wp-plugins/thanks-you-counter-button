@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.3.02
+Version: 1.4
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 */
@@ -64,7 +64,9 @@ function thanks_optionsPage() {
   $thanks_not_display_for_categories = get_option('thanks_not_display_for_categories');
   $thanks_not_display_for_cat_list = get_option('thanks_not_display_for_cat_list');
   $thanks_position_before = get_option('thanks_position_before');
+  $thanks_position_firstpageonly = get_option('thanks_position_firstpageonly');
   $thanks_position_after = get_option('thanks_position_after');
+  $thanks_position_lastpageonly = get_option('thanks_position_lastpageonly');
   $thanks_position_shortcode = get_option('thanks_position_shortcode');
   $thanks_position_manual = get_option('thanks_position_manual');
   $thanks_style = get_option('thanks_style');
@@ -81,14 +83,13 @@ function thanks_optionsPage() {
   $thanks_time_limit_seconds = get_option('thanks_time_limit_seconds');
   $gotoStatisticsTab = isset($_GET['paged']) && (!isset($_GET['updated']));
 
+  $buttonSizeClass = 'thanks_'.$thanks_size;
+  
 ?>
 
 <div class="wrap">
   <div class="icon32" id="icon-options-general"><br/></div>
-  <h2><?php _e('Thank You Counter Button Plugin', 'thankyou'); ?></h2>
-  <p><?php _e('This plugin installs the Thank You Counter Button for each of your blog post.
-                It can have custom style in your blog posts.','thankyou'); ?>
-  </p>
+  <h2><?php _e('Thank You Counter Button Plugin', 'thankyou'); ?></h2>  
   <script language="javascript" type="text/javascript">
 		$j = jQuery.noConflict();
 		$j(document).ready(function(){
@@ -103,24 +104,16 @@ function thanks_optionsPage() {
 		});
 </script>
 		<div id="optiontabs">
-			<ul>
-				<li><a href="#settings"><span><?php _e('Settings', 'thankyou'); ?></span></a></li>
-				<li><a href="#statistics"><span><?php _e('Statistics', 'thankyou'); ?></span></a></li>
-			</ul>
-
-
-			<div id="settings"><br/>
-				<p>
+        <ul>
+          <li><a href="#settings"><span><?php _e('Settings', 'thankyou'); ?></span></a></li>
+          <li><a href="#statistics"><span><?php _e('Statistics', 'thankyou'); ?></span></a></li>
+        </ul>
+			<div id="settings">
 					<?php require ('thankyou_options.php'); ?>
-				</p>
 			</div>
-
 			<div id="statistics" class="ui-tabs-hide"><br/>
-				<p>
 					<?php require ('thankyou_statistics.php'); ?>
-				</p>
 			</div>
-
 		</div>
 
   </div>
@@ -138,7 +131,7 @@ function thanks_settings_menu() {
 // end of thanks_settings_menu()
 
 
-function thanks_buildButtonCode() {
+function thanks_buildButtonCode($thankyou_preview = false) {
 
   global $post;
 
@@ -146,19 +139,7 @@ function thanks_buildButtonCode() {
   if ($thanks_custom) {
     $thanks_custom_URL = get_option('thanks_custom_url');
     $thanks_custom_width = get_option('thanks_custom_width');
-    if ($thanks_custom_width) {
-      if (strpos($thanks_custom_width, 'px')===false) {
-        $thanks_custom_width = trim($thanks_custom_width).'px';
-      }
-      $thanks_custom_width = 'width:'.$thanks_custom_width.';';
-    }
     $thanks_custom_height = get_option('thanks_custom_height');
-    if ($thanks_custom_height) {
-      if (strpos($thanks_custom_height, 'px')===false) {
-        $thanks_custom_height = trim($thanks_custom_height).'px';
-      }
-      $thanks_custom_height = 'height:'.$thanks_custom_height.';';
-    }
     $imageURL = $thanks_custom_URL;
     $buttonSizeClass = 'thanks_custom_button';
     $buttonColorClass = '';
@@ -173,21 +154,18 @@ function thanks_buildButtonCode() {
     $buttonColorClass = 'thanks_'.$thanks_color;
   }
   $thanks_caption_style = get_option('thanks_caption_style');
-  if ($thanks_caption_style) {
-    $thanks_caption_style .= ';';
-  }
-  $thanks_caption_color = get_option('thanks_caption_color');
-  if ($thanks_caption_color) {
-    $thanks_caption_color = 'color:'.$thanks_caption_color.';';
-  }
 
-  $checkIP = get_option('thanks_check_ip_address');
-  if ($checkIP=='1') {
-    $visitorIP = thanks_getVisitorIP();
-    $ipFound = thanks_checkVisitorIP($post->ID, $visitorIP);
-  } else {
-    $ipFound = false;
-  }
+	$ipFound = false;
+	if ($thankyou_preview) {
+		$ipFound = true;
+	}
+	else {
+	  $checkIP = get_option('thanks_check_ip_address');
+	  if ($checkIP=='1') {
+	    $visitorIP = thanks_getVisitorIP();
+	    $ipFound = thanks_checkVisitorIP($post->ID, $visitorIP);
+	  }
+	}
   if ($ipFound) {
     $onButtonClick = 'return false;';
     $buttonTitle = __('You left &ldquo;Thanks&rdquo; already for this post', 'thankyou');
@@ -195,13 +173,13 @@ function thanks_buildButtonCode() {
     $onButtonClick = 'thankYouButtonClick('.$post->ID.')';
     $buttonTitle = __('Click to left &ldquo;Thanks&rdquo; for this post', 'thankyou');
   }
+  $thanksCaption = getThanksCaption($post->ID, $thankyou_preview);
+  $inputButtonHTML = thanks_getButtonInputHTML($onButtonClick, $thanksCaption, $buttonSizeClass, $buttonColorClass,
+                                   $imageURL, $thanks_custom_width, $thanks_custom_height, $thanks_caption_style,
+                                   $thanks_caption_color, $post->ID, $buttonTitle);
 
-  $button = '<div class="thanks_button_div" style="'.get_option('thanks_style').'">
-                <input type="button" onclick="'.$onButtonClick.'" value="'.getThanksCaption($post->ID).'"
-                  class="thanks_button '.$buttonSizeClass.' '.$buttonColorClass.'"
-                  style="background-image:url('.$imageURL.');'.$thanks_custom_width.' '.$thanks_custom_height.' '.$thanks_caption_style.' '.$thanks_caption_color.'"
-                  id="thanksButton_'.$post->ID.'" title="'.$buttonTitle.'"/>
-                <div id="ajax_loader_'.$post->ID.'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>
+  $button = '<div class="thanks_button_div" style="'.get_option('thanks_style').'">'.$inputButtonHTML.
+               '<div id="ajax_loader_'.$post->ID.'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>
              </div>';
 
   $button = apply_filters('thanks_thankyou_button', $button);
@@ -216,8 +194,16 @@ function thanks_button_insert($content) {
 
   global $wpdb, $post;
 
+  // total quant of thanks short code processing
+  if (strpos($content,'[thanks_total_quant]')!==false) {
+    $totalThanks = thanks_get_Total();
+    $content = str_replace('[thanks_total_quant]', $totalThanks, $content);
+  }
+
   $thanks_position_before = get_option('thanks_position_before');
+  $thanks_position_firstpageonly = get_option('thanks_position_firstpageonly');
   $thanks_position_after = get_option('thanks_position_after');
+  $thanks_position_lastpageonly = get_option('thanks_position_lastpageonly');
   $thanks_position_shortcode = get_option('thanks_position_shortcode');
   
   if ((get_option('thanks_display_page')==null && is_page()) ||
@@ -256,6 +242,7 @@ function thanks_button_insert($content) {
         }
       }
     }
+
     $button = thanks_buildButtonCode();
     
     global $page, $numpages, $multipage;
@@ -268,12 +255,12 @@ function thanks_button_insert($content) {
       $html = $content;
     }
     if ($thanks_position_before) {
-      if (!$multipage || $page==1 || is_home()) {
+      if (!$multipage || ($page==1) || ($page>1 && !$thanks_position_firstpageonly) || is_home()) {
         $html = $button.$html;
       }
     } 
     if ($thanks_position_after) {
-      if (!$multipage || $page==$numpages || is_home()) {
+      if (!$multipage || ($page==$numpages) || ($page<$numpages && !$thanks_position_lastpageonly) || is_home()) {
           $html = $html.$button;
       }
     }
@@ -351,6 +338,8 @@ function thanks_install() {
   add_option('thanks_position_before', $curPos);
   $curPos = ($position=='after' || $position=='beforeandafter') ? 1 : 0;
   add_option('thanks_position_after', $curPos);
+  add_option('thanks_position_firstpageonly', 1);
+  add_option('thanks_position_lastpageonly', 1);
   $curPos = ($position=='shortcode') ? 1 : 0;
   add_option('thanks_position_shortcode', $curPos);
   $curPos = ($position=='manual') ? 1 : 0;
@@ -387,6 +376,8 @@ function thanks_init(){
     register_setting('thankyoubutton-options', 'thanks_not_display_for_cat_list');    
     register_setting('thankyoubutton-options', 'thanks_position_before');
     register_setting('thankyoubutton-options', 'thanks_position_after');
+    register_setting('thankyoubutton-options', 'thanks_position_firstpageonly');
+    register_setting('thankyoubutton-options', 'thanks_position_lastpageonly');
     register_setting('thankyoubutton-options', 'thanks_position_shortcode');
     register_setting('thankyoubutton-options', 'thanks_position_manual');
     register_setting('thankyoubutton-options', 'thanks_style');
@@ -420,14 +411,14 @@ function thanks_cssAction() {
 // end of thanks_cssAction()
 
 
-function thanks_scriptsAction() {
+function thanks_scriptsAction() {  
 
   if (is_admin() ||
       (get_option('thanks_display_page')==null && is_page()) ||
       (get_option('thanks_display_home') == null && is_home())) {
     return;
   }
-
+    
   wp_enqueue_script('thanks_script', THANKS_PLUGIN_URL.'/thankyou.js', array('jquery','jquery-form'));
   wp_localize_script('thanks_script', 'ThanksSettings', array('plugin_url' => THANKS_PLUGIN_URL, 'ajax_nonce' => wp_create_nonce('thanks-button')));
   
@@ -447,8 +438,9 @@ function thanks_plugin_action_links($links, $file) {
 
 function thanks_settings_scriptsAction() {
 
-  wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/iColorPicker.js.php?plugin_url='.THANKS_PLUGIN_URL, array('jquery', 'jquery-ui-tabs'));
+  wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/iColorPicker.js.php?plugin_url='.THANKS_PLUGIN_URL, array('jquery','jquery-form','jquery-ui-tabs','jquery-ui-dialog'));
   wp_enqueue_script('thanks_js_script2', THANKS_PLUGIN_URL.'/dhtmlgoodies_slider.js.php?plugin_url='.THANKS_PLUGIN_URL);
+  wp_localize_script('thanks_js_script1', 'ThanksSettings', array('plugin_url' => THANKS_PLUGIN_URL, 'ajax_nonce' => wp_create_nonce('thanks-button')));
 }
 // end of thanks_settings_scriptsAction()
 
@@ -457,7 +449,7 @@ require_once('thankyou_widgets.php');
 function thanks_adminCssAction() {
 
   echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou_admin.css" type="text/css" media="screen" />'."\n";
-
+  echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou.css" type="text/css" media="screen" />'."\n";
 }
 
 

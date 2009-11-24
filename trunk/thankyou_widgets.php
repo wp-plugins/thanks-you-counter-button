@@ -31,43 +31,56 @@ function widget($args, $instance) {
   } else if ( $number > 15 ) {
 		$number = 15;
   }
+
+  $output = $before_widget;
+  if ($title) {
+    $output .= $before_title . $title . $after_title;
+  }
+
   // what content to show
   $content = $instance['content'];
-  if ($content!='latest_thanked' && $content!='most_thanked') {
+  if ($content!='latest_thanked' && $content!='most_thanked' && $content!='total_thanks') {
     $content = 'latest_thanked';
   }
   if ($content=='latest_thanked') {
    $order = 'counters.updated';
-  } else {
+  } else if ($content=='most_thanked') {
    $order = 'counters.quant';
+  } else {
+    $order = '';
   }
-  $query = "select posts.ID, posts.post_title, counters.quant, counters.updated
-              from $wpdb->posts posts
-                left join $thanksCountersTable counters on counters.post_id=posts.ID
-              where counters.quant>0 and posts.post_type='post'
-              order by $order desc limit 0, $number";
-  $records = $wpdb->get_results($query);
-  if ($wpdb->last_error) {
-    echo 'error: '.$wpdb->last_error;
-    return;
-  }
-  if (is_array($records) && count($records)) {
-    $date_format = get_option('date_format').' '.get_option('time_format');
-    $output = $before_widget;
-		if ($title) {
-      $output .= $before_title . $title . $after_title;
+  if ($order) {
+    $query = "select posts.ID, posts.post_title, counters.quant, counters.updated
+                from $wpdb->posts posts
+                  left join $thanksCountersTable counters on counters.post_id=posts.ID
+                where counters.quant>0 and posts.post_type='post'
+                order by $order desc limit 0, $number";
+    $records = $wpdb->get_results($query);
+    if ($wpdb->last_error) {
+      echo 'error: '.$wpdb->last_error;
+      return;
     }
-		$output .= '<ul>';
-		foreach ($records as $record) {
-      $updated = mysql2date($date_format, $record->updated, true);
-      $quant = ($record->quant) ? $record->quant : 0;
-      $output .= '<li><a href="'.get_permalink($record->ID).'" title="'.$updated.'">'.$record->post_title.' ('.$quant.')</a></li>';
-		}
-		$output .= '</ul>';
-		$output .= $after_widget;
-    $output = apply_filters('thanks_stat_sidebar', $output);
-    echo $output;
+    if (is_array($records) && count($records)) {
+      $date_format = get_option('date_format').' '.get_option('time_format');
+    	$output .= '<ul>';
+      foreach ($records as $record) {
+        $updated = mysql2date($date_format, $record->updated, true);
+        $quant = ($record->quant) ? $record->quant : 0;
+        $output .= '<li><a href="'.get_permalink($record->ID).'" title="'.$updated.'">'.$record->post_title.' ('.$quant.')</a></li>';
+      }
+      $output .= '</ul>';
+    }
   }
+  $total = $instance['total'];
+  if ($total || $content=='total_thanks') {
+    $totalThanks = thanks_get_Total();
+    $output .= '<p><span class="thanks_total_quant">'.__('Total quant of thanks: ','thankyou').$totalThanks.'</span></p>';
+  }
+
+  $output .= $after_widget;
+  $output = apply_filters('thanks_stat_sidebar', $output);
+  echo $output;
+  
 
 }
 // end of widget()
@@ -77,6 +90,7 @@ function widget($args, $instance) {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = (int) $new_instance['number'];
     $instance['content'] = strip_tags($new_instance['content']);
+    $instance['total'] = (int) $new_instance['total'];
 
 		return $instance;
 	}
@@ -87,11 +101,25 @@ function widget($args, $instance) {
 			$number = 5;
     }
     $content = esc_attr($instance['content']);
+    $total = esc_attr($instance['total']);
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','thankyou'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
 		<label for="<?php echo $this->get_field_id('number'); ?>" style="font-size:12px;"><?php _e('Number of posts to show:','thankyou'); ?></label>
+    <select id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" >
+<?php
+  $i = 3;
+  while ($i<17) {
+?>    
+      <option value="<?php echo $i; ?>" <?php echo thanks_optionSelected($number, $i); ?> ><?php echo $i; ?></option>
+<?php
+    $i += 2;
+  }
+?>
+    </select>
+    
+<?php /*
     <table>
       <tr>
         <td id="<?php $sliderDivId = $this->get_field_id('slider'); echo $sliderDivId;?>" width="80%"></td>
@@ -101,13 +129,18 @@ function widget($args, $instance) {
 <script type="text/javascript">
       form_widget_amount_slider('<?php echo $sliderDivId;?>', document.getElementById('<?php echo $numberFieldId; ?>'), 140, 3, 15);
 </script>
-
+*/?>
     <p><label for="<?php echo $this->get_field_id('content'); ?>"><?php _e('What posts to show:', 'thankyou'); ?></label>
-    <select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" style="font-size: 0.9em;">
-    <option value="latest_thanked" <?php echo thanks_optionSelected($content, 'latest_thanked'); ?>><?php _e('Latest thanked','thankyou');?></option>
-    <option value="most_thanked" <?php echo thanks_optionSelected($content, 'most_thanked'); ?>><?php _e('Most thanked','thankyou');?></option>
-  </select>
-</p>
+      <select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" style="font-size: 0.9em;">
+        <option value="latest_thanked" <?php echo thanks_optionSelected($content, 'latest_thanked'); ?>><?php _e('Latest thanked','thankyou');?></option>
+        <option value="most_thanked" <?php echo thanks_optionSelected($content, 'most_thanked'); ?>><?php _e('Most thanked','thankyou');?></option>
+        <option value="total_thanks" <?php echo thanks_optionSelected($content, 'total_thanks'); ?>><?php _e('Total quant of thanks','thankyou');?></option>
+      </select>
+    </p>
+    <p>
+      <input id="<?php echo $this->get_field_id('total'); ?>" name="<?php echo $this->get_field_name('total'); ?>" type="checkbox" value="1" <?php echo $total ? 'checked="checked"': ''; ?> />
+      <label for="<?php echo $this->get_field_id('total'); ?>"><?php _e('Show total quant of thanks', 'thankyou'); ?></label>
+    </p>
 <?php
 	}
 }
@@ -128,6 +161,7 @@ add_action('init', 'thanks_widgets_init', 1);
 // dashboard widget staff
 define(TD_ROWS_NUMBER, 'thanks_dashboard_rows_number');
 define(TD_CONTENT, 'thanks_dashboard_content');
+define(TD_TOTAL, 'thanks_dashboard_total_show');
 define(TD_STAT_LINK, 'thanks_dashboard_statistics_link_show');
 define(TD_AUTHOR_LINK, 'thanks_dashboard_author_link_show');
 
@@ -205,13 +239,19 @@ function thanks_dashboard_content() {
                   </tr>';
     }
     $output .= '</tbody>
-          </table>
-          <div>';
-    $showStatLink = get_option('thanks_dashboard_statistics_link_show');
+          </table>';
+    $showTotal = get_option(TD_TOTAL);
+    if ($showTotal==null || $showTotal==1) {
+      $totalThanks = thanks_get_Total();
+      $output .= '<div class="thanks_total_quant" style="text-align: right;margin-right:10px;">'.__('Total quant of thanks: ','thankyou').'<strong>'.$totalThanks.'</strong>'.'</div>';
+    }
+    $output .= '<div>';
+
+    $showStatLink = get_option(TD_STAT_LINK);
     if ($showStatLink==null || $showStatLink==1) {
       $output .= '<div style="float: right;margin-top:0px;font-size: 9px;"><a href="options-general.php?page=thankyou.php&paged=1">'.__('Check Full Statistics','thankyou').'</a></div>';
     }
-    $showAuthorLink = get_option('thanks_dashboard_author_link_show');
+    $showAuthorLink = get_option(TD_AUTHOR_LINK);
     if ($showAuthorLink==null || $showAuthorLink==1) {
       $output .= '<div style="float: left;margin-top:0px;font-size: 9px;"><a target="_blank" href="http://www.shinephp.com/" title="'.__('Plugin author home page','thankyou').'">ShinePHP.com</a></div>';
     }
@@ -245,6 +285,13 @@ function thanks_dashboard_setup() {
       update_option(TD_CONTENT, $option);
     }
 
+    if (isset($_POST[TD_TOTAL])) {
+      $option = (int) stripslashes_deep($_POST[TD_TOTAL]);
+    } else {
+      $option = 0;
+    }
+    update_option(TD_TOTAL, $option);
+
     if (isset($_POST[TD_STAT_LINK])) {
       $option = (int) stripslashes_deep($_POST[TD_STAT_LINK]);
     } else {
@@ -262,6 +309,7 @@ function thanks_dashboard_setup() {
 
   $number = thanks_get_dashboard_rows();
   $content = get_option(TD_CONTENT);
+  $totalChecked = get_option(TD_TOTAL);
   $statLinkChecked = get_option(TD_STAT_LINK);
   $authorLinkChecked = get_option(TD_AUTHOR_LINK);
 ?>
@@ -286,6 +334,11 @@ function thanks_dashboard_setup() {
 	form_widget_amount_slider('thanks_dashboard_slider_rows_number', document.getElementById('thanks_dashboard_rows_number'), 121, 3, 15);
 </script>
 
+<label for="thanks_dashboard_total_show">
+  <input type="checkbox" id="thanks_dashboard_total_show" name="thanks_dashboard_total_show" value="1"
+    <?php echo thanks_optionChecked($totalChecked, 1); ?> />
+  <?php _e('Display total quant of thanks', 'thankyou'); ?>
+</label><br/>
 <label for="thanks_dashboard_statistics_link_show">
   <input type="checkbox" id="thanks_dashboard_statistics_link_show" name="thanks_dashboard_statistics_link_show" value="1"
     <?php echo thanks_optionChecked($statLinkChecked, 1); ?> />
