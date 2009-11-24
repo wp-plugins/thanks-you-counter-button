@@ -1,9 +1,8 @@
 /* 
-    Document   : thankyou
+    Document   : thankyou.css
     Created on : 05.10.2009, 9:08:06
-    Author     : user
-    Description:
-        Purpose of the stylesheet follows.
+    Author     : Vladimir Garagulya vladimir@shinephp.com
+    Description: Thank You Counter Button WordPress Plugin CSS
 */
 
 /* 
@@ -52,12 +51,6 @@ input.thanks_button {
   cursor: pointer;
   border: none;
   background: transparent;
-}
-
-.form_color_row {
-  float: left;
-  display: block;
-  margin-bottom: 5px;
 }
 
 

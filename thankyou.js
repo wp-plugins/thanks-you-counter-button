@@ -19,6 +19,7 @@ function thankYouButtonClick(post_id) {
    type: "POST",
    url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
    data: { post_id: post_id,
+           action: 'thankyou',
            _ajax_nonce: ThanksSettings.ajax_nonce
    },
    success: function(msg){

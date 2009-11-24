@@ -57,8 +57,14 @@ and in this readme.txt file.
 * Thanks to [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
 
 == Changelog ==
-= 1.3.02
-* ??.11.2009
+= 1.4
+* 25.11.2009
+- Settings screen update 1: Live preview of the button and its caption style changes at the same Settings tab is realized. Every change if text, CSS styles, button size is immediately displayed in your browser.
+- Settings screen update 2: Two checkboxes added for more advanced management of button position for the multi-paged posts. You can now select where to show buttons: before - before 1st page only or before every page, after - after last page only or after every page of the multi-paged post.
+- Statistics tab - Link to reset selected post thanks counter is added. Action is realised with AJAX use.
+- You can show total quant of thanks now at the admin dashboard and sidebars widgets. Just check the correspondent checkbox in the widget parameters.  
+- Shortcode [thanks_total_quant] is added. You can use it in your post to show the total quant of thanks visitor sent to your blog.
+- Slider control was added to the admin dashboard TYCB widget in order to help you change rows quant to show.
 - Minor fix to show 'Thanks CB' menu in the front-end 'Settings' menu with WordPress Admin Bar plugin, if it is installed and activated on your blog.
 
 = 1.3.01 =
@@ -141,4 +147,4 @@ add_filter('thanks_thankyou_button', thankStatModify);
 
 You can find more information about "Thank You Counter Button" plugin at this page
 http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
-Plugin author (I am) answers on questions about plugin usage. Use comments to contact me please.
+Plugin author (I am) answers on questions about plugin usage. Use blog comments system to contact me please.

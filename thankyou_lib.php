@@ -100,27 +100,27 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
 // end of thanks_checkVisitorIP()
 
 
-function getThanksCaption($postId) {
-
-global $wpdb, $thanksCountersTable;
-
-
-$query = "select quant
-            from $thanksCountersTable
-            where post_id=$postId
-            limit 0, 1";
-$quant = $wpdb->get_var($query);
-if ($wpdb->last_error) {
-  echo 'error: '.$wpdb->last_error;
-  return;
-}
-
-if (!$quant) {
-  $quant = 0;
-}
-$caption = get_option('thanks_caption').": $quant";
-
-return $caption;
+function getThanksCaption($postId, $thankyou_preview) {
+	if ($thankyou_preview) {
+		$quant = rand(0, 100);
+	}	else {
+		global $wpdb, $thanksCountersTable;
+		$query = "select quant
+		            from $thanksCountersTable
+		            where post_id=$postId
+		            limit 0, 1";
+		$quant = $wpdb->get_var($query);
+		if ($wpdb->last_error) {
+		  echo 'error: '.$wpdb->last_error;
+		  return;
+		}
+	}
+	if (!$quant) {
+	  $quant = 0;
+	}
+	$caption = get_option('thanks_caption').": $quant";
+	
+	return $caption;
 }
 // end of getThanksCaption()
 
@@ -143,5 +143,97 @@ function thanks_optionChecked($value, $etalon) {
 
   return $checked;
 }
+
+
+function thanks_getButtonInputHTML($onButtonClick, $thanksCaption, $buttonSizeClass, $buttonColorClass,
+                                   $imageURL, $thanks_custom_width, $thanks_custom_height, $thanks_caption_style,
+                                   $thanks_caption_color, $thanksButtonId, $buttonTitle) {
+  if ($thanks_caption_style) {
+    $thanks_caption_style .= ';';
+  }
+  $thanks_caption_color = get_option('thanks_caption_color');
+  if ($thanks_caption_color) {
+    $thanks_caption_color = 'color:'.$thanks_caption_color.';';
+  }
+  if ($thanks_custom_width) {
+    if (strpos($thanks_custom_width, 'px')===false) {
+      $thanks_custom_width = trim($thanks_custom_width).'px';
+    }
+    $thanks_custom_width = 'width:'.$thanks_custom_width.';';
+  }
+  if ($thanks_custom_height) {
+    if (strpos($thanks_custom_height, 'px')===false) {
+      $thanks_custom_height = trim($thanks_custom_height).'px';
+    }
+    $thanks_custom_height = 'height:'.$thanks_custom_height.';';
+  }
+
+  $output = '<input type="button" onclick="'.$onButtonClick.'" value="'.$thanksCaption.'"
+                class="thanks_button '.$buttonSizeClass.' '.$buttonColorClass.'"
+                style="background-image:url('.$imageURL.');'.$thanks_custom_width.' '.$thanks_custom_height.' '.$thanks_caption_style.' '.$thanks_caption_color.'"
+                id="thanksButton_'.$thanksButtonId.'" title="'.$buttonTitle.'"/>';
+
+  return $output;
+
+}
+// end of thanks_getButtonInputHTML()
+
+
+// returns the total quant of thanks for all posts
+function thanks_get_Total() {
+  global $wpdb, $thanksCountersTable;
+	$query = "select SUM(quant)
+	            from $thanksCountersTable";
+	$quant = $wpdb->get_var($query);
+	if ($wpdb->last_error) {
+	  echo 'error: '.$wpdb->last_error;
+	  return 0;
+	}
+  if (!$quant) {
+    $quant = 0;
+  }
+
+  return $quant;
+}
+// end of get_thanksTotal()
+
+
+// Increments postId's counter by one point
+function thanks_add_count($postId) {
+    global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
+
+    $checkIP = get_option('thanks_check_ip_address');
+    if ($checkIP=='1') {
+      $visitorIP = thanks_getVisitorIP();
+      $ipFound = thanks_checkVisitorIP($postId, $visitorIP, true);  // id of the visitor record for this IP and post
+    } else {
+      $ipFound = false;
+    }
+
+    if (!$ipFound) {
+      $query = "select id
+                  from $thanksCountersTable
+                  where post_id=$postId
+                  limit 0, 1";
+      $id = $wpdb->get_var($query);
+      if ($wpdb->last_error) {
+        echo 'error: '.$wpdb->last_error;
+        return;
+      }
+      if ($id) {
+        $query = "update $thanksCountersTable set quant=quant+1, updated=CURRENT_TIMESTAMP
+                    where id=$id
+                    limit 1";
+      } else {
+        $query = "insert into $thanksCountersTable (post_id, quant) values ($postId, 1)";
+      }
+      $wpdb->query($query);
+      if ($wpdb->last_error) {
+        echo 'error: '.$wpdb->last_error;
+      }
+    }
+
+}
+// end of function thanks_add_count()
 
 ?>
