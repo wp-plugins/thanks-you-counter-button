@@ -429,8 +429,8 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
             <a href="javascript:void(0);" onclick="switchDivDisplay('customButtonDivStyleHelp');"><img src="<?php echo THANKS_PLUGIN_URL.'/images/question_grey.png';?>" alt="question sign" title="http://yourblog.com/wp-content/uploads/2009/10/your-button.png"/></a>
             <div id="customButtonDivStyleHelp" style="display:none;"><?php _e('e.g.,','thankyou'); ?> <code>http://yourblog.com/wp-content/uploads/2009/10/your-button.png</code></div>
             <div>
-            <?php _e('Width, px', 'thankyou'); ?> <input type="text" name="thanks_custom_width" value="<?php echo $thanks_custom_width; ?>" size="10" onchange="thanksCustomWidthChange(this.value);"/>
-            <?php _e('Height, px', 'thankyou'); ?> <input type="text" name="thanks_custom_height" value="<?php echo $thanks_custom_height; ?>" size="10" onchange="thanksCustomHeightChange(this.value);"/>
+              <span style="float:left; width:210px;"><?php _e('Width, px', 'thankyou'); ?> <input type="text" name="thanks_custom_width" value="<?php echo $thanks_custom_width; ?>" size="4" onchange="thanksCustomWidthChange(this.value);"/></span>
+              <span style="float:left; width:210px;"><?php _e('Height, px', 'thankyou'); ?> <input type="text" name="thanks_custom_height" value="<?php echo $thanks_custom_height; ?>" size="4" onchange="thanksCustomHeightChange(this.value);"/></span>
             </div>
             <div class="form_color_row" id="thanksCustomButtonDiv" <?php echo (!$thanks_custom) ? 'style="display:none;"':''; ?> >
               <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), 'thanks_custom_button', '',
