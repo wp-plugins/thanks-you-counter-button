@@ -28,8 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 if (!function_exists("get_option")) {
-  echo 'Direct call is prohibited';
-  die;
+  die('Direct call is prohibited');
 }
 
 global $wp_version;
@@ -47,7 +46,11 @@ load_plugin_textdomain('thankyou','', $thanksPluginDirName.'/lang');
 
 
 function thanks_optionsPage() {
-  
+
+  if (!current_user_can('activate_plugins')) {
+    die('action is forbidden');
+  }
+
   global $thanksCountersTable, $thanksPostReadersTable;
 
   if (!session_id()) {
@@ -121,14 +124,6 @@ function thanks_optionsPage() {
 
 }
 // end of thanks_optionPage()
-
-
-function thanks_settings_menu() {
-	if ( function_exists('add_options_page') ) {
-		add_options_page('Thank You Counter Button', 'Thanks CB', 9, basename(__FILE__), 'thanks_optionsPage');
-	}
-}
-// end of thanks_settings_menu()
 
 
 function thanks_buildButtonCode($thankyou_preview = false) {
@@ -436,21 +431,38 @@ function thanks_plugin_action_links($links, $file) {
 // end of thanks_plugin_action_links
 
 
-function thanks_settings_scriptsAction() {
-
-  wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/iColorPicker.js.php?plugin_url='.THANKS_PLUGIN_URL, array('jquery','jquery-form','jquery-ui-tabs','jquery-ui-dialog'));
-  wp_enqueue_script('thanks_js_script2', THANKS_PLUGIN_URL.'/dhtmlgoodies_slider.js.php?plugin_url='.THANKS_PLUGIN_URL);
-  wp_localize_script('thanks_js_script1', 'ThanksSettings', array('plugin_url' => THANKS_PLUGIN_URL, 'ajax_nonce' => wp_create_nonce('thanks-button')));
+function thanks_settings_menu() {
+	if ( function_exists('add_options_page') ) {
+    $thanks_page = add_options_page('Thank You Counter Button', 'Thanks CB', 9, basename(__FILE__), 'thanks_optionsPage');
+		add_action( "admin_print_scripts-$thanks_page", 'thanks_settings_scriptsAction' );
+	}
 }
-// end of thanks_settings_scriptsAction()
-
-require_once('thankyou_widgets.php');
+// end of thanks_settings_menu()
 
 function thanks_adminCssAction() {
 
   echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou_admin.css" type="text/css" media="screen" />'."\n";
   echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou.css" type="text/css" media="screen" />'."\n";
 }
+// end of thanks_adminCssAction()
+
+
+function thanks_settings_scriptsAction() {
+  thanks_adminCssAction();
+  wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/iColorPicker.js.php?plugin_url='.THANKS_PLUGIN_URL, array('jquery','jquery-form','jquery-ui-tabs','jquery-ui-dialog'));  
+  wp_localize_script('thanks_js_script1', 'ThanksSettings', array('plugin_url' => THANKS_PLUGIN_URL, 'ajax_nonce' => wp_create_nonce('thanks-button')));
+}
+// end of thanks_settings_scriptsAction()
+
+
+function thanks_dashboard_scriptsAction() {
+  echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou_admin.css" type="text/css" media="screen" />'."\n";
+  wp_enqueue_script('thanks_js_script2', THANKS_PLUGIN_URL.'/dhtmlgoodies_slider.js.php?plugin_url='.THANKS_PLUGIN_URL);
+}
+// end of thanks_dashboard_scriptsAction()
+
+
+require_once('thankyou_widgets.php');
 
 
 if (is_admin()) {
@@ -458,8 +470,7 @@ if (is_admin()) {
   register_activation_hook(__FILE__, "thanks_install");
 
   add_action('admin_init', 'thanks_init');
-  add_action('admin_head', 'thanks_adminCssAction');
-  add_action('admin_print_scripts', 'thanks_settings_scriptsAction');
+  add_action('wp_dashboard_setup', 'thanks_dashboard_scriptsAction');
   // add a Settings link in the installed plugins page
   add_filter('plugin_action_links', 'thanks_plugin_action_links', 10, 2);
     
@@ -473,12 +484,9 @@ if (is_admin() || $wpAdminBarActive) {
   add_action('admin_menu', 'thanks_settings_menu');
 }
 
-
 add_action('wp_head', 'thanks_cssAction');
 add_action('wp_print_scripts', 'thanks_scriptsAction');
 add_filter('the_content', 'thanks_button_insert');
-
-
 
 
 ?>

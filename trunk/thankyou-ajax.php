@@ -10,8 +10,9 @@ if (! (isset($_POST['post_id']) && $_POST['post_id'] && is_numeric($_POST['post_
   return;
 }
 
-if (! (isset($_POST['action']) && $_POST['action'] && (($_POST['action']=='thankyou') || ($_POST['action']=='reset')))) {
-  echo 'error: wrong request, action is not defined';
+if (! (isset($_POST['action']) && $_POST['action'] && (($_POST['action']=='thankyou') || ($_POST['action']=='reset')
+    || ($_POST['action']=='default') || ($_POST['action']=='resetall')))) {
+  echo 'error: wrong request, action is invalid';
   return;
 }
 
@@ -30,23 +31,17 @@ if ($action=='thankyou') {
   $result = getThanksCaption($postId);
   echo '<thankyou>'.$result.'</thankyou>';
 } else if ($action=='reset') {
-  global $wpdb, $thanksCountersTable;
-
-  if (!current_user_can('edit_post', $postId)) {
-    echo 'error: operation is prohibited.';
-    return;
+  resetCounterForPost();
+} if ($action=='default') {
+  if (thanks_settingsToDefaults()) {
+    echo '<thankyou>0: settings to default, success</thankyou>';
   }
-  $query = "update $thanksCountersTable set quant=0, updated=CURRENT_TIMESTAMP
-              where post_id=$postId
-              limit 1";
-  $wpdb->query($query);
-  if ($wpdb->last_error) {
-    echo 'error: '.$wpdb->last_error;
-    return;
+} else if ($action=='resetall') {
+  if (thanks_resetAllCounters()) {
+    echo '<thankyou>0: all counters are cleared, success</thankyou>';
   }
-  echo '<thankstat>thanks counter for post ID='.$postId.' is cleared.</thankstat>';
 } else {
-  echo 'error: unknown action '.$action;
+  echo '<thankyou>error: unknown action '.$action,'</thankyou>';
 }
 
 ?>

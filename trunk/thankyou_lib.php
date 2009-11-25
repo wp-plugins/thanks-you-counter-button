@@ -11,9 +11,11 @@ if (! defined("WPLANG")) {
   die;
 }
 
+$thanks_siteURL = get_option( 'siteurl' );
+
 // Pre-2.6 compatibility
-if ( ! defined( 'WP_CONTENT_URL' ) )
-      define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
+if ( !defined( 'WP_CONTENT_URL' ) )
+      define( 'WP_CONTENT_URL', $thanks_siteURL . '/wp-content' );
 if ( ! defined( 'WP_CONTENT_DIR' ) )
       define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
 if ( ! defined( 'WP_PLUGIN_URL' ) )
@@ -25,6 +27,7 @@ $thanksPluginDirName = substr(dirname(__FILE__), strlen(WP_PLUGIN_DIR)+1, strlen
 
 define('THANKS_PLUGIN_URL', WP_PLUGIN_URL.'/'.$thanksPluginDirName);
 define('THANKS_PLUGIN_DIR', WP_PLUGIN_DIR.'/'.$thanksPluginDirName);
+define('THANKS_WP_ADMIN_URL', $thanks_siteURL.'/wp-admin');
 
 global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 
@@ -235,5 +238,92 @@ function thanks_add_count($postId) {
 
 }
 // end of function thanks_add_count()
+
+
+function thanks_settingsToDefaults() {
+  if (!current_user_can('activate_plugins')) {
+    die(__('operation is prohibited', 'thankyou'));
+  }
+  update_option('thanks_display_page', 1);
+  update_option('thanks_display_home', 1);
+  update_option('thanks_not_display_for_categories', 0);
+  update_option('thanks_not_display_for_cat_list', array());
+  update_option('thanks_position_before', 0);
+  update_option('thanks_position_after', 1);
+  update_option('thanks_position_firstpageonly', 0);
+  update_option('thanks_position_lastpageonly', 1);
+  update_option('thanks_position_shortcode', 1);
+  update_option('thanks_position_manual', 1);
+  update_option('thanks_style', 'float: left; margin-right: 10px;');
+  update_option('thanks_caption_style', 'font-family: Verdana, Arial, Sans-Serif; font-size: 14px; font-weight: normal;');
+  update_option('thanks_caption_color', '#ffffff');
+  update_option('thanks_size', 'large');
+  update_option('thanks_color', 'blue');
+  update_option('thanks_custom', 0);
+  update_option('thanks_custom_url', '');
+  update_option('thanks_custom_width', 100);
+  update_option('thanks_custom_height', 26);
+  update_option('thanks_check_ip_address', 1);
+  update_option('thanks_time_limit', 1);
+  update_option('thanks_time_limit_seconds', 60);
+	update_option('thanks_show_last_date', 1);
+	update_option('thanks_caption', __('Thank You','thankyou'));
+  update_option('thanks_dashboard_rows_number', 5);
+  update_option('thanks_dashboard_content', 'latest_thanked');
+  update_option('thanks_dashboard_statistics_link_show', 1);
+  update_option('thanks_dashboard_author_link_show', 1);
+
+  return true;
+}
+// end of thanks_settingsToDefaults()
+
+
+function resetCounterForPost() {
+  global $wpdb, $thanksCountersTable;
+
+  if (!current_user_can('edit_post', $postId)) {
+    echo 'error: operation is prohibited.';
+    return false;
+  }
+  $query = "update $thanksCountersTable set quant=0, updated=CURRENT_TIMESTAMP
+              where post_id=$postId
+              limit 1";
+  $wpdb->query($query);
+  if ($wpdb->last_error) {
+    echo 'error: '.$wpdb->last_error;
+    return false;
+  }
+  echo '<thankstat>thanks counter for post ID='.$postId.' is cleared.</thankstat>';
+  
+  return true;
+}
+// end of resetCounterForPost()
+
+
+function thanks_resetAllCounters() {
+
+  global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
+
+  if (!current_user_can('activate_plugins')) {
+    die(__('operation is prohibited', 'thankyou'));
+  }
+  $query = "delete from $thanksCountersTable";
+  $wpdb->query($query);
+  if ($wpdb->last_error) {
+    echo 'error: '.$wpdb->last_error;
+    return false;
+  }
+  $query = "delete from $thanksPostReadersTable";
+  $wpdb->query($query);
+  if ($wpdb->last_error) {
+    echo 'error: '.$wpdb->last_error;
+    return false;
+  }
+
+  return true;
+}
+// end of thanks_resetAllCounters()
+
+
 
 ?>
