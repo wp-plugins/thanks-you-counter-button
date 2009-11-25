@@ -139,7 +139,7 @@ function widget($args, $instance) {
     </p>
     <p>
       <input id="<?php echo $this->get_field_id('total'); ?>" name="<?php echo $this->get_field_name('total'); ?>" type="checkbox" value="1" <?php echo $total ? 'checked="checked"': ''; ?> />
-      <label for="<?php echo $this->get_field_id('total'); ?>"><?php _e('Show total quant of thanks', 'thankyou'); ?></label>
+      <label for="<?php echo $this->get_field_id('total'); ?>"><?php _e('Display total quant of thanks', 'thankyou'); ?></label>
     </p>
 <?php
 	}
