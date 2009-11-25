@@ -254,6 +254,16 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
   }
   // end of buttonDivStyleChange()
 
+  function checkBoxChange(cb, elName) {
+    el = document.getElementById(elName);
+    if (cb.checked) {
+      el.style.visibility = 'visible';
+    } else {
+      el.style.visibility = 'hidden';
+    }
+  }
+  // end of checkBoxChange()
+
 </script>
 
 <?php
@@ -332,12 +342,22 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
             <?php _e('Position in the Post text', 'thankyou'); ?>
           </th>
           <td>
-            <span style="float: left; width: 80px;"><input type="checkbox" name="thanks_position_before" value="1" <?php echo thanks_optionChecked($thanks_position_before, 1); ?> /> <?php _e('Before', 'thankyou'); ?></span>
-            <input type="checkbox" name="thanks_position_firstpageonly" value="1" <?php echo thanks_optionChecked($thanks_position_firstpageonly, 1); ?> /> <?php _e('At first page of multipaged posts only', 'thankyou'); ?><br/>
-            <span style="float: left; width: 80px;"><input type="checkbox" name="thanks_position_after" value="1" <?php echo thanks_optionChecked($thanks_position_after, 1); ?> /> <?php _e('After', 'thankyou'); ?></span>
-            <input type="checkbox" name="thanks_position_lastpageonly" value="1" <?php echo thanks_optionChecked($thanks_position_lastpageonly, 1); ?> /> <?php _e('At last page  of multipaged posts only', 'thankyou'); ?><br/>
-            <input type="checkbox" name="thanks_position_shortcode" value="1" <?php echo thanks_optionChecked($thanks_position_shortcode, 1); ?> /> <?php _e('Shortcode [thankyou]','thankyou'); ?>
-            <input type="checkbox" name="thanks_position_manual" value="1" <?php echo thanks_optionChecked($thanks_position_manual, 1); ?> /> <?php _e('Manual','thankyou'); ?>
+            <div>
+              <span style="float: left; width: 80px;"><input type="checkbox" name="thanks_position_before" value="1" <?php echo thanks_optionChecked($thanks_position_before, 1); ?> onchange="checkBoxChange(this, 'thanks_position_firstpageonly');"/> <?php _e('Before', 'thankyou'); ?></span>
+              <div id="thanks_position_firstpageonly" style="<?php echo ($thanks_position_before) ? 'visibility: visible;':'visibility: hidden'; ?>" >
+                <input type="checkbox" name="thanks_position_firstpageonly" value="1" <?php echo thanks_optionChecked($thanks_position_firstpageonly, 1); ?> /> <?php _e('At first page of multipaged posts only', 'thankyou'); ?>
+              </div>
+            </div>
+            <div>
+              <span style="float: left; width: 80px;"><input type="checkbox" name="thanks_position_after" value="1" <?php echo thanks_optionChecked($thanks_position_after, 1); ?> onchange="checkBoxChange(this, 'thanks_position_lastpageonly');"/> <?php _e('After', 'thankyou'); ?></span>
+              <div id="thanks_position_lastpageonly" style="<?php echo ($thanks_position_after) ? 'visibility: visible;':'visibility: hidden'; ?>" >
+                <input type="checkbox" name="thanks_position_lastpageonly" id="thanks_position_lastpageonly" value="1" <?php echo thanks_optionChecked($thanks_position_lastpageonly, 1); ?> /> <?php _e('At last page of multipaged posts only', 'thankyou'); ?>
+              </div>
+            </div>
+            <div>
+              <input type="checkbox" name="thanks_position_shortcode" value="1" <?php echo thanks_optionChecked($thanks_position_shortcode, 1); ?> /> <?php _e('Shortcode [thankyou]','thankyou'); ?>
+              <input type="checkbox" name="thanks_position_manual" value="1" <?php echo thanks_optionChecked($thanks_position_manual, 1); ?> /> <?php _e('Manual','thankyou'); ?>
+            </div>
           </td>
         </tr>
         <tr>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.0.02\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-25 16:21+0600\n"
+"POT-Creation-Date: 2009-11-25 17:23+0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: vladimir <vladimir@shinephp.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
@@ -132,174 +132,174 @@ msgstr ""
 "Все счетчики благодарностей для всех статей будут обнулены,\\n"
 " вся история кликов по кнопкам благодарности будет обнулена, Продолжить?"
 
-#: ../thankyou_options.php:260
-#: ../thankyou_options.php:264
+#: ../thankyou_options.php:270
+#: ../thankyou_options.php:274
 msgid "Display"
 msgstr "Отображение"
 
-#: ../thankyou_options.php:269
+#: ../thankyou_options.php:279
 msgid "Display button at Pages"
 msgstr "Отображать на Страницах"
 
-#: ../thankyou_options.php:272
+#: ../thankyou_options.php:282
 msgid "Display button at Home page, Categories/Tags archive pages"
 msgstr "Отображать на Домашней странице, архивах категорий/тэгов"
 
-#: ../thankyou_options.php:277
+#: ../thankyou_options.php:287
 msgid "Do not show button for selected categories"
 msgstr "Не отображать кнопку для отмеченных категорий"
 
-#: ../thankyou_options.php:332
+#: ../thankyou_options.php:342
 msgid "Position in the Post text"
 msgstr "Расположение в статье"
 
-#: ../thankyou_options.php:335
+#: ../thankyou_options.php:346
 msgid "Before"
 msgstr "До"
 
-#: ../thankyou_options.php:336
+#: ../thankyou_options.php:348
 msgid "At first page of multipaged posts only"
 msgstr "Только на первой странице многостраничных статей "
 
-#: ../thankyou_options.php:337
+#: ../thankyou_options.php:352
 msgid "After"
 msgstr "После"
 
-#: ../thankyou_options.php:338
-msgid "At last page  of multipaged posts only"
+#: ../thankyou_options.php:354
+msgid "At last page of multipaged posts only"
 msgstr "Только на последней странице многостраничных статей"
 
-#: ../thankyou_options.php:339
+#: ../thankyou_options.php:358
 msgid "Shortcode [thankyou]"
 msgstr "Аббревиатура [thankyou]"
 
-#: ../thankyou_options.php:340
+#: ../thankyou_options.php:359
 msgid "Manual"
 msgstr "Вручную"
 
-#: ../thankyou_options.php:345
+#: ../thankyou_options.php:365
 msgid "Button Caption"
 msgstr "Надпись на кнопке"
 
-#: ../thankyou_options.php:352
+#: ../thankyou_options.php:372
 msgid "Button Styling"
 msgstr "Стиль для Кнопки"
 
-#: ../thankyou_options.php:354
+#: ../thankyou_options.php:374
 msgid "Add style to the div:"
 msgstr "Cтиль для div"
 
-#: ../thankyou_options.php:357
-#: ../thankyou_options.php:361
-#: ../thankyou_options.php:410
+#: ../thankyou_options.php:377
+#: ../thankyou_options.php:381
+#: ../thankyou_options.php:430
 msgid "e.g.,"
 msgstr ", например, "
 
-#: ../thankyou_options.php:358
+#: ../thankyou_options.php:378
 msgid "to the Caption font:"
 msgstr "для шрифта:"
 
-#: ../thankyou_options.php:362
+#: ../thankyou_options.php:382
 msgid "font color: "
 msgstr "цвет шрифта:"
 
-#: ../thankyou_options.php:367
+#: ../thankyou_options.php:387
 msgid "Size"
 msgstr "Размер"
 
-#: ../thankyou_options.php:372
+#: ../thankyou_options.php:392
 msgid "Normal"
 msgstr "Нормальный"
 
-#: ../thankyou_options.php:375
+#: ../thankyou_options.php:395
 msgid "Compact"
 msgstr "Компактный размер"
 
-#: ../thankyou_options.php:380
+#: ../thankyou_options.php:400
 msgid "Form and Color"
 msgstr "Форма и Цвет"
 
-#: ../thankyou_options.php:405
+#: ../thankyou_options.php:425
 msgid "Custom button image URL"
 msgstr "URL изображения собственной кнопки"
 
-#: ../thankyou_options.php:412
+#: ../thankyou_options.php:432
 msgid "Width, px"
 msgstr "Ширина, px"
 
-#: ../thankyou_options.php:413
+#: ../thankyou_options.php:433
 msgid "Height, px"
 msgstr "Высота, px"
 
-#: ../thankyou_options.php:424
+#: ../thankyou_options.php:444
 msgid "Misc"
 msgstr "Разное"
 
-#: ../thankyou_options.php:428
+#: ../thankyou_options.php:448
 msgid "Check IP-address"
 msgstr "Контролировать IP-адрес"
 
-#: ../thankyou_options.php:433
+#: ../thankyou_options.php:453
 msgid "Only one Thanks for post for one IP-address limit"
 msgstr "Только одно Спасибо на статью с одного IP-адреса"
 
-#: ../thankyou_options.php:434
+#: ../thankyou_options.php:454
 msgid "Time limit:"
 msgstr "Ограничение по времени:"
 
-#: ../thankyou_options.php:436
+#: ../thankyou_options.php:456
 msgid "Forever"
 msgstr "Навсегда"
 
-#: ../thankyou_options.php:438
+#: ../thankyou_options.php:458
 msgid "Only for this period"
 msgstr "Только на данный промежуток"
 
-#: ../thankyou_options.php:440
+#: ../thankyou_options.php:460
 msgid "seconds"
 msgstr "секунд"
 
-#: ../thankyou_options.php:445
+#: ../thankyou_options.php:465
 msgid "Default"
 msgstr "По-умолчанию"
 
-#: ../thankyou_options.php:445
+#: ../thankyou_options.php:465
 msgid "Return to Defaults"
 msgstr "Вернуть значения по-умолчанию"
 
-#: ../thankyou_options.php:445
+#: ../thankyou_options.php:465
 msgid "Restore the default values for all settings"
 msgstr "Восстановить значения по-умолчанию для всех установок"
 
-#: ../thankyou_options.php:446
+#: ../thankyou_options.php:466
 msgid "Reset"
 msgstr "Сброс"
 
-#: ../thankyou_options.php:446
+#: ../thankyou_options.php:466
 msgid "Reset Counters"
 msgstr "Обнулить Счетчики"
 
-#: ../thankyou_options.php:446
+#: ../thankyou_options.php:466
 msgid "Reset all thanks counters for the all posts"
 msgstr "Сбросить все счетчики благодарностей для всех статей"
 
-#: ../thankyou_options.php:451
+#: ../thankyou_options.php:471
 msgid "Submit"
 msgstr "Отправить"
 
-#: ../thankyou_options.php:451
+#: ../thankyou_options.php:471
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: ../thankyou_options.php:452
+#: ../thankyou_options.php:472
 msgid "Cancel"
 msgstr "Отмена"
 
-#: ../thankyou_options.php:452
+#: ../thankyou_options.php:472
 msgid "Cancel not saved changes"
 msgstr "Отказ от сохранения изменеий"
 
-#: ../thankyou_options.php:454
+#: ../thankyou_options.php:474
 msgid "Button DIV Style Preview"
 msgstr "Стиль для раздела Кнопки"
 
@@ -406,9 +406,8 @@ msgid "View Post"
 msgstr "Просмотр статьи"
 
 #: ../thankyou_statistics.php:415
-#, fuzzy
 msgid "No posts with thanks found"
-msgstr "Статьи не найдены"
+msgstr "Статьи c благодарностями не найдены"
 
 #: ../thankyou_widgets.php:14
 msgid "the latest or the most thanked post titles with total thanks quant"
@@ -452,7 +451,8 @@ msgid "Total quant of thanks"
 msgstr "Общее количество благодарностей:"
 
 #: ../thankyou_widgets.php:142
-msgid "Show total quant of thanks"
+#: ../thankyou_widgets.php:340
+msgid "Display total quant of thanks"
 msgstr "Показать общее количество благодарностей"
 
 #: ../thankyou_widgets.php:252
@@ -471,10 +471,6 @@ msgstr "Пока благодарностей нет"
 msgid "Posts number to show:"
 msgstr "Количество статей для показа:"
 
-#: ../thankyou_widgets.php:340
-msgid "Display total quant of thanks"
-msgstr "Показать общее количество благодарностей"
-
 #: ../thankyou_widgets.php:345
 msgid "Display Full Statistics link"
 msgstr "Просмотр полной статистики"
@@ -491,6 +487,8 @@ msgstr "Последние благодарности"
 msgid "Most Thanked"
 msgstr "Максимум благодарностей"
 
+#~ msgid "Show total quant of thanks"
+#~ msgstr "Показать общее количество благодарностей"
 #~ msgid ""
 #~ "This plugin installs the Thank You Counter Button for each of your blog "
 #~ "post.\n"
