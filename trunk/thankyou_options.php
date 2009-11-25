@@ -343,13 +343,13 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
           </th>
           <td>
             <div>
-              <span style="float: left; width: 80px;"><input type="checkbox" name="thanks_position_before" value="1" <?php echo thanks_optionChecked($thanks_position_before, 1); ?> onchange="checkBoxChange(this, 'thanks_position_firstpageonly');"/> <?php _e('Before', 'thankyou'); ?></span>
+              <span style="float: left; width: 140px;"><input type="checkbox" name="thanks_position_before" value="1" <?php echo thanks_optionChecked($thanks_position_before, 1); ?> onchange="checkBoxChange(this, 'thanks_position_firstpageonly');"/> <?php _e('Before', 'thankyou'); ?></span>
               <div id="thanks_position_firstpageonly" style="<?php echo ($thanks_position_before) ? 'visibility: visible;':'visibility: hidden'; ?>" >
                 <input type="checkbox" name="thanks_position_firstpageonly" value="1" <?php echo thanks_optionChecked($thanks_position_firstpageonly, 1); ?> /> <?php _e('At first page of multipaged posts only', 'thankyou'); ?>
               </div>
             </div>
             <div>
-              <span style="float: left; width: 80px;"><input type="checkbox" name="thanks_position_after" value="1" <?php echo thanks_optionChecked($thanks_position_after, 1); ?> onchange="checkBoxChange(this, 'thanks_position_lastpageonly');"/> <?php _e('After', 'thankyou'); ?></span>
+              <span style="float: left; width: 140px;"><input type="checkbox" name="thanks_position_after" value="1" <?php echo thanks_optionChecked($thanks_position_after, 1); ?> onchange="checkBoxChange(this, 'thanks_position_lastpageonly');"/> <?php _e('After', 'thankyou'); ?></span>
               <div id="thanks_position_lastpageonly" style="<?php echo ($thanks_position_after) ? 'visibility: visible;':'visibility: hidden'; ?>" >
                 <input type="checkbox" name="thanks_position_lastpageonly" id="thanks_position_lastpageonly" value="1" <?php echo thanks_optionChecked($thanks_position_lastpageonly, 1); ?> /> <?php _e('At last page of multipaged posts only', 'thankyou'); ?>
               </div>
@@ -460,12 +460,12 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
             <?php _e('seconds', 'thankyou'); ?></div>
           </td>
         </tr>
-        </table>        
-        <div class="submit" style="float: left; display: inline; padding:0;">
+        </table>
+        <div class="submit" style="float: right; display: inline; padding:0;">
           <input type="button" class="thanks-submit" name="<?php _e('Default', 'thankyou');?>" value="<?php _e('Return to Defaults', 'thankyou') ?>" title="<?php _e('Restore the default values for all settings','thankyou');?>" onclick="thanks_Settings('default');"/>
           <input type="button" class="thanks-submit" name="<?php _e('Reset', 'thankyou');?>" value="<?php _e('Reset Counters', 'thankyou') ?>" title="<?php _e('Reset all thanks counters for the all posts','thankyou');?>" onclick="thanks_Settings('resetall');"/>
         </div>
-        <div id="ajax_loader_options" style="float: left; display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div>
+        <div id="ajax_loader_options" style="float: right; display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div>
 					<?php thanks_displayBoxEnd(); ?>
         <p class="submit">
           <input type="submit" class="thanks-submit" name="<?php _e('Submit', 'thankyou');?>" value="<?php _e('Save Changes', 'thankyou'); ?>" />
