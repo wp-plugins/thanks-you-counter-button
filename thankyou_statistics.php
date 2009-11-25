@@ -4,6 +4,11 @@
  * 
  */
 
+if (!defined('THANKS_PLUGIN_URL')) {
+  die('Direct call is prohibited');
+}
+
+
 global $wpdb, $wp_locale, $thanksCountersTable;
 
 
@@ -315,7 +320,6 @@ function thShow($linkQuant, $linkUpdated, $newSortDirTitle, $newSortDirTitle, $q
       type: "POST",
       url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
       data: { post_id: post_id,
-              page: page,
               action: 'reset',
               _ajax_nonce: ThanksSettings.ajax_nonce
     },
@@ -369,7 +373,8 @@ foreach ($records as $record) {
 						$thankyou_actions['reset'] = '<span class="delete"><a class="submitdelete" title="'.attribute_escape(__('Reset this post counter', 'thankyou')).'"
                                             href="javascript:void(0);" onclick="resetCounter('.$record->ID.',\''.js_escape(sprintf( __("You are about to reset this post '%s' thanks counter.\n Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $record->post_title )).'\','.$_GET['paged'].');">'.__('Reset Counter', 'thankyou').'</a>';
 					}
-					$thankyou_actions['view'] = '<span class="view"><a href="' . get_permalink($record->ID) . '" title="' . attribute_escape(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
+					$thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$record->ID.'" title="' . attribute_escape(sprintf(__('Edit "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
+          $thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($record->ID).'" title="' . attribute_escape(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
 					echo '<div class="row-actions">';
 					echo implode(' | </span>', $thankyou_actions);
 					echo '</div>';
@@ -407,7 +412,7 @@ if ( $page_links ) { ?>
 } else { // have_posts()
 ?>
 <div class="clear"></div>
-<p>  <?php _e('No posts found','thankyou') ?></p>
+<p>  <?php _e('No posts with thanks found','thankyou') ?></p>
 
 <?php
 }

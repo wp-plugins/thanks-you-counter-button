@@ -61,7 +61,8 @@ and in this readme.txt file.
 * 25.11.2009
 - Settings screen update 1: Live preview of the button and its caption style changes at the same Settings tab is realized. Every change if text, CSS styles, button size is immediately displayed in your browser.
 - Settings screen update 2: Two checkboxes added for more advanced management of button position for the multi-paged posts. You can now select where to show buttons: before - before 1st page only or before every page, after - after last page only or after every page of the multi-paged post.
-- Statistics tab - Link to reset selected post thanks counter is added. Action is realised with AJAX use.
+- Settings screen update 2: Two new buttons added into the Misc section: "Return to Defaults" - reset all settings to its default values, "Reset Counters" - reset on thanks counters for all post to the 0.
+- Statistics tab - Link to reset selected post thanks counter is added. Action is realised with AJAX use. Link to edit selected post is added.
 - You can show total quant of thanks now at the admin dashboard and sidebars widgets. Just check the correspondent checkbox in the widget parameters.  
 - Shortcode [thanks_total_quant] is added. You can use it in your post to show the total quant of thanks visitor sent to your blog.
 - Slider control was added to the admin dashboard TYCB widget in order to help you change rows quant to show.

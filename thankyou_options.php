@@ -4,8 +4,10 @@
  * 
  */
 
-// Just to include in the translation files - for the future use.
-__('Donate','thankyou');
+if (!defined('THANKS_PLUGIN_URL')) {
+  die('Direct call is prohibited');
+}
+
 
 $buttonColors = array('brown', 'blue', 'red', 'green', 'grey', 'black');
 
@@ -27,8 +29,17 @@ function thanks_displayBoxEnd() {
 // end of thanks_displayBoxEnd()
 
 $shinephpFavIcon = THANKS_PLUGIN_URL.'/images/vladimir.png';
+if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
+  if ($_GET['action']=='default') {
+    $mess = __('Default Settings are restored','thankyou');
+  } else if ($_GET['action']=='resetall') {
+    $mess = __('All Thanks Counters are cleared','thankyou');
+  }
+  if ($mess) {
+    echo '<div class="updated" style="margin:0;">'.$mess.'</div><br style="clear: both;"/>';
+  }
+}
 ?>
-
   <form method="post" action="options.php">
 <?php
     settings_fields('thankyoubutton-options');
@@ -40,8 +51,9 @@ $shinephpFavIcon = THANKS_PLUGIN_URL.'/images/vladimir.png';
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb.png'; ?>" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/"><?php _e('Plugin webpage', 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_help.png'; ?>" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#filterhooks"><?php _e('Additional documentation', 'thankyou'); ?></a>
-											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_changelog.png'; ?>);" target="_blank" href="http://www.shinephp.my/thank-you-counter-button-wordpress-plugin/2/#changelog"><?php _e('Changelog', 'thankyou'); ?></a>
+											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_changelog.png'; ?>);" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#changelog"><?php _e('Changelog', 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_faq.png'; ?>)" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#faq"><?php _e('FAQ', 'thankyou'); ?></a>
+                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_donate.png'; ?>)" target="_blank" href="http://www.shinephp.com/donate"><?php _e('Donate', 'thankyou'); ?></a>
 									<?php thanks_displayBoxEnd(); ?>									
 									<?php thanks_displayBoxStart(__('Greetings:','thankyou')); ?>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" title="<?php _e("It's me, the author", 'thankyou'); ?>" href="http://www.shinephp.com/">Vladimir</a>
@@ -67,9 +79,47 @@ $shinephpFavIcon = THANKS_PLUGIN_URL.'/images/vladimir.png';
     }
   }
 
-  function thanks_SettingsCancel() {
-    document.location = <?php WP_SITE_URL; ?>'/wp-admin/options-general.php?page=thankyou.php';
+  function thanks_Settings(action) {
+    if (action=='cancel') {
+      document.location = '<?php echo THANKS_WP_ADMIN_URL; ?>/options-general.php?page=thankyou.php';
+    } else {
+      if (action=='default') {
+        var mess = '<?php _e('All settings for TYCB plugin will be return to the default values, Continue?','thankyou'); ?>';
+      } else if (action=='resetall') {
+        var mess = '<?php _e('All thanks counters for all posts will be set to 0,\n all thanks click history will be cleared, Continue?','thankyou'); ?>';
+      }
+      if (!confirm(mess)) {
+        return false;
+      }
+
+      el = document.getElementById('ajax_loader_options');
+      if (el!=undefined) {
+        el.style.visibility = 'visible';
+      }
+      jQuery.ajax({
+        type: "POST",
+        url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
+        data: { 
+                post_id: -1,
+                action: action,
+                _ajax_nonce: ThanksSettings.ajax_nonce
+      },
+      success: function(msg){
+        if (msg.indexOf('error')>0) {
+          alert(msg);
+        } else {
+          document.location = '<?php echo THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&action='; ?>'+ action +'&success=1';
+        }
+      },
+      error: function(msg) {
+        alert(msg);
+      }
+      });
+    }
+
   }
+  // thanks_Settings()
+  
 
   function switchDivDisplay(divName) {
     var divEl = document.getElementById(divName);
@@ -301,11 +351,11 @@ $shinephpFavIcon = THANKS_PLUGIN_URL.'/images/vladimir.png';
         <tr>
           <th scope="row"><label for="thanks_style"><?php _e('Button Styling','thankyou'); ?></label></th>
           <td>
-            <span class="setting-description" style="float: left; width: 120px;"><?php _e('Add style to the div:','thankyou');?></span>
+            <span class="setting-description" style="float: left; width: 150px;"><?php _e('Add style to the div:','thankyou');?></span>
             <input type="text" value="<?php echo htmlspecialchars($thanks_style); ?>" name="thanks_style" id="thanks_style" size="40" onchange="buttonDivStyleChange(this.value);"/>
             <a href="javascript:void(0);" onclick="switchDivDisplay('buttonDivStyleHelp');"><img src="<?php echo THANKS_PLUGIN_URL.'/images/question_grey.png';?>" alt="question sign" title="float: left; margin-right: 10px;"/></a>
             <div id="buttonDivStyleHelp" style="display: none;"><span class="setting-description"><?php _e('e.g.,','thankyou');?> <code>float: left; margin-right: 10px;</code></span></div>
-            <span class="setting-description" style="float: left; width: 120px;"><?php _e('to the Caption font:','thankyou');?></span>
+            <span class="setting-description" style="float: left; width: 150px;"><?php _e('to the Caption font:','thankyou');?></span>
             <input type="text" value="<?php echo htmlspecialchars($thanks_caption_style); ?>" name="thanks_caption_style" id="thanks_caption_style" size="40" onchange="refreshButtonCaptionStyle(this.value);"/>
             <a href="javascript:void(0);" onclick="switchDivDisplay('buttonFontStyleHelp');"><img src="<?php echo THANKS_PLUGIN_URL.'/images/question_grey.png';?>" alt="question sign" title="font-family: Sans-Serif; font-size: 14px; font-weight: normal;"/></a>
             <div id="buttonFontStyleHelp" style="display: none;"><span class="setting-description"><?php _e('e.g.,','thankyou');?><code>font-family: Sans-Serif; font-size: 14px; font-weight: normal;</code></span></div>
@@ -390,11 +440,16 @@ $shinephpFavIcon = THANKS_PLUGIN_URL.'/images/vladimir.png';
             <?php _e('seconds', 'thankyou'); ?></div>
           </td>
         </tr>
-        </table>
+        </table>        
+        <div class="submit" style="float: left; display: inline; padding:0;">
+          <input type="button" class="thanks-submit" name="<?php _e('Default', 'thankyou');?>" value="<?php _e('Return to Defaults', 'thankyou') ?>" title="<?php _e('Restore the default values for all settings','thankyou');?>" onclick="thanks_Settings('default');"/>
+          <input type="button" class="thanks-submit" name="<?php _e('Reset', 'thankyou');?>" value="<?php _e('Reset Counters', 'thankyou') ?>" title="<?php _e('Reset all thanks counters for the all posts','thankyou');?>" onclick="thanks_Settings('resetall');"/>
+        </div>
+        <div id="ajax_loader_options" style="float: left; display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div>
 					<?php thanks_displayBoxEnd(); ?>
-        <p class="submit column-parent">
-          <input type="submit" name="Submit" value="<?php _e('Save Changes', 'thankyou') ?>" />
-          <input type="button" name="Cancel" value="<?php _e('Cancel', 'thankyou') ?>" title="Cancel not saved changes" onclick="thanks_SettingsCancel();"/>
+        <p class="submit">
+          <input type="submit" class="thanks-submit" name="<?php _e('Submit', 'thankyou');?>" value="<?php _e('Save Changes', 'thankyou'); ?>" />
+          <input type="button" class="thanks-submit" name="<?php _e('Cancel', 'thankyou');?>" value="<?php _e('Cancel', 'thankyou') ?>" title="<?php _e('Cancel not saved changes','thankyou');?>" onclick="thanks_Settings('cancel');"/>
         </p>
 				<?php thanks_displayBoxStart(__('Button DIV Style Preview', 'thankyou')); $thanks_display_anchor = 1; ?>
 								<div class="column-parent" >
