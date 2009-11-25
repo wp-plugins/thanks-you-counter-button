@@ -32,7 +32,7 @@ if ($action=='thankyou') {
   echo '<thankyou>'.$result.'</thankyou>';
 } else if ($action=='reset') {
   resetCounterForPost();
-} if ($action=='default') {
+} else if ($action=='default') {
   if (thanks_settingsToDefaults()) {
     echo '<thankyou>0: settings to default, success</thankyou>';
   }

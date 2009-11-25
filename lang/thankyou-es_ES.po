@@ -39,11 +39,11 @@ msgstr "Estadísticas"
 
 #: ../thankyou.php:166
 msgid "You left &ldquo;Thanks&rdquo; already for this post"
-msgstr "Ya diste las &ldquo;gracias&rdquo; por este artículo"
+msgstr "Ya diste las &ldquo;gracias&rdquo; por esta entrada"
 
 #: ../thankyou.php:169
 msgid "Click to left &ldquo;Thanks&rdquo; for this post"
-msgstr "Pincha aquí si quieres dar las &ldquo;gracias&rdquo; por este artículo"
+msgstr "Pincha aquí si quieres dar las &ldquo;gracias&rdquo; por esta entrada"
 
 #: ../thankyou.php:355
 #: ../thankyou_lib.php:270
@@ -53,15 +53,15 @@ msgstr "Gracias"
 #: ../thankyou_lib.php:245
 #: ../thankyou_lib.php:308
 msgid "operation is prohibited"
-msgstr ""
+msgstr "la operación está prohibida"
 
 #: ../thankyou_options.php:34
 msgid "Default Settings are restored"
-msgstr ""
+msgstr "Configuración inicial restaurada"
 
 #: ../thankyou_options.php:36
 msgid "All Thanks Counters are cleared"
-msgstr ""
+msgstr "TODOS los contadores de agradecimientos han sido reseteados"
 
 #: ../thankyou_options.php:50
 msgid "About this Plugin:"
@@ -89,7 +89,7 @@ msgstr "FAQ"
 
 #: ../thankyou_options.php:56
 msgid "Donate"
-msgstr "Donar"
+msgstr "¿Quiere hacer una donación?"
 
 #: ../thankyou_options.php:58
 msgid "Greetings:"
@@ -126,12 +126,16 @@ msgstr "Por el estupendo generador de imágenes de botones"
 #: ../thankyou_options.php:87
 msgid "All settings for TYCB plugin will be return to the default values, Continue?"
 msgstr ""
+"Todos los valores de configuración de este plugin se reestablecerán\\n"
+" a su configuración inicial, ¿desea continuar?"
 
 #: ../thankyou_options.php:89
 msgid ""
 "All thanks counters for all posts will be set to 0,\\n"
 " all thanks click history will be cleared, Continue?"
 msgstr ""
+"Los contadores de agradecimientos de TODAS las entradas se resetearán\\n"
+" y se eliminará su historial de agradecimientos, ¿desea continuar?"
 
 #: ../thankyou_options.php:270
 #: ../thankyou_options.php:274
@@ -263,32 +267,31 @@ msgstr "segundos"
 
 #: ../thankyou_options.php:465
 msgid "Default"
-msgstr ""
+msgstr "Defecto"
 
 #: ../thankyou_options.php:465
 msgid "Return to Defaults"
-msgstr ""
+msgstr "Resetear Configuración"
 
 #: ../thankyou_options.php:465
 msgid "Restore the default values for all settings"
-msgstr ""
+msgstr "Restaura los valores por defecto para todas las opciones"
 
 #: ../thankyou_options.php:466
 msgid "Reset"
-msgstr ""
+msgstr "Resetear"
 
 #: ../thankyou_options.php:466
-#, fuzzy
 msgid "Reset Counters"
-msgstr "Resetear Contador"
+msgstr "Resetear Contadores"
 
 #: ../thankyou_options.php:466
 msgid "Reset all thanks counters for the all posts"
-msgstr ""
+msgstr "Resetea TODOS los contadores de agradecimientos"
 
 #: ../thankyou_options.php:471
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: ../thankyou_options.php:471
 msgid "Save Changes"
@@ -300,7 +303,7 @@ msgstr "Cancelar"
 
 #: ../thankyou_options.php:472
 msgid "Cancel not saved changes"
-msgstr ""
+msgstr "Cancelar los cambios"
 
 #: ../thankyou_options.php:474
 msgid "Button DIV Style Preview"
@@ -316,7 +319,7 @@ msgstr "Ver todas las categorías"
 
 #: ../thankyou_statistics.php:213
 msgid "Show Posts without Thanks"
-msgstr "Mostrar artículos sin agradecimientos"
+msgstr "Mostrar entradas sin agradecimientos"
 
 #: ../thankyou_statistics.php:214
 msgid "Rows per page: "
@@ -359,11 +362,11 @@ msgstr "Pinche para colocar en orden %s"
 
 #: ../thankyou_statistics.php:298
 msgid "Post Id"
-msgstr "Id artículo"
+msgstr "Id entrada"
 
 #: ../thankyou_statistics.php:299
 msgid "Post Title"
-msgstr "Título del artículo"
+msgstr "Título de la entrada"
 
 #: ../thankyou_statistics.php:300
 msgid "Thanks Quant"
@@ -392,14 +395,13 @@ msgid "Reset Counter"
 msgstr "Resetear Contador"
 
 #: ../thankyou_statistics.php:376
-#, fuzzy, php-format
+#, php-format
 msgid "Edit \"%s\""
-msgstr "Ver \"%s\""
+msgstr "Editar \"%s\""
 
 #: ../thankyou_statistics.php:376
-#, fuzzy
 msgid "Edit Post"
-msgstr "Ver Entrada"
+msgstr "Editar Entrada"
 
 #: ../thankyou_statistics.php:377
 #, php-format
@@ -411,13 +413,12 @@ msgid "View Post"
 msgstr "Ver Entrada"
 
 #: ../thankyou_statistics.php:415
-#, fuzzy
 msgid "No posts with thanks found"
-msgstr "No se encuentran artículos que hayan sido agradecidos"
+msgstr "No se encuentran entradas que hayan recibido agradecimientos"
 
 #: ../thankyou_widgets.php:14
 msgid "the latest or the most thanked post titles with total thanks quant"
-msgstr "Los artículos agradecidos recientemente o los más agradecidos (se mostrará cantidad en el widget)"
+msgstr "Muestra las entradas agradecidas recientemente o las más agradecidas (se mostrará cantidad en el widget)"
 
 #: ../thankyou_widgets.php:15
 #: ../thankyou_widgets.php:25
@@ -427,7 +428,7 @@ msgstr "Artículos agradecidos"
 #: ../thankyou_widgets.php:77
 #: ../thankyou_widgets.php:246
 msgid "Total quant of thanks: "
-msgstr "Suma total de agradecimientos:"
+msgstr "Agradecimientos totales: "
 
 #: ../thankyou_widgets.php:106
 msgid "Title:"
@@ -435,12 +436,12 @@ msgstr "Título:"
 
 #: ../thankyou_widgets.php:109
 msgid "Number of posts to show:"
-msgstr "Número de artículos a mostrar:"
+msgstr "Número de entradas a mostrar:"
 
 #: ../thankyou_widgets.php:133
 #: ../thankyou_widgets.php:324
 msgid "What posts to show:"
-msgstr "Artículos a mostrar:"
+msgstr "Entradas a mostrar:"
 
 #: ../thankyou_widgets.php:135
 #: ../thankyou_widgets.php:327
@@ -454,7 +455,7 @@ msgstr "Los más agradecidos"
 
 #: ../thankyou_widgets.php:137
 msgid "Total quant of thanks"
-msgstr "Suma total de agradecimientos"
+msgstr "Total de agradecimientos"
 
 #: ../thankyou_widgets.php:142
 #: ../thankyou_widgets.php:340
@@ -475,7 +476,7 @@ msgstr "Todavía sin agradecimientos"
 
 #: ../thankyou_widgets.php:319
 msgid "Posts number to show:"
-msgstr "Número de artículos a mostrar:"
+msgstr "Número de entradas a mostrar:"
 
 #: ../thankyou_widgets.php:345
 msgid "Display Full Statistics link"

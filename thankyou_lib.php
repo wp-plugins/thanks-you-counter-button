@@ -103,7 +103,7 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
 // end of thanks_checkVisitorIP()
 
 
-function getThanksCaption($postId, $thankyou_preview) {
+function getThanksCaption($postId, $thankyou_preview=false) {
 	if ($thankyou_preview) {
 		$quant = rand(0, 100);
 	}	else {
