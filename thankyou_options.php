@@ -373,7 +373,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
           <td>
             <span class="setting-description" style="float: left; width: 150px;"><?php _e('Add style to the div:','thankyou');?></span>
             <input type="text" value="<?php echo htmlspecialchars($thanks_style); ?>" name="thanks_style" id="thanks_style" size="40" onchange="buttonDivStyleChange(this.value);"/>
-            <a href="javascript:void(0);" onclick="switchDivDisplay('buttonDivStyleHelp');"><img src="<?php echo THANKS_PLUGIN_URL.'/images/question_grey.png';?>" alt="question sign" title="float: left; margin-right: 10px;"/></a>
+            <a href="javascript:void(0);" onclick="switchDivDisplay('buttonDivStyleHelp');"><img src="<?php echo THANKS_PLUGIN_URL.'/images/question_grey.png';?>" alt="question sign" title="float: left; margin-right: 10px;"/></a><br/>
             <div id="buttonDivStyleHelp" style="display: none;"><span class="setting-description"><?php _e('e.g.,','thankyou');?> <code>float: left; margin-right: 10px;</code></span></div>
             <span class="setting-description" style="float: left; width: 150px;"><?php _e('to the Caption font:','thankyou');?></span>
             <input type="text" value="<?php echo htmlspecialchars($thanks_caption_style); ?>" name="thanks_caption_style" id="thanks_caption_style" size="40" onchange="refreshButtonCaptionStyle(this.value);"/>
@@ -462,14 +462,14 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
         </tr>
         </table>
         <div class="submit" style="float: right; display: inline; padding:0;">
-          <input type="button" class="thanks-submit" name="<?php _e('Default', 'thankyou');?>" value="<?php _e('Return to Defaults', 'thankyou') ?>" title="<?php _e('Restore the default values for all settings','thankyou');?>" onclick="thanks_Settings('default');"/>
-          <input type="button" class="thanks-submit" name="<?php _e('Reset', 'thankyou');?>" value="<?php _e('Reset Counters', 'thankyou') ?>" title="<?php _e('Reset all thanks counters for the all posts','thankyou');?>" onclick="thanks_Settings('resetall');"/>
+          <input type="button" name="default" value="<?php _e('Return to Defaults', 'thankyou') ?>" title="<?php _e('Restore the default values for all settings','thankyou');?>" onclick="thanks_Settings('default');"/>
+          <input type="button" name="reset" value="<?php _e('Reset Counters', 'thankyou') ?>" title="<?php _e('Reset all thanks counters for the all posts','thankyou');?>" onclick="thanks_Settings('resetall');"/>
         </div>
         <div id="ajax_loader_options" style="float: right; display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div>
 					<?php thanks_displayBoxEnd(); ?>
         <p class="submit">
-          <input type="submit" class="thanks-submit" name="<?php _e('Submit', 'thankyou');?>" value="<?php _e('Save Changes', 'thankyou'); ?>" />
-          <input type="button" class="thanks-submit" name="<?php _e('Cancel', 'thankyou');?>" value="<?php _e('Cancel', 'thankyou') ?>" title="<?php _e('Cancel not saved changes','thankyou');?>" onclick="thanks_Settings('cancel');"/>
+          <input type="submit" name="submit" value="<?php _e('Save Changes', 'thankyou'); ?>" title="<?php _e('Save Changes', 'thankyou'); ?>" />
+          <input type="button" name="cancel" value="<?php _e('Cancel', 'thankyou') ?>" title="<?php _e('Cancel not saved changes','thankyou');?>" onclick="thanks_Settings('cancel');"/>
         </p>
 				<?php thanks_displayBoxStart(__('Button DIV Style Preview', 'thankyou')); $thanks_display_anchor = 1; ?>
 								<div class="column-parent" >

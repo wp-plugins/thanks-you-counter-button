@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-25 17:23+0600\n"
+"POT-Creation-Date: 2009-11-26 13:02+0600\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Omi <equipajedemano@gmail.com>\n"
+"Last-Translator: vladimir <vladimir@shinephp.com>\n"
 "Language-Team: Omi | http://equipajedemano.info <equipajedemano@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -265,10 +265,6 @@ msgid "seconds"
 msgstr "segundos"
 
 #: ../thankyou_options.php:465
-msgid "Default"
-msgstr "Defecto"
-
-#: ../thankyou_options.php:465
 msgid "Return to Defaults"
 msgstr "Resetear Configuración"
 
@@ -277,20 +273,12 @@ msgid "Restore the default values for all settings"
 msgstr "Restaura los valores por defecto para todas las opciones"
 
 #: ../thankyou_options.php:466
-msgid "Reset"
-msgstr "Resetear"
-
-#: ../thankyou_options.php:466
 msgid "Reset Counters"
 msgstr "Resetear Contadores"
 
 #: ../thankyou_options.php:466
 msgid "Reset all thanks counters for the all posts"
 msgstr "Resetea TODOS los contadores de agradecimientos"
-
-#: ../thankyou_options.php:471
-msgid "Submit"
-msgstr "Enviar"
 
 #: ../thankyou_options.php:471
 msgid "Save Changes"
@@ -493,6 +481,12 @@ msgstr "Últimos agradecimientos (Thank You CB)"
 msgid "Most Thanked"
 msgstr "Los más agradecidos (Thank You CB)"
 
+#~ msgid "Default"
+#~ msgstr "Defecto"
+#~ msgid "Reset"
+#~ msgstr "Resetear"
+#~ msgid "Submit"
+#~ msgstr "Enviar"
 #~ msgid "Show total quant of thanks"
 #~ msgstr "Mostrar suma total de agradecimientos"
 #~ msgid ""

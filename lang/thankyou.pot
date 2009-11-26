@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.0.02\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-25 17:23+0600\n"
+"POT-Creation-Date: 2009-11-26 13:02+0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: vladimir <vladimir@shinephp.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
@@ -261,10 +261,6 @@ msgid "seconds"
 msgstr ""
 
 #: ../thankyou_options.php:465
-msgid "Default"
-msgstr ""
-
-#: ../thankyou_options.php:465
 msgid "Return to Defaults"
 msgstr ""
 
@@ -273,19 +269,11 @@ msgid "Restore the default values for all settings"
 msgstr ""
 
 #: ../thankyou_options.php:466
-msgid "Reset"
-msgstr ""
-
-#: ../thankyou_options.php:466
 msgid "Reset Counters"
 msgstr ""
 
 #: ../thankyou_options.php:466
 msgid "Reset all thanks counters for the all posts"
-msgstr ""
-
-#: ../thankyou_options.php:471
-msgid "Submit"
 msgstr ""
 
 #: ../thankyou_options.php:471

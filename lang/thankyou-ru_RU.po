@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.0.02\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-25 17:23+0600\n"
+"POT-Creation-Date: 2009-11-26 13:02+0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: vladimir <vladimir@shinephp.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
@@ -260,10 +260,6 @@ msgid "seconds"
 msgstr "секунд"
 
 #: ../thankyou_options.php:465
-msgid "Default"
-msgstr "По-умолчанию"
-
-#: ../thankyou_options.php:465
 msgid "Return to Defaults"
 msgstr "Вернуть значения по-умолчанию"
 
@@ -272,20 +268,12 @@ msgid "Restore the default values for all settings"
 msgstr "Восстановить значения по-умолчанию для всех установок"
 
 #: ../thankyou_options.php:466
-msgid "Reset"
-msgstr "Сброс"
-
-#: ../thankyou_options.php:466
 msgid "Reset Counters"
 msgstr "Обнулить Счетчики"
 
 #: ../thankyou_options.php:466
 msgid "Reset all thanks counters for the all posts"
 msgstr "Сбросить все счетчики благодарностей для всех статей"
-
-#: ../thankyou_options.php:471
-msgid "Submit"
-msgstr "Отправить"
 
 #: ../thankyou_options.php:471
 msgid "Save Changes"
@@ -487,6 +475,12 @@ msgstr "Последние благодарности"
 msgid "Most Thanked"
 msgstr "Максимум благодарностей"
 
+#~ msgid "Default"
+#~ msgstr "По-умолчанию"
+#~ msgid "Reset"
+#~ msgstr "Сброс"
+#~ msgid "Submit"
+#~ msgstr "Отправить"
 #~ msgid "Show total quant of thanks"
 #~ msgstr "Показать общее количество благодарностей"
 #~ msgid ""
