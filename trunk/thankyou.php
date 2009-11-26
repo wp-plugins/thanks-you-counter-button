@@ -54,12 +54,10 @@ function thanks_optionsPage() {
   global $thanksCountersTable, $thanksPostReadersTable;
 
   if (!session_id()) {
-    $display_errors = ini_get("display_errors");
-	  ini_set( "display_errors", 0);
-    session_start();
-	  ini_set( "display_errors", $display_errors);
+    // use @ before operator as it is not so important started session or not.
+    // If it could not be started then Statistics tab interface will just work without saved with session filtering or sorting values
+    @session_start();
   }
-  
 
   $thanks_caption = get_option('thanks_caption');
   $thanks_display_page = get_option('thanks_display_page');
@@ -434,36 +432,41 @@ function thanks_plugin_action_links($links, $file) {
 function thanks_settings_menu() {
 	if ( function_exists('add_options_page') ) {
     $thanks_page = add_options_page('Thank You Counter Button', 'Thanks CB', 9, basename(__FILE__), 'thanks_optionsPage');
-		add_action( "admin_print_scripts-$thanks_page", 'thanks_settings_scriptsAction' );
+		add_action( "admin_print_styles-$thanks_page", 'thanks_adminCssAction' );
+    add_action( "admin_print_scripts-$thanks_page", 'thanks_settings_scriptsAction' );
+
 	}
 }
 // end of thanks_settings_menu()
 
 function thanks_adminCssAction() {
 
-  echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou_admin.css" type="text/css" media="screen" />'."\n";
-  echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou.css" type="text/css" media="screen" />'."\n";
+  wp_enqueue_style('thanks_admin_css', THANKS_PLUGIN_URL.'/css/thankyou_admin.css', array(), false, 'screen');
+  wp_enqueue_style('thanks_user_css', THANKS_PLUGIN_URL.'/css/thankyou.css', array(), false, 'screen');
+
 }
 // end of thanks_adminCssAction()
 
 
 function thanks_settings_scriptsAction() {
-  thanks_adminCssAction();
+  
   wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/iColorPicker.js.php?plugin_url='.THANKS_PLUGIN_URL, array('jquery','jquery-form','jquery-ui-tabs','jquery-ui-dialog'));  
   wp_localize_script('thanks_js_script1', 'ThanksSettings', array('plugin_url' => THANKS_PLUGIN_URL, 'ajax_nonce' => wp_create_nonce('thanks-button')));
+  
 }
 // end of thanks_settings_scriptsAction()
 
 
-function thanks_dashboard_scriptsAction() {
-  echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou_admin.css" type="text/css" media="screen" />'."\n";
+function thanks_dashboard_scriptsAction() {  
+
+  wp_enqueue_style('thanks_dashboard_css', THANKS_PLUGIN_URL.'/css/thankyou_admin.css', array(), false, 'screen');
   wp_enqueue_script('thanks_js_script2', THANKS_PLUGIN_URL.'/dhtmlgoodies_slider.js.php?plugin_url='.THANKS_PLUGIN_URL);
+  
 }
 // end of thanks_dashboard_scriptsAction()
 
 
 require_once('thankyou_widgets.php');
-
 
 if (is_admin()) {
   // activation action
@@ -475,14 +478,11 @@ if (is_admin()) {
   add_filter('plugin_action_links', 'thanks_plugin_action_links', 10, 2);
     
 }
+// It will be added for the admin user only automatically as earlier in the
+// $thanks_page = add_options_page('Thank You Counter Button', 'Thanks CB', 9, basename(__FILE__), 'thanks_optionsPage');
+// WordPress will check the user level 9 - if current user role has admin dashboard access rights.
+add_action('admin_menu', 'thanks_settings_menu');
 
-
-$activePlugins = get_option('active_plugins');
-$wpAdminBarActive = in_array('wordpress-admin-bar/wordpress-admin-bar.php', $activePlugins);
-if (is_admin() || $wpAdminBarActive) { 
-// add 'Thanks CB' item into WP Admin Settings menu to get access to the Thank You Button options page
-  add_action('admin_menu', 'thanks_settings_menu');
-}
 
 add_action('wp_head', 'thanks_cssAction');
 add_action('wp_print_scripts', 'thanks_scriptsAction');
