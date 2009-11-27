@@ -260,7 +260,7 @@ msgstr "secondes"
 
 #: ../thankyou_options.php:465
 msgid "Return to Defaults"
-msgstr "Restaurer les valeurs par d&eacute;faut"
+msgstr "D&eacute;fauts"
 
 #: ../thankyou_options.php:465
 msgid "Restore the default values for all settings"
@@ -268,7 +268,7 @@ msgstr "Remet les valeurs par d&eacute;faut pour tous les r&eacute;glages"
 
 #: ../thankyou_options.php:466
 msgid "Reset Counters"
-msgstr "Remettre les compteurs &agrave; z&eacute;ro"
+msgstr "RAZ Compteurs"
 
 #: ../thankyou_options.php:466
 msgid "Reset all thanks counters for the all posts"

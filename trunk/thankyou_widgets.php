@@ -74,7 +74,7 @@ function widget($args, $instance) {
   $total = $instance['total'];
   if ($total || $content=='total_thanks') {
     $totalThanks = thanks_get_Total();
-    $output .= '<p><span class="thanks_total_quant">'.__('Total quant of thanks: ','thankyou').$totalThanks.'</span></p>';
+    $output .= '<p class="thanks_total_quant"><span class="thanks_total_quant_label">'.__('Total quant of thanks: ','thankyou').'</span><span class="thanks_total_quant_value">'.$totalThanks.'</span></p>';
   }
 
   $output .= $after_widget;
