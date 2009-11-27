@@ -32,6 +32,7 @@ Installing procedure:
 == Frequently Asked Questions ==
 
 - Does this plugin work with Wordpress MU?
+
   Yes, it does. Plugin is tested with WordPress MU 2.8.6. Thanks to WP MU developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Screenshots ==
