@@ -61,7 +61,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
-= 1.4
+= 1.4 =
 * 27.11.2009
 - Settings screen update 1: Live preview of the button and its caption style changes at the same Settings tab is realized. Every change if text, CSS styles, button size is immediately displayed in your browser.
 - Settings screen update 2: Two checkboxes added for more advanced management of button position for the multi-paged posts. You can now select where to show buttons: before - before 1st page only or before every page, after - after last page only or after every page of the multi-paged post.
