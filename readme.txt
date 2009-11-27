@@ -18,7 +18,7 @@ Plugin has Statistics data table which shows posts list with total thanks quant 
 
 Admin dashboard and sidebar widgets with list of latest thanked or the largests thanked posts (between 3 and 15) are available. Total quant of thanks can be shown. Use widgets control panels to change settings according to your preferences.
 
-The set of shortcodes and content filters is available for this plugin. Vistit http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/ for more details.
+The set of shortcodes and content filters is available for this plugin. Visit http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/ for more details.
 
 == Installation ==
 
@@ -58,7 +58,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
 * [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
 * [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
-* [Eric] (http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
+* [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
 = 1.4
