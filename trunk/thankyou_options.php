@@ -5,7 +5,7 @@
  */
 
 if (!defined('THANKS_PLUGIN_URL')) {
-  die('Direct call is prohibited');
+  die;  // Silence is golden, direct call is prohibited
 }
 
 
