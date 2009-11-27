@@ -1,0 +1,119 @@
+/* 
+    Document   : thankyou_admin
+    Created on : 05.10.2009, 9:08:06
+    Author     : Vladimir Garagulya
+    Description:
+        Thank You Counter Button WordPress plugin Admin Settings Page CSS
+*/
+
+/* 
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.ui-tabs {
+  padding: .2em;
+}
+.ui-tabs-nav { 
+  padding: .2em .2em 0 .2em;
+  position: relative;
+  clear: both;
+}
+.ui-tabs-nav li {
+	float: left;
+	margin: 0 .2em -1px 0;
+	padding: 0;
+	border: 1px solid #E3E3E3;
+	background-color: #F1F1F1;
+	-moz-border-radius-topleft: 6px;
+	-moz-border-radius-topright: 6px;
+}
+.ui-tabs-nav li a { 
+  display:block;
+  text-decoration: none;
+  padding: .5em 1em;
+}
+.ui-tabs-nav li.ui-tabs-selected {
+		padding-bottom: .1em;
+		border-bottom: 0;
+		background-color: #fff;
+}
+.ui-tabs-panel { 
+  padding: 0;
+  display: block;
+  border: 0;
+}
+.ui-tabs-hide { 
+  display: none !important;
+}
+.tabs-nav {
+  display: inline-block;
+}
+.tabs-nav .tabs-disabled {
+  position: relative;
+  filter: alpha(opacity=40);
+}
+.tabs-nav .tabs-disabled a span {
+  _height: 19px; min-height: 19px;
+}
+#optiontabs {
+  clear:both;
+}
+
+.txt_left {
+  text-align: left;
+}
+.txt_center {
+  text-align: center;
+}
+.txt_right {
+  text-align: right;
+}
+
+.thanksquant {
+  font-family:Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+  font-size:14px;
+  font-weight: bold;
+  line-height:1.7em;
+  text-align:right;
+  padding-right:8px;
+}
+
+.form_color_row {
+  float: left;
+  display: block;
+  clear: both;
+  margin-bottom: 5px;
+}
+
+.form_widget_amount_slider {
+	border-top:1px solid #9d9c99;
+	border-left:1px solid #9d9c99;
+	border-bottom:1px solid #eee;
+	border-right:1px solid #eee;
+	background-color:#f0ede0;
+	height:3px;
+	position:absolute;
+	bottom:0px;
+}
+
+img.input_radio {
+	vertical-align: middle;
+}
+
+a.thanks_rsb_link {
+	padding:4px;
+	display:block;
+	padding-left:25px;
+	background-repeat:no-repeat;
+	background-position:5px 50%;
+	text-decoration:none;
+	border:none;
+}
+
+a.thanks_rsb_link:hover {
+	border-bottom-width:1px;
+}
+
+.thanks-submit {
+  width: 130px;
+}
