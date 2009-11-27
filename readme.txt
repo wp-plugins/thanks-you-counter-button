@@ -1,33 +1,33 @@
 === Thank You Counter Button ===
 Contributors: ShinePHP, Whiler
-Donate link: shinephp.com
-Tags: thanks, counter, button, tracker, dashboard, widget, plugin, shortcode, statistics
+Donate link: http://www.shinephp.com/donate/
+Tags: thanks, thank you, counter, button, tracker, dashboard, widget, plugin, shortcode, statistics
 Requires at least: 2.7.1
 Tested up to: 2.9 & MU 2.8.6
-Stable tag: 1.3.01
+Stable tag: 1.4
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
 == Description ==
 
-This is the simple visitor's 'Thank you' or 'I like it' clicks counter button. Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
+This is the visitor's 'Thank you' or 'I like it' clicks counter button. Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post which can be seen at the same button.
 
 The plugin stores its counters in the MySQL tables. Only one "thank" for this IP-address can be permitted. Plugin can skip all further "Thank you" clicks from this IP-address once it is automatically registered. IP-address click limit can be set to a time interval in seconds.
 
-Plugin has Statistics data table which shows posts list with total thanks quant for every post and time of the latest thank. Rows in the table can be filtered by posting month, category, can be sorted by thanks quant or time of latest thank in the descending or ascending order.
+Plugin has Statistics data table which shows posts list with total thanks quant for every post and time of the latest thank. Rows in the table can be filtered by posting month, category, can be sorted by thanks quant or time of latest thank in the descending or ascending order. Selected post can be viewed or edit directly from this table.
 
-Admin dashboard and sidebar widgets with list of latest thanked or the largests thanked posts (between 3 and 15) are available. Use widgets control panels to change settings according to your preferences. Admin dashboard widget has a Configure link on its title bar, just move mouse over it.
+Admin dashboard and sidebar widgets with list of latest thanked or the largests thanked posts (between 3 and 15) are available. Total quant of thanks can be shown. Use widgets control panels to change settings according to your preferences.
 
-We are proud to declare that plugin works with WordPress MU 2.8.6 too.
+The set of shortcodes and content filters is available for this plugin. Vistit http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/ for more details.
 
 == Installation ==
 
 Installing procedure:
 
-1. Deactivate plugin if you have the previous version installed. (It is important requirement for switching to 1.3 version from a previous one.)
-2. Extract "thanks-you-counter-button.1.3.01.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
-3. Activate "Thank You Counter Button" plugin via 'Plugins' menu in WordPress admin menu. (If you updated from one of previous versions, please check that Button Position setting is valid).
-4. Go to the "Settings"-"Thanks CB" menu item and setup your preferences for this plugin.
+1. Deactivate plugin if you have the previous version installed. (It is important requirement for switching to 1.4 version from a previous one.)
+2. Extract "thanks-you-counter-button.1.4.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
+3. Activate "Thank You Counter Button" plugin via 'Plugins' menu in WordPress admin menu. 
+4. Go to the "Settings"-"Thanks CB" menu item and check/change your preferences to customize how this plugin will work for you.
 
 == Frequently Asked Questions ==
 
@@ -36,10 +36,13 @@ Installing procedure:
 
 == Screenshots ==
 1. screenshot-1.png The example of "Thank You" button in blue color
-2. screenshot-2.png The "Thank You" Counter Button Settings Page
-3. screenshot-3.png The "Thank You" Counter Button Statistics page.
-4. screenshot-4.png Admin dashboard "Latest Thanks/Most Thanked" configurable widget.
-5. screenshot-5.png Sidebar "Latest Thanks/Most Thanked" configurable widgets.
+2. screenshot-2.png The "Thank You" Counter Button Settings Page part 1.
+3. screenshot-3.png The "Thank You" Counter Button Settings Page part 2.
+4. screenshot-4.png The "Thank You" Counter Button Statistics page.
+5. screenshot-5.png Admin dashboard "Latest Thanks/Most Thanked" configurable widget.
+6. screenshot-6.png Sidebar "Latest Thanks/Most Thanked" configurable widgets.
+7. screenshot-7.png Admin dashboard "Latest Thanks/Most Thanked" widget control panel.
+8. screenshot-8.png Sidebar "Latest Thanks/Most Thanked" widget control panel.
 
 == Translations ==
 * Russian: [ShinePHP](http://shinephp.com/)
@@ -47,18 +50,19 @@ Installing procedure:
 * French: [Whiler](http://blogs.wittwer.fr/whiler/)
 
 Dear plugin User,
-if you wish to help me with this plugin translation I very appreciate it. Please send your languge .po and .mo files to
-vladimir@shinephp.com email. Do not forget include you site link in order I can show it with thanks for the translation help at shinephp.com
-and in this readme.txt file.
+if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir@shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com and in this readme.txt file.
 
-== Special Thanks ==
-* Thanks to [Omi](http://equipajedemano.info) for the help with Spanish translation, ideas and new versions testing.
-* Thanks to [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
-* Thanks to [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
+== Special Thanks to ==
+* [Omi](http://equipajedemano.info) for the help with Spanish translation, ideas and new versions testing.
+* [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
+* [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
+* [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
+* [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
+* [Eric] (http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
 = 1.4
-* 25.11.2009
+* 27.11.2009
 - Settings screen update 1: Live preview of the button and its caption style changes at the same Settings tab is realized. Every change if text, CSS styles, button size is immediately displayed in your browser.
 - Settings screen update 2: Two checkboxes added for more advanced management of button position for the multi-paged posts. You can now select where to show buttons: before - before 1st page only or before every page, after - after last page only or after every page of the multi-paged post.
 - Settings screen update 2: Two new buttons added into the Misc section: "Return to Defaults" - reset all settings to its default values, "Reset Counters" - reset on thanks counters for all post to the 0.
@@ -108,13 +112,16 @@ and in this readme.txt file.
 - Russian and Spanish translations were added.
 
 = 1.0.02 =
-* 09.10.2009 Ajax request answer and its processing enhancement. Some hosting providers automatically adds data to every http request answer, e.g. traffic tracking javascript code, etc. In such case part of that additional code was visible on the "Thank You" button just after the "Thanks" quant. Button caption and "thanks" quant is now properly tagged inside <thankyou></thankyou> tags and will be shown properly.
+* 09.10.2009 
+- Ajax request answer and its processing enhancement. Some hosting providers automatically adds data to every http request answer, e.g. traffic tracking javascript code, etc. In such case part of that additional code was visible on the "Thank You" button just after the "Thanks" quant. Button caption and "thanks" quant is now properly tagged inside <thankyou></thankyou> tags and will be shown properly.
 
 = 1.0.01 =
-* 08.10.2009 Position shortcode [thankyou] bug fix. I documented [thankyou] shortcode but in the code [thanksyou] string was checked. Now it is fixed. Working shortcode to place "Thank You" button in the post by the 'shortcode' position is [thankyou].
+* 08.10.2009 
+- Position shortcode [thankyou] bug fix. I documented [thankyou] shortcode but in the code [thanksyou] string was checked. Now it is fixed. Working shortcode to place "Thank You" button in the post by the 'shortcode' position is [thankyou].
 
 = 1.0 =
-* 06.10.2009 First stable release
+* 06.10.2009 
+- First stable release
 
 == Documentation and Support ==
 
@@ -148,4 +155,4 @@ add_filter('thanks_thankyou_button', thankStatModify);
 
 You can find more information about "Thank You Counter Button" plugin at this page
 http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
-Plugin author (I am) answers on questions about plugin usage. Use blog comments system to contact me please.
+Plugin author (I am) answers on the questions about plugin usage. Use blog comments system to contact me please.

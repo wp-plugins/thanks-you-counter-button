@@ -185,12 +185,52 @@ function thanks_buildButtonCode($thankyou_preview = false) {
 
 function thanks_button_insert($content) {
 
-  global $wpdb, $post;
+  global $wpdb, $post, $page, $numpages, $multipage;
 
   // total quant of thanks short code processing
   if (strpos($content,'[thanks_total_quant]')!==false) {
     $totalThanks = thanks_get_Total();
     $content = str_replace('[thanks_total_quant]', $totalThanks, $content);
+  }
+  
+  if ((get_option('thanks_display_page')==null && is_page()) ||
+      (get_option('thanks_display_home')==null && (is_home() || is_category() || is_tag()) )) {
+    return $content;
+  }
+  if (strpos($content, '[nothankyou]')!==false) {
+    $content = str_replace('[nothankyou]', '', $content);
+    return $content;
+  } 
+
+  $thanks_not_display_for_categories = get_option('thanks_not_display_for_categories');
+  if ($thanks_not_display_for_categories) {
+    $thanks_not_display_for_cat_list = get_option('thanks_not_display_for_cat_list');
+    if ($thanks_not_display_for_cat_list) {
+      $query = "select term_taxonomy.term_id
+                  from $wpdb->term_taxonomy term_taxonomy
+                    left join $wpdb->term_relationships term_relationships on (term_relationships.term_taxonomy_id=term_taxonomy.term_taxonomy_id)
+                  where term_taxonomy.taxonomy='category' and term_relationships.object_id=$post->ID";
+      $categories = $wpdb->get_results($query);
+      if ($wpdb->last_error) {
+        echo 'error: '.$wpdb->last_error;
+        return $content;
+      }
+      if (is_array($thanks_not_display_for_cat_list)) {
+        foreach ($thanks_not_display_for_cat_list as $categoryToSkip) {
+          foreach ($categories as $category) {
+            if ($category->term_id==$categoryToSkip) {
+              return $content;
+            }
+          }
+        }
+      } else {
+        foreach ($categories as $category) {
+          if ($category==$thanks_not_display_for_cat_list) {
+            return $content;
+          }
+        }
+      }
+    }
   }
 
   $thanks_position_before = get_option('thanks_position_before');
@@ -198,70 +238,23 @@ function thanks_button_insert($content) {
   $thanks_position_after = get_option('thanks_position_after');
   $thanks_position_lastpageonly = get_option('thanks_position_lastpageonly');
   $thanks_position_shortcode = get_option('thanks_position_shortcode');
-  
-  if ((get_option('thanks_display_page')==null && is_page()) ||
-      (get_option('thanks_display_home') == null && (is_home() || is_category() || is_tag()) )) {
-    $html = $content;
-  } else if (strpos($content, '[nothankyou]')!==false) {
-    $html = str_replace('[nothankyou]', '', $content);
-  } else {
-    $thanks_not_display_for_categories = get_option('thanks_not_display_for_categories');
-    if ($thanks_not_display_for_categories) {
-      $thanks_not_display_for_cat_list = get_option('thanks_not_display_for_cat_list');
-      if ($thanks_not_display_for_cat_list) {
-        $query = "select term_taxonomy.term_id
-                    from $wpdb->term_taxonomy term_taxonomy
-                      left join $wpdb->term_relationships term_relationships on (term_relationships.term_taxonomy_id=term_taxonomy.term_taxonomy_id)
-                    where term_taxonomy.taxonomy='category' and term_relationships.object_id=$post->ID";
-        $categories = $wpdb->get_results($query);
-        if ($wpdb->last_error) {
-           echo 'error: '.$wpdb->last_error;
-           return;
-        }
-        if (is_array($thanks_not_display_for_cat_list)) {
-          foreach ($thanks_not_display_for_cat_list as $categoryToSkip) {
-            foreach ($categories as $category) {
-              if ($category->term_id==$categoryToSkip) {
-                return $content;
-              }
-            }
-          }
-        } else {
-          foreach ($categories as $category) {
-            if ($category==$thanks_not_display_for_cat_list) {
-              return $content;
-            }
-          }
-        }
-      }
-    }
 
-    $button = thanks_buildButtonCode();
-    
-    global $page, $numpages, $multipage;
-
-    $hasContent = false;
-    $html = '';
-    if ($thanks_position_shortcode) {
-      $html = str_replace('[thankyou]', $button, $content);
-    } else {
-      $html = $content;
-    }
-    if ($thanks_position_before) {
-      if (!$multipage || ($page==1) || ($page>1 && !$thanks_position_firstpageonly) || is_home()) {
-        $html = $button.$html;
-      }
-    } 
-    if ($thanks_position_after) {
-      if (!$multipage || ($page==$numpages) || ($page<$numpages && !$thanks_position_lastpageonly) || is_home()) {
-          $html = $html.$button;
-      }
-    }
-
+  $button = thanks_buildButtonCode();
+  if ($thanks_position_shortcode) {
+    $content = str_replace('[thankyou]', $button, $content);
   }
-  
-  return $html;
-  
+  if ($thanks_position_before) {
+    if (!$multipage || ($page==1) || ($page>1 && !$thanks_position_firstpageonly) || is_home()) {
+      $content = $button.$content;
+    }
+  } 
+  if ($thanks_position_after) {
+    if (!$multipage || ($page==$numpages) || ($page<$numpages && !$thanks_position_lastpageonly) || is_home()) {
+      $content = $content.$button;
+    }
+  }
+    
+  return $content;
 }
 // end of thanks_button_insert()
 
@@ -429,6 +422,15 @@ function thanks_plugin_action_links($links, $file) {
 // end of thanks_plugin_action_links
 
 
+function thanks_plugin_row_meta($links, $file) {
+  if ($file == plugin_basename(dirname(__FILE__).'/thankyou.php')){
+		$links[] = '<a target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#changelog">'.__('Changelog', 'thankyou').'</a>';
+		$links[] = '<a target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#filterhooks">'.__('Additional Documentation', 'thankyou').'</a>';
+	}
+	return $links;
+} // end of thanks_plugin_row_meta
+
+
 function thanks_settings_menu() {
 	if ( function_exists('add_options_page') ) {
     $thanks_page = add_options_page('Thank You Counter Button', 'Thanks CB', 9, basename(__FILE__), 'thanks_optionsPage');
@@ -476,7 +478,7 @@ if (is_admin()) {
   add_action('wp_dashboard_setup', 'thanks_dashboard_scriptsAction');
   // add a Settings link in the installed plugins page
   add_filter('plugin_action_links', 'thanks_plugin_action_links', 10, 2);
-    
+  add_filter('plugin_row_meta', 'thanks_plugin_row_meta', 10, 2);
 }
 // It will be added for the admin user only automatically as earlier in the
 // $thanks_page = add_options_page('Thank You Counter Button', 'Thanks CB', 9, basename(__FILE__), 'thanks_optionsPage');
