@@ -6,6 +6,8 @@ Description: Every time a new visitor clicks the "Thank you" button, one point i
 Version: 1.4
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
+Text Domain: thankyou
+Domain Path: /lang/
 */
 
 /*
@@ -28,7 +30,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 if (!function_exists("get_option")) {
-  die('Direct call is prohibited');
+  die;  // Silence is golden, direct call is prohibited
 }
 
 global $wp_version;
@@ -124,9 +126,9 @@ function thanks_optionsPage() {
 // end of thanks_optionPage()
 
 
-function thanks_buildButtonCode($thankyou_preview = false) {
+function thanks_buildButtonCode($thanksCaption = "") {
 
-  global $post;
+  global $post, $thanksOrderNumber;
 
   $thanks_custom = get_option('thanks_custom');
   if ($thanks_custom) {
@@ -149,15 +151,10 @@ function thanks_buildButtonCode($thankyou_preview = false) {
   $thanks_caption_style = get_option('thanks_caption_style');
 
 	$ipFound = false;
-	if ($thankyou_preview) {
-		$ipFound = true;
-	}
-	else {
-	  $checkIP = get_option('thanks_check_ip_address');
-	  if ($checkIP=='1') {
-	    $visitorIP = thanks_getVisitorIP();
-	    $ipFound = thanks_checkVisitorIP($post->ID, $visitorIP);
-	  }
+  $checkIP = get_option('thanks_check_ip_address');
+  if ($checkIP=='1') {
+	  $visitorIP = thanks_getVisitorIP();
+	  $ipFound = thanks_checkVisitorIP($post->ID, $visitorIP);
 	}
   if ($ipFound) {
     $onButtonClick = 'return false;';
@@ -166,13 +163,17 @@ function thanks_buildButtonCode($thankyou_preview = false) {
     $onButtonClick = 'thankYouButtonClick('.$post->ID.')';
     $buttonTitle = __('Click to left &ldquo;Thanks&rdquo; for this post', 'thankyou');
   }
-  $thanksCaption = getThanksCaption($post->ID, $thankyou_preview);
+  $thanksCaption = getThanksCaption($post->ID, $thanksCaption);
+  if (!$thanksOrderNumber[$post->ID]) {
+    $thanksOrderNumber[$post->ID] = 0;
+  }
+  $thanksOrderNumber[$post->ID]++;
   $inputButtonHTML = thanks_getButtonInputHTML($onButtonClick, $thanksCaption, $buttonSizeClass, $buttonColorClass,
                                    $imageURL, $thanks_custom_width, $thanks_custom_height, $thanks_caption_style,
-                                   $thanks_caption_color, $post->ID, $buttonTitle);
+                                   $thanks_caption_color, $post->ID.'_'.$thanksOrderNumber[$post->ID], $buttonTitle);
 
   $button = '<div class="thanks_button_div" style="'.get_option('thanks_style').'">'.$inputButtonHTML.
-               '<div id="ajax_loader_'.$post->ID.'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>
+               '<div id="ajax_loader_'.$post->ID.'_'.$thanksOrderNumber[$post->ID].'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>
              </div>';
 
   $button = apply_filters('thanks_thankyou_button', $button);
@@ -239,17 +240,22 @@ function thanks_button_insert($content) {
   $thanks_position_lastpageonly = get_option('thanks_position_lastpageonly');
   $thanks_position_shortcode = get_option('thanks_position_shortcode');
 
-  $button = thanks_buildButtonCode();
-  if ($thanks_position_shortcode) {
+  /*
+  remove this code after WP shortcode engine tests
+  if ($thanks_position_shortcode && strpos('[thankyou]', $content)!==false) {
+    $button = thanks_buildButtonCode();
     $content = str_replace('[thankyou]', $button, $content);
   }
+  */
   if ($thanks_position_before) {
     if (!$multipage || ($page==1) || ($page>1 && !$thanks_position_firstpageonly) || is_home()) {
+      $button = thanks_buildButtonCode();
       $content = $button.$content;
     }
   } 
   if ($thanks_position_after) {
     if (!$multipage || ($page==$numpages) || ($page<$numpages && !$thanks_position_lastpageonly) || is_home()) {
+      $button = thanks_buildButtonCode();
       $content = $content.$button;
     }
   }
@@ -468,6 +474,32 @@ function thanks_dashboard_scriptsAction() {
 // end of thanks_dashboard_scriptsAction()
 
 
+function thanks_button_shortcode_handler($atts, $content) {
+	// $atts    ::= array of attributes
+	// $content ::= text within enclosing form of shortcode element
+	// $code    ::= the shortcode found, when == callback name
+	// examples: [my-shortcode]
+	//           [my-shortcode/]
+	//           [my-shortcode foo='bar']
+	//           [my-shortcode foo='bar'/]
+	//           [my-shortcode]content[/my-shortcode]
+	//           [my-shortcode foo='bar']content[/my-shortcode]
+
+	// [thankyou]My specific caption[/thankyou]
+
+	// VLAD: Later, we can add the groups/categories
+	//extract(shortcode_atts(array('group' => $group), $atts));
+
+	if ($content != "") {
+		// Recursivity
+		$content = do_shortcode($content);
+	}
+
+	return thanks_buildButtonCode($content);
+}
+// end of thanks_button_shortcode_handler()
+
+
 require_once('thankyou_widgets.php');
 
 if (is_admin()) {
@@ -485,6 +517,9 @@ if (is_admin()) {
 // WordPress will check the user level 9 - if current user role has admin dashboard access rights.
 add_action('admin_menu', 'thanks_settings_menu');
 
+if (get_option('thanks_position_shortcode')) {
+	add_shortcode('thankyou', 'thanks_button_shortcode_handler');
+}
 
 add_action('wp_head', 'thanks_cssAction');
 add_action('wp_print_scripts', 'thanks_scriptsAction');

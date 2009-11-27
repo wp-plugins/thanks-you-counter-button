@@ -7,8 +7,7 @@
  */
 
 if (! defined("WPLANG")) {
-  echo 'Direct call is prohibited';
-  die;
+  die;  // Silence is golden, direct call is prohibited
 }
 
 $thanks_siteURL = get_option( 'siteurl' );
@@ -34,6 +33,10 @@ global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 // MySQL tables to store 'thanks' information
 $thanksCountersTable = $wpdb->prefix .'thanks_counters';
 $thanksPostReadersTable = $wpdb->prefix .'thanks_readers';
+
+// global variable to store the order number for every thanks button in this script call
+$thanksOrderNumber = array();
+
 
 // returns client machine IP address
 function thanks_getVisitorIP() {
@@ -103,25 +106,26 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
 // end of thanks_checkVisitorIP()
 
 
-function getThanksCaption($postId, $thankyou_preview=false) {
-	if ($thankyou_preview) {
-		$quant = rand(0, 100);
-	}	else {
-		global $wpdb, $thanksCountersTable;
-		$query = "select quant
-		            from $thanksCountersTable
-		            where post_id=$postId
-		            limit 0, 1";
-		$quant = $wpdb->get_var($query);
-		if ($wpdb->last_error) {
-		  echo 'error: '.$wpdb->last_error;
-		  return;
-		}
+function getThanksCaption($postId, $caption = "") {
+
+  global $wpdb, $thanksCountersTable;
+  $query = "select quant
+              from $thanksCountersTable
+		          where post_id=$postId
+		          limit 0, 1";
+	$quant = $wpdb->get_var($query);
+	if ($wpdb->last_error) {
+	  echo 'error: '.$wpdb->last_error;
+	  return;
 	}
+	
 	if (!$quant) {
 	  $quant = 0;
 	}
-	$caption = get_option('thanks_caption').": $quant";
+  if (!$caption) {
+    $caption = get_option('thanks_caption');
+  }
+	$caption .= ': '.$quant;
 	
 	return $caption;
 }
