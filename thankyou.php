@@ -128,7 +128,10 @@ function thanks_optionsPage() {
 
 function thanks_buildButtonCode($thanksCaption = "") {
 
-  global $post, $thanksOrderNumber;
+  global $post;
+  
+  // post's thanks button counter to assign it the unique Id
+  static $thanksOrderNumber = array();
 
   $thanks_custom = get_option('thanks_custom');
   if ($thanks_custom) {
