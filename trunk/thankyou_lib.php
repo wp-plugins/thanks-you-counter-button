@@ -34,9 +34,6 @@ global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 $thanksCountersTable = $wpdb->prefix .'thanks_counters';
 $thanksPostReadersTable = $wpdb->prefix .'thanks_readers';
 
-// global variable to store the order number for every thanks button in this script call
-$thanksOrderNumber = array();
-
 
 // returns client machine IP address
 function thanks_getVisitorIP() {
@@ -106,9 +103,9 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
 // end of thanks_checkVisitorIP()
 
 
-function getThanksCaption($postId, $caption = "") {
-
+function getThanksQuant($postId) {
   global $wpdb, $thanksCountersTable;
+
   $query = "select quant
               from $thanksCountersTable
 		          where post_id=$postId
@@ -118,10 +115,19 @@ function getThanksCaption($postId, $caption = "") {
 	  echo 'error: '.$wpdb->last_error;
 	  return;
 	}
-	
+
 	if (!$quant) {
 	  $quant = 0;
 	}
+
+  return $quant;
+}
+// end of getThanksQuant()
+
+
+function getThanksCaption($postId, $caption = "") {
+
+  $quant = getThanksQuant($postId);
   if (!$caption) {
     $caption = get_option('thanks_caption');
   }

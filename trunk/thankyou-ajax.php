@@ -28,7 +28,8 @@ $postId = $_POST['post_id'];
 $action = $_POST['action'];
 if ($action=='thankyou') {
   thanks_add_count($postId);
-  $result = getThanksCaption($postId);
+  //$result = getThanksCaption($postId);
+  $result = getThanksQuant($postId);
   echo '<thankyou>'.$result.'</thankyou>';
 } else if ($action=='reset') {
   resetCounterForPost();

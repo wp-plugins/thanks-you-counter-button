@@ -43,12 +43,13 @@ function thankYouButtonClick(post_id) {
          alert('Wrong answer format: '+ msg);
          return;
        }
+       var regExp = new RegExp('\\d+$');
        var i = 0;
        while (true) { // process all thanks buttons included in this post
          i++;
          el = document.getElementById('thanksButton_'+ post_id +'_'+ i);
          if (el!=undefined) {
-          el.value = msg;
+          el.value = el.value.replace(regExp, msg);
          } else {
            break;
          }
