@@ -64,7 +64,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 == Changelog ==
 = 1.4.1 =
 * 28.11.2009
-- Manual button position shortcode [thankyou] functionality is extended. You can include custom button caption to this shortcode optionally, e.g. [thankyou]YourCustomCaptionHere[/thankyou].
+- Shortcode [thankyou] functionality is extended. You can include custom button caption to this shortcode optionally, e.g. [thankyou]YourCustomCaptionHere[/thankyou].
 - Bug fix: It concerned those only who showed more than one thanks button for post. In that case the only first button from that buttons set was updated without page refresh after visitor's click.
 
 = 1.4 =
