@@ -135,4 +135,5 @@ Additional documentation such as content filter hook list, available shortcodes 
 
 You can find more information about "Thank You Counter Button" plugin at this page
 http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
+
 I am ready to answers on your questions about plugin usage. Use plugin page comments or site contact form for it please.
