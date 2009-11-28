@@ -1,10 +1,10 @@
 === Thank You Counter Button ===
 Contributors: ShinePHP, Whiler
 Donate link: http://www.shinephp.com/donate/
-Tags: thanks, thank you, counter, button, tracker, dashboard, widget, plugin, shortcode, statistics
+Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics
 Requires at least: 2.7.1
 Tested up to: 2.9 & MU 2.8.6
-Stable tag: 1.4
+Stable tag: 1.4.1
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
@@ -24,8 +24,8 @@ The set of shortcodes and content filters is available for this plugin. Visit ht
 
 Installing procedure:
 
-1. Deactivate plugin if you have the previous version installed. (It is important requirement for switching to 1.4 version from a previous one.)
-2. Extract "thanks-you-counter-button.1.4.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
+1. Deactivate plugin if you have the previous version installed. (It is important requirement for switching to this version from a previous one.)
+2. Extract "thanks-you-counter-button.x.x.x.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
 3. Activate "Thank You Counter Button" plugin via 'Plugins' menu in WordPress admin menu. 
 4. Go to the "Settings"-"Thanks CB" menu item and check/change your preferences to customize how this plugin will work for you.
 
@@ -62,6 +62,11 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.4.1 =
+* 28.11.2009
+- Manual button position shortcode [thankyou] functionality is extended. You can include custom button caption to this shortcode optionally, e.g. [thankyou]YourCustomCaptionHere[/thankyou].
+- Bug fix: It concerned those only who showed more than one thanks button for post. In that case the only first button from that buttons set was updated without page refresh after visitor's click.
+
 = 1.4 =
 * 27.11.2009
 - Settings screen update 1: Live preview of the button and its caption style changes at the same Settings tab is realized. Every change if text, CSS styles, button size is immediately displayed in your browser.
@@ -124,36 +129,10 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * 06.10.2009 
 - First stable release
 
-== Documentation and Support ==
-
-Side bar Thanks Stat widget has filter hook 'thanks_stat_sidebar' for its content.
-
-Admin dashboard Thanks widget has filter hook 'thanks_stat_dashboard' for its content.
-
-Thank You button has filter hook 'thanks_thankyou_button' for its html code now.
-
-You can use those hooks in your plugins or just in function.php of your WP theme. Look on this code sample for your reference:
-
-function thankStatModify($output) {
-
-// $output is the code of widget or button to modify. 
-// I add text to it here, from the begin and to the end.
-
-  return 'before '.$output.' after';
-
-}
-
-add_filter('thanks_stat_sidebar', thankStatModify);
-
-// and/or
-
-add_filter('thanks_stat_dashboard', thankStatModify);
-
-//and/or
-
-add_filter('thanks_thankyou_button', thankStatModify);
+== Additional Documentation ==
+Additional documentation such as content filter hook list, available shortcodes description can be found at this link http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#filterhooks
 
 
 You can find more information about "Thank You Counter Button" plugin at this page
 http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
-Plugin author (I am) answers on the questions about plugin usage. Use blog comments system to contact me please.
+I am ready to answers on your questions about plugin usage. Use plugin page comments or site contact form for it please.
