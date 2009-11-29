@@ -60,7 +60,6 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
               limit 0, 1";
   $record = $wpdb->get_results($query);
   if ($wpdb->last_error) {
-      echo 'error: '.$wpdb->last_error;
       exit;
   }
   $id = $record[0]->id;
@@ -69,8 +68,7 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
       $query = "update $thanksPostReadersTable set updated=CURRENT_TIMESTAMP where id=$id";
       $wpdb->query($query);
       if ($wpdb->last_error) {
-        echo 'error: '.$wpdb->last_error;
-        return false;
+        return true;
       }
     }
     $thanks_time_limit = get_option('thanks_time_limit');
@@ -91,7 +89,6 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
       $query = "insert into $thanksPostReadersTable (post_id, ip_address) values ($postId, '$visitorIP')";
       $wpdb->query($query);
       if ($wpdb->last_error) {
-        echo 'error: '.$wpdb->last_error;
         return false;
       }
     }
@@ -112,7 +109,6 @@ function getThanksQuant($postId) {
 		          limit 0, 1";
 	$quant = $wpdb->get_var($query);
 	if ($wpdb->last_error) {
-	  echo 'error: '.$wpdb->last_error;
 	  return;
 	}
 
@@ -199,8 +195,7 @@ function thanks_get_Total() {
 	            from $thanksCountersTable";
 	$quant = $wpdb->get_var($query);
 	if ($wpdb->last_error) {
-	  echo 'error: '.$wpdb->last_error;
-	  return 0;
+	  return -1;
 	}
   if (!$quant) {
     $quant = 0;
@@ -230,7 +225,6 @@ function thanks_add_count($postId) {
                   limit 0, 1";
       $id = $wpdb->get_var($query);
       if ($wpdb->last_error) {
-        echo 'error: '.$wpdb->last_error;
         return;
       }
       if ($id) {
@@ -241,9 +235,6 @@ function thanks_add_count($postId) {
         $query = "insert into $thanksCountersTable (post_id, quant) values ($postId, 1)";
       }
       $wpdb->query($query);
-      if ($wpdb->last_error) {
-        echo 'error: '.$wpdb->last_error;
-      }
     }
 
 }
@@ -282,14 +273,25 @@ function thanks_settingsToDefaults() {
   update_option('thanks_dashboard_content', 'latest_thanked');
   update_option('thanks_dashboard_statistics_link_show', 1);
   update_option('thanks_dashboard_author_link_show', 1);
+  update_option('thanks_display_settings_shortcuts', 1);
 
   return true;
 }
 // end of thanks_settingsToDefaults()
 
+function thanks_hideSettingsShortcuts() {
+  if (!current_user_can('edit_post')) {
+    die(__('operation is prohibited', 'thankyou'));
+  }
 
-function resetCounterForPost() {
-  global $wpdb, $thanksCountersTable;
+  update_option('thanks_display_settings_shortcuts', 0);
+
+  return true;
+}
+// end of thanks_hideSettingsShortcuts()
+
+function resetCounterForPost($postId) {
+  global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 
   if (!current_user_can('edit_post', $postId)) {
     echo 'error: operation is prohibited.';
@@ -300,7 +302,12 @@ function resetCounterForPost() {
               limit 1";
   $wpdb->query($query);
   if ($wpdb->last_error) {
-    echo 'error: '.$wpdb->last_error;
+    return false;
+  }
+  // Remove stored IPs for this post_id
+  $query = "DELETE FROM `$thanksPostReadersTable` WHERE `post_id` = '$postId'";
+  $wpdb->query($query);
+  if ($wpdb->last_error) {
     return false;
   }
   echo '<thankstat>thanks counter for post ID='.$postId.' is cleared.</thankstat>';
@@ -320,13 +327,11 @@ function thanks_resetAllCounters() {
   $query = "delete from $thanksCountersTable";
   $wpdb->query($query);
   if ($wpdb->last_error) {
-    echo 'error: '.$wpdb->last_error;
     return false;
   }
   $query = "delete from $thanksPostReadersTable";
   $wpdb->query($query);
   if ($wpdb->last_error) {
-    echo 'error: '.$wpdb->last_error;
     return false;
   }
 
@@ -335,5 +340,11 @@ function thanks_resetAllCounters() {
 // end of thanks_resetAllCounters()
 
 
+function thanks_js_escape($value) {
+
+  $value = funky_javascript_fix(js_escape($value));
+
+  return $value;
+}
 
 ?>

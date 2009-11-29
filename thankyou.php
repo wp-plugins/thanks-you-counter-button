@@ -84,10 +84,11 @@ function thanks_optionsPage() {
   $thanks_check_ip_address = get_option('thanks_check_ip_address');
   $thanks_time_limit = get_option('thanks_time_limit');
   $thanks_time_limit_seconds = get_option('thanks_time_limit_seconds');
-  $gotoStatisticsTab = isset($_GET['paged']) && (!isset($_GET['updated']));
+  $thanks_display_settings_shortcuts = get_option('thanks_display_settings_shortcuts');  
 
+  $gotoStatisticsTab = isset($_GET['paged']) && (!isset($_GET['updated']));
   $buttonSizeClass = 'thanks_'.$thanks_size;
-  
+    
 ?>
 
 <div class="wrap">
@@ -163,7 +164,7 @@ function thanks_buildButtonCode($thanksCaption = "") {
     $onButtonClick = 'return false;';
     $buttonTitle = __('You left &ldquo;Thanks&rdquo; already for this post', 'thankyou');
   } else {
-    $onButtonClick = 'thankYouButtonClick('.$post->ID.')';
+    $onButtonClick = 'thankYouButtonClick('.$post->ID.', \''.thanks_js_escape(__('You left &ldquo;Thanks&rdquo; already for this post', 'thankyou')).'\')';
     $buttonTitle = __('Click to left &ldquo;Thanks&rdquo; for this post', 'thankyou');
   }
   $thanksCaption = getThanksCaption($post->ID, $thanksCaption);
@@ -176,8 +177,18 @@ function thanks_buildButtonCode($thanksCaption = "") {
                                    $thanks_caption_color, $post->ID.'_'.$thanksOrderNumber[$post->ID], $buttonTitle);
 
   $button = '<div class="thanks_button_div" style="'.get_option('thanks_style').'">'.$inputButtonHTML.
-               '<div id="ajax_loader_'.$post->ID.'_'.$thanksOrderNumber[$post->ID].'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>
-             </div>';
+               ((is_user_logged_in() && current_user_can('level_9') && (get_option('thanks_display_settings_shortcuts') == '1'))
+               		?'<div class="thanks_settings_shortcuts">'.
+               			'<table border="0"><tr><td>'.
+               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php" title="'.__('Settings','thankyou').'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
+               			'</td></tr><tr><td>'.
+               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&amp;post_id='.$post->ID.'&amp;paged=1#statistics" title="'.__('Statistics','thankyou').'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
+               			'</td></tr><tr><td>'.
+               			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:if(confirm(\''.thanks_js_escape(__('Do you really want to hide these shortcuts?', 'thankyou')).'\')) thankYouButtonRemoveSettingsShortcuts();"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
+               			'</td></tr></table></div>'
+               		:'').
+               '<div id="ajax_loader_'.$post->ID.'_'.$thanksOrderNumber[$post->ID].'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>'.
+             '</div>';
 
   $button = apply_filters('thanks_thankyou_button', $button);
              
@@ -191,12 +202,6 @@ function thanks_button_insert($content) {
 
   global $wpdb, $post, $page, $numpages, $multipage;
 
-  // total quant of thanks short code processing
-  if (strpos($content,'[thanks_total_quant]')!==false) {
-    $totalThanks = thanks_get_Total();
-    $content = str_replace('[thanks_total_quant]', $totalThanks, $content);
-  }
-  
   if ((get_option('thanks_display_page')==null && is_page()) ||
       (get_option('thanks_display_home')==null && (is_home() || is_category() || is_tag()) )) {
     return $content;
@@ -216,7 +221,6 @@ function thanks_button_insert($content) {
                   where term_taxonomy.taxonomy='category' and term_relationships.object_id=$post->ID";
       $categories = $wpdb->get_results($query);
       if ($wpdb->last_error) {
-        echo 'error: '.$wpdb->last_error;
         return $content;
       }
       if (is_array($thanks_not_display_for_cat_list)) {
@@ -241,15 +245,7 @@ function thanks_button_insert($content) {
   $thanks_position_firstpageonly = get_option('thanks_position_firstpageonly');
   $thanks_position_after = get_option('thanks_position_after');
   $thanks_position_lastpageonly = get_option('thanks_position_lastpageonly');
-  $thanks_position_shortcode = get_option('thanks_position_shortcode');
 
-  /*
-  remove this code after WP shortcode engine tests
-  if ($thanks_position_shortcode && strpos('[thankyou]', $content)!==false) {
-    $button = thanks_buildButtonCode();
-    $content = str_replace('[thankyou]', $button, $content);
-  }
-  */
   if ($thanks_position_before) {
     if (!$multipage || ($page==1) || ($page>1 && !$thanks_position_firstpageonly) || is_home()) {
       $button = thanks_buildButtonCode();
@@ -269,9 +265,9 @@ function thanks_button_insert($content) {
 
 
 // Manual output
-function thanks_button() {
+function thanks_button($caption = '') {
   if (get_option('thanks_position_manual')==1) {
-    return thanks_buildButtonCode();
+    return thanks_buildButtonCode($caption);
   } else {
     return '';
   }
@@ -357,6 +353,7 @@ function thanks_install() {
   add_option('thanks_dashboard_content', 'latest_thanked');
   add_option('thanks_dashboard_statistics_link_show', 1);
   add_option('thanks_dashboard_author_link_show', 1);
+  add_option('thanks_display_settings_shortcuts', 1);
 
 }
 // end of thanks_install()
@@ -387,6 +384,7 @@ function thanks_init(){
     register_setting('thankyoubutton-options', 'thanks_check_ip_address');
     register_setting('thankyoubutton-options', 'thanks_time_limit');
     register_setting('thankyoubutton-options', 'thanks_time_limit_seconds');
+    register_setting('thankyoubutton-options', 'thanks_display_settings_shortcuts');
   }
 }
 // end of thanks_init()
@@ -477,7 +475,7 @@ function thanks_dashboard_scriptsAction() {
 // end of thanks_dashboard_scriptsAction()
 
 
-function thanks_button_shortcode_handler($atts, $content) {
+function thanks_button_shortcode_handler($atts, $content, $code) {
 	// $atts    ::= array of attributes
 	// $content ::= text within enclosing form of shortcode element
 	// $code    ::= the shortcode found, when == callback name
@@ -489,6 +487,7 @@ function thanks_button_shortcode_handler($atts, $content) {
 	//           [my-shortcode foo='bar']content[/my-shortcode]
 
 	// [thankyou]My specific caption[/thankyou]
+	// [thanks_total_quant]Custom Text[/thanks_total_quant]
 
 	// VLAD: Later, we can add the groups/categories
 	//extract(shortcode_atts(array('group' => $group), $atts));
@@ -497,8 +496,20 @@ function thanks_button_shortcode_handler($atts, $content) {
 		// Recursivity
 		$content = do_shortcode($content);
 	}
+	
+	$thanks_rc = '';
+	if ($code == "thankyou") {
+		$thanks_rc = thanks_buildButtonCode($content);
+	}
+	else if ($code == "thanks_total_quant") {
+	  // total quant of thanks short code processing
+		$thanks_rc = $content.thanks_get_Total();
+	}
+	else {
+		$thanks_rc = 'Unknown shortcode: '.$code;
+	}
 
-	return thanks_buildButtonCode($content);
+	return $thanks_rc;
 }
 // end of thanks_button_shortcode_handler()
 
@@ -520,6 +531,8 @@ if (is_admin()) {
 // WordPress will check the user level 9 - if current user role has admin dashboard access rights.
 add_action('admin_menu', 'thanks_settings_menu');
 
+// tune WP shortcodes api call
+add_shortcode('thanks_total_quant', 'thanks_button_shortcode_handler');
 if (get_option('thanks_position_shortcode')) {
 	add_shortcode('thankyou', 'thanks_button_shortcode_handler');
 }

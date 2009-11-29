@@ -117,3 +117,7 @@ a.thanks_rsb_link:hover {
 .thanks-submit {
   width: 130px;
 }
+
+input.warning:hover, a.warning:hover {
+	color: red;
+}

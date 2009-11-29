@@ -57,7 +57,6 @@ function widget($args, $instance) {
                 order by $order desc limit 0, $number";
     $records = $wpdb->get_results($query);
     if ($wpdb->last_error) {
-      echo 'error: '.$wpdb->last_error;
       return;
     }
     if (is_array($records) && count($records)) {
@@ -118,18 +117,6 @@ function widget($args, $instance) {
   }
 ?>
     </select>
-    
-<?php /*
-    <table>
-      <tr>
-        <td id="<?php $sliderDivId = $this->get_field_id('slider'); echo $sliderDivId;?>" width="80%"></td>
-        <td><input id="<?php $numberFieldId = $this->get_field_id('number'); echo $numberFieldId; ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></td>
-      </tr>
-    </table>		
-<script type="text/javascript">
-      form_widget_amount_slider('<?php echo $sliderDivId;?>', document.getElementById('<?php echo $numberFieldId; ?>'), 140, 3, 15);
-</script>
-*/?>
     <p><label for="<?php echo $this->get_field_id('content'); ?>"><?php _e('What posts to show:', 'thankyou'); ?></label>
       <select id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>" style="font-size: 0.9em;">
         <option value="latest_thanked" <?php echo thanks_optionSelected($content, 'latest_thanked'); ?>><?php _e('Latest thanked','thankyou');?></option>
@@ -212,7 +199,6 @@ function thanks_dashboard_content() {
                    order by $order desc limit 0, $number";
   $ww_records = $wpdb->get_results($ww_query);
   if ($wpdb->last_error) {
-    echo 'error: '.$wpdb->last_error;
     return;
   }
   $ww_foundPosts = count($ww_records);

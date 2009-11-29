@@ -84,9 +84,9 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
       document.location = '<?php echo THANKS_WP_ADMIN_URL; ?>/options-general.php?page=thankyou.php';
     } else {
       if (action=='default') {
-        var mess = '<?php _e('All settings for TYCB plugin will be return to the default values, Continue?','thankyou'); ?>';
+        var mess = '<?php echo thanks_js_escape(__('All settings for TYCB plugin will be return to the default values, Continue?','thankyou')); ?>';
       } else if (action=='resetall') {
-        var mess = '<?php _e('All thanks counters for all posts will be set to 0,\n all thanks click history will be cleared, Continue?','thankyou'); ?>';
+        var mess = '<?php echo thanks_js_escape(__('All thanks counters for all posts will be set to 0,\n all thanks click history will be cleared, Continue?','thankyou')); ?>';
       }
       if (!confirm(mess)) {
         return false;
@@ -460,10 +460,20 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
             <?php _e('seconds', 'thankyou'); ?></div>
           </td>
         </tr>
+        <tr>
+          <th scope="row">
+              <?php _e('Display settings shortcuts','thankyou'); ?>
+          </th>
+          <td>
+            <input type="checkbox" value="1" <?php echo ($thanks_display_settings_shortcuts == '1') ? 'checked="checked"' : ''; ?>
+                   name="thanks_display_settings_shortcuts" id="thanks_display_settings_shortcuts" />
+            <label for="thanks_display_settings_shortcuts"><?php _e('Add shortcuts next to the buttons for settings quick access','thankyou'); ?></label>
+          </td>
+        </tr>
         </table>
         <div class="submit" style="float: right; display: inline; padding:0;">
-          <input type="button" name="default" value="<?php _e('Return to Defaults', 'thankyou') ?>" title="<?php _e('Restore the default values for all settings','thankyou');?>" onclick="thanks_Settings('default');"/>
-          <input type="button" name="reset" value="<?php _e('Reset Counters', 'thankyou') ?>" title="<?php _e('Reset all thanks counters for the all posts','thankyou');?>" onclick="thanks_Settings('resetall');"/>
+          <input class="warning" type="button" name="default" value="<?php _e('Return to Defaults', 'thankyou') ?>" title="<?php _e('Restore the default values for all settings','thankyou');?>" onclick="thanks_Settings('default');"/>
+          <input class="warning" type="button" name="reset" value="<?php _e('Reset Counters', 'thankyou') ?>" title="<?php _e('Reset all thanks counters for the all posts','thankyou');?>" onclick="thanks_Settings('resetall');"/>
         </div>
         <div id="ajax_loader_options" style="float: right; display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div>
 					<?php thanks_displayBoxEnd(); ?>
