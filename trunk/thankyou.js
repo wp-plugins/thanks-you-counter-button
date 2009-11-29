@@ -4,7 +4,39 @@
  *
  */
 
-function thankYouButtonClick(post_id) {
+function thankYouButtonRemoveSettingsShortcuts() {
+
+	// Update the option
+	jQuery.ajax({
+			type: "POST",
+			url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
+			data: { post_id: -1,
+			action: 'hideSettingsShortcuts',
+			_ajax_nonce: ThanksSettings.ajax_nonce
+		},
+		success: function(msg){
+			if (msg.indexOf('error')<0) {
+				var all = (document.all)?document.all:document.getElementsByTagName('*');
+				for (var i = 0; i < all.length; i++) {
+					// Hide all shortcut settings currently visible
+					if (all[i].className == 'thanks_settings_shortcuts') {
+						all[i].style.display = 'none';
+					}
+				}
+			} else {
+				alert(msg);
+			}
+		},
+		error: function(msg) {
+			alert(msg);
+		}
+	});
+	
+}
+
+
+
+function thankYouButtonClick(post_id, done_title) {
   var i = 0;
   while (true) { // process all thanks buttons included in this post
     i++;
@@ -17,7 +49,7 @@ function thankYouButtonClick(post_id) {
     el = document.getElementById('thanksButton_'+ post_id +'_'+ i);
     if (el!=undefined) {
       el.onclick = "return false;";
-      el.title = '';
+      el.title = done_title;
       el.disabled = 'true';
     } else {
       break;

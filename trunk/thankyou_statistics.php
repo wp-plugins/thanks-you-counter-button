@@ -9,8 +9,179 @@ if (!defined('THANKS_PLUGIN_URL')) {
 }
 
 
-global $wpdb, $wp_locale, $thanksCountersTable;
+global $wpdb, $wp_locale, $thanksCountersTable, $thanksPostReadersTable;
 
+// Expecting a specific post detail
+if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
+	// Vlad: probably useless.. I let you remove it if you want
+	if (is_user_logged_in() && current_user_can('level_9')) {
+?>
+<div class="tablenav">
+<form id="posts-filter" action="" method="get">
+  <input type="hidden" name="page" value="thankyou.php" />
+  <input type="hidden" name="paged" value="<?php echo $_GET['paged']; ?>" />
+<script language="javascript" type="text/javascript">
+  function resetCounter(post_id, message, page) {
+    if (!confirm(message)) {
+      return false;
+    }
+
+    el = document.getElementById('ajax_loader_stat');
+    if (el!=undefined) {
+      el.style.visibility = 'visible';
+    }
+
+    jQuery.ajax({
+      type: "POST",
+      url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
+      data: { post_id: post_id,
+              action: 'reset',
+              _ajax_nonce: ThanksSettings.ajax_nonce
+    },
+    success: function(msg){
+      if (msg.indexOf('error')<0) {
+        el = document.getElementById('thanksQuant_'+ post_id);
+        if (el!=undefined) {
+          el.innerHTML = '0';
+        }
+        // Remove IPs
+        el = document.getElementById('thanks_IPs_body');
+        if (el!=undefined) {
+          el.innerHTML = '<tr><td class="txt_center">'+<?php _e('None', 'thankyou'); ?>+'</td><td>&nbsp;</td></tr>';
+        }
+      } else {
+	        alert(msg);
+      }
+      el = document.getElementById('ajax_loader_stat');
+      if (el!=undefined) {
+        el.style.visibility = 'hidden';
+      }
+    },
+    error: function(msg) {
+      alert(msg);
+      el = document.getElementById('ajax_loader_stat');
+      if (el!=undefined) {
+        el.style.visibility = 'hidden';
+      }
+    }
+    });
+
+  }
+  // resetCounter()
+
+</script>
+<?php
+		$post_id = $_GET['post_id'];
+		$thanks_sql = "SELECT `posts`.`ID`, `posts`.`post_title`, `readers`.`ip_address`, `readers`.`updated`, `counters`.`quant`\n"
+    . "FROM `$wpdb->posts` `posts`\n"
+    . "LEFT JOIN `$thanksCountersTable` `counters` ON `counters`.`post_id`=`posts`.`ID`\n"
+    . "LEFT JOIN `$thanksPostReadersTable` `readers` ON `readers`.`post_id`=`posts`.`ID`\n"
+    . "WHERE `posts`.`ID` = '$post_id' AND `posts`.`post_type`='post'\n"
+    . "ORDER BY `readers`.`updated` DESC\n"
+    . "LIMIT 0, 50";
+	  $records = $wpdb->get_results($thanks_sql);
+	  if ($wpdb->last_error) {
+	    return;
+	  }
+		if ((count($records) > 0) && ($records[0]->ID == $post_id)) {
+			$record = $records[0];
+?>
+<h4>
+	<?php printf(__('Details for &ldquo;%s&rdquo;', 'thankyou'), $record->post_title); ?>
+</h4>
+<table border="0" width="50%">
+		<tr>
+			<td>
+<table class="widefat fixed" cellspacing="0">
+	<thead>
+		<tr>
+		  <th style="width: 70px;text-align:center;"><?php echo _e('Post Id', 'thankyou'); ?></th>
+		  <th style="text-align:center;"><?php _e('Post Title', 'thankyou'); ?></th>
+	    <th style="width: 130px;text-align:right;"><?php echo __('Thanks Quant', 'thankyou').' '.$quantSortDirImg; ?></th>
+		</tr>
+	</thead>
+  <tr>
+    <td class="txt_right"><?php echo $record->ID; ?></td>
+    <td class="txt_center" style="padding-left:10px;"><a title="<?php _e('View Post', 'thankyou'); ?>" href="<?php echo get_permalink($record->ID);?>"><?php echo $record->post_title; ?></a>
+<?php
+					$thankyou_actions = array();
+					if ( current_user_can('edit_post', $record->ID) ) {
+						$thankyou_actions['reset'] = '<span class="view"><a class="submitdelete warning" title="'.attribute_escape(__('Reset this post counter', 'thankyou')).'"
+                                            href="javascript:void(0);" onclick="resetCounter('.$record->ID.',\''.thanks_js_escape(sprintf( __("You are about to reset this post '%s' thanks counter. Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $record->post_title )).'\',1);">'.__('Reset Counter', 'thankyou').'</a>';
+					}
+					$thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$record->ID.'" title="' . attribute_escape(sprintf(__('Edit "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
+          $thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($record->ID).'" title="' . attribute_escape(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
+					echo '<div class="row-actions">';
+					echo implode(' | </span>', $thankyou_actions);
+					echo '</div>';
+?>
+    </td>
+    <td class="txt_right" id="<?php echo 'thanksQuant_'.$record->ID; ?>"><div id="ajax_loader_stat" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div><?php echo ($record->quant) ? $record->quant : 0; ?></td>
+  </tr>
+</table>
+			</td>
+		</tr>
+	  <tr>
+			<td>
+<table class="widefat fixed" cellspacing="0">
+	<thead>
+		<tr>
+		  <th style="width: 130px;text-align:center;"><?php _e('IP address', 'thankyou'); ?></a></th>
+		  <th style="width: 160px;text-align:center;"><?php _e('Last Thank Date', 'thankyou'); ?></a></th>
+		</tr>
+	</thead>
+	<tbody id="thanks_IPs_body">
+<?php
+$date_format = get_option('date_format');
+$time_format = get_option('time_format');
+$i = 0;
+foreach ($records as $record) {
+  if ($i & 1) {
+    $rowClass = 'alternate';
+  } else {
+    $rowClass = '';
+  }
+  $i++;
+  $updated = mysql2date($date_format.' '.$time_format, $record->updated, true);
+?>
+  <tr class="<?php echo $rowClass; ?>">
+    <td class="txt_center"><?php echo ($record->ip_address) ? '<a title="'.__('Look up IP country', 'thankyou').'" href="http://www.geo-location.com/cgi-bin/index.cgi?s='.$record->ip_address.'" target="_blank">'.$record->ip_address.'</a>' : __('Not availabe', 'thankyou'); ?></td>
+    <td class="txt_center"><?php echo ($updated)?$updated:'&nbsp;'; ?></td>
+  </tr>
+<?php
+}
+
+?>
+	</tbody>
+</table>
+			</td>
+		</tr>
+</table>
+<?php
+		}
+		else {
+			// Unknown Post ID
+?>
+		<p>
+			<strong>
+				<?php _e('Unknown Post!', 'thankyou'); ?>
+			</strong>
+		</p>
+	<?php
+		}
+?>
+		<p>
+			<a href="./options-general.php?page=thankyou.php&amp;paged=<?php echo $_GET['paged']; ?>#statistics"><?php _e('Back to main statistics', 'thankyou'); ?></a>
+		</p>
+	</form>
+</div>
+<?php
+	}
+	else {
+		echo "How could you be there?";
+	}
+}
+else {
 
 if (!isset($_GET['rowsperstatpage'])) {
   $rowsPerStatPage = get_option('thanks_rows_per_stat_page');
@@ -101,7 +272,6 @@ if ($cat_id) {
                    (term_taxonomy.term_id=$cat_id or term_taxonomy.parent=$cat_id) and term_taxonomy.taxonomy='category'";
   $records = $wpdb->get_results($query);
   if ($wpdb->last_error) {
-    echo 'error: '.$wpdb->last_error;
     return;
   }
   $posts = array();
@@ -120,7 +290,6 @@ $query = "select count(posts.ID)
             where 1=1 $where1 $where2 and posts.post_type='post'";
 $thankedPosts = $wpdb->get_var($query);
 if ($wpdb->last_error) {
-   echo 'error: '.$wpdb->last_error;
    return;
 }
 
@@ -142,7 +311,6 @@ $query = "select posts.ID, posts.post_title, counters.quant, counters.updated
             limit $fromRecord, $rowsPerStatPage";
 $records = $wpdb->get_results($query);
 if ($wpdb->last_error) {
-   echo 'error: '.$wpdb->last_error;
    return;
 }
 $foundPosts = count($records);
@@ -329,16 +497,20 @@ function thShow($linkQuant, $linkUpdated, $newSortDirTitle, $newSortDirTitle, $q
         if (el!=undefined) {
           el.innerHTML = '0';
         }
-        el = document.getElementById('ajax_loader_stat');
-        if (el!=undefined) {
-          el.style.visibility = 'hidden';
-        }
       } else {
         alert(msg);
+      }
+      el = document.getElementById('ajax_loader_stat');
+      if (el!=undefined) {
+        el.style.visibility = 'hidden';
       }
     },
     error: function(msg) {
       alert(msg);
+      el = document.getElementById('ajax_loader_stat');
+      if (el!=undefined) {
+        el.style.visibility = 'hidden';
+      }
     }
     });
 
@@ -362,11 +534,11 @@ foreach ($records as $record) {
     $rowClass = '';
   }
   $i++;
-  $updated = mysql2date($date_format.' '.$time_format, $record->updated, true);
+  $updated = mysql2date($date_format, $record->updated, true).'<br/>'.mysql2date($time_format, $record->updated, true);
 ?>
   <tr class="<?php echo $rowClass; ?>">
     <td class="txt_right" width="5%"><?php echo $record->ID; ?></td>
-    <td class="txt_left" style="padding-left:10px;"><a href="<?php echo get_permalink($record->ID);?>"><?php echo $record->post_title; ?></a>
+    <td class="txt_left" style="padding-left:10px;"><a title="<?php _e('View details', 'thankyou'); ?>" href="<?php echo './options-general.php?page=thankyou.php&amp;post_id='.$record->ID.'&amp;paged='.$_GET['paged'].'#statistics';?>"><?php echo $record->post_title; ?></a>
 <?php
 					$thankyou_actions = array();
 					if ( current_user_can('edit_post', $record->ID) ) {
@@ -415,5 +587,6 @@ if ( $page_links ) { ?>
 <p>  <?php _e('No posts with thanks found','thankyou') ?></p>
 
 <?php
+}
 }
 ?>

@@ -46,11 +46,13 @@
   color: #000000;
 }
 
-
 input.thanks_button {
   cursor: pointer;
   border: none;
   background: transparent;
 }
 
-
+div.thanks_settings_shortcuts {
+  display: inline-table;
+  vertical-align: bottom;
+}

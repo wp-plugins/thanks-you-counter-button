@@ -11,7 +11,7 @@ if (! (isset($_POST['post_id']) && $_POST['post_id'] && is_numeric($_POST['post_
 }
 
 if (! (isset($_POST['action']) && $_POST['action'] && (($_POST['action']=='thankyou') || ($_POST['action']=='reset')
-    || ($_POST['action']=='default') || ($_POST['action']=='resetall')))) {
+    || ($_POST['action']=='default') || ($_POST['action']=='hideSettingsShortcuts') || ($_POST['action']=='resetall')))) {
   echo 'error: wrong request, action is invalid';
   return;
 }
@@ -32,10 +32,14 @@ if ($action=='thankyou') {
   $result = getThanksQuant($postId);
   echo '<thankyou>'.$result.'</thankyou>';
 } else if ($action=='reset') {
-  resetCounterForPost();
+  resetCounterForPost($postId);
 } else if ($action=='default') {
   if (thanks_settingsToDefaults()) {
     echo '<thankyou>0: settings to default, success</thankyou>';
+  }
+} else if ($action=='hideSettingsShortcuts') {
+  if (thanks_hideSettingsShortcuts()) {
+    echo '<thankyou>Settings shortcuts is hidden</thankyou>';
   }
 } else if ($action=='resetall') {
   if (thanks_resetAllCounters()) {
