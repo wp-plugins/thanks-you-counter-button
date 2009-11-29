@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.0.02\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-26 13:02+0600\n"
+"POT-Creation-Date: 2009-11-29 16:01+0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: vladimir <vladimir@shinephp.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
@@ -16,42 +16,63 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../thankyou.php:36
+#: ../thankyou.php:38
 msgid "Thank You Counter Button requires WordPress 2.7.1 or newer."
 msgstr ""
 
-#: ../thankyou.php:36
+#: ../thankyou.php:38
 msgid "Please update!"
 msgstr ""
 
-#: ../thankyou.php:95
+#: ../thankyou.php:96
 msgid "Thank You Counter Button Plugin"
 msgstr ""
 
-#: ../thankyou.php:111
-#: ../thankyou.php:426
+#: ../thankyou.php:112
+#: ../thankyou.php:183
+#: ../thankyou.php:424
 msgid "Settings"
 msgstr ""
 
-#: ../thankyou.php:112
+#: ../thankyou.php:113
+#: ../thankyou.php:185
 msgid "Statistics"
 msgstr ""
 
-#: ../thankyou.php:166
+#: ../thankyou.php:165
+#: ../thankyou.php:167
 msgid "You left &ldquo;Thanks&rdquo; already for this post"
 msgstr ""
 
-#: ../thankyou.php:169
+#: ../thankyou.php:168
 msgid "Click to left &ldquo;Thanks&rdquo; for this post"
 msgstr ""
 
-#: ../thankyou.php:355
-#: ../thankyou_lib.php:270
+#: ../thankyou.php:187
+msgid "Hide these shortcuts"
+msgstr ""
+
+#: ../thankyou.php:187
+msgid "Do you really want to hide these shortcuts?"
+msgstr ""
+
+#: ../thankyou.php:351
+#: ../thankyou_lib.php:271
 msgid "Thank You"
 msgstr ""
 
-#: ../thankyou_lib.php:245
-#: ../thankyou_lib.php:308
+#: ../thankyou.php:434
+#: ../thankyou_options.php:54
+msgid "Changelog"
+msgstr ""
+
+#: ../thankyou.php:435
+msgid "Additional Documentation"
+msgstr ""
+
+#: ../thankyou_lib.php:246
+#: ../thankyou_lib.php:284
+#: ../thankyou_lib.php:325
 msgid "operation is prohibited"
 msgstr ""
 
@@ -77,10 +98,6 @@ msgstr ""
 
 #: ../thankyou_options.php:53
 msgid "Additional documentation"
-msgstr ""
-
-#: ../thankyou_options.php:54
-msgid "Changelog"
 msgstr ""
 
 #: ../thankyou_options.php:55
@@ -261,138 +278,195 @@ msgid "seconds"
 msgstr ""
 
 #: ../thankyou_options.php:465
+msgid "Display settings shortcuts"
+msgstr ""
+
+#: ../thankyou_options.php:470
+msgid "Add shortcuts next to the buttons for settings quick access"
+msgstr ""
+
+#: ../thankyou_options.php:475
 msgid "Return to Defaults"
 msgstr ""
 
-#: ../thankyou_options.php:465
+#: ../thankyou_options.php:475
 msgid "Restore the default values for all settings"
 msgstr ""
 
-#: ../thankyou_options.php:466
+#: ../thankyou_options.php:476
 msgid "Reset Counters"
 msgstr ""
 
-#: ../thankyou_options.php:466
+#: ../thankyou_options.php:476
 msgid "Reset all thanks counters for the all posts"
 msgstr ""
 
-#: ../thankyou_options.php:471
+#: ../thankyou_options.php:481
 msgid "Save Changes"
 msgstr ""
 
-#: ../thankyou_options.php:472
+#: ../thankyou_options.php:482
 msgid "Cancel"
 msgstr ""
 
-#: ../thankyou_options.php:472
+#: ../thankyou_options.php:482
 msgid "Cancel not saved changes"
 msgstr ""
 
-#: ../thankyou_options.php:474
+#: ../thankyou_options.php:484
 msgid "Button DIV Style Preview"
 msgstr ""
 
-#: ../thankyou_statistics.php:182
+#: ../thankyou_statistics.php:50
+msgid "None"
+msgstr ""
+
+#: ../thankyou_statistics.php:90
+#, php-format
+msgid "Details for &ldquo;%s&rdquo;"
+msgstr ""
+
+#: ../thankyou_statistics.php:98
+#: ../thankyou_statistics.php:466
+msgid "Post Id"
+msgstr ""
+
+#: ../thankyou_statistics.php:99
+#: ../thankyou_statistics.php:467
+msgid "Post Title"
+msgstr ""
+
+#: ../thankyou_statistics.php:100
+#: ../thankyou_statistics.php:468
+msgid "Thanks Quant"
+msgstr ""
+
+#: ../thankyou_statistics.php:105
+#: ../thankyou_statistics.php:113
+#: ../thankyou_statistics.php:549
+msgid "View Post"
+msgstr ""
+
+#: ../thankyou_statistics.php:109
+#: ../thankyou_statistics.php:545
+msgid "Reset this post counter"
+msgstr ""
+
+#: ../thankyou_statistics.php:110
+#, php-format
+msgid "You are about to reset this post '%s' thanks counter. Click 'Cancel' to do nothing, 'OK' to reset it."
+msgstr ""
+
+#: ../thankyou_statistics.php:110
+#: ../thankyou_statistics.php:546
+msgid "Reset Counter"
+msgstr ""
+
+#: ../thankyou_statistics.php:112
+#: ../thankyou_statistics.php:548
+#, php-format
+msgid "Edit \"%s\""
+msgstr ""
+
+#: ../thankyou_statistics.php:112
+#: ../thankyou_statistics.php:548
+msgid "Edit Post"
+msgstr ""
+
+#: ../thankyou_statistics.php:113
+#: ../thankyou_statistics.php:549
+#, php-format
+msgid "View \"%s\""
+msgstr ""
+
+#: ../thankyou_statistics.php:129
+msgid "IP address"
+msgstr ""
+
+#: ../thankyou_statistics.php:130
+#: ../thankyou_statistics.php:469
+msgid "Last Thank Date"
+msgstr ""
+
+#: ../thankyou_statistics.php:148
+msgid "Look up IP country"
+msgstr ""
+
+#: ../thankyou_statistics.php:148
+msgid "Not availabe"
+msgstr ""
+
+#: ../thankyou_statistics.php:167
+msgid "Unknown Post!"
+msgstr ""
+
+#: ../thankyou_statistics.php:174
+msgid "Back to main statistics"
+msgstr ""
+
+#: ../thankyou_statistics.php:350
 msgid "Show all post dates"
 msgstr ""
 
-#: ../thankyou_statistics.php:203
+#: ../thankyou_statistics.php:371
 msgid "View all categories"
 msgstr ""
 
-#: ../thankyou_statistics.php:213
+#: ../thankyou_statistics.php:381
 msgid "Show Posts without Thanks"
 msgstr ""
 
-#: ../thankyou_statistics.php:214
+#: ../thankyou_statistics.php:382
 msgid "Rows per page: "
 msgstr ""
 
-#: ../thankyou_statistics.php:225
+#: ../thankyou_statistics.php:393
 msgid "Refresh"
 msgstr ""
 
-#: ../thankyou_statistics.php:232
-#: ../thankyou_statistics.php:398
+#: ../thankyou_statistics.php:400
+#: ../thankyou_statistics.php:570
 #, php-format
 msgid "Displaying %s&#8211;%s of %s"
 msgstr ""
 
-#: ../thankyou_statistics.php:260
-#: ../thankyou_statistics.php:275
+#: ../thankyou_statistics.php:428
+#: ../thankyou_statistics.php:443
 msgid "descending"
 msgstr ""
 
-#: ../thankyou_statistics.php:261
-#: ../thankyou_statistics.php:276
+#: ../thankyou_statistics.php:429
+#: ../thankyou_statistics.php:444
 msgid "Ascending order"
 msgstr ""
 
-#: ../thankyou_statistics.php:265
-#: ../thankyou_statistics.php:280
+#: ../thankyou_statistics.php:433
+#: ../thankyou_statistics.php:448
 msgid "ascending"
 msgstr ""
 
-#: ../thankyou_statistics.php:266
-#: ../thankyou_statistics.php:281
+#: ../thankyou_statistics.php:434
+#: ../thankyou_statistics.php:449
 msgid "Descending order"
 msgstr ""
 
-#: ../thankyou_statistics.php:288
+#: ../thankyou_statistics.php:456
 #, php-format
 msgid "Click to sort in %s order"
 msgstr ""
 
-#: ../thankyou_statistics.php:298
-msgid "Post Id"
+#: ../thankyou_statistics.php:541
+msgid "View details"
 msgstr ""
 
-#: ../thankyou_statistics.php:299
-msgid "Post Title"
-msgstr ""
-
-#: ../thankyou_statistics.php:300
-msgid "Thanks Quant"
-msgstr ""
-
-#: ../thankyou_statistics.php:301
-msgid "Last Thank Date"
-msgstr ""
-
-#: ../thankyou_statistics.php:373
-msgid "Reset this post counter"
-msgstr ""
-
-#: ../thankyou_statistics.php:374
+#: ../thankyou_statistics.php:546
 #, php-format
 msgid ""
 "You are about to reset this post '%s' thanks counter.\n"
 " Click 'Cancel' to do nothing, 'OK' to reset it."
 msgstr ""
 
-#: ../thankyou_statistics.php:374
-msgid "Reset Counter"
-msgstr ""
-
-#: ../thankyou_statistics.php:376
-#, php-format
-msgid "Edit \"%s\""
-msgstr ""
-
-#: ../thankyou_statistics.php:376
-msgid "Edit Post"
-msgstr ""
-
-#: ../thankyou_statistics.php:377
-#, php-format
-msgid "View \"%s\""
-msgstr ""
-
-#: ../thankyou_statistics.php:377
-msgid "View Post"
-msgstr ""
-
-#: ../thankyou_statistics.php:415
+#: ../thankyou_statistics.php:587
 msgid "No posts with thanks found"
 msgstr ""
 
@@ -405,72 +479,72 @@ msgstr ""
 msgid "Thanks Stat"
 msgstr ""
 
-#: ../thankyou_widgets.php:77
-#: ../thankyou_widgets.php:246
+#: ../thankyou_widgets.php:76
+#: ../thankyou_widgets.php:232
 msgid "Total quant of thanks: "
 msgstr ""
 
-#: ../thankyou_widgets.php:106
+#: ../thankyou_widgets.php:105
 msgid "Title:"
 msgstr ""
 
-#: ../thankyou_widgets.php:109
+#: ../thankyou_widgets.php:108
 msgid "Number of posts to show:"
 msgstr ""
 
-#: ../thankyou_widgets.php:133
-#: ../thankyou_widgets.php:324
+#: ../thankyou_widgets.php:120
+#: ../thankyou_widgets.php:310
 msgid "What posts to show:"
 msgstr ""
 
-#: ../thankyou_widgets.php:135
-#: ../thankyou_widgets.php:327
+#: ../thankyou_widgets.php:122
+#: ../thankyou_widgets.php:313
 msgid "Latest thanked"
 msgstr ""
 
-#: ../thankyou_widgets.php:136
-#: ../thankyou_widgets.php:328
+#: ../thankyou_widgets.php:123
+#: ../thankyou_widgets.php:314
 msgid "Most thanked"
 msgstr ""
 
-#: ../thankyou_widgets.php:137
+#: ../thankyou_widgets.php:124
 msgid "Total quant of thanks"
 msgstr ""
 
-#: ../thankyou_widgets.php:142
-#: ../thankyou_widgets.php:340
+#: ../thankyou_widgets.php:129
+#: ../thankyou_widgets.php:326
 msgid "Display total quant of thanks"
 msgstr ""
 
-#: ../thankyou_widgets.php:252
+#: ../thankyou_widgets.php:238
 msgid "Check Full Statistics"
 msgstr ""
 
-#: ../thankyou_widgets.php:256
+#: ../thankyou_widgets.php:242
 msgid "Plugin author home page"
 msgstr ""
 
-#: ../thankyou_widgets.php:263
+#: ../thankyou_widgets.php:249
 msgid "No thanks yet"
 msgstr ""
 
-#: ../thankyou_widgets.php:319
+#: ../thankyou_widgets.php:305
 msgid "Posts number to show:"
 msgstr ""
 
-#: ../thankyou_widgets.php:345
+#: ../thankyou_widgets.php:331
 msgid "Display Full Statistics link"
 msgstr ""
 
-#: ../thankyou_widgets.php:350
+#: ../thankyou_widgets.php:336
 msgid "Display plugin author link"
 msgstr ""
 
-#: ../thankyou_widgets.php:361
+#: ../thankyou_widgets.php:347
 msgid "Latest Thanks"
 msgstr ""
 
-#: ../thankyou_widgets.php:363
+#: ../thankyou_widgets.php:349
 msgid "Most Thanked"
 msgstr ""
 
