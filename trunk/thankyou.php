@@ -42,6 +42,11 @@ if (version_compare($wp_version,"2.7.1","<"))
 	exit ($exit_msg);
 }
 
+// just to have the translation for this string in the .po/.mo files
+if (false) {
+  __('Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.', 'thankyou');
+}
+
 require_once('thankyou_lib.php');
 
 load_plugin_textdomain('thankyou','', $thanksPluginDirName.'/lang');
@@ -182,7 +187,7 @@ function thanks_buildButtonCode($thanksCaption = "") {
                			'<table border="0"><tr><td>'.
                			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php" title="'.__('Settings','thankyou').'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
                			'</td></tr><tr><td>'.
-               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&amp;post_id='.$post->ID.'&amp;paged=1#statistics" title="'.__('Statistics','thankyou').'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
+               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&amp;post_id='.$post->ID.'&amp;paged=1#statistics" title="'.attribute_escape(sprintf(__('View statistics details for "%s"', 'thankyou'), $post->post_title)).'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
                			'</td></tr><tr><td>'.
                			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:if(confirm(\''.thanks_js_escape(__('Do you really want to hide these shortcuts?', 'thankyou')).'\')) thankYouButtonRemoveSettingsShortcuts();"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
                			'</td></tr></table></div>'

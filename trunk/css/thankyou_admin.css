@@ -121,3 +121,8 @@ a.thanks_rsb_link:hover {
 input.warning:hover, a.warning:hover {
 	color: red;
 }
+
+div.thanks_settings_shortcuts_off {
+  display: none;
+  vertical-align: bottom;
+}
