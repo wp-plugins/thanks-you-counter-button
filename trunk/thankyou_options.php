@@ -45,7 +45,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
     settings_fields('thankyoubutton-options');
 ?>
 				<div id="poststuff" class="metabox-holder has-right-sidebar">
-					<div class="inner-sidebar" style="margin-top:20px;">
+					<div class="inner-sidebar" >
 						<div id="side-sortables" class="meta-box-sortabless ui-sortable" style="position:relative;">
 									<?php thanks_displayBoxStart(__('About this Plugin:', 'thankyou')); ?>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'thankyou'); ?></a>
@@ -418,7 +418,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
                 <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), $buttonSizeClass, 'thanks_'.$color,
                                    THANKS_PLUGIN_URL.'/images/thanks_'.$thanks_size.'_'.$color.'.png', '', '', $thanks_caption_style,
                                    $thanks_caption_color, $i++, ''); ?>
-              <div class="fli">
+              <div class="fli" style="margin-left: 15px;">
                 <input type="radio" name="thanks_color" <?php echo ($thanks_color==$color.'1') ? 'checked="checked"' : ''; ?> value="<?php echo $color.'1'; ?>" />
               </div>
                 <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), $buttonSizeClass, 'thanks_'.$color.'1',
@@ -488,10 +488,10 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
         </div>
         <div id="ajax_loader_options" style="float: right; display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div>
 					<?php thanks_displayBoxEnd(); ?>
-        <p class="submit">
+        <div class="fli submit" style="padding-top: 0px;">
           <input type="submit" name="submit" value="<?php _e('Save Changes', 'thankyou'); ?>" title="<?php _e('Save Changes', 'thankyou'); ?>" />
           <input type="button" name="cancel" value="<?php _e('Cancel', 'thankyou') ?>" title="<?php _e('Cancel not saved changes','thankyou');?>" onclick="thanks_Settings('cancel');"/>
-        </p>
+        </div>
 				<?php thanks_displayBoxStart(__('Button DIV Style Preview', 'thankyou')); $thanks_display_anchor = 1; ?>
 								<div class="column-parent" >
 <?php
