@@ -177,10 +177,10 @@ function thanks_getButtonInputHTML($onButtonClick, $thanksCaption, $buttonSizeCl
     $thanks_custom_height = 'height:'.$thanks_custom_height.';';
   }
 
-  $output = '<input type="button" onclick="'.$onButtonClick.'" value="'.$thanksCaption.'"
+  $output = '<div style="float: left; display: inline;"><input type="button" onclick="'.$onButtonClick.'" value="'.$thanksCaption.'"
                 class="thanks_button '.$buttonSizeClass.' '.$buttonColorClass.'"
                 style="background-image:url('.$imageURL.');'.$thanks_custom_width.' '.$thanks_custom_height.' '.$thanks_caption_style.' '.$thanks_caption_color.'"
-                id="thanksButton_'.$thanksButtonId.'" title="'.$buttonTitle.'"/>';
+                id="thanksButton_'.$thanksButtonId.'" title="'.$buttonTitle.'"/></div>';
 
   return $output;
 

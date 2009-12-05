@@ -184,13 +184,10 @@ function thanks_buildButtonCode($thanksCaption = "") {
   $button = '<div class="thanks_button_div" style="'.get_option('thanks_style').'">'.$inputButtonHTML.
                ((is_user_logged_in() && current_user_can('level_9') && (get_option('thanks_display_settings_shortcuts') == '1'))
                		?'<div class="thanks_settings_shortcuts">'.
-               			'<table border="0"><tr><td>'.
-               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php" title="'.__('Settings','thankyou').'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
-               			'</td></tr><tr><td>'.
-               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&amp;post_id='.$post->ID.'&amp;paged=1#statistics" title="'.attribute_escape(sprintf(__('View statistics details for "%s"', 'thankyou'), $post->post_title)).'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
-               			'</td></tr><tr><td>'.
-               			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:if(confirm(\''.thanks_js_escape(__('Do you really want to hide these shortcuts?', 'thankyou')).'\')) thankYouButtonRemoveSettingsShortcuts();"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
-               			'</td></tr></table></div>'
+               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php" title="'.__('Settings','thankyou').'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
+               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&amp;post_id='.$post->ID.'&amp;paged=1#statistics" title="'.attribute_escape(sprintf(__('View statistics details for "%s"', 'thankyou'), $post->post_title)).'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
+               			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:if(confirm(\''.thanks_js_escape(__('Do you really want to hide these shortcuts?', 'thankyou')).'\')) thankYouButtonRemoveSettingsShortcuts();"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
+               			'</div>'
                		:'').
                '<div id="ajax_loader_'.$post->ID.'_'.$thanksOrderNumber[$post->ID].'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>'.
              '</div>';

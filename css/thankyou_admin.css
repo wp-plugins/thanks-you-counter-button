@@ -80,9 +80,10 @@
 
 .form_color_row {
   float: left;
-  display: block;
-  clear: both;
+  display: block;  
   margin-bottom: 5px;
+  width: 100%;
+  clear: both;
 }
 
 .form_widget_amount_slider {
@@ -125,4 +126,9 @@ input.warning:hover, a.warning:hover {
 div.thanks_settings_shortcuts_off {
   display: none;
   vertical-align: bottom;
+}
+
+.fli {
+  float: left;
+  display: inline;
 }

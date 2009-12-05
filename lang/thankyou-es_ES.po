@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Thank You Counter Button 1.4\n"
+"Project-Id-Version: Thank You Counter Button 1.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-01 23:14+0600\n"
 "PO-Revision-Date: \n"
-"Last-Translator: vladimir <vladimir@shinephp.com>\n"
+"Last-Translator: Omi | http://equipajedemano.info <equipajedemano@gmail.com>\n"
 "Language-Team: Omi | http://equipajedemano.info <equipajedemano@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,7 +58,7 @@ msgstr "Pincha aquí si quieres dar las &ldquo;gracias&rdquo; por esta entrada"
 #: ../thankyou_statistics.php:544
 #, php-format
 msgid "View statistics details for \"%s\""
-msgstr ""
+msgstr "Ver las estadísticas detalladas de \"%s\""
 
 #: ../thankyou.php:192
 #: ../thankyou_options.php:504
@@ -300,7 +300,7 @@ msgstr "Mostrar accesos directos de configuración"
 
 #: ../thankyou_options.php:477
 msgid "Add shortcuts next to the buttons for settings quick access"
-msgstr "Añadir unos accesos directos, junto a los botones de agradecimiento, para poder acceder rápidamente a las opciones y estadísticas. No serán visibles para el visitante."
+msgstr "Añadir unos accesos directos, junto a los botones de agradecimiento, para poder acceder rápidamente a las opciones y estadísticas (no serán visibles por el visitante)"
 
 #: ../thankyou_options.php:482
 msgid "Return to Defaults"
@@ -478,7 +478,7 @@ msgstr "Pinche para colocar en orden %s"
 
 #: ../thankyou_statistics.php:544
 msgid "View details"
-msgstr "Ver estadísticas detalladas de esta entrada"
+msgstr "Más detalles"
 
 #: ../thankyou_statistics.php:549
 #, php-format

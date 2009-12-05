@@ -412,12 +412,16 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
   foreach ($buttonColors as $color) {
 ?>
             <div class="form_color_row">
-              <input type="radio" name="thanks_color" <?php echo ($thanks_color==$color) ? 'checked="checked"' : ''; ?> value="<?php echo $color; ?>" />
-              <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), $buttonSizeClass, 'thanks_'.$color,
+              <div class="fli">
+                <input type="radio" name="thanks_color" <?php echo ($thanks_color==$color) ? 'checked="checked"' : ''; ?> value="<?php echo $color; ?>" />
+              </div>
+                <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), $buttonSizeClass, 'thanks_'.$color,
                                    THANKS_PLUGIN_URL.'/images/thanks_'.$thanks_size.'_'.$color.'.png', '', '', $thanks_caption_style,
-                                   $thanks_caption_color, $i++, ''); ?>&nbsp;
-              <input type="radio" name="thanks_color" <?php echo ($thanks_color==$color.'1') ? 'checked="checked"' : ''; ?> value="<?php echo $color.'1'; ?>" />
-              <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), $buttonSizeClass, 'thanks_'.$color.'1',
+                                   $thanks_caption_color, $i++, ''); ?>
+              <div class="fli">
+                <input type="radio" name="thanks_color" <?php echo ($thanks_color==$color.'1') ? 'checked="checked"' : ''; ?> value="<?php echo $color.'1'; ?>" />
+              </div>
+                <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), $buttonSizeClass, 'thanks_'.$color.'1',
                                    THANKS_PLUGIN_URL.'/images/thanks_'.$thanks_size.'_'.$color.'1.png', '', '', $thanks_caption_style,
                                    $thanks_caption_color, $i++, ''); ?>
             </div>
@@ -496,13 +500,10 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
                                    THANKS_PLUGIN_URL.'/images/thanks_'.$thanks_size.'_'.$thanks_color.'.png', '', '', $thanks_caption_style,
                                    $thanks_caption_color, 'stylePreview', '').
                		'<div id="thanks_settings_shortcuts" class="thanks_settings_shortcuts'.(($thanks_display_settings_shortcuts == '1')?'':'_off').'">'.
-               			'<table border="0"><tr><td>'.
-               			'<a href="javascript: return false;" title="'.__('Settings','thankyou').'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
-               			'</td></tr><tr><td>'.
-               			'<a href="javascript: return false;" title="'.attribute_escape(sprintf(__('View statistics details for "%s"', 'thankyou'), __('Post Title', 'thankyou'))).'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
-               			'</td></tr><tr><td>'.
-               			'<a href="javascript: return false;" title="'.__('Hide these shortcuts', 'thankyou').'"><img height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
-               			'</td></tr></table></div>'.
+               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php" title="'.__('Settings','thankyou').'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
+               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&amp;post_id='.$post->ID.'&amp;paged=1#statistics" title="'.attribute_escape(sprintf(__('View statistics details for "%s"', 'thankyou'), __('Post Title','thankyou'))).'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
+               			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:void;"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
+               			'</div>'.
                		'</div>';
 ?>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ipsum nibh, cursus eu imperdiet nec, vestibulum ac arcu. Nulla quis nulla in arcu congue varius vestibulum sit amet purus. Aliquam dui elit, adipiscing laoreet viverra ac, ultricies vitae turpis. Etiam hendrerit, ipsum nec mollis porttitor, nunc orci tempor tortor, nec iaculis nunc sapien quis ipsum. Aenean tincidunt, diam eu fermentum laoreet, nisi enim ornare tellus, vitae malesuada lacus quam ut dolor. Suspendisse tempus malesuada malesuada. Aenean quam mauris, feugiat ut ornare non, pharetra et diam. Sed auctor turpis in urna sagittis cursus. Sed accumsan eros eu magna fringilla elementum. Sed id neque nec sem pulvinar congue et vel turpis. Vivamus vel neque a mauris condimentum gravida ac eu lorem. Integer elementum odio diam. Nam hendrerit condimentum arcu, ut tincidunt felis semper non. Etiam tincidunt urna in tellus varius sit amet sollicitudin erat pharetra. Sed tempor varius fermentum. Nam at enim metus. Curabitur porttitor eleifend ligula, vitae vestibulum purus condimentum a. Sed vel massa purus, at consequat quam. Nulla facilisi. </p>
