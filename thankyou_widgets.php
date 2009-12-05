@@ -55,7 +55,7 @@ function widget($args, $instance) {
                   left join $thanksCountersTable counters on counters.post_id=posts.ID
                 where counters.quant>0 and posts.post_type='post'
                 order by $order desc limit 0, $number";
-    $records = $wpdb->get_results($query);
+    $records = $wpdb->get_results($query, ARRAY_A);
     if ($wpdb->last_error) {
       return;
     }
@@ -63,9 +63,10 @@ function widget($args, $instance) {
       $date_format = get_option('date_format').' '.get_option('time_format');
     	$output .= '<ul>';
       foreach ($records as $record) {
-        $updated = mysql2date($date_format, $record->updated, true);
-        $quant = ($record->quant) ? $record->quant : 0;
-        $output .= '<li><a href="'.get_permalink($record->ID).'" title="'.$updated.'">'.$record->post_title.' ('.$quant.')</a></li>';
+	      $record['oneItem'] = '<li><a href="%1$s" title="%3$s">%2$s (%4$s)</a></li>';
+	      $record['kind'] = $content;
+	      $record = apply_filters('thanks_stat_sidebar_item', $record);
+	      $output .= sprintf($record['oneItem'], get_permalink($record['ID']), $record['post_title'], mysql2date($date_format, $record['updated'], true), ($record['quant']) ? $record['quant'] : 0);
       }
       $output .= '</ul>';
     }
@@ -73,7 +74,7 @@ function widget($args, $instance) {
   $total = $instance['total'];
   if ($total || $content=='total_thanks') {
     $totalThanks = thanks_get_Total();
-    $output .= '<p class="thanks_total_quant"><span class="thanks_total_quant_label">'.__('Total quant of thanks: ','thankyou').'</span><span class="thanks_total_quant_value">'.$totalThanks.'</span></p>';
+    $output .= apply_filters('thanks_stat_sidebar_total_quant', '<p class="thanks_total_quant"><span class="thanks_total_quant_label">'.__('Total quant of thanks: ','thankyou').'</span><span class="thanks_total_quant_value">'.$totalThanks.'</span></p>');
   }
 
   $output .= $after_widget;
@@ -197,7 +198,8 @@ function thanks_dashboard_content() {
                      left join $thanksCountersTable counters on counters.post_id=posts.ID
                    where counters.quant>0 and posts.post_type='post'
                    order by $order desc limit 0, $number";
-  $ww_records = $wpdb->get_results($ww_query);
+  $ww_records = $wpdb->get_results($ww_query, ARRAY_A);
+
   if ($wpdb->last_error) {
     return;
   }
@@ -217,12 +219,13 @@ function thanks_dashboard_content() {
         $class = '';
       }
       $i++;
-      $updated = mysql2date($date_format, $ww_record->updated, true);
-      $quant = ($ww_record->quant) ? $ww_record->quant : 0;
-      $output .= '<tr '.$class.'>
-                    <td height="26" style="padding-left:8px;"><a class="rsswidget" href="'.get_permalink($ww_record->ID).'" title="'.$updated.'">'.$ww_record->post_title.'</a></td>
-                    <td height="26" class="thanksquant" style="font-size:14px;" width="10%">'.$quant.'</td>
-                  </tr>';
+      $ww_record['oneItem'] = '<tr '.$class.'>
+                    <td height="26" style="padding-left:8px;"><a class="rsswidget" href="%1$s" title="%3$s">%2$s</a></td>
+                    <td height="26" class="thanksquant" style="font-size:14px;" width="10%%">%4$s</td>
+                 </tr>';
+      $ww_record['kind'] = $content;
+      $ww_record = apply_filters('thanks_stat_dashboard_row', $ww_record);
+      $output .= sprintf($ww_record['oneItem'], get_permalink($ww_record['ID']), $ww_record['post_title'], mysql2date($date_format, $ww_record['updated'], true), ($ww_record['quant']) ? $ww_record['quant'] : 0);
     }
     $output .= '</tbody>
           </table>';
