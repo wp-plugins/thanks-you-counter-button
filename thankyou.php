@@ -117,10 +117,10 @@ function thanks_optionsPage() {
           <li><a href="#settings"><span><?php _e('Settings', 'thankyou'); ?></span></a></li>
           <li><a href="#statistics"><span><?php _e('Statistics', 'thankyou'); ?></span></a></li>
         </ul>
-			<div id="settings">
+			<div id="settings" style="clear:both;">
 					<?php require ('thankyou_options.php'); ?>
 			</div>
-			<div id="statistics" class="ui-tabs-hide"><br/>
+			<div id="statistics" class="ui-tabs-hide" style="clear:both;">
 					<?php require ('thankyou_statistics.php'); ?>
 			</div>
 		</div>

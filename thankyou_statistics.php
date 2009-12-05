@@ -395,6 +395,7 @@ if (isset($_GET['zeroshow'])) {
 </div>
 <?php
   if ( $page_links ) { ?>
+  <div style="clear: both;"></div>
 <div class="tablenav-pages">
 <?php
   $page_links_text = sprintf( '<span class="displaying-num">' . __( 'Displaying %s&#8211;%s of %s','thankyou' ) . '</span>%s',
