@@ -78,7 +78,7 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
     . "LEFT JOIN `$thanksPostReadersTable` `readers` ON `readers`.`post_id`=`posts`.`ID`\n"
     . "WHERE `posts`.`ID` = '$post_id' AND `posts`.`post_type`='post'\n"
     . "ORDER BY `readers`.`updated` DESC\n"
-    . "LIMIT 0, 50";
+    . "LIMIT 0, 35";
 	  $records = $wpdb->get_results($thanks_sql);
 	  if ($wpdb->last_error) {
 	    return;
@@ -145,7 +145,7 @@ foreach ($records as $record) {
   $updated = mysql2date($date_format.' '.$time_format, $record->updated, true);
 ?>
   <tr class="<?php echo $rowClass; ?>">
-    <td class="txt_center"><?php echo ($record->ip_address) ? '<a title="'.__('Look up IP country', 'thankyou').'" href="http://www.geo-location.com/cgi-bin/index.cgi?s='.$record->ip_address.'" target="_blank">'.$record->ip_address.'</a>' : __('Not availabe', 'thankyou'); ?></td>
+    <td class="txt_center"><?php echo ($record->ip_address) ? '<a title="'.__('Look up IP country', 'thankyou').'" href="http://www.shinephp.com/ip-to-country/?ip='.$record->ip_address.'" target="_blank">'.$record->ip_address.'</a>' : __('Not availabe', 'thankyou'); ?></td>
     <td class="txt_center"><?php echo ($updated)?$updated:'&nbsp;'; ?></td>
   </tr>
 <?php

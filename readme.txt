@@ -1,10 +1,10 @@
 === Thank You Counter Button ===
 Contributors: ShinePHP, Whiler
 Donate link: http://www.shinephp.com/donate/
-Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics
+Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
 Tested up to: 2.9 & MU 2.8.6
-Stable tag: 1.4.1
+Stable tag: 1.5
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
@@ -30,6 +30,9 @@ Installing procedure:
 4. Go to the "Settings"-"Thanks CB" menu item and check/change your preferences to customize how this plugin will work for you.
 
 == Frequently Asked Questions ==
+- I updated plugin to the recent version. Why does it shows button or Settings/Statistics pages wrong way.
+
+  Your browser uses old cashed version of CSS files. Please try to reload full page (use F5 or Refresh button).
 
 - Does this plugin work with Wordpress MU?
 
@@ -50,7 +53,7 @@ Installing procedure:
 * Spanish: [Omi](http://equipajedemano.info/)
 * French: [Whiler](http://blogs.wittwer.fr/whiler/)
 
-Dear plugin User,
+Dear TYCB plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir@shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com and in this readme.txt file.
 
 == Special Thanks to ==
@@ -62,6 +65,16 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.5 =
+* 06.12.2009
+- New Detailed Statistics screen with IP list for the selected post. Last 35 IP addresses of visitors who clicked button are shown with link to the http:://www.shinephp.com/ip-to-country service page where you can check what country/region/city that IP (or any custom IP) came from.
+- Option to show shorcuts links to the right of the "Thank You" buttons for the logged in blog user with administrator rights. Shortcuts links allows to go to the plugin "Setting" page, open detailed statistics page for the current post, hide all shortcuts with one click.
+- New content filters for widgets are added:
+  'thanks_stat_sidebar_item' filter allows to change content of every row at the sidebar TYCB widget;
+  'thanks_stat_sidebar_total_quant' filter allows to change content of total quant counter at the sidebar TYCB widget;
+  'thanks_stat_dashboard_row' filter allows to change content of every row at the dashboard TYCB widget;
+- Bug fix: Reset post counter for  the selected post links from the Statistics page did not work. It is fixed now.
+
 = 1.4.1 =
 * 28.11.2009
 - Shortcode [thankyou] functionality is extended. You can include custom button caption to this shortcode optionally, e.g. [thankyou]YourCustomCaptionHere[/thankyou].
