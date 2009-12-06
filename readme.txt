@@ -41,12 +41,13 @@ Installing procedure:
 == Screenshots ==
 1. screenshot-1.png The example of "Thank You" button in blue color
 2. screenshot-2.png The "Thank You" Counter Button Settings Page part 1.
-3. screenshot-3.png The "Thank You" Counter Button Settings Page part 2.
-4. screenshot-4.png The "Thank You" Counter Button Statistics page.
-5. screenshot-5.png Admin dashboard "Latest Thanks/Most Thanked" configurable widget.
-6. screenshot-6.png Sidebar "Latest Thanks/Most Thanked" configurable widgets.
-7. screenshot-7.png Admin dashboard "Latest Thanks/Most Thanked" widget control panel.
-8. screenshot-8.png Sidebar "Latest Thanks/Most Thanked" widget control panel.
+3. screenshot-3.png Settings Page part 2.
+4. screenshot-4.png Statistics page.
+5. screenshot-5.png Detailed Statistics for selected post.
+5. screenshot-6.png Admin dashboard "Latest Thanks/Most Thanked" configurable widget.
+6. screenshot-7.png Sidebar "Latest Thanks/Most Thanked" configurable widgets.
+7. screenshot-8.png Admin dashboard "Latest Thanks/Most Thanked" widget control panel.
+8. screenshot-9.png Sidebar "Latest Thanks/Most Thanked" widget control panel.
 
 == Translations ==
 * Russian: [ShinePHP](http://shinephp.com/)
