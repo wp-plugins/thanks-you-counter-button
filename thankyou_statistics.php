@@ -8,13 +8,33 @@ if (!defined('THANKS_PLUGIN_URL')) {
   die('Direct call is prohibited');
 }
 
+if (!is_user_logged_in() or !current_user_can('level_9')) {
+  die('Access is prohibited');
+}
 
 global $wpdb, $wp_locale, $thanksCountersTable, $thanksPostReadersTable;
 
+// quant of rows per page in stat table
+if (!isset($_GET['rowsperstatpage'])) {
+  $rowsPerStatPage = get_option('thanks_rows_per_stat_page');
+  if (!$rowsPerStatPage) {
+    $rowsPerStatPage = 15;
+    update_option('thanks_rows_per_stat_page', $rowsPerStatPage);
+  }
+} else {
+  $rowsPerStatPage = $_GET['rowsperstatpage'];
+  $temp = get_option('thanks_rows_per_stat_page');
+  if (!is_numeric($rowsPerStatPage)) {
+    $rowsPerStatPage = $temp;
+  } else {
+    if ($rowPerStatPage!=$temp) {
+      update_option('thanks_rows_per_stat_page', $rowsPerStatPage);
+    }
+  }
+}
+
 // Expecting a specific post detail
 if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
-	// Vlad: probably useless.. I let you remove it if you want
-	if (is_user_logged_in() && current_user_can('level_9')) {
 ?>
 <div class="tablenav">
 <form id="posts-filter" action="" method="get">
@@ -71,23 +91,61 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
 
 </script>
 <?php
-		$post_id = $_GET['post_id'];
-		$thanks_sql = "SELECT `posts`.`ID`, `posts`.`post_title`, `readers`.`ip_address`, `readers`.`updated`, `counters`.`quant`\n"
-    . "FROM `$wpdb->posts` `posts`\n"
-    . "LEFT JOIN `$thanksCountersTable` `counters` ON `counters`.`post_id`=`posts`.`ID`\n"
-    . "LEFT JOIN `$thanksPostReadersTable` `readers` ON `readers`.`post_id`=`posts`.`ID`\n"
-    . "WHERE `posts`.`ID` = '$post_id' AND `posts`.`post_type`='post'\n"
-    . "ORDER BY `readers`.`updated` DESC\n"
-    . "LIMIT 0, 35";
-	  $records = $wpdb->get_results($thanks_sql);
-	  if ($wpdb->last_error) {
-	    return;
-	  }
-		if ((count($records) > 0) && ($records[0]->ID == $post_id)) {
-			$record = $records[0];
+  $post_id = $_GET['post_id'];
+  $post_title = get_the_title($post_id);
+  $query = "select quant
+              from $thanksCountersTable
+              where post_id=$post_id";
+  $thanksQuant = $wpdb->get_var($query);
+  if ($wpdb->last_error) {
+     return;
+  }
+
+  $query = "select count(id)
+              from $thanksPostReadersTable
+              where post_id=$post_id limit 0, 1";
+  $thankIPs = $wpdb->get_var($query);
+  if ($wpdb->last_error) {
+     return;
+  }
+
+  if (!isset($_GET['pageips']) || !$_GET['pageips'] || !is_numeric($_GET['pageips'])) {
+    $_GET['pageips'] = 1;
+  }
+  $maxNumPages = (int) ($thankIPs / $rowsPerStatPage);
+  $rest = $thankIPs / $rowsPerStatPage - $maxNumPages;
+  if ($rest>0) {
+    $maxNumPages += 1;
+  }
+  if ($_GET['pageips']>$maxNumPages) {
+    $_GET['pageips'] = $maxNumPages;
+  }
+  $fromRecord = max(0,($_GET['pageips'] - 1))*$rowsPerStatPage;
+  $query = "SELECT ip_address, updated
+              FROM $thanksPostReadersTable
+              WHERE post_id=$post_id
+              ORDER BY updated DESC
+              LIMIT $fromRecord, $rowsPerStatPage";
+  $records = $wpdb->get_results($query);
+  if ($wpdb->last_error) {
+    return;
+	}
+?>
+<div style="float: right; margin-top: 10px;">
+	<a href="./options-general.php?page=thankyou.php&amp;paged=<?php echo $_GET['paged']; ?>#statistics">&laquo;<?php _e('Back to main statistics', 'thankyou'); ?></a>
+</div>
+<?php
+	if (!$records) {
+?>
+		<p>
+			<strong><?php _e('Not available', 'thankyou'); ?></strong>
+		</p>
+<?
+    return;
+  }
 ?>
 <h4>
-	<?php printf(__('Details for &ldquo;%s&rdquo;', 'thankyou'), $record->post_title); ?>
+	<?php printf(__('Details for &ldquo;%s&rdquo;', 'thankyou'), $post_title); ?>
 </h4>
 <table border="0" width="50%">
 		<tr>
@@ -97,32 +155,58 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
 		<tr>
 		  <th style="width: 70px;text-align:center;"><?php echo _e('Post Id', 'thankyou'); ?></th>
 		  <th style="text-align:center;"><?php _e('Post Title', 'thankyou'); ?></th>
-	    <th style="width: 130px;text-align:right;"><?php echo __('Thanks Quant', 'thankyou').' '.$quantSortDirImg; ?></th>
+	    <th style="width: 130px;text-align:right;"><?php echo __('Thanks Quant', 'thankyou'); ?></th>
 		</tr>
 	</thead>
   <tr>
-    <td class="txt_right"><?php echo $record->ID; ?></td>
-    <td class="txt_center" style="padding-left:10px;"><a title="<?php _e('View Post', 'thankyou'); ?>" href="<?php echo get_permalink($record->ID);?>"><?php echo $record->post_title; ?></a>
+    <td class="txt_right"><?php echo $post_id; ?></td>
+    <td class="txt_center" style="padding-left:10px;"><a title="<?php _e('View Post', 'thankyou'); ?>" href="<?php echo get_permalink($post_id);?>"><?php echo $post_title; ?></a>
 <?php
 					$thankyou_actions = array();					
-					$thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($record->ID).'" title="' . attribute_escape(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
-          $thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$record->ID.'" title="' . attribute_escape(sprintf(__('Edit "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
-          if ( current_user_can('edit_post', $record->ID) ) {
+					$thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($post_id).'" title="' . attribute_escape(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
+          $thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$post_id.'" title="' . attribute_escape(sprintf(__('Edit "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
+          if ( current_user_can('edit_post', $post_id) ) {
 						$thankyou_actions['reset'] = '<span class="view"><a class="submitdelete warning" title="'.attribute_escape(__('Reset this post counter', 'thankyou')).'"
-                                            href="javascript:void(0);" onclick="resetCounter('.$record->ID.',\''.thanks_js_escape(sprintf( __("You are about to reset this post '%s' thanks counter. Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $record->post_title )).'\',1);">'.__('Reset Counter', 'thankyou').'</a>';
+                                            href="javascript:void(0);" onclick="resetCounter('.$post_id.',\''.thanks_js_escape(sprintf( __("You are about to reset this post '%s' thanks counter. Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $post_title )).'\',1);">'.__('Reset Counter', 'thankyou').'</a>';
 					}
 					echo '<div class="row-actions">';
 					echo implode(' | </span>', $thankyou_actions);
 					echo '</div>';
 ?>
     </td>
-    <td class="txt_right" id="<?php echo 'thanksQuant_'.$record->ID; ?>"><div id="ajax_loader_stat" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div><?php echo ($record->quant) ? $record->quant : 0; ?></td>
+    <td class="txt_right" ><?php echo ($thanksQuant) ? $thanksQuant : 0; ?></td>
   </tr>
 </table>
 			</td>
 		</tr>
 	  <tr>
 			<td>
+<div class="tablenav">
+<?php
+  $page_links = paginate_links(array(
+    'base' => add_query_arg('pageips', '%#%'),
+    'format' => '',
+    'prev_text' => '&laquo;',
+    'next_text' => '&raquo;',
+    'total' => $maxNumPages,
+    'current' => $_GET['pageips']
+  ));
+
+  if ( $page_links ) { ?>
+  <div style="clear: both;"></div>
+<div class="tablenav-pages">
+<?php
+  $page_links_text = sprintf( '<span class="displaying-num">' . __( 'Displaying %s&#8211;%s of %s','thankyou' ) . '</span>%s',
+	number_format_i18n(max($_GET['pageips'] - 1, 0)*$rowsPerStatPage + 1),
+	number_format_i18n(min( $_GET['pageips']*$rowsPerStatPage, $thankIPs)),
+	number_format_i18n($thankIPs),	$page_links );
+  echo $page_links_text;
+?>
+</div>
+<?php
+  }
+?>
+</div>
 <table class="widefat fixed" cellspacing="0">
 	<thead>
 		<tr>
@@ -145,7 +229,7 @@ foreach ($records as $record) {
   $updated = mysql2date($date_format.' '.$time_format, $record->updated, true);
 ?>
   <tr class="<?php echo $rowClass; ?>">
-    <td class="txt_center"><?php echo ($record->ip_address) ? '<a title="'.__('Look up IP country', 'thankyou').'" href="http://www.shinephp.com/ip-to-country/?ip='.$record->ip_address.'" target="_blank">'.$record->ip_address.'</a>' : __('Not availabe', 'thankyou'); ?></td>
+    <td class="txt_center"><?php echo ($record->ip_address) ? '<a title="'.__('Look up IP country', 'thankyou').'" href="http://www.shinephp.com/ip-to-country/?ip='.$record->ip_address.'" target="_blank">'.$record->ip_address.'</a>' : __('Not available', 'thankyou'); ?></td>
     <td class="txt_center"><?php echo ($updated)?$updated:'&nbsp;'; ?></td>
   </tr>
 <?php
@@ -154,52 +238,17 @@ foreach ($records as $record) {
 ?>
 	</tbody>
 </table>
+   <div class="tablenav-pages">
+      <?php echo $page_links_text; ?>
+   </div>
 			</td>
 		</tr>
 </table>
-<?php
-		}
-		else {
-			// Unknown Post ID
-?>
-		<p>
-			<strong>
-				<?php _e('Unknown Post!', 'thankyou'); ?>
-			</strong>
-		</p>
-	<?php
-		}
-?>
-		<p>
-			<a href="./options-general.php?page=thankyou.php&amp;paged=<?php echo $_GET['paged']; ?>#statistics"><?php _e('Back to main statistics', 'thankyou'); ?></a>
-		</p>
 	</form>
 </div>
-<?php
-	}
-	else {
-		echo "How could you be there?";
-	}
-}
-else {
 
-if (!isset($_GET['rowsperstatpage'])) {
-  $rowsPerStatPage = get_option('thanks_rows_per_stat_page');
-  if (!$rowsPerStatPage) {
-    $rowsPerStatPage = 15;
-    update_option('thanks_rows_per_stat_page', $rowsPerStatPage);
-  }
+<?php
 } else {
-  $rowsPerStatPage = $_GET['rowsperstatpage'];
-  $temp = get_option('thanks_rows_per_stat_page');
-  if (!is_numeric($rowsPerStatPage)) {
-    $rowsPerStatPage = $temp;
-  } else {
-    if ($rowPerStatPage!=$temp) {
-      update_option('thanks_rows_per_stat_page', $rowsPerStatPage);
-    }
-  }
-}
 
 if (!isset($_GET['paged']) || !$_GET['paged'] || !is_numeric($_GET['paged'])) {
   if (isset($_SESSION['thanks_paged']) && $_SESSION['thanks_paged'] && is_numeric($_SESSION['thanks_paged'])) {
@@ -232,7 +281,6 @@ if (!isset($_GET['sortdir'])) {
     $sortDir = 'desc';
   }
 }
-
 
 $where1 = '';
 if (isset($_GET['month'])) {
@@ -268,7 +316,7 @@ if ($cat_id) {
               from $wpdb->posts posts
                 left join $wpdb->term_relationships term_relationships on (posts.ID=term_relationships.object_id)
                 left join $wpdb->term_taxonomy term_taxonomy on (term_relationships.term_taxonomy_id=term_taxonomy.term_taxonomy_id)
-              where posts.post_type='post' and
+              where (posts.post_type='post' or posts.post_type='page') and
                    (term_taxonomy.term_id=$cat_id or term_taxonomy.parent=$cat_id) and term_taxonomy.taxonomy='category'";
   $records = $wpdb->get_results($query);
   if ($wpdb->last_error) {
@@ -287,7 +335,7 @@ if ($cat_id) {
 $query = "select count(posts.ID)
             from $wpdb->posts posts
               left join $thanksCountersTable counters on counters.post_id=posts.ID
-            where 1=1 $where1 $where2 and posts.post_type='post'";
+            where 1=1 $where1 $where2 and (posts.post_type='post' or posts.post_type='page')";
 $thankedPosts = $wpdb->get_var($query);
 if ($wpdb->last_error) {
    return;
@@ -306,7 +354,7 @@ $fromRecord = max(0,($_GET['paged'] - 1))*$rowsPerStatPage;
 $query = "select posts.ID, posts.post_title, counters.quant, counters.updated
             from $wpdb->posts posts
               left join $thanksCountersTable counters on counters.post_id=posts.ID
-            where 1=1 $where1 $where2 and posts.post_type='post'
+            where 1=1 $where1 $where2 and (posts.post_type='post' or posts.post_type='page')
             order by $sortField $sortDir
             limit $fromRecord, $rowsPerStatPage";
 $records = $wpdb->get_results($query);
@@ -339,7 +387,7 @@ $page_links = paginate_links(array(
 if (!is_singular()) {
 $arc_query = "SELECT DISTINCT YEAR(post_date) AS yyear, MONTH(post_date) AS mmonth
                 FROM $wpdb->posts
-                WHERE post_type = 'post'
+                WHERE (post_type='post' or post_type='page')
                 ORDER BY post_date DESC";
 
 $arc_result = $wpdb->get_results( $arc_query );

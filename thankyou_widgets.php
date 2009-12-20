@@ -53,7 +53,7 @@ function widget($args, $instance) {
     $query = "select posts.ID, posts.post_title, counters.quant, counters.updated
                 from $wpdb->posts posts
                   left join $thanksCountersTable counters on counters.post_id=posts.ID
-                where counters.quant>0 and posts.post_type='post'
+                where counters.quant>0 and (posts.post_type='post' or posts.post_type='page')
                 order by $order desc limit 0, $number";
     $records = $wpdb->get_results($query, ARRAY_A);
     if ($wpdb->last_error) {
@@ -196,7 +196,7 @@ function thanks_dashboard_content() {
   $ww_query = "select posts.ID, posts.post_title, counters.quant, counters.updated
                    from $wpdb->posts posts
                      left join $thanksCountersTable counters on counters.post_id=posts.ID
-                   where counters.quant>0 and posts.post_type='post'
+                   where counters.quant>0 and (posts.post_type='post' or posts.post_type='page')
                    order by $order desc limit 0, $number";
   $ww_records = $wpdb->get_results($ww_query, ARRAY_A);
 
