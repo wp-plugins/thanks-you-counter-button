@@ -4,7 +4,7 @@ Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
 Tested up to: 2.9 & MU 2.8.6
-Stable tag: 1.5
+Stable tag: 1.6
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
@@ -44,10 +44,10 @@ Installing procedure:
 3. screenshot-3.png Settings Page part 2.
 4. screenshot-4.png Statistics page.
 5. screenshot-5.png Detailed Statistics for selected post.
-5. screenshot-6.png Admin dashboard "Latest Thanks/Most Thanked" configurable widget.
-6. screenshot-7.png Sidebar "Latest Thanks/Most Thanked" configurable widgets.
-7. screenshot-8.png Admin dashboard "Latest Thanks/Most Thanked" widget control panel.
-8. screenshot-9.png Sidebar "Latest Thanks/Most Thanked" widget control panel.
+6. screenshot-6.png Admin dashboard "Latest Thanks/Most Thanked" configurable widget.
+7. screenshot-7.png Sidebar "Latest Thanks/Most Thanked" configurable widgets.
+8. screenshot-8.png Admin dashboard "Latest Thanks/Most Thanked" widget control panel.
+9. screenshot-9.png Sidebar "Latest Thanks/Most Thanked" widget control panel.
 
 == Translations ==
 * Russian: [ShinePHP](http://shinephp.com/)
@@ -66,6 +66,12 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.6 =
+* 20.12.2009
+- Thanks data for Pages (wich were hidden earlier) are shown at the Statistics and widgets now.
+- Pagination is added to the Detailed Statistics screen with IP list for the selected post. You can list and look all IPs from wich thanks were sent to your blog. There is no 35 records limit more.
+- Some code optimization is done for the Detailed Statistics page.
+
 = 1.5 =
 * 06.12.2009
 - New Detailed Statistics screen with IP list for the selected post. Last 35 IP addresses of visitors who clicked button are shown with link to the http:://www.shinephp.com/ip-to-country service page where you can check what country/region/city that IP (or any custom IP) came from.
