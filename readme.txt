@@ -68,7 +68,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 == Changelog ==
 = 1.6 =
 * 20.12.2009
-- Thanks data for Pages (wich were hidden earlier) are shown at the Statistics and widgets now.
+- Thanks data for Pages (which were hidden earlier) are shown at the Statistics and widgets now.
 - Pagination is added to the Detailed Statistics screen with IP list for the selected post. You can list and look all IPs from wich thanks were sent to your blog. There is no 35 records limit more.
 - Some code optimization is done for the Detailed Statistics page.
 
