@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.6
+Version: 1.6.1
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: thankyou
@@ -39,7 +39,7 @@ $exit_msg = __('Thank You Counter Button requires WordPress 2.7.1 or newer.').'<
 
 if (version_compare($wp_version,"2.7.1","<"))
 {
-	exit ($exit_msg);
+	return ($exit_msg);
 }
 
 // just to have the translation for this string in the .po/.mo files
@@ -295,6 +295,10 @@ function thanks_install() {
                      KEY `ip_address` (`ip_address`)
                    ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8";
 		$wpdb->query($query);
+    if ($wpdb->last_error) {
+      thanks_logEvent(THANKS_ERROR." during plugin installation:\n".$wpdb->last_error);
+      return false;
+    }
 	}
 
   $query = "SHOW TABLES LIKE '$thanksCountersTable'";
@@ -309,15 +313,28 @@ function thanks_install() {
                       UNIQUE KEY `post_id` (`post_id`)
                     ) ENGINE=MyISAM DEFAULT CHARSET=utf8";
 		$wpdb->query($query);
+    if ($wpdb->last_error) {
+      thanks_logEvent(THANKS_ERROR." during plugin installation:\n".$wpdb->last_error);
+      return false;
+    }
 	} else if ($thanks_db_version=='1.0') {
     $query = "alter table `$thanksCountersTable` add column `updated` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL after `quant`";
     $wpdb->query($query);
+    if ($wpdb->last_error) {
+      thanks_logEvent(THANKS_ERROR." during plugin installation:\n".$wpdb->last_error);
+      return false;
+    }
     $query = "update `$thanksCountersTable`
                 set `$thanksCountersTable`.updated = (select MAX(readers.updated)
                                       from `$thanksPostReadersTable` readers
                                       where readers.post_id = `$thanksCountersTable`.post_id)";
     $wpdb->query($query);
+    if ($wpdb->last_error) {
+      thanks_logEvent(THANKS_ERROR." during plugin installation:\n".$wpdb->last_error);
+      return false;
+    }
   }
+  
 	add_option('thanks_db_version', '1.2');
   add_option('thanks_display_page', 1);
   add_option('thanks_display_home', 1);
@@ -357,11 +374,35 @@ function thanks_install() {
   add_option('thanks_dashboard_author_link_show', 1);
   add_option('thanks_display_settings_shortcuts', 1);
 
+  thanks_logEvent('TYCB Plugin is installed successfully.');
 }
 // end of thanks_install()
 
 
-function thanks_init(){
+function thanks_init() {
+
+global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
+$query = "SHOW TABLES LIKE '$thanksPostReadersTable'";
+$table1 = $wpdb->get_var($query);
+$query = "SHOW TABLES LIKE '$thanksCountersTable'";
+$table2 = $wpdb->get_var($query);
+if ($table1!=$thanksPostReadersTable || $table2!=$thanksCountersTable) {
+    function thanks_warning() {
+			echo '
+			<div id="thanks-warning" class="updated fade">
+          <p><strong>Thank You Counter Button Plugin is not installed properly.</strong><br/>
+             Check <a href="'.THANKS_PLUGIN_URL.'/tycb.log">tycb.log</a> file for more details.<br/>
+             Deactivate Thank You Counter Button Plugin to hide this message.<br/>
+             If you plan to contact the plugin author with your problem, please, use
+             <a href="http://www.shinephp.com/thank-you-counter-button">http://shinephp.com/thank-you-counter-button</a> post comments or<br/>
+             shinephp.com <a href="http://www.shinephp.com/contact/">contact page</a>.
+             Do not forget include the related part of tycb.log file content or the whole file to your message.
+          </p>
+      </div>';
+		}
+		add_action('admin_notices', 'thanks_warning');
+}
+
   if(function_exists('register_setting')) {
     register_setting('thankyoubutton-options', 'thanks_caption');
     register_setting('thankyoubutton-options', 'thanks_display_page');

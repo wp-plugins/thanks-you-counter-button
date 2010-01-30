@@ -57,6 +57,7 @@ function widget($args, $instance) {
                 order by $order desc limit 0, $number";
     $records = $wpdb->get_results($query, ARRAY_A);
     if ($wpdb->last_error) {
+      thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
       return;
     }
     if (is_array($records) && count($records)) {
@@ -201,6 +202,7 @@ function thanks_dashboard_content() {
   $ww_records = $wpdb->get_results($ww_query, ARRAY_A);
 
   if ($wpdb->last_error) {
+    thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
     return;
   }
   $ww_foundPosts = count($ww_records);
