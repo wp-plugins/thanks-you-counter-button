@@ -98,6 +98,7 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
               where post_id=$post_id";
   $thanksQuant = $wpdb->get_var($query);
   if ($wpdb->last_error) {
+     thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
      return;
   }
 
@@ -106,7 +107,8 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
               where post_id=$post_id limit 0, 1";
   $thankIPs = $wpdb->get_var($query);
   if ($wpdb->last_error) {
-     return;
+    thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
+    return;
   }
 
   if (!isset($_GET['pageips']) || !$_GET['pageips'] || !is_numeric($_GET['pageips'])) {
@@ -128,6 +130,7 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
               LIMIT $fromRecord, $rowsPerStatPage";
   $records = $wpdb->get_results($query);
   if ($wpdb->last_error) {
+    thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
     return;
 	}
 ?>
@@ -320,6 +323,7 @@ if ($cat_id) {
                    (term_taxonomy.term_id=$cat_id or term_taxonomy.parent=$cat_id) and term_taxonomy.taxonomy='category'";
   $records = $wpdb->get_results($query);
   if ($wpdb->last_error) {
+    thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
     return;
   }
   $posts = array();
@@ -338,7 +342,8 @@ $query = "select count(posts.ID)
             where 1=1 $where1 $where2 and (posts.post_type='post' or posts.post_type='page')";
 $thankedPosts = $wpdb->get_var($query);
 if ($wpdb->last_error) {
-   return;
+  thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
+  return;
 }
 
 $maxNumPages = (int) ($thankedPosts / $rowsPerStatPage);
@@ -359,7 +364,8 @@ $query = "select posts.ID, posts.post_title, counters.quant, counters.updated
             limit $fromRecord, $rowsPerStatPage";
 $records = $wpdb->get_results($query);
 if ($wpdb->last_error) {
-   return;
+  thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
+  return;
 }
 $foundPosts = count($records);
 
@@ -391,6 +397,10 @@ $arc_query = "SELECT DISTINCT YEAR(post_date) AS yyear, MONTH(post_date) AS mmon
                 ORDER BY post_date DESC";
 
 $arc_result = $wpdb->get_results( $arc_query );
+if ($wpdb->last_error) {
+  thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
+  return;
+}
 $month_count = count($arc_result);
 if ($month_count && !(1 == $month_count && 0 == $arc_result[0]->mmonth)) {
 ?>

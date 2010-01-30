@@ -27,6 +27,7 @@ $thanksPluginDirName = substr(dirname(__FILE__), strlen(WP_PLUGIN_DIR)+1, strlen
 define('THANKS_PLUGIN_URL', WP_PLUGIN_URL.'/'.$thanksPluginDirName);
 define('THANKS_PLUGIN_DIR', WP_PLUGIN_DIR.'/'.$thanksPluginDirName);
 define('THANKS_WP_ADMIN_URL', $thanks_siteURL.'/wp-admin');
+define('THANKS_ERROR', 'Error is encountered');
 
 global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 
@@ -60,7 +61,7 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
               limit 0, 1";
   $record = $wpdb->get_results($query);
   if ($wpdb->last_error) {
-      exit;
+      return true;
   }
   $id = $record[0]->id;
   if ($id) {
@@ -68,6 +69,7 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
       $query = "update $thanksPostReadersTable set updated=CURRENT_TIMESTAMP where id=$id";
       $wpdb->query($query);
       if ($wpdb->last_error) {
+        thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
         return true;
       }
     }
@@ -89,6 +91,7 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
       $query = "insert into $thanksPostReadersTable (post_id, ip_address) values ($postId, '$visitorIP')";
       $wpdb->query($query);
       if ($wpdb->last_error) {
+        thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
         return false;
       }
     }
@@ -109,6 +112,7 @@ function getThanksQuant($postId) {
 		          limit 0, 1";
 	$quant = $wpdb->get_var($query);
 	if ($wpdb->last_error) {
+    thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
 	  return;
 	}
 
@@ -225,6 +229,7 @@ function thanks_add_count($postId) {
                   limit 0, 1";
       $id = $wpdb->get_var($query);
       if ($wpdb->last_error) {
+        thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
         return;
       }
       if ($id) {
@@ -235,6 +240,9 @@ function thanks_add_count($postId) {
         $query = "insert into $thanksCountersTable (post_id, quant) values ($postId, 1)";
       }
       $wpdb->query($query);
+      if ($wpdb->last_error) {
+        thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
+      }
     }
 
 }
@@ -302,12 +310,14 @@ function resetCounterForPost($postId) {
               limit 1";
   $wpdb->query($query);
   if ($wpdb->last_error) {
+    thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
     return false;
   }
   // Remove stored IPs for this post_id
   $query = "DELETE FROM `$thanksPostReadersTable` WHERE `post_id` = '$postId'";
   $wpdb->query($query);
   if ($wpdb->last_error) {
+    thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
     return false;
   }
   echo '<thankstat>thanks counter for post ID='.$postId.' is cleared.</thankstat>';
@@ -327,11 +337,13 @@ function thanks_resetAllCounters() {
   $query = "delete from $thanksCountersTable";
   $wpdb->query($query);
   if ($wpdb->last_error) {
+    thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
     return false;
   }
   $query = "delete from $thanksPostReadersTable";
   $wpdb->query($query);
   if ($wpdb->last_error) {
+    thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
     return false;
   }
 
@@ -346,5 +358,20 @@ function thanks_js_escape($value) {
 
   return $value;
 }
+
+function thanks_logEvent($message) {
+  include(ABSPATH .'wp-includes/version.php');
+
+  $fileName = THANKS_PLUGIN_DIR.'/tycb.log';
+  $fh = fopen($fileName,'a');
+  $cr = "\n";
+  $s = $cr.date("d-m-Y H:i:s").$cr.
+      'WordPress version: '.$wp_version.', PHP version: '.phpversion().', MySQL version: '.mysql_get_server_info().$cr;
+  fwrite($fh, $s);
+  fwrite($fh, $message.$cr);
+  fclose($fh);
+  
+}
+// thanks_logEvent()
 
 ?>

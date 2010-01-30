@@ -4,7 +4,7 @@ Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
 Tested up to: 2.9.1
-Stable tag: 1.6
+Stable tag: 1.6.1
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
@@ -24,19 +24,25 @@ The set of shortcodes and content filters is available for this plugin. Visit ht
 
 Installing procedure:
 
+Attention! This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with.
 1. Deactivate plugin if you have the previous version installed. (It is important requirement for switching to this version from a previous one.)
 2. Extract "thanks-you-counter-button.x.x.x.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
 3. Activate "Thank You Counter Button" plugin via 'Plugins' menu in WordPress admin menu. 
 4. Go to the "Settings"-"Thanks CB" menu item and check/change your preferences to customize how this plugin will work for you.
 
 == Frequently Asked Questions ==
+- Plugin doesn't work. What is wrong? 
+
+  The most probable reason is the MySQL database permisions problem for your WordPress installation. This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with. 
+  From version 1.6.1. plugin writes any database errors into tycb.log file at plugin folder. Look at this file for more information about your problem.
+
 - I updated plugin to the recent version. Why does it shows button or Settings/Statistics pages wrong way.
 
   Your browser uses old cashed version of CSS files. Please try to reload full page (use F5 or Refresh button).
 
 - Does this plugin work with Wordpress MU?
 
-  Yes, it does. Plugin is tested with WordPress MU 2.8.6. Thanks to WP MU developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
+  Yes, it does. Plugin is tested with WordPress MU 2.9.1. Thanks to WP MU developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Screenshots ==
 1. screenshot-1.png The example of "Thank You" button in blue color
@@ -66,6 +72,12 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.6.1 =
+* 30.01.2010
+- Fixed error which stopped the whole blog work if MySQL database error with TYCB plugin was encountered. The TYCB plugin doesn't work only in such situation now.
+- Your blog tech information and MySQL database errors is written to the tycb.log file in order to help identify the problem if it exists.
+- Warning notice at admin page is added in case of MySQL error occurs during TYCB plugin installation.
+
 = 1.6 =
 * 20.12.2009
 - Thanks data for Pages (which were hidden earlier) are shown at the Statistics and widgets now.
