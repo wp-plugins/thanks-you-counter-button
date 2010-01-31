@@ -296,7 +296,7 @@ function thanks_install() {
                    ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8";
 		$wpdb->query($query);
     if ($wpdb->last_error) {
-      thanks_logEvent(THANKS_ERROR." during plugin installation:\n".$wpdb->last_error);
+      thanks_logEvent(THANKS_ERROR." during plugin installation:\n"."Query: $query \n".$wpdb->last_error);
       return false;
     }
 	}
@@ -314,25 +314,41 @@ function thanks_install() {
                     ) ENGINE=MyISAM DEFAULT CHARSET=utf8";
 		$wpdb->query($query);
     if ($wpdb->last_error) {
-      thanks_logEvent(THANKS_ERROR." during plugin installation:\n".$wpdb->last_error);
+      thanks_logEvent(THANKS_ERROR." during plugin installation:\n"."Query: $query \n".$wpdb->last_error);
       return false;
     }
 	} else if ($thanks_db_version=='1.0') {
-    $query = "alter table `$thanksCountersTable` add column `updated` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL after `quant`";
-    $wpdb->query($query);
+    $query = "show columns from `$thanksCountersTable`";
+    $fields = $wpdb->get_results($query);
     if ($wpdb->last_error) {
       thanks_logEvent(THANKS_ERROR." during plugin installation:\n".$wpdb->last_error);
       return false;
+    }    
+    $updatedFound = false;
+    foreach ($fields as $field) {
+      if ($field->Field=='updated') {
+        $updatedFound = true;
+        break;
+      }
     }
-    $query = "update `$thanksCountersTable`
-                set `$thanksCountersTable`.updated = (select MAX(readers.updated)
-                                      from `$thanksPostReadersTable` readers
-                                      where readers.post_id = `$thanksCountersTable`.post_id)";
-    $wpdb->query($query);
-    if ($wpdb->last_error) {
-      thanks_logEvent(THANKS_ERROR." during plugin installation:\n".$wpdb->last_error);
-      return false;
+    if (!$updatedFound) { // add new field 'updated'
+      $query = "alter table `$thanksCountersTable` add column `updated` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL after `quant`";
+      $wpdb->query($query);
+      if ($wpdb->last_error) {
+        thanks_logEvent(THANKS_ERROR." during plugin installation:\n"."Query: $query \n".$wpdb->last_error);
+        return false;
+      }
+      $query = "update `$thanksCountersTable`
+                  set `$thanksCountersTable`.updated = (select MAX(readers.updated)
+                                                          from `$thanksPostReadersTable` readers
+                                                          where readers.post_id = `$thanksCountersTable`.post_id)";
+      $wpdb->query($query);
+      if ($wpdb->last_error) {
+        thanks_logEvent(THANKS_ERROR." during plugin installation:\n"."Query: $query \n".$wpdb->last_error);
+        return false;
+      }
     }
+    update_option('thanks_db_version', '1.2');
   }
   
 	add_option('thanks_db_version', '1.2');
