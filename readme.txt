@@ -3,7 +3,7 @@ Contributors: ShinePHP, Whiler
 Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
-Tested up to: 2.9.2
+Tested up to: 2.9.1
 Stable tag: 1.6.1
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
@@ -56,22 +56,28 @@ Attention! This plugin will work properly for that WordPress installation only w
 9. screenshot-9.png Sidebar "Latest Thanks/Most Thanked" widget control panel.
 
 == Translations ==
-* Russian: [ShinePHP](http://shinephp.com/)
-* Spanish: [Omi](http://equipajedemano.info/)
+* Russian: [ShinePHP](http://shinephp.com)
+* Spanish: [Omi](http://equipajedemano.info)
 * French: [Whiler](http://blogs.wittwer.fr/whiler/)
+* German: [www.tolingo.com](http://www.tolingo.com)
 
 Dear TYCB plugin User,
-if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir@shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com and in this readme.txt file.
+if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir@shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, TYCB plugin settings page and in this readme.txt file.
 
 == Special Thanks to ==
 * [Omi](http://equipajedemano.info) for the help with Spanish translation, ideas and new versions testing.
 * [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
+* [www.tolingo.com] (http://www.tolingo.com) for the help with German translation.
 * [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
 * [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
 * [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.6.2 =
+* 12.03.2009
+- German translation was added.
+
 = 1.6.1 =
 * 30.01.2010
 - Fixed error which stopped the whole blog work if MySQL database error with TYCB plugin was encountered. The TYCB plugin doesn't work only in such situation now.
@@ -168,4 +174,6 @@ Additional documentation such as content filter hook list, available shortcodes 
 You can find more information about "Thank You Counter Button" plugin at this page
 http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 
-I am ready to answers on your questions about plugin usage. Use plugin page comments or site contact form for it please.
+I am ready to answer on your questions about plugin usage. Use ShinePHP forum at
+http://shinephp.com/community/forum/thank-you-counter-button
+plugin page comments or site contact form for it please.
