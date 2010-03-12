@@ -67,7 +67,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 == Special Thanks to ==
 * [Omi](http://equipajedemano.info) for the help with Spanish translation, ideas and new versions testing.
 * [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
-* [www.tolingo.com] (http://www.tolingo.com) for the help with German translation.
+* [www.tolingo.com](http://www.tolingo.com) for the help with German translation.
 * [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
 * [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
 * [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
