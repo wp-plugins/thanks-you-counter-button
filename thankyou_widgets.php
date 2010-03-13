@@ -147,15 +147,15 @@ add_action('init', 'thanks_widgets_init', 1);
 //------------------------------------------------------------
 
 // dashboard widget staff
-define(TD_ROWS_NUMBER, 'thanks_dashboard_rows_number');
-define(TD_CONTENT, 'thanks_dashboard_content');
-define(TD_TOTAL, 'thanks_dashboard_total_show');
-define(TD_STAT_LINK, 'thanks_dashboard_statistics_link_show');
-define(TD_AUTHOR_LINK, 'thanks_dashboard_author_link_show');
+define(THANKS_TD_ROWS_NUMBER, 'thanks_dashboard_rows_number');
+define(THANKS_TD_CONTENT, 'thanks_dashboard_content');
+define(THANKS_TD_TOTAL, 'thanks_dashboard_total_show');
+define(THANKS_TD_STAT_LINK, 'thanks_dashboard_statistics_link_show');
+define(THANKS_TD_AUTHOR_LINK, 'thanks_dashboard_author_link_show');
 
 // get from options what content to show
 function thanks_get_dashboard_content_kind() {
-  $content = get_option(TD_CONTENT);
+  $content = get_option(THANKS_TD_CONTENT);
   if ($content!='latest_thanked' && $content!='most_thanked') {
     $content = 'latest_thanked';
   }
@@ -167,7 +167,7 @@ function thanks_get_dashboard_content_kind() {
 
 // number of rows in result data set
 function thanks_get_dashboard_rows() {
-  $number = get_option(TD_ROWS_NUMBER);
+  $number = get_option(THANKS_TD_ROWS_NUMBER);
   if (!is_numeric($number) || $number<0) {
     $number = 5;
   } else if ($number>15) {
@@ -225,23 +225,23 @@ function thanks_dashboard_content() {
                     <td height="26" class="thanksquant" style="font-size:14px;" width="10%%">%4$s</td>
                  </tr>';
       $ww_record['kind'] = $content;
-      $ww_record = apply_filters('thanks_stat_dashboard_row', $ww_record);
+      $ww_record = apply_filters('thaTHANKS_TD_TOTALnks_stat_dashboard_row', $ww_record);
       $output .= sprintf($ww_record['oneItem'], get_permalink($ww_record['ID']), $ww_record['post_title'], mysql2date($date_format, $ww_record['updated'], true), ($ww_record['quant']) ? $ww_record['quant'] : 0);
     }
     $output .= '</tbody>
           </table>';
-    $showTotal = get_option(TD_TOTAL);
+    $showTotal = get_option(THANKS_TD_TOTAL);
     if ($showTotal==null || $showTotal==1) {
       $totalThanks = thanks_get_Total();
       $output .= '<div class="thanks_total_quant" style="text-align: right;margin-right:10px;">'.__('Total quant of thanks: ','thankyou').'<strong>'.$totalThanks.'</strong>'.'</div>';
     }
     $output .= '<div>';
 
-    $showStatLink = get_option(TD_STAT_LINK);
+    $showStatLink = get_option(THANKS_TD_STAT_LINK);
     if ($showStatLink==null || $showStatLink==1) {
       $output .= '<div style="float: right;margin-top:0px;font-size: 9px;"><a href="options-general.php?page=thankyou.php&paged=1">'.__('Check Full Statistics','thankyou').'</a></div>';
     }
-    $showAuthorLink = get_option(TD_AUTHOR_LINK);
+    $showAuthorLink = get_option(THANKS_TD_AUTHOR_LINK);
     if ($showAuthorLink==null || $showAuthorLink==1) {
       $output .= '<div style="float: left;margin-top:0px;font-size: 9px;"><a target="_blank" href="http://www.shinephp.com/" title="'.__('Plugin author home page','thankyou').'">ShinePHP.com</a></div>';
     }
@@ -261,47 +261,47 @@ function thanks_dashboard_content() {
 function thanks_dashboard_setup() {
   // update options
   if (isset($_POST['widget_id']) && $_POST['widget_id']=='dashboard_thanks') {
-    if (isset($_POST[TD_ROWS_NUMBER])) {
-      $option = stripslashes_deep($_POST[TD_ROWS_NUMBER]);
+    if (isset($_POST[THANKS_TD_ROWS_NUMBER])) {
+      $option = stripslashes_deep($_POST[THANKS_TD_ROWS_NUMBER]);
       if (!is_numeric($option) || $option<0) {
         $option = 5;
       } else if ($option>15) {
         $option = 15;
       }
-      update_option(TD_ROWS_NUMBER, $option);
+      update_option(THANKS_TD_ROWS_NUMBER, $option);
     }
-    if (isset($_POST[TD_CONTENT])) {
-      $option = stripslashes_deep($_POST[TD_CONTENT]);
-      update_option(TD_CONTENT, $option);
+    if (isset($_POST[THANKS_TD_CONTENT])) {
+      $option = stripslashes_deep($_POST[THANKS_TD_CONTENT]);
+      update_option(THANKS_TD_CONTENT, $option);
     }
 
-    if (isset($_POST[TD_TOTAL])) {
-      $option = (int) stripslashes_deep($_POST[TD_TOTAL]);
+    if (isset($_POST[THANKS_TD_TOTAL])) {
+      $option = (int) stripslashes_deep($_POST[THANKS_TD_TOTAL]);
     } else {
       $option = 0;
     }
-    update_option(TD_TOTAL, $option);
+    update_option(THANKS_TD_TOTAL, $option);
 
-    if (isset($_POST[TD_STAT_LINK])) {
-      $option = (int) stripslashes_deep($_POST[TD_STAT_LINK]);
+    if (isset($_POST[THANKS_TD_STAT_LINK])) {
+      $option = (int) stripslashes_deep($_POST[THANKS_TD_STAT_LINK]);
     } else {
       $option = 0;
     }
-    update_option(TD_STAT_LINK, $option);
+    update_option(THANKS_TD_STAT_LINK, $option);
 
-    if (isset($_POST[TD_AUTHOR_LINK])) {
-      $option = (int) stripslashes_deep($_POST[TD_AUTHOR_LINK]);
+    if (isset($_POST[THANKS_TD_AUTHOR_LINK])) {
+      $option = (int) stripslashes_deep($_POST[THANKS_TD_AUTHOR_LINK]);
     } else {
       $option = 0;
     }
-    update_option(TD_AUTHOR_LINK, $option);
+    update_option(THANKS_TD_AUTHOR_LINK, $option);
   }
 
   $number = thanks_get_dashboard_rows();
-  $content = get_option(TD_CONTENT);
-  $totalChecked = get_option(TD_TOTAL);
-  $statLinkChecked = get_option(TD_STAT_LINK);
-  $authorLinkChecked = get_option(TD_AUTHOR_LINK);
+  $content = get_option(THANKS_TD_CONTENT);
+  $totalChecked = get_option(THANKS_TD_TOTAL);
+  $statLinkChecked = get_option(THANKS_TD_STAT_LINK);
+  $authorLinkChecked = get_option(THANKS_TD_AUTHOR_LINK);
 ?>
 
 <table>
