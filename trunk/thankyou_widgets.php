@@ -140,7 +140,6 @@ function thanks_widgets_init() {
 
 	register_widget('Thanks_Widget_Latest_Thanks');
 
-	do_action('widgets_init');
 }
 
 add_action('init', 'thanks_widgets_init', 1);
