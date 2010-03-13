@@ -4,7 +4,7 @@ Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
 Tested up to: 2.9.2
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
@@ -77,7 +77,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 = 1.6.3 =
 * 13.03.2009
 - This is a recommended update. Critical bug was fixed. TYCB widgets code could block blog work as PHP fatal error could occur due to conflict with some other plugin, e.g. wp-cumulus as had been discovered. Thanks to [bgd](http://wordpress.org/support/profile/1516753) for reporting about it.
-- Prefix 'thanks' was added to the constants names in the thanks_widgets.php to exclude possible name conflicts.
+- Prefix 'thanks' was added to the constants names in the thanks_widgets.php to exclude possible name conflicts also.
 
 = 1.6.2 =
 * 12.03.2009
