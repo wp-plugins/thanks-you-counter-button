@@ -77,6 +77,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 = 1.6.3 =
 * 13.03.2009
 - Critical bug was fixed. TYCB widgets code could block blog work - PHP fatal error occured due to conflict with other plugin, wp-cumulus as reported. Thanks to [bgd](http://wordpress.org/support/profile/1516753) for reporting it.
+- Prefix 'thanks' was added to the constants names in the thanks_widgets.php to exclude possible name conflicts.
 
 = 1.6.2 =
 * 12.03.2009
