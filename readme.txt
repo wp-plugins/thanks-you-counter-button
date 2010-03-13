@@ -3,7 +3,7 @@ Contributors: ShinePHP, Whiler
 Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
-Tested up to: 2.9.1
+Tested up to: 2.9.2
 Stable tag: 1.6.2
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
@@ -67,7 +67,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 == Special Thanks to ==
 * [Omi](http://equipajedemano.info) for the help with Spanish translation, ideas and new versions testing.
 * [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
-* [www.tolingo.com](http://www.tolingo.com) for the help with German translation.
+* [www.tolingo.com] (http://www.tolingo.com) for the help with German translation.
 * [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
 * [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
 * [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
