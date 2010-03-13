@@ -74,6 +74,10 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.6.3 =
+* 13.03.2009
+- Critical bug was fixed. TYCB widgets code could block blog work - PHP fatal error occured due to conflict with other plugin, wp-cumulus as reported. Thanks to [bgd](http://wordpress.org/support/profile/1516753) for reporting it.
+
 = 1.6.2 =
 * 12.03.2009
 - German translation was added.
