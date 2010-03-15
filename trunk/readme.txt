@@ -4,7 +4,7 @@ Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
 Tested up to: 2.9.2
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
@@ -60,6 +60,7 @@ Attention! This plugin will work properly for that WordPress installation only w
 * Spanish: [Omi](http://equipajedemano.info)
 * French: [Whiler](http://blogs.wittwer.fr/whiler/)
 * German: [www.tolingo.com](http://www.tolingo.com)
+* Italian: [Ugo](http://www.myeasywp.com)
 
 Dear TYCB plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir@shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, TYCB plugin settings page and in this readme.txt file.
@@ -68,12 +69,17 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Omi](http://equipajedemano.info) for the help with Spanish translation, ideas and new versions testing.
 * [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
 * [www.tolingo.com](http://www.tolingo.com) for the help with German translation.
+* [Ugo](http://www.myeasywp.com) for the help with Italian translation.
 * [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
 * [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
 * [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.6.4 =
+* 15.03.2009
+- Italian translation was added.
+
 = 1.6.3 =
 * 13.03.2009
 - This is a recommended update. Critical bug was fixed. TYCB widgets code could block blog work as PHP fatal error could occur due to conflict with some other plugin, e.g. wp-cumulus as had been discovered. Thanks to [bgd](http://wordpress.org/support/profile/1516753) for reporting about it.
