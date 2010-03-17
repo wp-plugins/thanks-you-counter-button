@@ -59,7 +59,7 @@ Attention! This plugin will work properly for that WordPress installation only w
 * Russian: [ShinePHP](http://shinephp.com)
 * Spanish: [Omi](http://equipajedemano.info)
 * French: [Whiler](http://blogs.wittwer.fr/whiler/)
-* German: [www.tolingo.com](http://www.tolingo.com)
+* German: [tolingo translations](http://www.tolingo.com)
 * Italian: [Ugo](http://www.myeasywp.com)
 
 Dear TYCB plugin User,
