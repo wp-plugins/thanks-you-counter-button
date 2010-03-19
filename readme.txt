@@ -4,7 +4,7 @@ Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
 Tested up to: 2.9.2
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
@@ -76,6 +76,10 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.6.4 =
+* 19.03.2009
+- Minor bug is fixed for the TYCB dashboard widget content filter hook "thanks_stat_dashboard_row". Thanks to Whiler who found it. If you don't use that filter hook you can skip this update.
+
 = 1.6.4 =
 * 15.03.2009
 - Italian translation was added.

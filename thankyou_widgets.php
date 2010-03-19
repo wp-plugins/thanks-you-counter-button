@@ -225,7 +225,7 @@ function thanks_dashboard_content() {
                     <td height="26" class="thanksquant" style="font-size:14px;" width="10%%">%4$s</td>
                  </tr>';
       $ww_record['kind'] = $content;
-      $ww_record = apply_filters('thaTHANKS_TD_TOTALnks_stat_dashboard_row', $ww_record);
+      $ww_record = apply_filters('thanks_stat_dashboard_row', $ww_record);
       $output .= sprintf($ww_record['oneItem'], get_permalink($ww_record['ID']), $ww_record['post_title'], mysql2date($date_format, $ww_record['updated'], true), ($ww_record['quant']) ? $ww_record['quant'] : 0);
     }
     $output .= '</tbody>
