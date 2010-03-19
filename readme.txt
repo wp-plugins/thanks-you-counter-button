@@ -76,7 +76,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
-= 1.6.4 =
+= 1.6.5 =
 * 19.03.2009
 - Minor bug is fixed for the TYCB dashboard widget content filter hook "thanks_stat_dashboard_row". Thanks to Whiler who found it. If you don't use that filter hook you can skip this update.
 
