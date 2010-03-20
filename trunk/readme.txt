@@ -4,7 +4,7 @@ Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
 Tested up to: 2.9.2
-Stable tag: 1.6.5
+Stable tag: 1.6.6
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
@@ -56,20 +56,23 @@ Attention! This plugin will work properly for that WordPress installation only w
 9. screenshot-9.png Sidebar "Latest Thanks/Most Thanked" widget control panel.
 
 == Translations ==
-* Russian: [ShinePHP](http://shinephp.com)
-* Spanish: [Omi](http://equipajedemano.info)
+* Belarusian: [Marcis Gasuns](http://pc.de/)
 * French: [Whiler](http://blogs.wittwer.fr/whiler/)
 * German: [tolingo translations](http://www.tolingo.com)
 * Italian: [Ugo](http://www.myeasywp.com)
+* Russian: [ShinePHP](http://shinephp.com)
+* Spanish: [Omi](http://equipajedemano.info)
+
 
 Dear TYCB plugin User,
-if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir@shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, TYCB plugin settings page and in this readme.txt file.
+if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir[at-sign]shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, TYCB plugin settings page and in this readme.txt file.
 
 == Special Thanks to ==
 * [Omi](http://equipajedemano.info) for the help with Spanish translation, ideas and new versions testing.
 * [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
 * [www.tolingo.com](http://www.tolingo.com) for the help with German translation.
 * [Ugo](http://www.myeasywp.com) for the help with Italian translation.
+* [Marcis Gasuns](http://pc.de/) for the help with Belarusian translation.
 * [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
 * [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
 * [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
