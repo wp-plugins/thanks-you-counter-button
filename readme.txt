@@ -1,7 +1,7 @@
 === Thank You Counter Button ===
 Contributors: ShinePHP, Whiler
 Donate link: http://www.shinephp.com/donate/
-Tags: thanks, thank you, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
+Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
 Tested up to: 2.9.2
 Stable tag: 1.6.6
