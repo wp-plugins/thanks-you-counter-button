@@ -3,8 +3,8 @@ Contributors: ShinePHP, Whiler
 Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
-Tested up to: 2.9.2
-Stable tag: 1.6.6
+Tested up to: 3.0
+Stable tag: 1.6.7
 
 Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
 
@@ -20,6 +20,15 @@ Admin dashboard and sidebar widgets with list of latest thanked or the largests 
 
 The set of shortcodes and content filters is available for this plugin. Visit http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/ for more details.
 
+= Translations =
+* Belarusian: [Marcis Gasuns](http://pc.de/)
+* French: [Whiler](http://blogs.wittwer.fr/whiler/)
+* German: [tolingo translations](http://www.tolingo.com)
+* Hungarian: Nightmare
+* Italian: [Ugo](http://www.myeasywp.com)
+* Russian: [ShinePHP](http://shinephp.com)
+* Spanish: [Omi](http://equipajedemano.info)
+
 == Installation ==
 
 Installing procedure:
@@ -33,7 +42,7 @@ Attention! This plugin will work properly for that WordPress installation only w
 == Frequently Asked Questions ==
 - Plugin doesn't work. What is wrong? 
 
-  The most probable reason is the MySQL database permisions problem for your WordPress installation. This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with. 
+  The most probable reason is the MySQL database permissions problem for your WordPress installation. This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with.
   From version 1.6.1. plugin writes any database errors into tycb.log file at plugin folder. Look at this file for more information about your problem.
 
 - I updated plugin to the recent version. Why does it shows button or Settings/Statistics pages wrong way.
@@ -55,14 +64,6 @@ Attention! This plugin will work properly for that WordPress installation only w
 8. screenshot-8.png Admin dashboard "Latest Thanks/Most Thanked" widget control panel.
 9. screenshot-9.png Sidebar "Latest Thanks/Most Thanked" widget control panel.
 
-== Translations ==
-* Belarusian: [Marcis Gasuns](http://pc.de/)
-* French: [Whiler](http://blogs.wittwer.fr/whiler/)
-* German: [tolingo translations](http://www.tolingo.com)
-* Italian: [Ugo](http://www.myeasywp.com)
-* Russian: [ShinePHP](http://shinephp.com)
-* Spanish: [Omi](http://equipajedemano.info)
-
 
 Dear TYCB plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir[at-sign]shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, TYCB plugin settings page and in this readme.txt file.
@@ -73,12 +74,17 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [tolingo translations](http://www.tolingo.com) for the help with German translation.
 * [Ugo](http://www.myeasywp.com) for the help with Italian translation.
 * [Marcis Gasuns](http://pc.de/) for the help with Belarusian translation.
+* Nightmare for the help with Hungarian translation.
 * [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
 * [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
 * [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.6.7 =
+* 22.06.2009
+- Hungarian translation is added.
+
 = 1.6.6 =
 * 20.03.2009
 - Belarusian translation is added.
