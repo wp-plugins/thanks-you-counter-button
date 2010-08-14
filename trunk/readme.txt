@@ -84,33 +84,33 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 
 == Changelog ==
 = 1.6.8 =
-* 14.08.2009
+* 14.08.2010
 - Dutch translation is added.
 - Iranian translation is added.
 
 = 1.6.7 =
-* 22.06.2009
+* 22.06.2010
 - Hungarian translation is added.
 
 = 1.6.6 =
-* 20.03.2009
+* 20.03.2010
 - Belarusian translation is added.
 
 = 1.6.5 =
-* 19.03.2009
+* 19.03.2010
 - Minor bug is fixed for the TYCB dashboard widget content filter hook "thanks_stat_dashboard_row". Thanks to Whiler who found it. If you don't use that filter hook you can skip this update.
 
 = 1.6.4 =
-* 15.03.2009
+* 15.03.2010
 - Italian translation was added.
 
 = 1.6.3 =
-* 13.03.2009
+* 13.03.2010
 - This is a recommended update. Critical bug was fixed. TYCB widgets code could block blog work as PHP fatal error could occur due to conflict with some other plugin, e.g. wp-cumulus as had been discovered. Thanks to [bgd](http://wordpress.org/support/profile/1516753) for reporting about it.
 - Prefix 'thanks' was added to the constants names in the thanks_widgets.php to exclude possible name conflicts also.
 
 = 1.6.2 =
-* 12.03.2009
+* 12.03.2010
 - German translation was added.
 
 = 1.6.1 =
