@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-19 20:29+0700\n"
+"POT-Creation-Date: 2010-08-14 20:57+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vladimir <vladimir@shinephp.com>\n"
 "Language-Team: Marcis G. <zhr@tut.by>\n"
@@ -108,9 +108,9 @@ msgid "Thank You Counter Button Plugin"
 msgstr "Усталёўкі для ўбудовы: Кнопка падліку падазяк"
 
 #: ../thankyou.php:117
-#: ../thankyou.php:188
-#: ../thankyou.php:484
-#: ../thankyou_options.php:507
+#: ../thankyou.php:187
+#: ../thankyou.php:483
+#: ../thankyou_options.php:510
 msgid "Settings"
 msgstr "Усталёўкі"
 
@@ -118,43 +118,43 @@ msgstr "Усталёўкі"
 msgid "Statistics"
 msgstr "Статыстыка"
 
-#: ../thankyou.php:171
-#: ../thankyou.php:173
+#: ../thankyou.php:170
+#: ../thankyou.php:172
 msgid "You left &ldquo;Thanks&rdquo; already for this post"
 msgstr "Вы ўжо пакінулі падзяку за гэты артыкул"
 
-#: ../thankyou.php:174
+#: ../thankyou.php:173
 msgid "Click to left &ldquo;Thanks&rdquo; for this post"
 msgstr "Пстрыкніце мышшу, каб пакінуць падзяку за гэты артыкул"
 
-#: ../thankyou.php:189
-#: ../thankyou_options.php:508
-#: ../thankyou_statistics.php:606
-#: ../thankyou_statistics.php:609
+#: ../thankyou.php:188
+#: ../thankyou_options.php:511
+#: ../thankyou_statistics.php:600
+#: ../thankyou_statistics.php:603
 #, php-format
 msgid "View statistics details for \"%s\""
 msgstr "Прагляд дэталізаванай статыстыкі для \"%s\""
 
-#: ../thankyou.php:190
-#: ../thankyou_options.php:509
+#: ../thankyou.php:189
+#: ../thankyou_options.php:512
 msgid "Hide these shortcuts"
 msgstr "Схаваць спасылкі доступу да ўсталёвак і статыстыцы ўбудовы"
 
-#: ../thankyou.php:190
+#: ../thankyou.php:189
 msgid "Do you really want to hide these shortcuts?"
 msgstr "Вы сапраўды жадаеце схаваць гэтыя спасылкі?"
 
-#: ../thankyou.php:387
-#: ../thankyou_lib.php:285
+#: ../thankyou.php:386
+#: ../thankyou_lib.php:279
 msgid "Thank You"
 msgstr "Дзякуй"
 
-#: ../thankyou.php:494
+#: ../thankyou.php:493
 #: ../thankyou_options.php:54
 msgid "Changelog"
 msgstr "Часопіс змен"
 
-#: ../thankyou.php:495
+#: ../thankyou.php:494
 msgid "Additional Documentation"
 msgstr "Дадатковая дакументацыя"
 
@@ -199,12 +199,12 @@ msgid "It's me, the author"
 msgstr "Гэта я, аўтар"
 
 #: ../thankyou_options.php:60
-msgid "for the help with Spanish translation, ideas and new versions testing"
-msgstr "за дапамогу з іспанскім перакладам, ідэі і тэставанне новых версій"
+msgid "for the help with Belarusian translation"
+msgstr "за дапамогу з беларускім перакладам"
 
 #: ../thankyou_options.php:61
-msgid "for the excelent JQuery color picker"
-msgstr "за выдатны JQuery-убудова для працы з каляровай палітрай"
+msgid "for the help with Dutch translation"
+msgstr "за дапамогу з голландскім перакладам"
 
 #: ../thankyou_options.php:62
 msgid "for the help with French translation, ideas, source code contributions and new versions testing"
@@ -215,34 +215,42 @@ msgid "for the help with German translation"
 msgstr "за дапамогу з нямецкім перакладам"
 
 #: ../thankyou_options.php:64
-msgid "for the help with Italian translation"
-msgstr "за дапамогу з італьянскім перакладам"
-
-#: ../thankyou_options.php:65
-msgid "for the help with Belarusian translation"
-msgstr "за дапамогу з беларускім перакладам"
-
-#: ../thankyou_options.php:66
 msgid "for the help with Hungarian translation"
 msgstr "за дапамогу з Hungarian перакладам"
 
+#: ../thankyou_options.php:65
+msgid "for the help with Iranian translation"
+msgstr "за дапамогу з іранскім перакладам"
+
+#: ../thankyou_options.php:66
+msgid "for the help with Italian translation"
+msgstr "за дапамогу з італьянскім перакладам"
+
 #: ../thankyou_options.php:67
+msgid "for the help with Spanish translation, ideas and new versions testing"
+msgstr "за дапамогу з іспанскім перакладам, ідэі і тэставанне новых версій"
+
+#: ../thankyou_options.php:69
 msgid "for setting page layout idea and html markup examples"
 msgstr "за ідэю па кампаноўцы экрана з опцыямі і прыклады HTML разметкі"
 
-#: ../thankyou_options.php:68
+#: ../thankyou_options.php:70
+msgid "for the excelent JQuery color picker"
+msgstr "за выдатны JQuery-убудова для працы з каляровай палітрай"
+
+#: ../thankyou_options.php:71
 msgid "for the form input slider code"
 msgstr "за код слайдара для тэкставага поля input HTML формы"
 
-#: ../thankyou_options.php:69
+#: ../thankyou_options.php:72
 msgid "for the cute online button image generator"
 msgstr "за выдатны анлайнавы генератар малюнкаў кнопак"
 
-#: ../thankyou_options.php:98
+#: ../thankyou_options.php:101
 msgid "All settings for TYCB plugin will be return to the default values, Continue?"
 msgstr "Усім усталёўкам для TYCB убудовы будуць вернутыя значэнні па-змаўчанню, Працягнуць?"
 
-#: ../thankyou_options.php:100
+#: ../thankyou_options.php:103
 msgid ""
 "All thanks counters for all posts will be set to 0,\\n"
 " all thanks click history will be cleared, Continue?"
@@ -250,182 +258,182 @@ msgstr ""
 "Усе лічыльнікі падазяк для ўсіх артыкулаў будуць абнулены,\\n"
 " уся гісторыя клікаў па кнопках падзякі будзе абнулена, Працягнуць?"
 
-#: ../thankyou_options.php:281
-#: ../thankyou_options.php:285
+#: ../thankyou_options.php:284
+#: ../thankyou_options.php:288
 msgid "Display"
 msgstr "Адлюстраванне"
 
-#: ../thankyou_options.php:290
+#: ../thankyou_options.php:293
 msgid "Display button at Pages"
 msgstr "Адлюстроўваць на Старонках"
 
-#: ../thankyou_options.php:293
+#: ../thankyou_options.php:296
 msgid "Display button at Home page, Categories/Tags archive pages"
 msgstr "Адлюстроўваць на Хатняй старонцы, архівах катэгорый/тэгаў"
 
-#: ../thankyou_options.php:298
+#: ../thankyou_options.php:301
 msgid "Do not show button for selected categories"
 msgstr "Не адлюстроўваць кнопку для адзначаных катэгорый"
 
-#: ../thankyou_options.php:353
+#: ../thankyou_options.php:356
 msgid "Position in the Post text"
 msgstr "Размяшчэнне ў артыкуле"
 
-#: ../thankyou_options.php:357
+#: ../thankyou_options.php:360
 msgid "Before"
 msgstr "Да"
 
-#: ../thankyou_options.php:359
+#: ../thankyou_options.php:362
 msgid "At first page of multipaged posts only"
 msgstr "Толькі на першай старонцы шматстаронкавых артыкулаў "
 
-#: ../thankyou_options.php:363
+#: ../thankyou_options.php:366
 msgid "After"
 msgstr "Пасля"
 
-#: ../thankyou_options.php:365
+#: ../thankyou_options.php:368
 msgid "At last page of multipaged posts only"
 msgstr "Толькі на апошняй старонцы шматстаронкавых артыкулаў"
 
-#: ../thankyou_options.php:369
+#: ../thankyou_options.php:372
 msgid "Shortcode [thankyou]"
 msgstr "Абрэвіятура [thankyou]"
 
-#: ../thankyou_options.php:370
+#: ../thankyou_options.php:373
 msgid "Manual"
 msgstr "Уручную"
 
-#: ../thankyou_options.php:376
+#: ../thankyou_options.php:379
 msgid "Button Caption"
 msgstr "Надпіс на кнопцы"
 
-#: ../thankyou_options.php:383
+#: ../thankyou_options.php:386
 msgid "Button Styling"
 msgstr "Стыль для Кнопкі"
 
-#: ../thankyou_options.php:385
+#: ../thankyou_options.php:388
 msgid "Add style to the div:"
 msgstr "Cтиль для div"
 
-#: ../thankyou_options.php:388
-#: ../thankyou_options.php:392
-#: ../thankyou_options.php:445
+#: ../thankyou_options.php:391
+#: ../thankyou_options.php:395
+#: ../thankyou_options.php:448
 msgid "e.g.,"
 msgstr ", напрыклад, "
 
-#: ../thankyou_options.php:389
+#: ../thankyou_options.php:392
 msgid "to the Caption font:"
 msgstr "для шрыфта:"
 
-#: ../thankyou_options.php:393
+#: ../thankyou_options.php:396
 msgid "font color: "
 msgstr "колер шрыфта:"
 
-#: ../thankyou_options.php:398
+#: ../thankyou_options.php:401
 msgid "Size"
 msgstr "Памер"
 
-#: ../thankyou_options.php:403
+#: ../thankyou_options.php:406
 msgid "Normal"
 msgstr "Звычайны"
 
-#: ../thankyou_options.php:406
+#: ../thankyou_options.php:409
 msgid "Compact"
 msgstr "Кампактны памер"
 
-#: ../thankyou_options.php:411
+#: ../thankyou_options.php:414
 msgid "Form and Color"
 msgstr "Форма і Колер"
 
-#: ../thankyou_options.php:440
+#: ../thankyou_options.php:443
 msgid "Custom button image URL"
 msgstr "URL малюнкі ўласнай кнопкі"
 
-#: ../thankyou_options.php:447
+#: ../thankyou_options.php:450
 msgid "Width, px"
 msgstr "Шырыня, px"
 
-#: ../thankyou_options.php:448
+#: ../thankyou_options.php:451
 msgid "Height, px"
 msgstr "Вышыня, px"
 
-#: ../thankyou_options.php:459
+#: ../thankyou_options.php:462
 msgid "Misc"
 msgstr "Рознае"
 
-#: ../thankyou_options.php:463
+#: ../thankyou_options.php:466
 msgid "Check IP-address"
 msgstr "Кантраляваць IP-адрас"
 
-#: ../thankyou_options.php:468
+#: ../thankyou_options.php:471
 msgid "Only one Thanks for post for one IP-address limit"
 msgstr "Толькі адно Дзякуй на артыкул з аднаго IP-адрасы"
 
-#: ../thankyou_options.php:469
+#: ../thankyou_options.php:472
 msgid "Time limit:"
 msgstr "Абмежаванне па часе:"
 
-#: ../thankyou_options.php:471
+#: ../thankyou_options.php:474
 msgid "Forever"
 msgstr "Назаўжды"
 
-#: ../thankyou_options.php:473
+#: ../thankyou_options.php:476
 msgid "Only for this period"
 msgstr "Толькі на дадзены прамежак"
 
-#: ../thankyou_options.php:475
+#: ../thankyou_options.php:478
 msgid "seconds"
 msgstr "секунд"
 
-#: ../thankyou_options.php:480
+#: ../thankyou_options.php:483
 msgid "Display settings shortcuts"
 msgstr "Выснова службовых спасылак"
 
-#: ../thankyou_options.php:485
+#: ../thankyou_options.php:488
 msgid "Add shortcuts next to the buttons for settings quick access"
 msgstr "Адлюстраваць службовыя спасылкі справа ад кнопак для хуткага доступу да часткі налад"
 
-#: ../thankyou_options.php:490
+#: ../thankyou_options.php:493
 msgid "Return to Defaults"
 msgstr "Вярнуць значэнні па-змаўчанню"
 
-#: ../thankyou_options.php:490
+#: ../thankyou_options.php:493
 msgid "Restore the default values for all settings"
 msgstr "Аднавіць значэнні па-змаўчанню для ўсіх усталёвак"
 
-#: ../thankyou_options.php:491
+#: ../thankyou_options.php:494
 msgid "Reset Counters"
 msgstr "Абнуліць Лічыльнікі"
 
-#: ../thankyou_options.php:491
+#: ../thankyou_options.php:494
 msgid "Reset all thanks counters for the all posts"
 msgstr "Скінуць усе лічыльнікі падазяк для ўсіх артыкулаў"
 
-#: ../thankyou_options.php:496
+#: ../thankyou_options.php:499
 msgid "Save Changes"
 msgstr "Захаваць змены"
 
-#: ../thankyou_options.php:497
+#: ../thankyou_options.php:500
 msgid "Cancel"
 msgstr "Адмена"
 
-#: ../thankyou_options.php:497
+#: ../thankyou_options.php:500
 msgid "Cancel not saved changes"
 msgstr "Адмова ад захавання изменеий"
 
-#: ../thankyou_options.php:499
+#: ../thankyou_options.php:502
 msgid "Button DIV Style Preview"
 msgstr "Стыль для часткі Кнопкі"
 
-#: ../thankyou_options.php:508
+#: ../thankyou_options.php:511
 #: ../thankyou_statistics.php:160
-#: ../thankyou_statistics.php:532
+#: ../thankyou_statistics.php:526
 msgid "Post Title"
 msgstr "Загаловак артыкула"
 
-#: ../thankyou_lib.php:260
-#: ../thankyou_lib.php:298
-#: ../thankyou_lib.php:341
+#: ../thankyou_lib.php:254
+#: ../thankyou_lib.php:292
+#: ../thankyou_lib.php:335
 msgid "operation is prohibited"
 msgstr "аперацыя забаронена"
 
@@ -448,40 +456,40 @@ msgid "Details for &ldquo;%s&rdquo;"
 msgstr "Падрабязнасці для &ldquo;%s&rdquo;"
 
 #: ../thankyou_statistics.php:159
-#: ../thankyou_statistics.php:531
+#: ../thankyou_statistics.php:525
 msgid "Post Id"
 msgstr "Id артыкулы"
 
 #: ../thankyou_statistics.php:161
-#: ../thankyou_statistics.php:533
+#: ../thankyou_statistics.php:527
 msgid "Thanks Quant"
 msgstr "Колькасць падазяк"
 
 #: ../thankyou_statistics.php:166
 #: ../thankyou_statistics.php:169
-#: ../thankyou_statistics.php:610
+#: ../thankyou_statistics.php:604
 msgid "View Post"
 msgstr "Прагляд артыкула"
 
 #: ../thankyou_statistics.php:169
-#: ../thankyou_statistics.php:610
+#: ../thankyou_statistics.php:604
 #, php-format
 msgid "View \"%s\""
 msgstr "Прагляд \"%s\""
 
 #: ../thankyou_statistics.php:170
-#: ../thankyou_statistics.php:611
+#: ../thankyou_statistics.php:605
 #, php-format
 msgid "Edit \"%s\""
 msgstr "Змяніць \"%s\""
 
 #: ../thankyou_statistics.php:170
-#: ../thankyou_statistics.php:611
+#: ../thankyou_statistics.php:605
 msgid "Edit Post"
 msgstr "Змяніць артыкул"
 
 #: ../thankyou_statistics.php:172
-#: ../thankyou_statistics.php:613
+#: ../thankyou_statistics.php:607
 msgid "Reset this post counter"
 msgstr "Абнуліць лічыльнік для гэтага артыкула"
 
@@ -493,13 +501,13 @@ msgstr ""
 " Выкарыстоўвайце 'Адмена' каб адмовіцца, 'OK' каб вырабіць абнуленне."
 
 #: ../thankyou_statistics.php:173
-#: ../thankyou_statistics.php:614
+#: ../thankyou_statistics.php:608
 msgid "Reset Counter"
 msgstr "Абнуліць Лічыльнік"
 
 #: ../thankyou_statistics.php:202
-#: ../thankyou_statistics.php:465
-#: ../thankyou_statistics.php:636
+#: ../thankyou_statistics.php:459
+#: ../thankyou_statistics.php:630
 #, php-format
 msgid "Displaying %s&#8211;%s of %s"
 msgstr "Выснова %s&#8211;%s з %s"
@@ -509,7 +517,7 @@ msgid "IP address"
 msgstr "IP-адрас"
 
 #: ../thankyou_statistics.php:217
-#: ../thankyou_statistics.php:534
+#: ../thankyou_statistics.php:528
 msgid "Last Thank Date"
 msgstr "Дата апошняй падзякі"
 
@@ -517,56 +525,56 @@ msgstr "Дата апошняй падзякі"
 msgid "Look up IP country"
 msgstr "Знайсці краіну па IP адрасу"
 
-#: ../thankyou_statistics.php:414
+#: ../thankyou_statistics.php:408
 msgid "Show all post dates"
 msgstr "Паказаць артыкулы за ўсе даты"
 
-#: ../thankyou_statistics.php:435
+#: ../thankyou_statistics.php:429
 msgid "View all categories"
 msgstr "Прагляд усіх катэгорый"
 
-#: ../thankyou_statistics.php:445
+#: ../thankyou_statistics.php:439
 msgid "Show Posts without Thanks"
 msgstr "Паказаць артыкулы без падазяк"
 
-#: ../thankyou_statistics.php:446
+#: ../thankyou_statistics.php:440
 msgid "Rows per page: "
 msgstr "Радкоў на старонку:"
 
-#: ../thankyou_statistics.php:457
+#: ../thankyou_statistics.php:451
 msgid "Refresh"
 msgstr "Абнавіць"
 
-#: ../thankyou_statistics.php:493
-#: ../thankyou_statistics.php:508
+#: ../thankyou_statistics.php:487
+#: ../thankyou_statistics.php:502
 msgid "descending"
 msgstr "змяншальным"
 
-#: ../thankyou_statistics.php:494
-#: ../thankyou_statistics.php:509
+#: ../thankyou_statistics.php:488
+#: ../thankyou_statistics.php:503
 msgid "Ascending order"
 msgstr "Нарастальны парадак"
 
-#: ../thankyou_statistics.php:498
-#: ../thankyou_statistics.php:513
+#: ../thankyou_statistics.php:492
+#: ../thankyou_statistics.php:507
 msgid "ascending"
 msgstr "нарастальным"
 
-#: ../thankyou_statistics.php:499
-#: ../thankyou_statistics.php:514
+#: ../thankyou_statistics.php:493
+#: ../thankyou_statistics.php:508
 msgid "Descending order"
 msgstr "Змяншальны парадак"
 
-#: ../thankyou_statistics.php:521
+#: ../thankyou_statistics.php:515
 #, php-format
 msgid "Click to sort in %s order"
 msgstr "Пстрыкні для сартавання ў %s парадку"
 
-#: ../thankyou_statistics.php:609
+#: ../thankyou_statistics.php:603
 msgid "View details"
 msgstr "Прагляд дэталяў"
 
-#: ../thankyou_statistics.php:614
+#: ../thankyou_statistics.php:608
 #, php-format
 msgid ""
 "You are about to reset this post '%s' thanks counter.\n"
@@ -575,7 +583,7 @@ msgstr ""
 "Вы збіраецеся абнуліць лічыльнік гэтага артыкула '%s'.\n"
 " Выкарыстоўвайце 'Адмена' каб адмовіцца, 'OK' каб вырабіць абнуленне."
 
-#: ../thankyou_statistics.php:653
+#: ../thankyou_statistics.php:647
 msgid "No posts with thanks found"
 msgstr "Артыкулы c падзякамі не знойдзены"
 
