@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.6.8
+Version: 1.6.9
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: thankyou
@@ -518,7 +518,7 @@ function thanks_adminCssAction() {
 
 function thanks_settings_scriptsAction() {
   
-  wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/iColorPicker.js.php?plugin_url='.THANKS_PLUGIN_URL, array('jquery','jquery-form','jquery-ui-tabs','jquery-ui-dialog'));  
+  wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/iColorPicker.js', array('jquery','jquery-form','jquery-ui-tabs','jquery-ui-dialog'));
   wp_localize_script('thanks_js_script1', 'ThanksSettings', array('plugin_url' => THANKS_PLUGIN_URL, 'ajax_nonce' => wp_create_nonce('thanks-button')));
   
 }
@@ -528,8 +528,8 @@ function thanks_settings_scriptsAction() {
 function thanks_dashboard_scriptsAction() {  
 
   wp_enqueue_style('thanks_dashboard_css', THANKS_PLUGIN_URL.'/css/thankyou_admin.css', array(), false, 'screen');
-  wp_enqueue_script('thanks_js_script2', THANKS_PLUGIN_URL.'/dhtmlgoodies_slider.js.php?plugin_url='.THANKS_PLUGIN_URL);
-  
+  wp_enqueue_script('thanks_js_script2', THANKS_PLUGIN_URL.'/dhtmlgoodies_slider.js');
+  wp_localize_script('thanks_js_script2', 'ThanksSettings', array('plugin_url' => THANKS_PLUGIN_URL));
 }
 // end of thanks_dashboard_scriptsAction()
 

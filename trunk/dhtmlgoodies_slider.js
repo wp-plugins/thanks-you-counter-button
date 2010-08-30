@@ -14,7 +14,7 @@ Alf Magne Kalleland
 
 ************************************************************************************************************/
 
-var form_widget_amount_slider_handle = '<?php echo $_GET['plugin_url']; ?>/images/slider_handle.gif';
+var form_widget_amount_slider_handle = ThanksSettings.plugin_url +'/images/slider_handle.gif';
 var slider_handle_image_obj = false;
 var sliderObjectArray = new Array();
 var slider_counter = 0;
