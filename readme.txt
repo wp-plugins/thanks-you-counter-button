@@ -6,7 +6,7 @@ Requires at least: 2.7.1
 Tested up to: 3.0.1
 Stable tag: 1.6.9
 
-Plugin adds 'Thank You' button to every post/page, counts and shows a total number of the unique visitors 'thank you' clicks for this post/page.
+Adds 'Thank You' button to every post/page, counts and shows a total number of visitors 'thanks' for post/page.
 
 == Description ==
 
