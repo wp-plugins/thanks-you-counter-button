@@ -67,7 +67,7 @@ Attention! This plugin will work properly for that WordPress installation only w
 Dear TYCB plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir[at-sign]shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, TYCB plugin settings page and in this readme.txt file.
 
-== Special Thanks to ==
+= Special Thanks to =
 * [Omi](http://equipajedemano.info) for the help with Spanish translation, ideas and new versions testing.
 * [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
 * [tolingo translations](http://www.tolingo.com) for the help with German translation.
