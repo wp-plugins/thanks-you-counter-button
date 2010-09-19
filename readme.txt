@@ -84,7 +84,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 == Changelog ==
 = 1.7 =
 * 19.09.2010
-- You can use a single global thanks counter button beyond the posts and pages. Place <?php echo thanks_button('Thank You', true); ?> somewhere on your blog page using theme files and you and your visitors will see it.
+- You can use a single global thanks counter button beyond the posts and pages. Place this PHP code &lt;?  echo thanks_button('Thank You', true); ?&gt; somewhere on your blog page using theme files and you and your visitors will see it.
 - Uninstall cleanup feature (uninstall.php) is added: plugin deletes all its options and database tables .
 - Usage of deprecated since WordPress 3.0 staff is excluded. Plugin is fully compatible with WordPress 3.0 now.
 - shinephp.com news section is added to the plugin Settings page.
