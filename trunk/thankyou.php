@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.6.9
+Version: 1.7.0
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: thankyou
@@ -11,7 +11,7 @@ Domain Path: /lang/
 */
 
 /*
-Copyright 2009  Vladimir Garagulya  (email: vladimir@shinephp.com)
+Copyright 2009-2010  Vladimir Garagulya  (email: vladimir[at]shinephp.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -35,9 +35,9 @@ if (!function_exists("get_option")) {
 
 global $wp_version;
 
-$exit_msg = __('Thank You Counter Button requires WordPress 2.7.1 or newer.').'<a href="http://codex.wordpress.org/Upgrading_WordPress">'.__('Please update!').'</a>';
+$exit_msg = __('Thank You Counter Button requires WordPress 3.0 or newer.').'<a href="http://codex.wordpress.org/Upgrading_WordPress">'.__('Please update!').'</a>';
 
-if (version_compare($wp_version,"2.7.1","<"))
+if (version_compare($wp_version,"3.0","<"))
 {
 	return ($exit_msg);
 }
@@ -54,7 +54,7 @@ load_plugin_textdomain('thankyou','', $thanksPluginDirName.'/lang');
 
 function thanks_optionsPage() {
 
-  if (!current_user_can('activate_plugins')) {
+  if (!is_admin()) {
     die('action is forbidden');
   }
 
@@ -132,13 +132,18 @@ function thanks_optionsPage() {
 // end of thanks_optionPage()
 
 
-function thanks_buildButtonCode($thanksCaption = "") {
+function thanks_buildButtonCode($thanksCaption = "", $siteGlobal = false) {
 
   global $post;
   
   // post's thanks button counter to assign it the unique Id
   static $thanksOrderNumber = array();
 
+  if ($siteGlobal) {
+    $post_id = 0;
+  } else {
+    $post_id = $post->ID;
+  }
   $thanks_custom = get_option('thanks_custom');
   if ($thanks_custom) {
     $thanks_custom_URL = get_option('thanks_custom_url');
@@ -158,38 +163,39 @@ function thanks_buildButtonCode($thanksCaption = "") {
     $buttonColorClass = 'thanks_'.$thanks_color;
   }
   $thanks_caption_style = get_option('thanks_caption_style');
-
+  $thanks_caption_color = get_option('thanks_caption_color');
+  
 	$ipFound = false;
   $checkIP = get_option('thanks_check_ip_address');
   if ($checkIP=='1') {
 	  $visitorIP = thanks_getVisitorIP();
-	  $ipFound = thanks_checkVisitorIP($post->ID, $visitorIP);
+	  $ipFound = thanks_checkVisitorIP($post_id, $visitorIP);
 	}
   if ($ipFound) {
     $onButtonClick = 'return false;';
     $buttonTitle = __('You left &ldquo;Thanks&rdquo; already for this post', 'thankyou');
   } else {
-    $onButtonClick = 'thankYouButtonClick('.$post->ID.', \''.thanks_js_escape(__('You left &ldquo;Thanks&rdquo; already for this post', 'thankyou')).'\')';
+    $onButtonClick = 'thankYouButtonClick('.$post_id.', \''.thanks_esc_js(__('You left &ldquo;Thanks&rdquo; already for this post', 'thankyou')).'\')';
     $buttonTitle = __('Click to left &ldquo;Thanks&rdquo; for this post', 'thankyou');
   }
-  $thanksCaption = getThanksCaption($post->ID, $thanksCaption);
-  if (!$thanksOrderNumber[$post->ID]) {
-    $thanksOrderNumber[$post->ID] = 0;
+  $thanksCaption = getThanksCaption($post_id, $thanksCaption);
+  if (!isset($thanksOrderNumber[$post_id]) || !$thanksOrderNumber[$post_id]) {
+    $thanksOrderNumber[$post_id] = 0;
   }
-  $thanksOrderNumber[$post->ID]++;
+  $thanksOrderNumber[$post_id]++;
   $inputButtonHTML = thanks_getButtonInputHTML($onButtonClick, $thanksCaption, $buttonSizeClass, $buttonColorClass,
                                    $imageURL, $thanks_custom_width, $thanks_custom_height, $thanks_caption_style,
-                                   $thanks_caption_color, $post->ID.'_'.$thanksOrderNumber[$post->ID], $buttonTitle);
+                                   $thanks_caption_color, $post_id.'_'.$thanksOrderNumber[$post_id], $buttonTitle);
 
   $button = '<div class="thanks_button_div" style="'.get_option('thanks_style').'">'.$inputButtonHTML.
-               ((is_user_logged_in() && current_user_can('level_9') && (get_option('thanks_display_settings_shortcuts') == '1'))
+               ((is_user_logged_in() && current_user_can('create_users') && (get_option('thanks_display_settings_shortcuts') == '1'))
                		?'<div class="thanks_settings_shortcuts">'.
                			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php" title="'.__('Settings','thankyou').'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
-               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&amp;post_id='.$post->ID.'&amp;paged=1#statistics" title="'.attribute_escape(sprintf(__('View statistics details for "%s"', 'thankyou'), $post->post_title)).'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
-               			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:if(confirm(\''.thanks_js_escape(__('Do you really want to hide these shortcuts?', 'thankyou')).'\')) thankYouButtonRemoveSettingsShortcuts();"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
+               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&amp;post_id='.$post_id.'&amp;paged=1#statistics" title="'.esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $post->post_title)).'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
+               			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:if(confirm(\''.thanks_esc_js(__('Do you really want to hide these shortcuts?', 'thankyou')).'\')) thankYouButtonRemoveSettingsShortcuts();"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
                			'</div>'
                		:'').
-               '<div id="ajax_loader_'.$post->ID.'_'.$thanksOrderNumber[$post->ID].'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>'.
+               '<div id="ajax_loader_'.$post_id.'_'.$thanksOrderNumber[$post_id].'" style="display:inline;visibility: hidden;"><img alt="ajax loader" src="'.THANKS_PLUGIN_URL.'/images/ajax-loader.gif" /></div>'.
              '</div>';
 
   $button = apply_filters('thanks_thankyou_button', $button);
@@ -267,9 +273,9 @@ function thanks_button_insert($content) {
 
 
 // Manual output
-function thanks_button($caption = '') {
+function thanks_button($caption = '', $siteGlobal = false) {
   if (get_option('thanks_position_manual')==1) {
-    return thanks_buildButtonCode($caption);
+    return thanks_buildButtonCode($caption, $siteGlobal);
   } else {
     return '';
   }
@@ -389,8 +395,7 @@ function thanks_install() {
   add_option('thanks_dashboard_statistics_link_show', 1);
   add_option('thanks_dashboard_author_link_show', 1);
   add_option('thanks_display_settings_shortcuts', 1);
-
-  thanks_logEvent('TYCB Plugin is installed successfully.');
+  
 }
 // end of thanks_install()
 
@@ -499,7 +504,7 @@ function thanks_plugin_row_meta($links, $file) {
 
 function thanks_settings_menu() {
 	if ( function_exists('add_options_page') ) {
-    $thanks_page = add_options_page('Thank You Counter Button', 'Thanks CB', 9, basename(__FILE__), 'thanks_optionsPage');
+    $thanks_page = add_options_page('Thank You Counter Button', 'Thanks CB', 'create_users', basename(__FILE__), 'thanks_optionsPage');
 		add_action( "admin_print_styles-$thanks_page", 'thanks_adminCssAction' );
     add_action( "admin_print_scripts-$thanks_page", 'thanks_settings_scriptsAction' );
 
@@ -575,7 +580,7 @@ function thanks_button_shortcode_handler($atts, $content, $code) {
 
 require_once('thankyou_widgets.php');
 
-if (is_admin()) {
+if (is_super_admin()) {
   // activation action
   register_activation_hook(__FILE__, "thanks_install");
 
@@ -585,9 +590,7 @@ if (is_admin()) {
   add_filter('plugin_action_links', 'thanks_plugin_action_links', 10, 2);
   add_filter('plugin_row_meta', 'thanks_plugin_row_meta', 10, 2);
 }
-// It will be added for the admin user only automatically as earlier in the
-// $thanks_page = add_options_page('Thank You Counter Button', 'Thanks CB', 9, basename(__FILE__), 'thanks_optionsPage');
-// WordPress will check the user level 9 - if current user role has admin dashboard access rights.
+
 add_action('admin_menu', 'thanks_settings_menu');
 
 // tune WP shortcodes api call

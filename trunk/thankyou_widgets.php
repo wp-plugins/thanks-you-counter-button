@@ -147,11 +147,11 @@ add_action('init', 'thanks_widgets_init', 1);
 //------------------------------------------------------------
 
 // dashboard widget staff
-define(THANKS_TD_ROWS_NUMBER, 'thanks_dashboard_rows_number');
-define(THANKS_TD_CONTENT, 'thanks_dashboard_content');
-define(THANKS_TD_TOTAL, 'thanks_dashboard_total_show');
-define(THANKS_TD_STAT_LINK, 'thanks_dashboard_statistics_link_show');
-define(THANKS_TD_AUTHOR_LINK, 'thanks_dashboard_author_link_show');
+define('THANKS_TD_ROWS_NUMBER', 'thanks_dashboard_rows_number');
+define('THANKS_TD_CONTENT', 'thanks_dashboard_content');
+define('THANKS_TD_TOTAL', 'thanks_dashboard_total_show');
+define('THANKS_TD_STAT_LINK', 'thanks_dashboard_statistics_link_show');
+define('THANKS_TD_AUTHOR_LINK', 'thanks_dashboard_author_link_show');
 
 // get from options what content to show
 function thanks_get_dashboard_content_kind() {
