@@ -10,6 +10,8 @@ if (! defined("WPLANG")) {
   die;  // Silence is golden, direct call is prohibited
 }
 
+require_once (ABSPATH.'wp-includes/pluggable.php');
+
 $thanks_siteURL = get_option( 'siteurl' );
 
 // Pre-2.6 compatibility
@@ -63,7 +65,11 @@ function thanks_checkVisitorIP($postId, $visitorIP, $register=false) {
   if ($wpdb->last_error) {
       return true;
   }
-  $id = $record[0]->id;
+  if (isset($record[0])) {
+    $id = $record[0]->id;
+  } else {
+    $id = 0;
+  }
   if ($id) {
     if ($register) {
       $query = "update $thanksPostReadersTable set updated=CURRENT_TIMESTAMP where id=$id";
@@ -352,9 +358,9 @@ function thanks_resetAllCounters() {
 // end of thanks_resetAllCounters()
 
 
-function thanks_js_escape($value) {
+function thanks_esc_js($value) {
 
-  $value = funky_javascript_fix(js_escape($value));
+  $value = esc_js($value);
 
   return $value;
 }

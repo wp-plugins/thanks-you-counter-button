@@ -166,11 +166,11 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
     <td class="txt_center" style="padding-left:10px;"><a title="<?php _e('View Post', 'thankyou'); ?>" href="<?php echo get_permalink($post_id);?>"><?php echo $post_title; ?></a>
 <?php
 					$thankyou_actions = array();					
-					$thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($post_id).'" title="' . attribute_escape(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
-          $thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$post_id.'" title="' . attribute_escape(sprintf(__('Edit "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
+					$thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($post_id).'" title="' . esc_attr(sprintf(__('View "%s"', 'thankyou'), $post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
+          $thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$post_id.'" title="' . esc_attr(sprintf(__('Edit "%s"', 'thankyou'), $post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
           if ( current_user_can('edit_post', $post_id) ) {
-						$thankyou_actions['reset'] = '<span class="view"><a class="submitdelete warning" title="'.attribute_escape(__('Reset this post counter', 'thankyou')).'"
-                                            href="javascript:void(0);" onclick="resetCounter('.$post_id.',\''.thanks_js_escape(sprintf( __("You are about to reset this post '%s' thanks counter. Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $post_title )).'\',1);">'.__('Reset Counter', 'thankyou').'</a>';
+						$thankyou_actions['reset'] = '<span class="view"><a class="submitdelete warning" title="'.esc_attr(__('Reset this post counter', 'thankyou')).'"
+                                            href="javascript:void(0);" onclick="resetCounter('.$post_id.',\''.thanks_esc_js(sprintf( __("You are about to reset this post '%s' thanks counter. Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $post_title )).'\',1);">'.__('Reset Counter', 'thankyou').'</a>';
 					}
 					echo '<div class="row-actions">';
 					echo implode(' | </span>', $thankyou_actions);
@@ -241,9 +241,15 @@ foreach ($records as $record) {
 ?>
 	</tbody>
 </table>
+<?php
+if ( $page_links ) {
+?>
    <div class="tablenav-pages">
       <?php echo $page_links_text; ?>
    </div>
+<?
+}
+?>
 			</td>
 		</tr>
 </table>
@@ -597,15 +603,15 @@ foreach ($records as $record) {
 ?>
   <tr class="<?php echo $rowClass; ?>">
     <td class="txt_right" width="5%"><?php echo $record->ID; ?></td>
-    <td class="txt_left" style="padding-left:10px;"><a title="<?php echo attribute_escape(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)); ?>" href="<?php echo './options-general.php?page=thankyou.php&amp;post_id='.$record->ID.'&amp;paged='.$_GET['paged'].'#statistics';?>"><?php echo $record->post_title; ?></a>
+    <td class="txt_left" style="padding-left:10px;"><a title="<?php echo esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)); ?>" href="<?php echo './options-general.php?page=thankyou.php&amp;post_id='.$record->ID.'&amp;paged='.$_GET['paged'].'#statistics';?>"><?php echo $record->post_title; ?></a>
 <?php
 					$thankyou_actions = array();
-					$thankyou_actions['details'] = '<span class="view"><a href="./options-general.php?page=thankyou.php&amp;post_id='.$record->ID.'&amp;paged='.$_GET['paged'].'#statistics" title="' . attribute_escape(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View details', 'thankyou') . '</a>';					
-          $thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($record->ID).'" title="' .attribute_escape(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
-          $thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$record->ID.'" title="' . attribute_escape(sprintf(__('Edit "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
+					$thankyou_actions['details'] = '<span class="view"><a href="./options-general.php?page=thankyou.php&amp;post_id='.$record->ID.'&amp;paged='.$_GET['paged'].'#statistics" title="' . esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View details', 'thankyou') . '</a>';
+          $thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($record->ID).'" title="' .esc_attr(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
+          $thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$record->ID.'" title="' . esc_attr(sprintf(__('Edit "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
           if ( current_user_can('edit_post', $record->ID) ) {
-						$thankyou_actions['reset'] = '<span class="delete"><a class="submitdelete" title="'.attribute_escape(__('Reset this post counter', 'thankyou')).'"
-                                            href="javascript:void(0);" onclick="resetCounter('.$record->ID.',\''.js_escape(sprintf( __("You are about to reset this post '%s' thanks counter.\n Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $record->post_title )).'\','.$_GET['paged'].');">'.__('Reset Counter', 'thankyou').'</a>';
+						$thankyou_actions['reset'] = '<span class="delete"><a class="submitdelete" title="'.esc_attr(__('Reset this post counter', 'thankyou')).'"
+                                            href="javascript:void(0);" onclick="resetCounter('.$record->ID.',\''.thanks_esc_js(sprintf( __("You are about to reset this post '%s' thanks counter.\n Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $record->post_title )).'\','.$_GET['paged'].');">'.__('Reset Counter', 'thankyou').'</a>';
 					}
 					echo '<div class="row-actions">';
 					echo implode(' | </span>', $thankyou_actions);

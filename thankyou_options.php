@@ -8,6 +8,7 @@ if (!defined('THANKS_PLUGIN_URL')) {
   die;  // Silence is golden, direct call is prohibited
 }
 
+require_once(ABSPATH.WPINC.'/class-simplepie.php');
 
 $buttonColors = array('brown', 'blue', 'red', 'green', 'grey', 'black');
 
@@ -54,23 +55,57 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_changelog.png'; ?>);" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#changelog"><?php _e('Changelog', 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_faq.png'; ?>)" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#faq"><?php _e('FAQ', 'thankyou'); ?></a>
                       <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_donate.png'; ?>)" target="_blank" href="http://www.shinephp.com/donate"><?php _e('Donate', 'thankyou'); ?></a>
-									<?php thanks_displayBoxEnd(); ?>									
-									<?php thanks_displayBoxStart(__('Greetings:','thankyou')); ?>
-											<a class="thanks_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" title="<?php _e("It's me, the author", 'thankyou'); ?>" href="http://www.shinephp.com/">Vladimir</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/pcde.png'; ?>);" target="_blank" title="<?php _e('for the help with Belarusian translation', 'thankyou'); ?>" href="http://pc.de">Marcis Gasuns</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/rene.png'; ?>);" target="_blank" title="<?php _e('for the help with Dutch translation', 'thankyou'); ?>" href="http://wpwebshop.com">Rene</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/whiler.png'; ?>);" target="_blank" title="<?php _e('for the help with French translation, ideas, source code contributions and new versions testing', 'thankyou'); ?>" href="http://blogs.wittwer.fr/whiler/">Whiler</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tolingo.png'; ?>);" target="_blank" title="<?php _e('for the help with German translation', 'thankyou'); ?>" href="http://www.tolingo.com">www.tolingo.com</a>
-                      <a class="thanks_rsb_link" title="<?php _e('for the help with Hungarian translation', 'thankyou'); ?>" href="#">Nightmare</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/masoud.png'; ?>);" target="_blank" title="<?php _e('for the help with Iranian translation', 'thankyou'); ?>" href="http://www.7thline.ir">Masoud Golchin</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/ugo.png'; ?>);" target="_blank" title="<?php _e('for the help with Italian translation', 'thankyou'); ?>" href="http://www.myeasywp.com">Ugo</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/omi.png'; ?>);" target="_blank" title="<?php _e('for the help with Spanish translation, ideas and new versions testing', 'thankyou'); ?>" href="http://equipajedemano.info/">Omi</a>
-                      <br/>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/arne.png'; ?>);" target="_blank" title="<?php _e('for setting page layout idea and html markup examples', 'thankyou'); ?>" href="http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/">Arne</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/simon.png'; ?>);" target="_blank" title="<?php _e('for the excelent JQuery color picker', 'thankyou'); ?>" href="http://www.supersite.me/website-building/jquery-free-color-picker/">Simon</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/dhtmlgoodies.png'; ?>);" target="_blank" title="<?php _e('for the form input slider code', 'thankyou'); ?>" href="http://www.dhtmlgoodies.com/">DHTMLGoodies</a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/eric.png'; ?>);" target="_blank" title="<?php _e('for the cute online button image generator', 'thankyou'); ?>" href="http://www.glassybuttons.com/glassy.php">Eric</a>
-									<?php thanks_displayBoxEnd(); ?>
+									<?php thanks_displayBoxEnd();
+  thanks_displayBoxStart(__('More plugins from','thankyou').' <a href="http://www.shinephp.com" title="ShinePHP.com">ShinePHP.com</a>', 'float: left; display: inline; margin-left: 10px; width: 350px;'); 
+  $feed = new SimplePie();
+  $feed->set_feed_url('http://www.shinephp.com/category/shinephp-wordpress-plugins/feed/');
+	$feed->enable_cache(false);
+  $feed->init();
+  $feed->handle_content_type();
+  $items = $feed->get_items();
+  if ($items && sizeof($items)>0) {
+    echo '<ul>';
+    foreach ($items as $item) {
+      echo '<li><a href="'.$item->get_permalink().'">'.$item->get_title().'</a></li>';
+    }
+    echo '</ul>';
+  } else {
+    echo '<ul><li>'.__('No items found.', 'thankyou') . '</li></ul>';
+  }
+  echo '<hr/>';
+  echo '<span style="font-size: 12px; font-weight: bold;">'.__('Recent Posts:','plugins-lang-switch').'</span><br/>';
+  $feed->set_feed_url('http://feeds.feedburner.com/shinephp');
+  $feed->init();
+  $feed->handle_content_type();
+  $items = $feed->get_items();
+  if ($items && sizeof($items)>0) {
+    echo '<ul>';
+    foreach ($items as $item) {
+      echo '<li><a href="'.$item->get_permalink().'" title="'.substr($item->get_description(), 0, 80).'">'.$item->get_title().'</a>&ndash; <span class="rss-date">'.$item->get_date('j F Y').'</span></li>';
+    }
+    echo '</ul>';
+  } else {
+    echo '<ul><li>'.__('No items found.', 'thankyou') . '</li></ul>';
+  }
+  thanks_displayBoxEnd();
+  thanks_displayBoxStart(__('Greetings:','thankyou')); ?>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" title="<?php _e("It's me, the author", 'thankyou'); ?>" href="http://www.shinephp.com/">Vladimir</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/pcde.png'; ?>);" target="_blank" title="<?php _e('for the help with Belarusian translation', 'thankyou'); ?>" href="http://pc.de">Marcis Gasuns</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/rene.png'; ?>);" target="_blank" title="<?php _e('for the help with Dutch translation', 'thankyou'); ?>" href="http://wpwebshop.com">Rene</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/whiler.png'; ?>);" target="_blank" title="<?php _e('for the help with French translation, ideas, source code contributions and new versions testing', 'thankyou'); ?>" href="http://blogs.wittwer.fr/whiler/">Whiler</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tolingo.png'; ?>);" target="_blank" title="<?php _e('for the help with German translation', 'thankyou'); ?>" href="http://www.tolingo.com">www.tolingo.com</a>
+              <a class="thanks_rsb_link" title="<?php _e('for the help with Hungarian translation', 'thankyou'); ?>" href="#">Nightmare</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/masoud.png'; ?>);" target="_blank" title="<?php _e('for the help with Iranian translation', 'thankyou'); ?>" href="http://www.7thline.ir">Masoud Golchin</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/ugo.png'; ?>);" target="_blank" title="<?php _e('for the help with Italian translation', 'thankyou'); ?>" href="http://www.myeasywp.com">Ugo</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/omi.png'; ?>);" target="_blank" title="<?php _e('for the help with Spanish translation, ideas and new versions testing', 'thankyou'); ?>" href="http://equipajedemano.info/">Omi</a>
+              <br/>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/arne.png'; ?>);" target="_blank" title="<?php _e('for setting page layout idea and html markup examples', 'thankyou'); ?>" href="http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/">Arne</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/simon.png'; ?>);" target="_blank" title="<?php _e('for the excelent JQuery color picker', 'thankyou'); ?>" href="http://www.supersite.me/website-building/jquery-free-color-picker/">Simon</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/dhtmlgoodies.png'; ?>);" target="_blank" title="<?php _e('for the form input slider code', 'thankyou'); ?>" href="http://www.dhtmlgoodies.com/">DHTMLGoodies</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/eric.png'; ?>);" target="_blank" title="<?php _e('for the cute online button image generator', 'thankyou'); ?>" href="http://www.glassybuttons.com/glassy.php">Eric</a>
+	<?php
+  thanks_displayBoxEnd();
+?>
 						</div>
 					</div>
 					<div class="has-sidebar" >
@@ -98,9 +133,9 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
       document.location = '<?php echo THANKS_WP_ADMIN_URL; ?>/options-general.php?page=thankyou.php';
     } else {
       if (action=='default') {
-        var mess = '<?php echo thanks_js_escape(__('All settings for TYCB plugin will be return to the default values, Continue?','thankyou')); ?>';
+        var mess = '<?php echo thanks_esc_js(__('All settings for TYCB plugin will be return to the default values, Continue?','thankyou')); ?>';
       } else if (action=='resetall') {
-        var mess = '<?php echo thanks_js_escape(__('All thanks counters for all posts will be set to 0,\n all thanks click history will be cleared, Continue?','thankyou')); ?>';
+        var mess = '<?php echo thanks_esc_js(__('All thanks counters for all posts will be set to 0,\n all thanks click history will be cleared, Continue?','thankyou')); ?>';
       }
       if (!confirm(mess)) {
         return false;
@@ -507,8 +542,8 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
                                    THANKS_PLUGIN_URL.'/images/thanks_'.$thanks_size.'_'.$thanks_color.'.png', '', '', $thanks_caption_style,
                                    $thanks_caption_color, 'stylePreview', '').
                		'<div id="thanks_settings_shortcuts" class="thanks_settings_shortcuts'.(($thanks_display_settings_shortcuts == '1')?'':'_off').'">'.
-               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php" title="'.__('Settings','thankyou').'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
-               			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php&amp;post_id='.$post->ID.'&amp;paged=1#statistics" title="'.attribute_escape(sprintf(__('View statistics details for "%s"', 'thankyou'), __('Post Title','thankyou'))).'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
+               			'<a href="javascript:void;" title="'.__('Settings','thankyou').'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
+               			'<a href="javascript:void;" title="'.esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), __('Post Title','thankyou'))).'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
                			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:void;"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
                			'</div>'.
                		'</div>';

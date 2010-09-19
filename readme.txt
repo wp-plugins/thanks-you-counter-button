@@ -4,7 +4,7 @@ Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 2.7.1
 Tested up to: 3.0.1
-Stable tag: 1.6.9
+Stable tag: 1.7
 
 Adds 'Thank You' button to every post/page, counts and shows a total number of visitors 'thanks' for post/page.
 
@@ -21,7 +21,9 @@ The set of shortcodes and content filters is available for this plugin. Visit ht
 
 Installing procedure:
 
-Attention! This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with.
+Attention! 
+1) Starting from version 1.7 plugin works with WordPress 3.0 and higher only. For older WordPress versions use version 1.6.9. from http://downloads.wordpress.org/plugin/thanks-you-counter-button.1.6.9.zip
+2) This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with.
 1. Deactivate plugin if you have the previous version installed. (It is important requirement for switching to this version from a previous one.)
 2. Extract "thanks-you-counter-button.x.x.x.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
 3. Activate "Thank You Counter Button" plugin via 'Plugins' menu in WordPress admin menu. 
@@ -37,9 +39,9 @@ Attention! This plugin will work properly for that WordPress installation only w
 
   Your browser uses old cashed version of CSS files. Please try to reload full page (use F5 or Refresh button).
 
-- Does this plugin work with Wordpress MU?
+- Does this plugin work with Wordpress MU or WordPress Multisite?
 
-  Yes, it does. Plugin is tested with WordPress MU 2.9.1. Thanks to WP MU developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
+  Yes, it does. Plugin is tested with WordPress MU 2.9.1 and WordPress Multisite 3.0.1. Thanks to WordPress developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Screenshots ==
 1. screenshot-1.png The example of "Thank You" button in blue color
@@ -80,6 +82,13 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+= 1.7 =
+* 19.09.2010
+- You can use a single global thanks counter button beyond the posts and pages. Place <?php echo thanks_button('Thank You', true); ?> somewhere on your blog page using theme files and you and your visitors will see it.
+- Uninstall cleanup feature (uninstall.php) is added: plugin deletes all its options and database tables .
+- Usage of deprecated since WordPress 3.0 staff is excluded. Plugin is fully compatible with WordPress 3.0 now.
+- shinephp.com news section is added to the plugin Settings page.
+
 = 1.6.9 =
 * 30.08.2010
 - XSS security hole in Javascript code is fixed. Thanks to [Julio from Boiteaweb.fr](http://boiteaweb.fr) for discovering and pointing me that.

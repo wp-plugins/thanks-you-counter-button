@@ -5,7 +5,7 @@
  *
  */
 
-if (! (isset($_POST['post_id']) && $_POST['post_id'] && is_numeric($_POST['post_id']))) {
+if (! (isset($_POST['post_id']) && is_numeric($_POST['post_id']) && $_POST['post_id']>=0)) {
   echo 'error: wrong request, post Id is not defined';
   return;
 }
