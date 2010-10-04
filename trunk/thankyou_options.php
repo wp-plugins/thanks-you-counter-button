@@ -81,7 +81,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
   if ($items && sizeof($items)>0) {
     echo '<ul>';
     foreach ($items as $item) {
-      echo '<li><a href="'.$item->get_permalink().'" title="'.substr($item->get_description(), 0, 80).'">'.$item->get_title().'</a>&ndash; <span class="rss-date">'.$item->get_date('j F Y').'</span></li>';
+      echo '<li><a href="'.$item->get_permalink().'" title="'.substr($item->get_description(), 0, 80).'">'.$item->get_title().'</a>&nbsp;&ndash; <span class="rss-date">'.$item->get_date('j F Y').'</span></li>';
     }
     echo '</ul>';
   } else {
@@ -97,6 +97,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
               <a class="thanks_rsb_link" title="<?php _e('for the help with Hungarian translation', 'thankyou'); ?>" href="#">Nightmare</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/masoud.png'; ?>);" target="_blank" title="<?php _e('for the help with Iranian translation', 'thankyou'); ?>" href="http://www.7thline.ir">Masoud Golchin</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/ugo.png'; ?>);" target="_blank" title="<?php _e('for the help with Italian translation', 'thankyou'); ?>" href="http://www.myeasywp.com">Ugo</a>
+              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/alessandro.png'; ?>);" target="_blank" title="<?php _e("for the help with Italian translation",'thankyou');?>" href="http://technodin.org">Alessandro Mariani</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/omi.png'; ?>);" target="_blank" title="<?php _e('for the help with Spanish translation, ideas and new versions testing', 'thankyou'); ?>" href="http://equipajedemano.info/">Omi</a>
               <br/>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/arne.png'; ?>);" target="_blank" title="<?php _e('for setting page layout idea and html markup examples', 'thankyou'); ?>" href="http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/">Arne</a>
