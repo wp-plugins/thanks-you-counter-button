@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.0.02\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-19 22:20+0700\n"
+"POT-Creation-Date: 2010-11-11 23:14+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vladimir <vladimir@shinephp.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
@@ -113,7 +113,7 @@ msgstr "Thank You Counter Button Plugin"
 #: ../thankyou.php:117
 #: ../thankyou.php:193
 #: ../thankyou.php:488
-#: ../thankyou_options.php:545
+#: ../thankyou_options.php:547
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -131,7 +131,7 @@ msgid "Click to left &ldquo;Thanks&rdquo; for this post"
 msgstr "Kattints ide, hogy megköszönd ezt a bejegyzést."
 
 #: ../thankyou.php:194
-#: ../thankyou_options.php:546
+#: ../thankyou_options.php:548
 #: ../thankyou_statistics.php:606
 #: ../thankyou_statistics.php:609
 #, php-format
@@ -139,7 +139,7 @@ msgid "View statistics details for \"%s\""
 msgstr "Statisztikai adatok megtekintése a következő bejegyzéshez: \"%s\""
 
 #: ../thankyou.php:195
-#: ../thankyou_options.php:547
+#: ../thankyou_options.php:549
 msgid "Hide these shortcuts"
 msgstr "Parancsikonok elrejtése."
 
@@ -239,207 +239,212 @@ msgid "for the help with Iranian translation"
 msgstr ""
 
 #: ../thankyou_options.php:99
+#: ../thankyou_options.php:100
 msgid "for the help with Italian translation"
 msgstr "Köszönet az Olasz fordításért."
 
-#: ../thankyou_options.php:100
+#: ../thankyou_options.php:101
 msgid "for the help with Spanish translation, ideas and new versions testing"
 msgstr "Köszönet a Spanyol fordításért, az ötletekért és az új verziók tesztelésért."
 
 #: ../thankyou_options.php:102
+msgid "For the help with Turkish translation"
+msgstr ""
+
+#: ../thankyou_options.php:104
 msgid "for setting page layout idea and html markup examples"
 msgstr "Köszönet a beállítások oldal ötleteiért."
 
-#: ../thankyou_options.php:103
+#: ../thankyou_options.php:105
 msgid "for the excelent JQuery color picker"
 msgstr "Köszönet a színkezelőért."
 
-#: ../thankyou_options.php:104
+#: ../thankyou_options.php:106
 msgid "for the form input slider code"
 msgstr "Köszönet a  form input slider kódért."
 
-#: ../thankyou_options.php:105
+#: ../thankyou_options.php:107
 msgid "for the cute online button image generator"
 msgstr "Köszönet az Online Gomb készítő oldalért"
 
-#: ../thankyou_options.php:136
+#: ../thankyou_options.php:138
 msgid "All settings for TYCB plugin will be return to the default values, Continue?"
 msgstr "Az összes beállítás vissza lesz állítva az alapbeállítás értékeire. Folytatja?"
 
-#: ../thankyou_options.php:138
+#: ../thankyou_options.php:140
 msgid ""
 "All thanks counters for all posts will be set to 0,\\n"
 " all thanks click history will be cleared, Continue?"
 msgstr "Az összes számláló a bejegyzésekben 0-ra lesz állítva, és az előzmények is törövle lesznek."
 
-#: ../thankyou_options.php:319
-#: ../thankyou_options.php:323
+#: ../thankyou_options.php:321
+#: ../thankyou_options.php:325
 msgid "Display"
 msgstr "Megjelenés:"
 
-#: ../thankyou_options.php:328
+#: ../thankyou_options.php:330
 msgid "Display button at Pages"
 msgstr "Megjelenítés a bejegyzés oldalán"
 
-#: ../thankyou_options.php:331
+#: ../thankyou_options.php:333
 msgid "Display button at Home page, Categories/Tags archive pages"
 msgstr "Megjelenítés a Főoldalon, a Kategóriák és az Arhivum oldalakon"
 
-#: ../thankyou_options.php:336
+#: ../thankyou_options.php:338
 msgid "Do not show button for selected categories"
 msgstr "Ne mutasson gombot a kiválasztott kategóriákban"
 
-#: ../thankyou_options.php:391
+#: ../thankyou_options.php:393
 msgid "Position in the Post text"
 msgstr "Pozíció a bejegyzésben:"
 
-#: ../thankyou_options.php:395
+#: ../thankyou_options.php:397
 msgid "Before"
 msgstr "Bejegyzés előtt"
 
-#: ../thankyou_options.php:397
+#: ../thankyou_options.php:399
 msgid "At first page of multipaged posts only"
 msgstr "Csak az első oldalon a több oldalas bejegyzésekben"
 
-#: ../thankyou_options.php:401
+#: ../thankyou_options.php:403
 msgid "After"
 msgstr "Bejegyzés után"
 
-#: ../thankyou_options.php:403
+#: ../thankyou_options.php:405
 msgid "At last page of multipaged posts only"
 msgstr "Az utolsó oldalon a több oldalas bejegyzésekben"
 
-#: ../thankyou_options.php:407
+#: ../thankyou_options.php:409
 msgid "Shortcode [thankyou]"
 msgstr "Rövid kód a Beillesztéshez: [thankyou]"
 
-#: ../thankyou_options.php:408
+#: ../thankyou_options.php:410
 msgid "Manual"
 msgstr "Kézi beállítás"
 
-#: ../thankyou_options.php:414
+#: ../thankyou_options.php:416
 msgid "Button Caption"
 msgstr "Gomb felirat:"
 
-#: ../thankyou_options.php:421
+#: ../thankyou_options.php:423
 msgid "Button Styling"
 msgstr "Gomb kinézet:"
 
-#: ../thankyou_options.php:423
+#: ../thankyou_options.php:425
 msgid "Add style to the div:"
 msgstr "Sílus hozzá rendelése:"
 
-#: ../thankyou_options.php:426
-#: ../thankyou_options.php:430
-#: ../thankyou_options.php:483
+#: ../thankyou_options.php:428
+#: ../thankyou_options.php:432
+#: ../thankyou_options.php:485
 msgid "e.g.,"
 msgstr "Például:"
 
-#: ../thankyou_options.php:427
+#: ../thankyou_options.php:429
 msgid "to the Caption font:"
 msgstr "Betűtípus:"
 
-#: ../thankyou_options.php:431
+#: ../thankyou_options.php:433
 msgid "font color: "
 msgstr "Betű szín:"
 
-#: ../thankyou_options.php:436
+#: ../thankyou_options.php:438
 msgid "Size"
 msgstr "Méret:"
 
-#: ../thankyou_options.php:441
+#: ../thankyou_options.php:443
 msgid "Normal"
 msgstr "Normál"
 
-#: ../thankyou_options.php:444
+#: ../thankyou_options.php:446
 msgid "Compact"
 msgstr "Kicsinyített"
 
-#: ../thankyou_options.php:449
+#: ../thankyou_options.php:451
 msgid "Form and Color"
 msgstr "Alak és Szín:"
 
-#: ../thankyou_options.php:478
+#: ../thankyou_options.php:480
 msgid "Custom button image URL"
 msgstr "Egyedi Gomb URL-je:"
 
-#: ../thankyou_options.php:485
+#: ../thankyou_options.php:487
 msgid "Width, px"
 msgstr "Szélesség (pixel)"
 
-#: ../thankyou_options.php:486
+#: ../thankyou_options.php:488
 msgid "Height, px"
 msgstr "Magasság (pixel)"
 
-#: ../thankyou_options.php:497
+#: ../thankyou_options.php:499
 msgid "Misc"
 msgstr "Egyéb beállítások"
 
-#: ../thankyou_options.php:501
+#: ../thankyou_options.php:503
 msgid "Check IP-address"
 msgstr "IP cím ellenőrzés:"
 
-#: ../thankyou_options.php:506
+#: ../thankyou_options.php:508
 msgid "Only one Thanks for post for one IP-address limit"
 msgstr "Bejegyzésenként max 1db Köszönöm adható 1 IP címről."
 
-#: ../thankyou_options.php:507
+#: ../thankyou_options.php:509
 msgid "Time limit:"
 msgstr "Idő Limit:"
 
-#: ../thankyou_options.php:509
+#: ../thankyou_options.php:511
 msgid "Forever"
 msgstr "Nincs"
 
-#: ../thankyou_options.php:511
+#: ../thankyou_options.php:513
 msgid "Only for this period"
 msgstr "Megköszönheti újból a bejegyzést "
 
-#: ../thankyou_options.php:513
+#: ../thankyou_options.php:515
 msgid "seconds"
 msgstr "másodpercenként."
 
-#: ../thankyou_options.php:518
+#: ../thankyou_options.php:520
 msgid "Display settings shortcuts"
 msgstr "Parancsikonok megjelenés beállításai"
 
-#: ../thankyou_options.php:523
+#: ../thankyou_options.php:525
 msgid "Add shortcuts next to the buttons for settings quick access"
 msgstr "Parancsikon hozzáadása a gombhoz a gyors beállításhoz."
 
-#: ../thankyou_options.php:528
+#: ../thankyou_options.php:530
 msgid "Return to Defaults"
 msgstr "Visszaállítás az alapbeállításra"
 
-#: ../thankyou_options.php:528
+#: ../thankyou_options.php:530
 msgid "Restore the default values for all settings"
 msgstr "Visszaállítja az alapbeállításra az összes beállítást."
 
-#: ../thankyou_options.php:529
+#: ../thankyou_options.php:531
 msgid "Reset Counters"
 msgstr "Számlálók nullázása"
 
-#: ../thankyou_options.php:529
+#: ../thankyou_options.php:531
 msgid "Reset all thanks counters for the all posts"
 msgstr "Az összes számláló nullázása az összes bejegyzésben."
 
-#: ../thankyou_options.php:534
+#: ../thankyou_options.php:536
 msgid "Save Changes"
 msgstr "Beállítások mentése"
 
-#: ../thankyou_options.php:535
+#: ../thankyou_options.php:537
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../thankyou_options.php:535
+#: ../thankyou_options.php:537
 msgid "Cancel not saved changes"
 msgstr "A beállítások nem lesznek mentve"
 
-#: ../thankyou_options.php:537
+#: ../thankyou_options.php:539
 msgid "Button DIV Style Preview"
 msgstr "Gomb előnézet"
 
-#: ../thankyou_options.php:546
+#: ../thankyou_options.php:548
 #: ../thankyou_statistics.php:160
 #: ../thankyou_statistics.php:532
 msgid "Post Title"

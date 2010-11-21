@@ -4,7 +4,7 @@ Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 3.0
 Tested up to: 3.0.1
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 
 Adds 'Thank You' button to every post/page, counts and shows a total number of visitors 'thanks' for post/page.
 
@@ -65,23 +65,24 @@ Attention!
 * Italian: [Ugo](http://www.myeasywp.com)
 * Russian: [ShinePHP](http://shinephp.com)
 * Spanish: [Omi](http://equipajedemano.info)
+* Turkish: [Sadri Ercan](http://www.faydaliweb.com)
 
 Dear TYCB plugin User,
 if you wish to help me with this plugin translation I very appreciate it. Please send your language .po and .mo files to vladimir[at-sign]shinephp.com email. Do not forget include you site link in order I can show it with greetings for the translation help at shinephp.com, TYCB plugin settings page and in this readme.txt file.
 
 = Special Thanks to =
-* [Omi](http://equipajedemano.info) for the help with Spanish translation, ideas and new versions testing.
-* [Whiler](http://blogs.wittwer.fr/whiler/) for the help with French translation, ideas, source code contributions and new versions testing.
-* [tolingo translations](http://www.tolingo.com) for the help with German translation.
-* [Ugo](http://www.myeasywp.com), [Alessandro Mariani](http://technodin.org) for the help with Italian translation.
-* [Marcis Gasuns](http://pc.de/) for the help with Belarusian translation.
-* Nightmare for the help with Hungarian translation.
+* [Omi](http://equipajedemano.info) for ideas and new versions testing help.
+* [Whiler](http://blogs.wittwer.fr/whiler/) for ideas, source code contributions and new versions testing.
 * [Simon](http://www.supersite.me/website-building/jquery-free-color-picker/) for the excelent JQuery color picker.
 * [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
 * [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+
+= 1.7.2 =
+* 21.11.2010
+- Turkish translation is added.
 
 = 1.7.1 =
 * 04.10.2010
