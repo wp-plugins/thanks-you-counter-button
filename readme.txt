@@ -80,6 +80,10 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 
 == Changelog ==
 
+= 1.7.3 =
+* 02.01.2011
+- bug fix: if button is turned off on the home page [nothankyou] shortcode was visible in the post excerpt at the home page. Thanks to [Whiler](http://blogs.wittwer.fr/whiler/) for discovering that.
+
 = 1.7.2 =
 * 21.11.2010
 - Turkish translation is added.
