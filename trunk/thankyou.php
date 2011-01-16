@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.7.3
+Version: 1.7.4
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: thankyou
@@ -11,7 +11,7 @@ Domain Path: /lang/
 */
 
 /*
-Copyright 2009-2010  Vladimir Garagulya  (email: vladimir[at]shinephp.com)
+Copyright 2009-2011  Vladimir Garagulya  (email: vladimir [at] shinephp.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
