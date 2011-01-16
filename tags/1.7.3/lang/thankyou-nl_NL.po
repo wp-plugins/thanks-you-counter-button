@@ -1,0 +1,640 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Thank You Counter Button v1.6.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-11 23:14+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Vladimir <vladimir@shinephp.com>\n"
+"Language-Team: Dutch translation : WPwebshop.com <info@wpwebshop.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: ../thankyou_widgets.php:14
+msgid "the latest or the most thanked post titles with total thanks quant"
+msgstr "de laatste of meest bedankte berichttitels met het aantal bedankjes"
+
+#: ../thankyou_widgets.php:15
+#: ../thankyou_widgets.php:25
+msgid "Thanks Stat"
+msgstr "Bedank Statistieken"
+
+#: ../thankyou_widgets.php:78
+#: ../thankyou_widgets.php:236
+msgid "Total quant of thanks: "
+msgstr "Totaal aantal bedankjes:"
+
+#: ../thankyou_widgets.php:107
+msgid "Title:"
+msgstr "Titel:"
+
+#: ../thankyou_widgets.php:110
+msgid "Number of posts to show:"
+msgstr "Aantal weer te geven berichten:"
+
+#: ../thankyou_widgets.php:122
+#: ../thankyou_widgets.php:314
+msgid "What posts to show:"
+msgstr "Welke berichten weer te geven:"
+
+#: ../thankyou_widgets.php:124
+#: ../thankyou_widgets.php:317
+msgid "Latest thanked"
+msgstr "Recente bedankjes"
+
+#: ../thankyou_widgets.php:125
+#: ../thankyou_widgets.php:318
+msgid "Most thanked"
+msgstr "Meest bedankt"
+
+#: ../thankyou_widgets.php:126
+msgid "Total quant of thanks"
+msgstr "Totaal aantal bedankjes"
+
+#: ../thankyou_widgets.php:131
+#: ../thankyou_widgets.php:330
+msgid "Display total quant of thanks"
+msgstr "Weergave totaal aantal bedankjes"
+
+#: ../thankyou_widgets.php:242
+msgid "Check Full Statistics"
+msgstr "Raadpleeg Volledige Statistieken"
+
+#: ../thankyou_widgets.php:246
+msgid "Plugin author home page"
+msgstr "Homepage van de plugin auteur"
+
+#: ../thankyou_widgets.php:253
+msgid "No thanks yet"
+msgstr "Nog geen bedankjes"
+
+#: ../thankyou_widgets.php:309
+msgid "Posts number to show:"
+msgstr "Aantal weer te geven berichten:"
+
+#: ../thankyou_widgets.php:335
+msgid "Display Full Statistics link"
+msgstr "Weergeven Volledige Statistieken link"
+
+#: ../thankyou_widgets.php:340
+msgid "Display plugin author link"
+msgstr "Weergave link van plugin auteur"
+
+#: ../thankyou_widgets.php:351
+msgid "Latest Thanks"
+msgstr "Laatste Bedankjes"
+
+#: ../thankyou_widgets.php:353
+msgid "Most Thanked"
+msgstr "Meeste Bedankjes"
+
+#: ../thankyou.php:38
+msgid "Thank You Counter Button requires WordPress 3.0 or newer."
+msgstr "Thank You Counter Button vereist WordPress <strong>3.0</strong> of hoger."
+
+#: ../thankyou.php:38
+msgid "Please update!"
+msgstr "Bijwerken a.u.b.!"
+
+#: ../thankyou.php:47
+msgid "Every time a new visitor clicks the \"Thank you\" button, one point is added to the total \"thanks\" counter for this post."
+msgstr "Elke keer wanneer een nieuwe bezoeker op de \"Bedankt\" knop klikt wordt er één punt toegevoegd aan het totaal van de \"bedank\" teller voor dit bericht."
+
+#: ../thankyou.php:101
+msgid "Thank You Counter Button Plugin"
+msgstr "Thank You Counter Button Plugin"
+
+#: ../thankyou.php:117
+#: ../thankyou.php:193
+#: ../thankyou.php:488
+#: ../thankyou_options.php:547
+msgid "Settings"
+msgstr "Instellingen"
+
+#: ../thankyou.php:118
+msgid "Statistics"
+msgstr "Statistieken"
+
+#: ../thankyou.php:176
+#: ../thankyou.php:178
+msgid "You left &ldquo;Thanks&rdquo; already for this post"
+msgstr "Je hebt al een &ldquo;bedankje&rdquo; achter gelaten voor dit bericht"
+
+#: ../thankyou.php:179
+msgid "Click to left &ldquo;Thanks&rdquo; for this post"
+msgstr "Klik hier om een &ldquo;Bedankje&rdquo; achter te laten voor dit bericht"
+
+#: ../thankyou.php:194
+#: ../thankyou_options.php:548
+#: ../thankyou_statistics.php:606
+#: ../thankyou_statistics.php:609
+#, php-format
+msgid "View statistics details for \"%s\""
+msgstr "Bekijk gedetailleerde statistieken voor \"%s\""
+
+#: ../thankyou.php:195
+#: ../thankyou_options.php:549
+msgid "Hide these shortcuts"
+msgstr "Deze snelkoppelingen verbergen"
+
+#: ../thankyou.php:195
+msgid "Do you really want to hide these shortcuts?"
+msgstr "Ben je er zeker van om deze snelkoppelingen te verbergen?"
+
+#: ../thankyou.php:392
+#: ../thankyou_lib.php:285
+msgid "Thank You"
+msgstr "Dank je wel"
+
+#: ../thankyou.php:498
+#: ../thankyou_options.php:55
+msgid "Changelog"
+msgstr "ChangeLog"
+
+#: ../thankyou.php:499
+msgid "Additional Documentation"
+msgstr "Additionele Documentatie"
+
+#: ../thankyou_options.php:35
+msgid "Default Settings are restored"
+msgstr "Standaard instellingen worden teruggeplaatst"
+
+#: ../thankyou_options.php:37
+msgid "All Thanks Counters are cleared"
+msgstr "Alle bedank tellers zijn gewist"
+
+#: ../thankyou_options.php:51
+msgid "About this Plugin:"
+msgstr "Over deze Plugin:"
+
+#: ../thankyou_options.php:52
+msgid "Author's website"
+msgstr "Website van de auteur"
+
+#: ../thankyou_options.php:53
+msgid "Plugin webpage"
+msgstr "Homepage van de plugin"
+
+#: ../thankyou_options.php:54
+msgid "Additional documentation"
+msgstr "Additionele documentatie"
+
+#: ../thankyou_options.php:56
+msgid "FAQ"
+msgstr "FAQ"
+
+#: ../thankyou_options.php:57
+msgid "Donate"
+msgstr "Doneren"
+
+#: ../thankyou_options.php:59
+msgid "More plugins from"
+msgstr ""
+
+#: ../thankyou_options.php:73
+#: ../thankyou_options.php:88
+msgid "No items found."
+msgstr ""
+
+#: ../thankyou_options.php:76
+msgid "Recent Posts:"
+msgstr ""
+
+#: ../thankyou_options.php:91
+msgid "Greetings:"
+msgstr "Groeten:"
+
+#: ../thankyou_options.php:92
+msgid "It's me, the author"
+msgstr "Ik ben het, de auteur"
+
+#: ../thankyou_options.php:93
+msgid "for the help with Belarusian translation"
+msgstr "voor de hulp met de Wit-Russische vertaling"
+
+#: ../thankyou_options.php:94
+msgid "for the help with Dutch translation"
+msgstr "voor de hulp met de Dutch vertaling"
+
+#: ../thankyou_options.php:95
+msgid "for the help with French translation, ideas, source code contributions and new versions testing"
+msgstr "voor de hulp met de Franse vertaling, ideeën, broncode bijdragen en testen van nieuwe versies"
+
+#: ../thankyou_options.php:96
+msgid "for the help with German translation"
+msgstr "voor de hulp met de Duitse vertaling"
+
+#: ../thankyou_options.php:97
+msgid "for the help with Hungarian translation"
+msgstr "voor de hulp met de Hongaarse vertaling"
+
+#: ../thankyou_options.php:98
+msgid "for the help with Iranian translation"
+msgstr "voor de hulp met de Iranian vertaling"
+
+#: ../thankyou_options.php:99
+#: ../thankyou_options.php:100
+msgid "for the help with Italian translation"
+msgstr "voor de hulp met de Italiaanse vertaling"
+
+#: ../thankyou_options.php:101
+msgid "for the help with Spanish translation, ideas and new versions testing"
+msgstr "Voor de hulp met de Spaanse vertaling, ideeën en testen van nieuwe versies"
+
+#: ../thankyou_options.php:102
+msgid "For the help with Turkish translation"
+msgstr ""
+
+#: ../thankyou_options.php:104
+msgid "for setting page layout idea and html markup examples"
+msgstr "voor het instellingspagina layout idee en HTML code voorbeelden"
+
+#: ../thankyou_options.php:105
+msgid "for the excelent JQuery color picker"
+msgstr "voor de perfekte JQuery kleurenkiezer"
+
+#: ../thankyou_options.php:106
+msgid "for the form input slider code"
+msgstr "voor de forumulier invoer slider code"
+
+#: ../thankyou_options.php:107
+msgid "for the cute online button image generator"
+msgstr "voor de mooie online knop afbeelding generator"
+
+#: ../thankyou_options.php:138
+msgid "All settings for TYCB plugin will be return to the default values, Continue?"
+msgstr "Alle instellingen voor de TYCB plugin worden teruggezet naar standaard waarden, doorgaan?"
+
+#: ../thankyou_options.php:140
+msgid ""
+"All thanks counters for all posts will be set to 0,\\n"
+" all thanks click history will be cleared, Continue?"
+msgstr ""
+"Alle bedank tellers voor alle berichten worden ingesteld op 0,\\n"
+"de gehele klik geschiedenis van bedankjes wordt gewist, doorgaan?"
+
+#: ../thankyou_options.php:321
+#: ../thankyou_options.php:325
+msgid "Display"
+msgstr "Weergave"
+
+#: ../thankyou_options.php:330
+msgid "Display button at Pages"
+msgstr "Weergave knop op Pagina's"
+
+#: ../thankyou_options.php:333
+msgid "Display button at Home page, Categories/Tags archive pages"
+msgstr "Weergave knop op Home page, Categorieën/Tags archief pagina's"
+
+#: ../thankyou_options.php:338
+msgid "Do not show button for selected categories"
+msgstr "Laat de knop niet zien voor geselecteerde categorieën"
+
+#: ../thankyou_options.php:393
+msgid "Position in the Post text"
+msgstr "Positie in de Bericht text"
+
+#: ../thankyou_options.php:397
+msgid "Before"
+msgstr "Voorheen"
+
+#: ../thankyou_options.php:399
+msgid "At first page of multipaged posts only"
+msgstr "Alleen de eerste pagina van meerbladige berichten"
+
+#: ../thankyou_options.php:403
+msgid "After"
+msgstr "Daarna"
+
+#: ../thankyou_options.php:405
+msgid "At last page of multipaged posts only"
+msgstr "Alleen de laatste pagina van meerbladige berichten"
+
+#: ../thankyou_options.php:409
+msgid "Shortcode [thankyou]"
+msgstr "Shortcode [thankyou]"
+
+#: ../thankyou_options.php:410
+msgid "Manual"
+msgstr "Handleiding"
+
+#: ../thankyou_options.php:416
+msgid "Button Caption"
+msgstr "Knop beschrijving"
+
+#: ../thankyou_options.php:423
+msgid "Button Styling"
+msgstr "Knop Styling"
+
+#: ../thankyou_options.php:425
+msgid "Add style to the div:"
+msgstr "Toevoegen stijl aan de DIV:"
+
+#: ../thankyou_options.php:428
+#: ../thankyou_options.php:432
+#: ../thankyou_options.php:485
+msgid "e.g.,"
+msgstr "bijv.,"
+
+#: ../thankyou_options.php:429
+msgid "to the Caption font:"
+msgstr "voor het onderschrift font:"
+
+#: ../thankyou_options.php:433
+msgid "font color: "
+msgstr "font kleur: "
+
+#: ../thankyou_options.php:438
+msgid "Size"
+msgstr "Grootte"
+
+#: ../thankyou_options.php:443
+msgid "Normal"
+msgstr "Normaal"
+
+#: ../thankyou_options.php:446
+msgid "Compact"
+msgstr "Compact"
+
+#: ../thankyou_options.php:451
+msgid "Form and Color"
+msgstr "Vorm en Kleur"
+
+#: ../thankyou_options.php:480
+msgid "Custom button image URL"
+msgstr "Aangepaste knop afbeelding URL"
+
+#: ../thankyou_options.php:487
+msgid "Width, px"
+msgstr "Breedte, px"
+
+#: ../thankyou_options.php:488
+msgid "Height, px"
+msgstr "Hoogte, px"
+
+#: ../thankyou_options.php:499
+msgid "Misc"
+msgstr "Diversen"
+
+#: ../thankyou_options.php:503
+msgid "Check IP-address"
+msgstr "Controleer IP-adres"
+
+#: ../thankyou_options.php:508
+msgid "Only one Thanks for post for one IP-address limit"
+msgstr "Alleen één bericht bedankje per IP adres limiet"
+
+#: ../thankyou_options.php:509
+msgid "Time limit:"
+msgstr "Tijdslimiet:"
+
+#: ../thankyou_options.php:511
+msgid "Forever"
+msgstr "Eeuwig"
+
+#: ../thankyou_options.php:513
+msgid "Only for this period"
+msgstr "Alleen voor deze periode"
+
+#: ../thankyou_options.php:515
+msgid "seconds"
+msgstr "seconden"
+
+#: ../thankyou_options.php:520
+msgid "Display settings shortcuts"
+msgstr "Weergave snelkoppelingen instellingen"
+
+#: ../thankyou_options.php:525
+msgid "Add shortcuts next to the buttons for settings quick access"
+msgstr "Toevoegen snelkoppelingen naast de knoppen voor snelle toegang tot instellingen"
+
+#: ../thankyou_options.php:530
+msgid "Return to Defaults"
+msgstr "Terug naar standaardinstellingen"
+
+#: ../thankyou_options.php:530
+msgid "Restore the default values for all settings"
+msgstr "Herstellen van standaardwaarden voor alle instellingen"
+
+#: ../thankyou_options.php:531
+msgid "Reset Counters"
+msgstr "Resetten Tellers"
+
+#: ../thankyou_options.php:531
+msgid "Reset all thanks counters for the all posts"
+msgstr "Reset alle bedanktellers voor alle berichten"
+
+#: ../thankyou_options.php:536
+msgid "Save Changes"
+msgstr "Veranderingen Bewaren"
+
+#: ../thankyou_options.php:537
+msgid "Cancel"
+msgstr "Afbreken"
+
+#: ../thankyou_options.php:537
+msgid "Cancel not saved changes"
+msgstr "Afbreken niet opgeslagen veranderingen"
+
+#: ../thankyou_options.php:539
+msgid "Button DIV Style Preview"
+msgstr "Preview DIV-Stijl Knop"
+
+#: ../thankyou_options.php:548
+#: ../thankyou_statistics.php:160
+#: ../thankyou_statistics.php:532
+msgid "Post Title"
+msgstr "Bericht Titel"
+
+#: ../thankyou_lib.php:260
+#: ../thankyou_lib.php:298
+#: ../thankyou_lib.php:341
+msgid "operation is prohibited"
+msgstr "Ingreep is verboden"
+
+#: ../thankyou_statistics.php:70
+msgid "None"
+msgstr "Geen"
+
+#: ../thankyou_statistics.php:138
+msgid "Back to main statistics"
+msgstr "Terug naar hoofdstatistieken"
+
+#: ../thankyou_statistics.php:144
+#: ../thankyou_statistics.php:235
+msgid "Not available"
+msgstr "Niet beschikbaar"
+
+#: ../thankyou_statistics.php:151
+#, php-format
+msgid "Details for &ldquo;%s&rdquo;"
+msgstr "Details voor &ldquo;%s&rdquo;"
+
+#: ../thankyou_statistics.php:159
+#: ../thankyou_statistics.php:531
+msgid "Post Id"
+msgstr "Bericht  Id"
+
+#: ../thankyou_statistics.php:161
+#: ../thankyou_statistics.php:533
+msgid "Thanks Quant"
+msgstr "Bedankjes Aantal"
+
+#: ../thankyou_statistics.php:166
+#: ../thankyou_statistics.php:169
+#: ../thankyou_statistics.php:610
+msgid "View Post"
+msgstr "Bericht Bekijken"
+
+#: ../thankyou_statistics.php:169
+#: ../thankyou_statistics.php:610
+#, php-format
+msgid "View \"%s\""
+msgstr "Bekijken \"%s\""
+
+#: ../thankyou_statistics.php:170
+#: ../thankyou_statistics.php:611
+#, php-format
+msgid "Edit \"%s\""
+msgstr "Bewerken \"%s\""
+
+#: ../thankyou_statistics.php:170
+#: ../thankyou_statistics.php:611
+msgid "Edit Post"
+msgstr "Bericht Bewerken"
+
+#: ../thankyou_statistics.php:172
+#: ../thankyou_statistics.php:613
+msgid "Reset this post counter"
+msgstr "Reset deze bericht teller"
+
+#: ../thankyou_statistics.php:173
+#, php-format
+msgid "You are about to reset this post '%s' thanks counter. Click 'Cancel' to do nothing, 'OK' to reset it."
+msgstr "Je staat op het punt om de bedankjes teller van het bericht '%s' te resetten. Druk op 'Annuleren' om niks te doen, 'OK' het te resetten."
+
+#: ../thankyou_statistics.php:173
+#: ../thankyou_statistics.php:614
+msgid "Reset Counter"
+msgstr "Teller Resetten"
+
+#: ../thankyou_statistics.php:202
+#: ../thankyou_statistics.php:465
+#: ../thankyou_statistics.php:636
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr "Weergeven %s&#8211;%s van %s"
+
+#: ../thankyou_statistics.php:216
+msgid "IP address"
+msgstr "IP Adres"
+
+#: ../thankyou_statistics.php:217
+#: ../thankyou_statistics.php:534
+msgid "Last Thank Date"
+msgstr "Datum van de laaste bedanking"
+
+#: ../thankyou_statistics.php:235
+msgid "Look up IP country"
+msgstr "Opzoeken land op¨basis van IP"
+
+#: ../thankyou_statistics.php:414
+msgid "Show all post dates"
+msgstr "Data van alle berichten weergeven"
+
+#: ../thankyou_statistics.php:435
+msgid "View all categories"
+msgstr "Alle categorieën bekijken"
+
+#: ../thankyou_statistics.php:445
+msgid "Show Posts without Thanks"
+msgstr "Weergave berichten zonder bedankjes"
+
+#: ../thankyou_statistics.php:446
+msgid "Rows per page: "
+msgstr "Rijen per pagina: "
+
+#: ../thankyou_statistics.php:457
+msgid "Refresh"
+msgstr "Verversen"
+
+#: ../thankyou_statistics.php:493
+#: ../thankyou_statistics.php:508
+msgid "descending"
+msgstr "aflopend"
+
+#: ../thankyou_statistics.php:494
+#: ../thankyou_statistics.php:509
+msgid "Ascending order"
+msgstr "Oplopende volgorde"
+
+#: ../thankyou_statistics.php:498
+#: ../thankyou_statistics.php:513
+msgid "ascending"
+msgstr "oplopend"
+
+#: ../thankyou_statistics.php:499
+#: ../thankyou_statistics.php:514
+msgid "Descending order"
+msgstr "Aflopende volgorde"
+
+#: ../thankyou_statistics.php:521
+#, php-format
+msgid "Click to sort in %s order"
+msgstr "Klik om in %s volgorde te sorteren"
+
+#: ../thankyou_statistics.php:609
+msgid "View details"
+msgstr "Details weergeven"
+
+#: ../thankyou_statistics.php:614
+#, php-format
+msgid ""
+"You are about to reset this post '%s' thanks counter.\n"
+" Click 'Cancel' to do nothing, 'OK' to reset it."
+msgstr ""
+"Je staat op het punt om de bedank teller van dt bericht '%s' te resetten.\n"
+"Druk op 'Afbreken' om niets te doen, 'OK' om het te resetten."
+
+#: ../thankyou_statistics.php:653
+msgid "No posts with thanks found"
+msgstr "Geen berichten met bedankjes gevonden"
+
+#~ msgid "Unknown Post!"
+#~ msgstr "Unbekannter Eintrag!"
+#~ msgid "Default"
+#~ msgstr "Standardeinstellung"
+#~ msgid "Reset"
+#~ msgstr "Zurücksetzen"
+#~ msgid "Submit"
+#~ msgstr "Absenden"
+#~ msgid "Show total quant of thanks"
+#~ msgstr "Gesamtanzahl der Danksagungen zeigen"
+#~ msgid ""
+#~ "This plugin installs the Thank You Counter Button for each of your blog "
+#~ "post.\n"
+#~ "                It can have custom style in your blog posts."
+#~ msgstr ""
+#~ "Dieses Plugin installiert den Thank You Counter Button für jeden "
+#~ "IhrerBlog-Einträge.\n"
+#~ "                Das Aussehen kann für Ihre Blog-Einträge angepasst werden."
+#~ msgid ""
+#~ "To exclude Thank You button from particular post use shortcode "
+#~ "[nothankyou] there"
+#~ msgstr ""
+#~ "Um den Thank You Button in einem bestimmten Eintrag nicht zu benutzen, "
+#~ "verwenden Sieden Code <em>[nothankyou]</em>."
+#~ msgid "(at most 15)"
+#~ msgstr "(Maximum 15)"
+#~ msgid "Before and After"
+#~ msgstr "Davor und danach"
+#~ msgid "Filter"
+#~ msgstr "Filtern"
+#~ msgid "&laquo;"
+#~ msgstr "&laquo;"
+#~ msgid "&raquo;"
+#~ msgstr "&raquo;"
+
