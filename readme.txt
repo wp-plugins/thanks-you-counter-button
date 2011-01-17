@@ -83,7 +83,7 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 
 = 1.7.4 =
 * 16.01.2011
-* Chinese Simple translation is added.
+- Chinese Simple translation is added.
 
 = 1.7.3 =
 * 02.01.2011
