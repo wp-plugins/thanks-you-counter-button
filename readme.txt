@@ -3,8 +3,8 @@ Contributors: shinephp, Whiler
 Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 3.0
-Tested up to: 3.1
-Stable tag: 1.7.4
+Tested up to: 3.3.1
+Stable tag: 1.8
 
 Adds 'Thank You' button to every post/page, counts and shows a total number of visitors 'thanks' for post/page.
 
@@ -46,14 +46,8 @@ Attention!
 == Screenshots ==
 1. screenshot-1.png The example of "Thank You" button in blue color
 2. screenshot-2.png The "Thank You" Counter Button Settings Page part 1.
-3. screenshot-3.png Settings Page part 2.
-4. screenshot-4.png Statistics page.
-5. screenshot-5.png Detailed Statistics for selected post.
-6. screenshot-6.png Admin dashboard "Latest Thanks/Most Thanked" configurable widget.
-7. screenshot-7.png Sidebar "Latest Thanks/Most Thanked" configurable widgets.
-8. screenshot-8.png Admin dashboard "Latest Thanks/Most Thanked" widget control panel.
-9. screenshot-9.png Sidebar "Latest Thanks/Most Thanked" widget control panel.
 
+Check more screenshots and "Thank You" button in action at [shinephp.com](http://shinephp.com/thank-you-counter-button-wordpress-plugin/)
 
 = Translations =
 * Belarusian: [Marcis Gasuns](http://pc.de/)
@@ -80,6 +74,17 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
 
 == Changelog ==
+
+= 1.8 =
+* 02.03.2012
+- CSS classes (thanks_quant_for_post, thanks_total_quant_label, thanks_total_quant_value) were added to sidebar widget. Use it to make your widget more attractive.
+- Colon is removed from button caption. So add it manually to the button caption, if you need that.
+- ShinePHP.com RSS feed box was removed from the plugin Settings page.
+- Sidebar widget data could be filtered by category now. Just select needed category from the dropdown list at the widget configuration form.
+- Thanks from custom post types are shown in the widgets now.
+- TYCB plugin Settings form is updated (check your settings after version update, just in case they were changed suddenly ;) ).
+- TYCB Statistics data tab is moved from Settings page to the separate menu item under Tools menu.
+- Button image is changed slightly when you hover mouse on it.
 
 = 1.7.4 =
 * 16.01.2011
