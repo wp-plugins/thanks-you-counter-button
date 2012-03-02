@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.0.02\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-11 23:14+0700\n"
-"PO-Revision-Date: 2010-11-11 23:16+0700\n"
+"POT-Creation-Date: 2012-02-25 21:10+0700\n"
+"PO-Revision-Date: 2012-02-25 21:14+0700\n"
 "Last-Translator: Vladimir <vladimir@shinephp.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,72 +22,76 @@ msgstr "آخرین یا بیشترین تشکرها برای مطالب"
 msgid "Thanks Stat"
 msgstr "آمارگیر تشکرها"
 
-#: ../thankyou_widgets.php:78
-#: ../thankyou_widgets.php:236
+#: ../thankyou_widgets.php:89
+#: ../thankyou_widgets.php:340
 msgid "Total quant of thanks: "
 msgstr "مجموع تمام تشکرها :"
 
-#: ../thankyou_widgets.php:107
+#: ../thankyou_widgets.php:178
 msgid "Title:"
 msgstr "عنوان :"
 
-#: ../thankyou_widgets.php:110
+#: ../thankyou_widgets.php:181
+msgid "Filter by category:"
+msgstr ""
+
+#: ../thankyou_widgets.php:212
 msgid "Number of posts to show:"
 msgstr "تعداد پست برای نمایش :"
 
-#: ../thankyou_widgets.php:122
-#: ../thankyou_widgets.php:314
+#: ../thankyou_widgets.php:224
+#: ../thankyou_widgets.php:418
 msgid "What posts to show:"
 msgstr "مقدار پست برای نمایش :"
 
-#: ../thankyou_widgets.php:124
-#: ../thankyou_widgets.php:317
+#: ../thankyou_widgets.php:226
+#: ../thankyou_widgets.php:421
 msgid "Latest thanked"
 msgstr "آخرین تشکر شده ها"
 
-#: ../thankyou_widgets.php:125
-#: ../thankyou_widgets.php:318
+#: ../thankyou_widgets.php:227
+#: ../thankyou_widgets.php:422
 msgid "Most thanked"
 msgstr "بیشترین تشکرها"
 
-#: ../thankyou_widgets.php:126
+#: ../thankyou_widgets.php:228
 msgid "Total quant of thanks"
 msgstr "مجموع تشکرها"
 
-#: ../thankyou_widgets.php:131
-#: ../thankyou_widgets.php:330
+#: ../thankyou_widgets.php:233
+#: ../thankyou_widgets.php:434
 msgid "Display total quant of thanks"
 msgstr "نمایش مجموع تشکرها"
 
-#: ../thankyou_widgets.php:242
+#: ../thankyou_widgets.php:346
 msgid "Check Full Statistics"
 msgstr "مشاهده کامل آمار"
 
-#: ../thankyou_widgets.php:246
+#: ../thankyou_widgets.php:350
 msgid "Plugin author home page"
 msgstr "وبلاگ نویسنده"
 
-#: ../thankyou_widgets.php:253
+#: ../thankyou_widgets.php:357
 msgid "No thanks yet"
 msgstr "هنوز تشکری ثبت نشده است"
 
-#: ../thankyou_widgets.php:309
+#: ../thankyou_widgets.php:413
 msgid "Posts number to show:"
 msgstr "شماره پست برای نمایش :"
 
-#: ../thankyou_widgets.php:335
+#: ../thankyou_widgets.php:439
 msgid "Display Full Statistics link"
 msgstr "نمایش لینک صفحه آمار"
 
-#: ../thankyou_widgets.php:340
+#: ../thankyou_widgets.php:444
 msgid "Display plugin author link"
 msgstr "نمایش لینک نویسنده افزونه"
 
-#: ../thankyou_widgets.php:351
+#: ../thankyou_widgets.php:455
 msgid "Latest Thanks"
 msgstr "آخرین تشکرها"
 
-#: ../thankyou_widgets.php:353
+#: ../thankyou_widgets.php:457
 msgid "Most Thanked"
 msgstr "بیشترین تشکرها"
 
@@ -103,66 +107,65 @@ msgstr "لطفا به روز رسانی کنید"
 msgid "Every time a new visitor clicks the \"Thank you\" button, one point is added to the total \"thanks\" counter for this post."
 msgstr "هر زمان که بازدیدکننده ای بر روی دکمه \"تشکر\"کلیک کرد,یک تشکر به مجموع تشکرهای آن پست اضافه کن."
 
-#: ../thankyou.php:101
+#: ../thankyou.php:113
 msgid "Thank You Counter Button Plugin"
 msgstr "(خط هفتم) افزونه تشکر از مطالب"
 
-#: ../thankyou.php:117
-#: ../thankyou.php:193
-#: ../thankyou.php:488
-#: ../thankyou_options.php:547
-msgid "Settings"
-msgstr "تنضیمات"
+#: ../thankyou.php:174
+msgid "Thank You Counter Button Statistics"
+msgstr ""
 
-#: ../thankyou.php:118
-msgid "Statistics"
-msgstr "آمار و ارقام"
-
-#: ../thankyou.php:176
-#: ../thankyou.php:178
+#: ../thankyou.php:231
+#: ../thankyou.php:233
 msgid "You left &ldquo;Thanks&rdquo; already for this post"
 msgstr "شما &ldquo;تشکرها&rdquo; را برای این پست بازگرداندید"
 
-#: ../thankyou.php:179
+#: ../thankyou.php:234
 msgid "Click to left &ldquo;Thanks&rdquo; for this post"
 msgstr "کلیک برای بازگشت &ldquo;تشکرها&rdquo; برای این مطلب"
 
-#: ../thankyou.php:194
-#: ../thankyou_options.php:548
+#: ../thankyou.php:249
+#: ../thankyou.php:575
+#: ../thankyou_options.php:513
+msgid "Settings"
+msgstr "تنضیمات"
+
+#: ../thankyou.php:250
+#: ../thankyou_options.php:514
 #: ../thankyou_statistics.php:606
 #: ../thankyou_statistics.php:609
 #, php-format
 msgid "View statistics details for \"%s\""
 msgstr "نمایش جزئیات آماری برای \"%s\""
 
-#: ../thankyou.php:195
-#: ../thankyou_options.php:549
+#: ../thankyou.php:251
+#: ../thankyou_options.php:515
 msgid "Hide these shortcuts"
 msgstr "مخی کردن این شورت کات"
 
-#: ../thankyou.php:195
+#: ../thankyou.php:251
 msgid "Do you really want to hide these shortcuts?"
 msgstr "شما واقعا می خواهید این شورت کات را حذف کنید ؟"
 
-#: ../thankyou.php:392
-#: ../thankyou_lib.php:285
+#: ../thankyou.php:459
+#: ../thankyou_lib.php:286
 msgid "Thank You"
 msgstr "تشکر"
 
-#: ../thankyou.php:498
+#: ../thankyou.php:585
 #: ../thankyou_options.php:55
 msgid "Changelog"
 msgstr "دگرگونی وقایع"
 
-#: ../thankyou.php:499
+#: ../thankyou.php:586
 msgid "Additional Documentation"
 msgstr "مستندات"
 
-#: ../thankyou_options.php:35
+#: ../thankyou_options.php:38
 msgid "Default Settings are restored"
 msgstr "تنضیمات به حالت اولیه بازگشت"
 
-#: ../thankyou_options.php:37
+#: ../thankyou_options.php:40
 msgid "All Thanks Counters are cleared"
 msgstr "تمام تشکرها حذف شد"
 
@@ -186,270 +189,277 @@ msgstr "مستندات"
 msgid "FAQ"
 msgstr "پرسش و پاسخ"
 
-#: ../thankyou_options.php:57
-msgid "Donate"
-msgstr "کمک به افزونه"
-
-#: ../thankyou_options.php:59
-msgid "More plugins from"
-msgstr ""
-
-#: ../thankyou_options.php:73
-#: ../thankyou_options.php:88
-msgid "No items found."
-msgstr ""
-
-#: ../thankyou_options.php:76
-msgid "Recent Posts:"
-msgstr ""
-
-#: ../thankyou_options.php:91
+#: ../thankyou_options.php:70
 msgid "Greetings:"
 msgstr "ما را حمایت می کنند "
 
-#: ../thankyou_options.php:92
+#: ../thankyou_options.php:71
 msgid "It's me, the author"
 msgstr "این من هستم ! نویسنده"
 
-#: ../thankyou_options.php:93
+#: ../thankyou_options.php:72
 msgid "for the help with Belarusian translation"
 msgstr "برای کمک به "
 
-#: ../thankyou_options.php:94
+#: ../thankyou_options.php:73
+msgid "for the help with Chinese translation"
+msgstr ""
+
+#: ../thankyou_options.php:74
 msgid "for the help with Dutch translation"
 msgstr "for the help with Dutch translation"
 
-#: ../thankyou_options.php:95
+#: ../thankyou_options.php:75
 msgid "for the help with French translation, ideas, source code contributions and new versions testing"
 msgstr "برای کمک به فرانسوی ها،ایده سازی و تست و ویرایش برای نسخه جدید افزونه"
 
-#: ../thankyou_options.php:96
+#: ../thankyou_options.php:76
 msgid "for the help with German translation"
 msgstr "برای کمک به آلمانی زبان ها"
 
-#: ../thankyou_options.php:97
+#: ../thankyou_options.php:77
 msgid "for the help with Hungarian translation"
 msgstr "برای کمک به مجارستانی زبان ها"
 
-#: ../thankyou_options.php:98
+#: ../thankyou_options.php:78
 msgid "for the help with Iranian translation"
 msgstr "for the help with Iranian translation"
 
-#: ../thankyou_options.php:99
-#: ../thankyou_options.php:100
+#: ../thankyou_options.php:79
+#: ../thankyou_options.php:80
 msgid "for the help with Italian translation"
 msgstr "برای کمک به ایتالیایی زبان ها"
 
-#: ../thankyou_options.php:101
+#: ../thankyou_options.php:81
 msgid "for the help with Spanish translation, ideas and new versions testing"
 msgstr "برای کمک به اسپانیایی ها،ایده سازی و تست ورژن های جدید"
 
-#: ../thankyou_options.php:102
+#: ../thankyou_options.php:82
 msgid "For the help with Turkish translation"
 msgstr ""
 
-#: ../thankyou_options.php:104
+#: ../thankyou_options.php:84
 msgid "for setting page layout idea and html markup examples"
 msgstr "برای صفحه تنظیمات و ایده سازی و کد نویسی HTML"
 
-#: ../thankyou_options.php:105
+#: ../thankyou_options.php:85
 msgid "for the excelent JQuery color picker"
 msgstr "برای جی کوئری عالی این افزونه"
 
-#: ../thankyou_options.php:106
+#: ../thankyou_options.php:86
 msgid "for the form input slider code"
 msgstr "برای "
 
-#: ../thankyou_options.php:107
+#: ../thankyou_options.php:87
 msgid "for the cute online button image generator"
 msgstr "برای ساخت آنلاین دکمه های تشکر"
 
-#: ../thankyou_options.php:138
+#: ../thankyou_options.php:133
 msgid "All settings for TYCB plugin will be return to the default values, Continue?"
 msgstr "همه تنضیمات برای تی وای سی بی این افزونه به حالت اولیه باز خواهد گشت، با این وجود می خواهید ادامه دهید ؟ "
 
-#: ../thankyou_options.php:140
+#: ../thankyou_options.php:135
 msgid ""
 "All thanks counters for all posts will be set to 0,\\n"
 " all thanks click history will be cleared, Continue?"
 msgstr "همه تشکرها صفر خواهد شد و همه تنضیمات از بین خواهد رفت،با این وجود می خواهید ادامه دهید ؟"
 
-#: ../thankyou_options.php:321
-#: ../thankyou_options.php:325
+#: ../thankyou_options.php:319
+#: ../thankyou_options.php:323
 msgid "Display"
 msgstr "نمایش دادن"
 
-#: ../thankyou_options.php:330
+#: ../thankyou_options.php:328
 msgid "Display button at Pages"
 msgstr "نمایش دکمه در صفحه"
 
-#: ../thankyou_options.php:333
+#: ../thankyou_options.php:331
 msgid "Display button at Home page, Categories/Tags archive pages"
 msgstr "نمایش دکمه در صفحه نخست،دسته بندیها،برچسب ها و بایگانی"
 
-#: ../thankyou_options.php:338
+#: ../thankyou_options.php:336
 msgid "Do not show button for selected categories"
 msgstr "دکمه را در دسته بندی هایی که علامت زده شده اند نمایش نده"
 
-#: ../thankyou_options.php:393
+#: ../thankyou_options.php:391
 msgid "Position in the Post text"
 msgstr "محل قرار گیری دکمه :"
 
-#: ../thankyou_options.php:397
+#: ../thankyou_options.php:395
 msgid "Before"
 msgstr "در آغاز نوشته ها"
 
-#: ../thankyou_options.php:399
+#: ../thankyou_options.php:397
 msgid "At first page of multipaged posts only"
 msgstr "در اول مطالب صفحه نخست و مجرد نشان بده"
 
-#: ../thankyou_options.php:403
+#: ../thankyou_options.php:401
 msgid "After"
 msgstr "در پایان نوشته ها"
 
-#: ../thankyou_options.php:405
+#: ../thankyou_options.php:403
 msgid "At last page of multipaged posts only"
 msgstr "در آخر مطالب صفحه نخست و مجرد نشان بده"
 
-#: ../thankyou_options.php:409
+#: ../thankyou_options.php:407
 msgid "Shortcode [thankyou]"
 msgstr "شورت کات [تشکر]"
 
-#: ../thankyou_options.php:410
+#: ../thankyou_options.php:408
 msgid "Manual"
 msgstr "دستی"
 
-#: ../thankyou_options.php:416
+#: ../thankyou_options.php:414
 msgid "Button Caption"
 msgstr "عنوان دکمه : "
 
-#: ../thankyou_options.php:423
+#: ../thankyou_options.php:421
 msgid "Button Styling"
 msgstr "استایل گزاری برای دکمه :"
 
-#: ../thankyou_options.php:425
+#: ../thankyou_options.php:423
 msgid "Add style to the div:"
 msgstr "استایل برای div :"
 
-#: ../thankyou_options.php:428
-#: ../thankyou_options.php:432
-#: ../thankyou_options.php:485
+#: ../thankyou_options.php:426
+#: ../thankyou_options.php:430
+#: ../thankyou_options.php:486
 msgid "e.g.,"
 msgstr "e.g.,"
 
-#: ../thankyou_options.php:429
+#: ../thankyou_options.php:427
 msgid "to the Caption font:"
 msgstr "رنگبندی فونت :"
 
-#: ../thankyou_options.php:433
+#: ../thankyou_options.php:431
 msgid "font color: "
 msgstr "رنگ فونت :"
 
-#: ../thankyou_options.php:438
+#: ../thankyou_options.php:436
+msgid "Button grafics"
+msgstr ""
+
+#: ../thankyou_options.php:439
 msgid "Size"
 msgstr "اندازه"
 
-#: ../thankyou_options.php:443
+#: ../thankyou_options.php:442
 msgid "Normal"
 msgstr "معمولی"
 
-#: ../thankyou_options.php:446
+#: ../thankyou_options.php:445
 msgid "Compact"
 msgstr "فشرده"
 
-#: ../thankyou_options.php:451
-msgid "Form and Color"
-msgstr "فرم و رنگ"
+#: ../thankyou_options.php:446
+msgid "Form"
+msgstr ""
 
-#: ../thankyou_options.php:480
+#: ../thankyou_options.php:449
+msgid "Square"
+msgstr ""
+
+#: ../thankyou_options.php:452
+msgid "Rounded"
+msgstr ""
+
+#: ../thankyou_options.php:458
+msgid "Color"
+msgstr ""
+
+#: ../thankyou_options.php:479
 msgid "Custom button image URL"
 msgstr "سفارشی کردن تصویر"
 
-#: ../thankyou_options.php:487
+#: ../thankyou_options.php:480
+msgid "Hover state image URL"
+msgstr ""
+
+#: ../thankyou_options.php:488
 msgid "Width, px"
 msgstr "عرض،بر حسب پیکسل"
 
-#: ../thankyou_options.php:488
+#: ../thankyou_options.php:489
 msgid "Height, px"
 msgstr "ارتفاع بر حسب پیکسل"
 
-#: ../thankyou_options.php:499
-msgid "Misc"
-msgstr "تنظیمات ارسال"
-
-#: ../thankyou_options.php:503
-msgid "Check IP-address"
-msgstr "بررسی آی پی"
-
-#: ../thankyou_options.php:508
-msgid "Only one Thanks for post for one IP-address limit"
-msgstr "از هر آی پی فقط یک تشکر برای هر مطلب ارسال شود"
-
-#: ../thankyou_options.php:509
-msgid "Time limit:"
-msgstr "محدودیت زمانی"
-
-#: ../thankyou_options.php:511
-msgid "Forever"
-msgstr "برای همیشه"
-
-#: ../thankyou_options.php:513
-msgid "Only for this period"
-msgstr "فقط برای یک دوره ی"
-
-#: ../thankyou_options.php:515
-msgid "seconds"
-msgstr "ثانیه ای"
-
-#: ../thankyou_options.php:520
-msgid "Display settings shortcuts"
-msgstr "نماش تنظیمات شورت کات"
-
-#: ../thankyou_options.php:525
-msgid "Add shortcuts next to the buttons for settings quick access"
-msgstr "اضافه کردن شورت کات بعد از دکمه برای دسترسی سریع به تنظیمات"
-
-#: ../thankyou_options.php:530
-msgid "Return to Defaults"
-msgstr "بازگشت به حالت اولیه تنظیمات"
-
-#: ../thankyou_options.php:530
-msgid "Restore the default values for all settings"
-msgstr "بازگردانی تنضیمات افزونه به حالت اولیه"
-
-#: ../thankyou_options.php:531
-msgid "Reset Counters"
-msgstr "ریست کردن افزونه"
-
-#: ../thankyou_options.php:531
-msgid "Reset all thanks counters for the all posts"
-msgstr "صفر کردن همه تشکرها برای همه ی پست ها"
-
-#: ../thankyou_options.php:536
-msgid "Save Changes"
-msgstr "ذخیره تغییرات"
-
-#: ../thankyou_options.php:537
-msgid "Cancel"
-msgstr "لغو"
-
-#: ../thankyou_options.php:537
-msgid "Cancel not saved changes"
-msgstr "لغو و ذخیره نکردن تنشیمات"
-
-#: ../thankyou_options.php:539
+#: ../thankyou_options.php:495
 msgid "Button DIV Style Preview"
 msgstr "پیش نمایش استایل Div دکمه"
 
-#: ../thankyou_options.php:548
+#: ../thankyou_options.php:514
 #: ../thankyou_statistics.php:160
 #: ../thankyou_statistics.php:532
 msgid "Post Title"
 msgstr "عنوان مطلب"
 
-#: ../thankyou_lib.php:260
-#: ../thankyou_lib.php:298
-#: ../thankyou_lib.php:341
+#: ../thankyou_options.php:521
+msgid "Miscellaneous:"
+msgstr ""
+
+#: ../thankyou_options.php:525
+msgid "Check IP-address"
+msgstr "بررسی آی پی"
+
+#: ../thankyou_options.php:530
+msgid "Only one Thanks for post for one IP-address limit"
+msgstr "از هر آی پی فقط یک تشکر برای هر مطلب ارسال شود"
+
+#: ../thankyou_options.php:531
+msgid "Time limit:"
+msgstr "محدودیت زمانی"
+
+#: ../thankyou_options.php:533
+msgid "Forever"
+msgstr "برای همیشه"
+
+#: ../thankyou_options.php:535
+msgid "Only for this period"
+msgstr "فقط برای یک دوره ی"
+
+#: ../thankyou_options.php:537
+msgid "seconds"
+msgstr "ثانیه ای"
+
+#: ../thankyou_options.php:542
+msgid "Display settings shortcuts"
+msgstr "نماش تنظیمات شورت کات"
+
+#: ../thankyou_options.php:547
+msgid "Add shortcuts next to the buttons for settings quick access"
+msgstr "اضافه کردن شورت کات بعد از دکمه برای دسترسی سریع به تنظیمات"
+
+#: ../thankyou_options.php:553
+msgid "Save Changes"
+msgstr "ذخیره تغییرات"
+
+#: ../thankyou_options.php:554
+msgid "Cancel"
+msgstr "لغو"
+
+#: ../thankyou_options.php:554
+msgid "Cancel not saved changes"
+msgstr "لغو و ذخیره نکردن تنشیمات"
+
+#: ../thankyou_options.php:557
+msgid "Return to Defaults"
+msgstr "بازگشت به حالت اولیه تنظیمات"
+
+#: ../thankyou_options.php:557
+msgid "Restore the default values for all settings"
+msgstr "بازگردانی تنضیمات افزونه به حالت اولیه"
+
+#: ../thankyou_options.php:558
+msgid "Reset Counters"
+msgstr "ریست کردن افزونه"
+
+#: ../thankyou_options.php:558
+msgid "Reset all thanks counters for the all posts"
+msgstr "صفر کردن همه تشکرها برای همه ی پست ها"
+
+#: ../thankyou_lib.php:261
+#: ../thankyou_lib.php:299
+#: ../thankyou_lib.php:342
 msgid "operation is prohibited"
 msgstr "بهره برداری از این افزونه به هر نحو ممنوع می باشد"
 
@@ -598,4 +608,13 @@ msgstr "\"شما میخواهید تشکرهای این مطلب را پاک ک�
 #: ../thankyou_statistics.php:653
 msgid "No posts with thanks found"
 msgstr "پستی که تشکر داشته باشد یافت نشد"
+
+#~ msgid "Statistics"
+#~ msgstr "آمار و ارقام"
+#~ msgid "Donate"
+#~ msgstr "کمک به افزونه"
+#~ msgid "Form and Color"
+#~ msgstr "فرم و رنگ"
+#~ msgid "Misc"
+#~ msgstr "تنظیمات ارسال"
 

@@ -18,12 +18,15 @@ class Thanks_Widget_Latest_Thanks extends WP_Widget {
 	}
 
 function widget($args, $instance) {
-  global $wpdb, $thanksCountersTable;
+  global $wpdb, $thanksCountersTable, $thanksNotCountablePostTypes;
 
 	extract($args);
 
 	$title = apply_filters('widget_title', empty($instance['title']) ? __('Thanks Stat', 'thankyou') : $instance['title']);
-  // number of rows to show
+
+  $filter_by_category =  (int) $instance['filter_by_category'];
+
+// number of rows to show
 	if ( !$number = (int) $instance['number'] ) {
 		$number = 5;
   } else if ( $number < 1 ) {
@@ -50,10 +53,18 @@ function widget($args, $instance) {
     $order = '';
   }
   if ($order) {
+    $where = "where counters.quant>0 and (posts.post_type not in ($thanksNotCountablePostTypes))";
+    if ($filter_by_category) {
+      $where .= " and $filter_by_category in 
+                  (select term_taxonomy.term_id
+                     from $wpdb->term_relationships term_relationships
+                       left join $wpdb->term_taxonomy term_taxonomy on term_taxonomy.term_taxonomy_id=term_relationships.term_taxonomy_id
+                     where term_taxonomy.taxonomy='category' and term_relationships.object_id=posts.ID) ";
+    }
     $query = "select posts.ID, posts.post_title, counters.quant, counters.updated
                 from $wpdb->posts posts
                   left join $thanksCountersTable counters on counters.post_id=posts.ID
-                where counters.quant>0 and (posts.post_type='post' or posts.post_type='page')
+                $where            
                 order by $order desc limit 0, $number";
     $records = $wpdb->get_results($query, ARRAY_A);
     if ($wpdb->last_error) {
@@ -64,7 +75,7 @@ function widget($args, $instance) {
       $date_format = get_option('date_format').' '.get_option('time_format');
     	$output .= '<ul>';
       foreach ($records as $record) {
-	      $record['oneItem'] = '<li><a href="%1$s" title="%3$s">%2$s (%4$s)</a></li>';
+	      $record['oneItem'] = '<li><a href="%1$s" title="%3$s">%2$s (<span class="thanks_quant_for_post">%4$s</span>)</a></li>';
 	      $record['kind'] = $content;
 	      $record = apply_filters('thanks_stat_sidebar_item', $record);
 	      $output .= sprintf($record['oneItem'], get_permalink($record['ID']), $record['post_title'], mysql2date($date_format, $record['updated'], true), ($record['quant']) ? $record['quant'] : 0);
@@ -88,25 +99,116 @@ function widget($args, $instance) {
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['number'] = (int) $new_instance['number'];
-    $instance['content'] = strip_tags($new_instance['content']);
-    $instance['total'] = (int) $new_instance['total'];
+		if (isset($new_instance['title'])) {
+      $instance['title'] = strip_tags($new_instance['title']);
+    } else {
+      $instance['title'] = '';
+    }
+    
+    if (isset($new_instance['filter_by_category'])) {
+      $instance['filter_by_category'] = (int) $new_instance['filter_by_category'];
+    } else {
+      $instance['filter_by_category'] = 0;
+    }
+		
+    if (isset($new_instance['number'])) {
+      $instance['number'] = (int) $new_instance['number'];
+    } else {
+      $instance['number'] = 5;
+    }
+    
+    if (isset($new_instance['content'])) {
+      $instance['content'] = strip_tags($new_instance['content']);
+    } else {
+      $instance['content'] = '';
+    }
+    
+    if (isset($new_instance['total'])) {
+      $instance['total'] = (int) $new_instance['total'];
+    } else {
+      $instance['total'] = 0;
+    }
 
 		return $instance;
-	}
+	}  // end of update()
+  
 
 	function form( $instance ) {
-		$title = esc_attr($instance['title']);
-		if (!$number = (int) $instance['number']) {
-			$number = 5;
+    if (!is_array($instance)) {
+      return;
     }
-    $content = esc_attr($instance['content']);
-    $total = esc_attr($instance['total']);
+		if (isset($instance['title'])) {
+      $title = esc_attr($instance['title']);
+    } else {
+      $title = '';
+    }
+		
+    if (isset($instance['filter_by_category'])) {
+      $filter_by_category = (int) $instance['filter_by_category'];
+    } else {
+      $filter_by_category = 0;
+    }
+    if (!$filter_by_category) {
+      $selected = 'selected="selected"';      
+    } else {
+      $selected = '';
+    }
+    
+    if (isset($instance['number'])) {
+      if (!$number = (int) $instance['number']) {
+        $number = 5;
+      }
+    } else {
+      $number = 5;
+    }
+    
+    if (isset($instance['content'])) {
+      $content = esc_attr($instance['content']);
+    } else {
+      $content = '';
+    }
+    if (isset($instance['total'])) {
+      $total = esc_attr($instance['total']);
+    } else {
+      $total = 0;
+    }
+    
+    $categories = get_terms('category', array('hierarchical' => true));
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:','thankyou'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
+    <label for="<?php echo $this->get_field_id('filter_by_category'); ?>" style="font-size:12px;"><?php _e('Filter by category:','thankyou'); ?></label>
+    <select id="<?php echo $this->get_field_id('filter_by_category'); ?>" name="<?php echo $this->get_field_name('filter_by_category'); ?>" >
+      <option value="0" <?php echo $selected; ?> >No Filter</option>
+<?php
+  foreach ($categories as $i=>$category) {
+    if ($category->parent) {
+      continue;
+    }
+    if ($filter_by_category==$category->term_id) {
+      $selected = 'selected="selected"';
+    } else {
+      $selected = '';
+    }
+?>    
+      <option value="<?php echo $category->term_id; ?>" <?php echo $selected; ?> ><?php echo $category->name; ?></option>
+<?php   
+    $children = get_terms('category', array('hierarchical' => false, 'child_of' => $category->term_id));
+    foreach ($children as $subcategory) {
+      if ($filter_by_category==$subcategory->term_id) {
+        $selected = 'selected="selected"';
+      } else {
+        $selected = '';
+      }
+?>
+      <option value="<?php echo $subcategory->term_id; ?>" <?php echo $selected; ?> >&nbsp;&nbsp;&nbsp;<?php echo $subcategory->name; ?></option>
+<?php      
+    }    
+  }
+?>      
+    </select>
+    
 		<label for="<?php echo $this->get_field_id('number'); ?>" style="font-size:12px;"><?php _e('Number of posts to show:','thankyou'); ?></label>
     <select id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" >
 <?php
@@ -131,8 +233,10 @@ function widget($args, $instance) {
       <label for="<?php echo $this->get_field_id('total'); ?>"><?php _e('Display total quant of thanks', 'thankyou'); ?></label>
     </p>
 <?php
-	}
-}
+	} // end of form() method
+  
+} 
+//// end of class Thanks_Widget_Latest_Thanks
 
 function thanks_widgets_init() {
 	if ( !is_blog_installed() )
@@ -181,7 +285,7 @@ function thanks_get_dashboard_rows() {
 
 function thanks_dashboard_content() {
 
-  global $wpdb, $thanksCountersTable;
+  global $wpdb, $thanksCountersTable, $thanksNotCountablePostTypes;
 
   // number of rows in result data set
   $number = thanks_get_dashboard_rows();
@@ -196,7 +300,7 @@ function thanks_dashboard_content() {
   $ww_query = "select posts.ID, posts.post_title, counters.quant, counters.updated
                    from $wpdb->posts posts
                      left join $thanksCountersTable counters on counters.post_id=posts.ID
-                   where counters.quant>0 and (posts.post_type='post' or posts.post_type='page')
+                   where counters.quant>0 and (posts.post_type not in ($thanksNotCountablePostTypes))
                    order by $order desc limit 0, $number";
   $ww_records = $wpdb->get_results($ww_query, ARRAY_A);
 

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thank You Counter Button 1.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-11 23:14+0700\n"
+"POT-Creation-Date: 2012-02-25 21:10+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Vladimir <vladimir@shinephp.com>\n"
 "Language-Team: Omi | http://equipajedemano.info <equipajedemano@gmail.com>\n"
@@ -25,72 +25,76 @@ msgstr "Muestra las entradas agradecidas recientemente o las más agradecidas (s
 msgid "Thanks Stat"
 msgstr "Artículos agradecidos"
 
-#: ../thankyou_widgets.php:78
-#: ../thankyou_widgets.php:236
+#: ../thankyou_widgets.php:89
+#: ../thankyou_widgets.php:340
 msgid "Total quant of thanks: "
 msgstr "Agradecimientos totales: "
 
-#: ../thankyou_widgets.php:107
+#: ../thankyou_widgets.php:178
 msgid "Title:"
 msgstr "Título:"
 
-#: ../thankyou_widgets.php:110
+#: ../thankyou_widgets.php:181
+msgid "Filter by category:"
+msgstr ""
+
+#: ../thankyou_widgets.php:212
 msgid "Number of posts to show:"
 msgstr "Número de entradas a mostrar:"
 
-#: ../thankyou_widgets.php:122
-#: ../thankyou_widgets.php:314
+#: ../thankyou_widgets.php:224
+#: ../thankyou_widgets.php:418
 msgid "What posts to show:"
 msgstr "Entradas a mostrar:"
 
-#: ../thankyou_widgets.php:124
-#: ../thankyou_widgets.php:317
+#: ../thankyou_widgets.php:226
+#: ../thankyou_widgets.php:421
 msgid "Latest thanked"
 msgstr "Los últimos agradecimientos"
 
-#: ../thankyou_widgets.php:125
-#: ../thankyou_widgets.php:318
+#: ../thankyou_widgets.php:227
+#: ../thankyou_widgets.php:422
 msgid "Most thanked"
 msgstr "Los más agradecidos"
 
-#: ../thankyou_widgets.php:126
+#: ../thankyou_widgets.php:228
 msgid "Total quant of thanks"
 msgstr "Total de agradecimientos"
 
-#: ../thankyou_widgets.php:131
-#: ../thankyou_widgets.php:330
+#: ../thankyou_widgets.php:233
+#: ../thankyou_widgets.php:434
 msgid "Display total quant of thanks"
 msgstr "Mostrar suma total de agradecimientos"
 
-#: ../thankyou_widgets.php:242
+#: ../thankyou_widgets.php:346
 msgid "Check Full Statistics"
 msgstr "Ver todas las estadísticas"
 
-#: ../thankyou_widgets.php:246
+#: ../thankyou_widgets.php:350
 msgid "Plugin author home page"
 msgstr "Página web del autor del plugin"
 
-#: ../thankyou_widgets.php:253
+#: ../thankyou_widgets.php:357
 msgid "No thanks yet"
 msgstr "Todavía sin agradecimientos"
 
-#: ../thankyou_widgets.php:309
+#: ../thankyou_widgets.php:413
 msgid "Posts number to show:"
 msgstr "Número de entradas a mostrar:"
 
-#: ../thankyou_widgets.php:335
+#: ../thankyou_widgets.php:439
 msgid "Display Full Statistics link"
 msgstr "Mostrar enlace hacia estadísticas totales"
 
-#: ../thankyou_widgets.php:340
+#: ../thankyou_widgets.php:444
 msgid "Display plugin author link"
 msgstr "Mostrar enlace hacia la web del autor"
 
-#: ../thankyou_widgets.php:351
+#: ../thankyou_widgets.php:455
 msgid "Latest Thanks"
 msgstr "Últimos agradecimientos (Thank You CB)"
 
-#: ../thankyou_widgets.php:353
+#: ../thankyou_widgets.php:457
 msgid "Most Thanked"
 msgstr "Los más agradecidos (Thank You CB)"
 
@@ -106,66 +110,65 @@ msgstr "Por favor, ¡actualice!"
 msgid "Every time a new visitor clicks the \"Thank you\" button, one point is added to the total \"thanks\" counter for this post."
 msgstr "Cada vez que un visitante hace clic sobre el botón \"Gracias\" se añadirá un punto a la suma total de agradecimientos de dicha entrada."
 
-#: ../thankyou.php:101
+#: ../thankyou.php:113
 msgid "Thank You Counter Button Plugin"
 msgstr "Configuración de Thank You Counter Button"
 
-#: ../thankyou.php:117
-#: ../thankyou.php:193
-#: ../thankyou.php:488
-#: ../thankyou_options.php:547
-msgid "Settings"
-msgstr "Opciones"
+#: ../thankyou.php:174
+msgid "Thank You Counter Button Statistics"
+msgstr ""
 
-#: ../thankyou.php:118
-msgid "Statistics"
-msgstr "Estadísticas"
-
-#: ../thankyou.php:176
-#: ../thankyou.php:178
+#: ../thankyou.php:231
+#: ../thankyou.php:233
 msgid "You left &ldquo;Thanks&rdquo; already for this post"
 msgstr "Ya diste las &ldquo;gracias&rdquo; por esta entrada"
 
-#: ../thankyou.php:179
+#: ../thankyou.php:234
 msgid "Click to left &ldquo;Thanks&rdquo; for this post"
 msgstr "Pincha aquí si quieres dar las &ldquo;gracias&rdquo; por esta entrada"
 
-#: ../thankyou.php:194
-#: ../thankyou_options.php:548
+#: ../thankyou.php:249
+#: ../thankyou.php:575
+#: ../thankyou_options.php:513
+msgid "Settings"
+msgstr "Opciones"
+
+#: ../thankyou.php:250
+#: ../thankyou_options.php:514
 #: ../thankyou_statistics.php:606
 #: ../thankyou_statistics.php:609
 #, php-format
 msgid "View statistics details for \"%s\""
 msgstr "Ver las estadísticas detalladas de \"%s\""
 
-#: ../thankyou.php:195
-#: ../thankyou_options.php:549
+#: ../thankyou.php:251
+#: ../thankyou_options.php:515
 msgid "Hide these shortcuts"
 msgstr "Ocultar estos accesos directos"
 
-#: ../thankyou.php:195
+#: ../thankyou.php:251
 msgid "Do you really want to hide these shortcuts?"
 msgstr "¿Realmente desea ocultar estos accesos directos?"
 
-#: ../thankyou.php:392
-#: ../thankyou_lib.php:285
+#: ../thankyou.php:459
+#: ../thankyou_lib.php:286
 msgid "Thank You"
 msgstr "Gracias"
 
-#: ../thankyou.php:498
+#: ../thankyou.php:585
 #: ../thankyou_options.php:55
 msgid "Changelog"
 msgstr "Lista de cambios"
 
-#: ../thankyou.php:499
+#: ../thankyou.php:586
 msgid "Additional Documentation"
 msgstr "Documentación adicional"
 
-#: ../thankyou_options.php:35
+#: ../thankyou_options.php:38
 msgid "Default Settings are restored"
 msgstr "Configuración inicial restaurada"
 
-#: ../thankyou_options.php:37
+#: ../thankyou_options.php:40
 msgid "All Thanks Counters are cleared"
 msgstr "TODOS los contadores de agradecimientos han sido reseteados"
 
@@ -189,91 +192,78 @@ msgstr "Documentación adicional"
 msgid "FAQ"
 msgstr "FAQ"
 
-#: ../thankyou_options.php:57
-msgid "Donate"
-msgstr "¿Quiere hacer una donación?"
-
-#: ../thankyou_options.php:59
-msgid "More plugins from"
-msgstr ""
-
-#: ../thankyou_options.php:73
-#: ../thankyou_options.php:88
-msgid "No items found."
-msgstr ""
-
-#: ../thankyou_options.php:76
-msgid "Recent Posts:"
-msgstr ""
-
-#: ../thankyou_options.php:91
+#: ../thankyou_options.php:70
 msgid "Greetings:"
 msgstr "Saludos:"
 
-#: ../thankyou_options.php:92
+#: ../thankyou_options.php:71
 msgid "It's me, the author"
 msgstr "Soy yo, el autor :)"
 
-#: ../thankyou_options.php:93
+#: ../thankyou_options.php:72
 msgid "for the help with Belarusian translation"
 msgstr "Por su ayuda con la traducción al bielorrusia"
 
-#: ../thankyou_options.php:94
+#: ../thankyou_options.php:73
+msgid "for the help with Chinese translation"
+msgstr ""
+
+#: ../thankyou_options.php:74
 msgid "for the help with Dutch translation"
 msgstr "Por su ayuda con la traducción al dutch"
 
-#: ../thankyou_options.php:95
+#: ../thankyou_options.php:75
 msgid "for the help with French translation, ideas, source code contributions and new versions testing"
 msgstr "Por su ayuda con la traducción al francés, ideas, contribución con código fuente y pruebas de desarrollo"
 
-#: ../thankyou_options.php:96
+#: ../thankyou_options.php:76
 msgid "for the help with German translation"
 msgstr "Por su ayuda con la traducción al germano"
 
-#: ../thankyou_options.php:97
+#: ../thankyou_options.php:77
 msgid "for the help with Hungarian translation"
 msgstr "Por su ayuda con la traducción al Hungarian"
 
-#: ../thankyou_options.php:98
+#: ../thankyou_options.php:78
 msgid "for the help with Iranian translation"
 msgstr "Por su ayuda con la traducción al iranian"
 
-#: ../thankyou_options.php:99
-#: ../thankyou_options.php:100
+#: ../thankyou_options.php:79
+#: ../thankyou_options.php:80
 msgid "for the help with Italian translation"
 msgstr "Por su ayuda con la traducción al italiano"
 
-#: ../thankyou_options.php:101
+#: ../thankyou_options.php:81
 msgid "for the help with Spanish translation, ideas and new versions testing"
 msgstr "Por su ayuda con la traducción al castellano, ideas y pruebas de desarrollo"
 
-#: ../thankyou_options.php:102
+#: ../thankyou_options.php:82
 msgid "For the help with Turkish translation"
 msgstr ""
 
-#: ../thankyou_options.php:104
+#: ../thankyou_options.php:84
 msgid "for setting page layout idea and html markup examples"
 msgstr "Por la idea de ordenar la página de opciones y los ejemplos html"
 
-#: ../thankyou_options.php:105
+#: ../thankyou_options.php:85
 msgid "for the excelent JQuery color picker"
 msgstr "Por el excelente selector de colores en JQuery"
 
-#: ../thankyou_options.php:106
+#: ../thankyou_options.php:86
 msgid "for the form input slider code"
 msgstr "Por el código del control deslizante del formulario"
 
-#: ../thankyou_options.php:107
+#: ../thankyou_options.php:87
 msgid "for the cute online button image generator"
 msgstr "Por el estupendo generador de imágenes de botones"
 
-#: ../thankyou_options.php:138
+#: ../thankyou_options.php:133
 msgid "All settings for TYCB plugin will be return to the default values, Continue?"
 msgstr ""
 "Todos los valores de configuración de este plugin se reestablecerán\\n"
 " a su configuración inicial, ¿desea continuar?"
 
-#: ../thankyou_options.php:140
+#: ../thankyou_options.php:135
 msgid ""
 "All thanks counters for all posts will be set to 0,\\n"
 " all thanks click history will be cleared, Continue?"
@@ -281,182 +271,202 @@ msgstr ""
 "Los contadores de agradecimientos de TODAS las entradas se resetearán\\n"
 " y se eliminará su historial de agradecimientos, ¿desea continuar?"
 
-#: ../thankyou_options.php:321
-#: ../thankyou_options.php:325
+#: ../thankyou_options.php:319
+#: ../thankyou_options.php:323
 msgid "Display"
 msgstr "Ubicación"
 
-#: ../thankyou_options.php:330
+#: ../thankyou_options.php:328
 msgid "Display button at Pages"
 msgstr "Mostrar el botón en las páginas"
 
-#: ../thankyou_options.php:333
+#: ../thankyou_options.php:331
 msgid "Display button at Home page, Categories/Tags archive pages"
 msgstr "Mostrar el botón en portada y en páginas de categorías/etiquetas"
 
-#: ../thankyou_options.php:338
+#: ../thankyou_options.php:336
 msgid "Do not show button for selected categories"
 msgstr "No mostrar el botón en las siguientes categorías (se listarán al seleccionar)"
 
-#: ../thankyou_options.php:393
+#: ../thankyou_options.php:391
 msgid "Position in the Post text"
 msgstr "Posición en el texto del artículo"
 
-#: ../thankyou_options.php:397
+#: ../thankyou_options.php:395
 msgid "Before"
 msgstr "Antes del texto"
 
-#: ../thankyou_options.php:399
+#: ../thankyou_options.php:397
 msgid "At first page of multipaged posts only"
 msgstr "En la primera página de las entradas multipágina"
 
-#: ../thankyou_options.php:403
+#: ../thankyou_options.php:401
 msgid "After"
 msgstr "Después del texto"
 
-#: ../thankyou_options.php:405
+#: ../thankyou_options.php:403
 msgid "At last page of multipaged posts only"
 msgstr "Sólo en la última página de las entradas multipágina"
 
-#: ../thankyou_options.php:409
+#: ../thankyou_options.php:407
 msgid "Shortcode [thankyou]"
 msgstr "Código abreviado [thankyou]"
 
-#: ../thankyou_options.php:410
+#: ../thankyou_options.php:408
 msgid "Manual"
 msgstr "Manual"
 
-#: ../thankyou_options.php:416
+#: ../thankyou_options.php:414
 msgid "Button Caption"
 msgstr "Texto del botón"
 
-#: ../thankyou_options.php:423
+#: ../thankyou_options.php:421
 msgid "Button Styling"
 msgstr "Estilo del botón"
 
-#: ../thankyou_options.php:425
+#: ../thankyou_options.php:423
 msgid "Add style to the div:"
 msgstr "Estilo del div:"
 
-#: ../thankyou_options.php:428
-#: ../thankyou_options.php:432
-#: ../thankyou_options.php:485
+#: ../thankyou_options.php:426
+#: ../thankyou_options.php:430
+#: ../thankyou_options.php:486
 msgid "e.g.,"
 msgstr ", ej.,"
 
-#: ../thankyou_options.php:429
+#: ../thankyou_options.php:427
 msgid "to the Caption font:"
 msgstr "Estilo del texto:"
 
-#: ../thankyou_options.php:433
+#: ../thankyou_options.php:431
 msgid "font color: "
 msgstr "Color de fuente:"
 
-#: ../thankyou_options.php:438
+#: ../thankyou_options.php:436
+msgid "Button grafics"
+msgstr ""
+
+#: ../thankyou_options.php:439
 msgid "Size"
 msgstr "Tamaño"
 
-#: ../thankyou_options.php:443
+#: ../thankyou_options.php:442
 msgid "Normal"
 msgstr "Normal"
 
-#: ../thankyou_options.php:446
+#: ../thankyou_options.php:445
 msgid "Compact"
 msgstr "Tamaño reducido"
 
-#: ../thankyou_options.php:451
-msgid "Form and Color"
-msgstr "Color y Forma"
+#: ../thankyou_options.php:446
+msgid "Form"
+msgstr ""
 
-#: ../thankyou_options.php:480
+#: ../thankyou_options.php:449
+msgid "Square"
+msgstr ""
+
+#: ../thankyou_options.php:452
+msgid "Rounded"
+msgstr ""
+
+#: ../thankyou_options.php:458
+msgid "Color"
+msgstr "Color"
+
+#: ../thankyou_options.php:479
 msgid "Custom button image URL"
 msgstr "URL con la imagen personalizada para el botón"
 
-#: ../thankyou_options.php:487
+#: ../thankyou_options.php:480
+msgid "Hover state image URL"
+msgstr ""
+
+#: ../thankyou_options.php:488
 msgid "Width, px"
 msgstr "Ancho (píxeles)"
 
-#: ../thankyou_options.php:488
+#: ../thankyou_options.php:489
 msgid "Height, px"
 msgstr "Alto (píxeles)"
 
-#: ../thankyou_options.php:499
-msgid "Misc"
-msgstr "Miscelánea"
-
-#: ../thankyou_options.php:503
-msgid "Check IP-address"
-msgstr "Comprobar dirección IP"
-
-#: ../thankyou_options.php:508
-msgid "Only one Thanks for post for one IP-address limit"
-msgstr "Limitar a un agradecimiento por artículo e IP"
-
-#: ../thankyou_options.php:509
-msgid "Time limit:"
-msgstr "Límite de tiempo:"
-
-#: ../thankyou_options.php:511
-msgid "Forever"
-msgstr "Para siempre"
-
-#: ../thankyou_options.php:513
-msgid "Only for this period"
-msgstr "Sólo durante"
-
-#: ../thankyou_options.php:515
-msgid "seconds"
-msgstr "segundos"
-
-#: ../thankyou_options.php:520
-msgid "Display settings shortcuts"
-msgstr "Mostrar accesos directos de configuración"
-
-#: ../thankyou_options.php:525
-msgid "Add shortcuts next to the buttons for settings quick access"
-msgstr "Añadir unos accesos directos, junto a los botones de agradecimiento, para poder acceder rápidamente a las opciones y estadísticas (no serán visibles por el visitante)"
-
-#: ../thankyou_options.php:530
-msgid "Return to Defaults"
-msgstr "Resetear Configuración"
-
-#: ../thankyou_options.php:530
-msgid "Restore the default values for all settings"
-msgstr "Restaura los valores por defecto para todas las opciones"
-
-#: ../thankyou_options.php:531
-msgid "Reset Counters"
-msgstr "Resetear Contadores"
-
-#: ../thankyou_options.php:531
-msgid "Reset all thanks counters for the all posts"
-msgstr "Resetea TODOS los contadores de agradecimientos"
-
-#: ../thankyou_options.php:536
-msgid "Save Changes"
-msgstr "Grabar cambios"
-
-#: ../thankyou_options.php:537
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: ../thankyou_options.php:537
-msgid "Cancel not saved changes"
-msgstr "Cancelar los cambios"
-
-#: ../thankyou_options.php:539
+#: ../thankyou_options.php:495
 msgid "Button DIV Style Preview"
 msgstr "Previsualización de estilo del botón"
 
-#: ../thankyou_options.php:548
+#: ../thankyou_options.php:514
 #: ../thankyou_statistics.php:160
 #: ../thankyou_statistics.php:532
 msgid "Post Title"
 msgstr "Título de la entrada"
 
-#: ../thankyou_lib.php:260
-#: ../thankyou_lib.php:298
-#: ../thankyou_lib.php:341
+#: ../thankyou_options.php:521
+msgid "Miscellaneous:"
+msgstr ""
+
+#: ../thankyou_options.php:525
+msgid "Check IP-address"
+msgstr "Comprobar dirección IP"
+
+#: ../thankyou_options.php:530
+msgid "Only one Thanks for post for one IP-address limit"
+msgstr "Limitar a un agradecimiento por artículo e IP"
+
+#: ../thankyou_options.php:531
+msgid "Time limit:"
+msgstr "Límite de tiempo:"
+
+#: ../thankyou_options.php:533
+msgid "Forever"
+msgstr "Para siempre"
+
+#: ../thankyou_options.php:535
+msgid "Only for this period"
+msgstr "Sólo durante"
+
+#: ../thankyou_options.php:537
+msgid "seconds"
+msgstr "segundos"
+
+#: ../thankyou_options.php:542
+msgid "Display settings shortcuts"
+msgstr "Mostrar accesos directos de configuración"
+
+#: ../thankyou_options.php:547
+msgid "Add shortcuts next to the buttons for settings quick access"
+msgstr "Añadir unos accesos directos, junto a los botones de agradecimiento, para poder acceder rápidamente a las opciones y estadísticas (no serán visibles por el visitante)"
+
+#: ../thankyou_options.php:553
+msgid "Save Changes"
+msgstr "Grabar cambios"
+
+#: ../thankyou_options.php:554
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../thankyou_options.php:554
+msgid "Cancel not saved changes"
+msgstr "Cancelar los cambios"
+
+#: ../thankyou_options.php:557
+msgid "Return to Defaults"
+msgstr "Resetear Configuración"
+
+#: ../thankyou_options.php:557
+msgid "Restore the default values for all settings"
+msgstr "Restaura los valores por defecto para todas las opciones"
+
+#: ../thankyou_options.php:558
+msgid "Reset Counters"
+msgstr "Resetear Contadores"
+
+#: ../thankyou_options.php:558
+msgid "Reset all thanks counters for the all posts"
+msgstr "Resetea TODOS los contadores de agradecimientos"
+
+#: ../thankyou_lib.php:261
+#: ../thankyou_lib.php:299
+#: ../thankyou_lib.php:342
 msgid "operation is prohibited"
 msgstr "la operación está prohibida"
 
@@ -612,6 +622,14 @@ msgstr ""
 msgid "No posts with thanks found"
 msgstr "No se encuentran entradas que hayan recibido agradecimientos"
 
+#~ msgid "Statistics"
+#~ msgstr "Estadísticas"
+#~ msgid "Donate"
+#~ msgstr "¿Quiere hacer una donación?"
+#~ msgid "Form and Color"
+#~ msgstr "Color y Forma"
+#~ msgid "Misc"
+#~ msgstr "Miscelánea"
 #~ msgid "Unknown Post!"
 #~ msgstr "¡Entrada desconocida!"
 #~ msgid "Default"
@@ -651,12 +669,8 @@ msgstr "No se encuentran entradas que hayan recibido agradecimientos"
 #~ msgstr "Posición"
 #~ msgid "Add style to the Thank You button's div, e.g.,"
 #~ msgstr "Personalice el estilo de su botón, por ejemplo:"
-#~ msgid "Color"
-#~ msgstr "Color"
 #~ msgid "Blue"
 #~ msgstr "Azul"
-#~ msgid "Red"
-#~ msgstr "Rojo"
 #~ msgid "Green"
 #~ msgstr "Verde"
 #~ msgid "Grey"

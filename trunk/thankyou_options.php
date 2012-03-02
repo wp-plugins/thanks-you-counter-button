@@ -8,9 +8,12 @@ if (!defined('THANKS_PLUGIN_URL')) {
   die;  // Silence is golden, direct call is prohibited
 }
 
-require_once(ABSPATH.WPINC.'/class-simplepie.php');
-
-$buttonColors = array('brown', 'blue', 'red', 'green', 'grey', 'black');
+$buttonColors = array('brown'=>'#ca6600', 
+                      'blue'=>'#0031fb', 
+                      'red'=>'#fd0031', 
+                      'green'=>'#33ca00', 
+                      'grey'=>'#ececec', 
+                      'black'=>'#4c4c4c');
 
 function thanks_displayBoxStart($title) {
 ?>
@@ -41,54 +44,30 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
   }
 }
 ?>
-  <form method="post" action="options.php">
-<?php
-    settings_fields('thankyoubutton-options');
-?>
+  
 				<div id="poststuff" class="metabox-holder has-right-sidebar">
 					<div class="inner-sidebar" >
-						<div id="side-sortables" class="meta-box-sortabless ui-sortable" style="position:relative;">
-									<?php thanks_displayBoxStart(__('About this Plugin:', 'thankyou')); ?>
+						<div id="side-sortables" class="meta-box-sortables ui-sortable" style="position:relative;">
+<?php thanks_displayBoxStart(__('About this Plugin:', 'thankyou')); ?>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb.png'; ?>" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/"><?php _e('Plugin webpage', 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_help.png'; ?>" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#filterhooks"><?php _e('Additional documentation', 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_changelog.png'; ?>);" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#changelog"><?php _e('Changelog', 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_faq.png'; ?>)" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#faq"><?php _e('FAQ', 'thankyou'); ?></a>
-                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_donate.png'; ?>)" target="_blank" href="http://www.shinephp.com/donate"><?php _e('Donate', 'thankyou'); ?></a>
-									<?php thanks_displayBoxEnd();
-  thanks_displayBoxStart(__('More plugins from','thankyou').' <a href="http://www.shinephp.com" title="ShinePHP.com">ShinePHP.com</a>', 'float: left; display: inline; margin-left: 10px; width: 350px;'); 
-  $feed = new SimplePie();
-  $feed->set_feed_url('http://www.shinephp.com/category/shinephp-wordpress-plugins/feed/');
-	$feed->enable_cache(false);
-  $feed->init();
-  $feed->handle_content_type();
-  $items = $feed->get_items();
-  if ($items && sizeof($items)>0) {
-    echo '<ul>';
-    foreach ($items as $item) {
-      echo '<li><a href="'.$item->get_permalink().'">'.$item->get_title().'</a></li>';
-    }
-    echo '</ul>';
-  } else {
-    echo '<ul><li>'.__('No items found.', 'thankyou') . '</li></ul>';
-  }
-  echo '<hr/>';
-  echo '<span style="font-size: 12px; font-weight: bold;">'.__('Recent Posts:','plugins-lang-switch').'</span><br/>';
-  $feed->set_feed_url('http://feeds.feedburner.com/shinephp');
-  $feed->init();
-  $feed->handle_content_type();
-  $items = $feed->get_items();
-  if ($items && sizeof($items)>0) {
-    echo '<ul>';
-    foreach ($items as $item) {
-      echo '<li><a href="'.$item->get_permalink().'" title="'.substr($item->get_description(), 0, 80).'">'.$item->get_title().'</a>&nbsp;&ndash; <span class="rss-date">'.$item->get_date('j F Y').'</span></li>';
-    }
-    echo '</ul>';
-  } else {
-    echo '<ul><li>'.__('No items found.', 'thankyou') . '</li></ul>';
-  }
-  thanks_displayBoxEnd();
-  thanks_displayBoxStart(__('Greetings:','thankyou')); ?>
+                      <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/greetings.png'; ?>);" onclick="thanks_show_greetings()" href="#">Greetings</a>
+                      <hr />
+                      <div style="text-align: center;">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                          <input type="hidden" name="cmd" value="_s-xclick">
+                          <input type="hidden" name="encrypted" 
+                                 value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+                          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                          <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                      </div>                        
+<?php thanks_displayBoxEnd(); ?>
+          <div id="thanks_greetings" style="visibility: hidden;">  
+<?php thanks_displayBoxStart(__('Greetings:','thankyou')); ?>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" title="<?php _e("It's me, the author", 'thankyou'); ?>" href="http://www.shinephp.com/">Vladimir</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/pcde.png'; ?>);" target="_blank" title="<?php _e('for the help with Belarusian translation', 'thankyou'); ?>" href="http://pc.de">Marcis Gasuns</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/owen.png'; ?>);" target="_blank" title="<?php _e('for the help with Chinese translation', 'thankyou'); ?>" href="http://mencase.com">Owen</a>
@@ -106,15 +85,30 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/simon.png'; ?>);" target="_blank" title="<?php _e('for the excelent JQuery color picker', 'thankyou'); ?>" href="http://www.supersite.me/website-building/jquery-free-color-picker/">Simon</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/dhtmlgoodies.png'; ?>);" target="_blank" title="<?php _e('for the form input slider code', 'thankyou'); ?>" href="http://www.dhtmlgoodies.com/">DHTMLGoodies</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/eric.png'; ?>);" target="_blank" title="<?php _e('for the cute online button image generator', 'thankyou'); ?>" href="http://www.glassybuttons.com/glassy.php">Eric</a>
-	<?php
-  thanks_displayBoxEnd();
-?>
+<?php thanks_displayBoxEnd(); ?>
+          </div>   
 						</div>
 					</div>
-					<div class="has-sidebar" >
+<form method="post" action="options.php">
+<?php
+    settings_fields('thankyoubutton-options');
+?>            
+
+          <div class="has-sidebar" >
 						<div id="post-body-content" class="has-sidebar-content">
 
 <script language="javascript" type="text/javascript">
+  
+  function thanks_show_greetings(message) {
+    var el = document.getElementById('thanks_greetings');
+    if (el.style.visibility=='visible') {
+      el.style.visibility = 'hidden';
+    } else {
+      el.style.visibility = 'visible';
+    }
+  }
+
+  
   function thanks_hideShowDiv(checkbox) {
     var el = document.getElementById('categorydiv')
     if (checkbox.checked) {
@@ -182,49 +176,81 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
     }
   }
 
-  function refreshButtonsCaption(newCaption) {
-    for (i=0; i<12; i++) {
-      var el = document.getElementById('thanksButton_'+ i);
-      el.value = newCaption +': '+ Math.ceil(Math.random()*100);
-    }
-
-    el = document.getElementById('thanksButton_custom');
-    el.value = newCaption +': '+ Math.ceil(Math.random()*100);
+  function refreshButtonCaption(newCaption) {
 
     el = document.getElementById('thanksButton_stylePreview');
-    el.value = newCaption +': '+ Math.ceil(Math.random()*100);
-  }
-  // end of refreshButtonsCaption();
-
-
-  function refreshButtonsImage(size) {
-    var colors = new Array();
-<?php
-    $i = 0;
-    foreach ($buttonColors as $color) {
-      echo 'colors['.$i++.'] = "'.$color.'";';
-      echo 'colors['.$i++.'] = "'.$color.'1";';
-    }
-?>
-    for (i=0; i<12; i++) {
-      var el = document.getElementById('thanksButton_'+ i);      
-      if (size=='large') {
-        oldClassName = 'thanks_'+ 'compact';
-      } else {
-        oldClassName = 'thanks_'+ 'large';
-      }
-      el.className = el.className.replace(oldClassName,'thanks_'+ size);
-      el.style.backgroundImage = 'url(<?php echo THANKS_PLUGIN_URL;?>/images/thanks_'+ size +'_'+ colors[i] +'.png)';
-    }
+    el.value = newCaption +' '+ Math.ceil(Math.random()*100);
     
   }
-  // end of refreshButtonsImage();
+  // end of refreshButtonCaption();
+
+
+  function refreshPreviewButton() {
+    
+    var el = document.getElementById('thanks_custom');
+    if (!el.checked) {
+      
+      var size = 'compact';
+      var el = document.getElementById('thanks_size_large');
+      if (el.checked) {
+        size = 'large';
+      }
+      
+      var corners_form = '';
+      var el = document.getElementById('thanks_form_rounded');
+      if (el.checked) {
+        corners_form = '1';
+      } 
+      
+      el = document.getElementById("thanks_color");
+      var color = el.options[el.selectedIndex].value;
+      
+      el = document.getElementById('thanksButton_stylePreview');
+      if (size=='large') {
+        oldClassName = 'thanks_'+ 'compact';
+        el.style.width = '120px';
+        el.style.height = '40px';
+      } else {
+        oldClassName = 'thanks_'+ 'large';
+        el.style.width = '100px';
+        el.style.height = '26px';
+      }
+      el.className = el.className.replace(oldClassName,'thanks_'+ size);              
+      var buttonImageURL = '<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_'+ size +'_'+ color + corners_form +'.png';
+      el = document.getElementById('thanksButtonDiv_stylePreview');
+      el.style.backgroundImage = 'url('+ buttonImageURL +')';
+      ThanksSettings.button_image_url = buttonImageURL;
+      ThanksSettings.button_image_glow_url = '<?php echo THANKS_PLUGIN_URL; ?>/images/thanks_'+ size +'_'+ color + corners_form +'_glow.png';
+    } else {
+      el = document.getElementById('thanksButtonDiv_stylePreview');
+      var buttonImageURL = document.getElementById('thanks_custom_url').value;
+      el.style.backgroundImage = 'url('+ buttonImageURL +')';      
+      el = document.getElementById('thanksButton_stylePreview');
+      el.className = el.className.replace('thanks_compact','thanks_custom');        
+      el.className = el.className.replace('thanks_large','thanks_custom'); 
+      var value = document.getElementById('thanks_custom_width').value;
+      if (value.indexOf('px')<0) {
+        value += 'px';
+      } 
+      el.style.width = value;
+      var value = document.getElementById('thanks_custom_height').value;
+      if (value.indexOf('px')<0) {
+        value += 'px';
+      } 
+      el.style.height = value;
+      ThanksSettings.button_image_url = buttonImageURL;
+      var buttonImageGlowURL = document.getElementById('thanks_custom_glow_url').value;
+      if (buttonImageGlowURL!='') {
+        ThanksSettings.button_image_glow_url = buttonImageGlowURL;
+      } else {
+        ThanksSettings.button_image_glow_url = buttonImageURL;
+      }
+    }
+  }
+  // end of refreshPreviewButton();
+
 
   function refreshButtonCaptionColor(newColor) {
-    for (i=0; i<12; i++) {
-      var el = document.getElementById('thanksButton_'+ i);
-      el.style.color = newColor;
-    }
     el = document.getElementById('thanksButton_custom');
     el.style.color = newColor;
 
@@ -238,26 +264,6 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
     //font-family: Verdana, Arial, Sans-Serif; font-size: 14px; font-weight: normal;
     var newStyles = newStyle.split(';');
     var fontFamily =  ''; var fontWeight = ''; var fontSize = '';
-    for (i=0; i<newStyles.length; i++) {
-      var beg = newStyles[i].indexOf('font-family:');
-      if (beg>=0) {
-        fontFamily = newStyles[i].substr(beg + 12);
-      }
-      var beg = newStyles[i].indexOf('font-size:');
-      if (beg>=0) {
-        fontSize = newStyles[i].substr(beg + 10);
-      }
-      var beg = newStyles[i].indexOf('font-weight:');
-      if (beg>=0) {
-        fontWeight = newStyles[i].substr(beg + 12);
-      }
-    }
-    for (i=0; i<12; i++) {
-      var el = document.getElementById('thanksButton_'+ i);
-      el.style.fontFamily = fontFamily;
-      el.style.fontSize = fontSize;
-      el.style.fontWeight = fontWeight;
-    }
     el = document.getElementById('thanksButton_custom');
     el.style.fontFamily = fontFamily;
     el.style.fontSize = fontSize;
@@ -270,16 +276,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
   }
   // end of refreshButtonCaptionStyle()
 
-  function thanksCustomChange(checkbox) {
-    var el = document.getElementById('thanksCustomButtonDiv');
-    if (checkbox.checked) {
-      el.style.display = 'block';
-    } else {
-      el.style.display = 'none';
-    }
-  }
-  // end of thanksCustomChange()
-
+  
   function thanksCustomWidthChange(newValue) {
     var el = document.getElementById('thanksButton_custom');
     if (newValue.indexOf('px')<0) {
@@ -318,8 +315,8 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
 
 </script>
 
-<?php
-						thanks_displayBoxStart(__('Display', 'thankyou')); ?>
+<div class="postbox" style="padding-bottom: 5px;" >
+  <h3><?php	_e('Display', 'thankyou'); ?></h3>
         <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">          
           <tr>
             <th scope="row">
@@ -417,7 +414,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
 	           <label for="thanks_caption"><?php _e('Button Caption','thankyou'); ?></label>
           </th>
           <td>
-             <input type="text" value="<?php echo $thanks_caption; ?>" name="thanks_caption" id="thanks_caption" onkeyup="refreshButtonsCaption(this.value);" onchange="refreshButtonsCaption(this.value);"/>
+             <input type="text" value="<?php echo $thanks_caption; ?>" name="thanks_caption" id="thanks_caption" onkeyup="refreshButtonCaption(this.value);" onchange="refreshButtonCaption(this.value);"/>
           </td>
         </tr>
         <tr>
@@ -436,68 +433,92 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
         </tr>
         <tr>
           <th scope="row">
-            <?php _e('Size','thankyou'); ?>
+            <?php _e('Button grafics','thankyou'); ?>
           </th>
           <td>
+            <span style="font-size: 12px;"><?php _e('Size','thankyou'); ?>:</span>  
               <input type="radio" name="thanks_size" id="thanks_size_large"<?php echo ($thanks_size=='large') ? 'checked="checked"' : ''; ?>
-                     value="large" onclick="refreshButtonsImage(this.value);"/>
+                     value="large" onclick="refreshPreviewButton();"/>
               <label for="thanks_size_large"><?php _e('Normal','thankyou'); ?></label>&nbsp;
               <input type="radio" name="thanks_size" id="thanks_size_compact" <?php echo ($thanks_size=='compact') ? 'checked="checked"' : ''; ?>
-                     value="compact" onclick="refreshButtonsImage(this.value);"/>
+                     value="compact" onclick="refreshPreviewButton();"/>
               <label for="thanks_size_compact"><?php _e('Compact','thankyou'); ?></label>
+              <span style="margin-left:40px;font-size: 12px;"><?php _e('Form', 'thankyou'); ?>:</span>
+              <input type="radio" name="thanks_form" id="thanks_form_square" <?php echo ($thanks_form=='square') ? 'checked="checked"' : ''; ?>
+                     value="square" onclick="refreshPreviewButton();"/>
+              <label for="thanks_form_square"><?php _e('Square','thankyou'); ?></label>&nbsp;
+              <input type="radio" name="thanks_form" id="thanks_form_rounded" <?php echo ($thanks_form=='rounded') ? 'checked="checked"' : ''; ?>
+                     value="rounded" onclick="refreshPreviewButton();"/>
+              <label for="thanks_form_rounded"><?php _e('Rounded','thankyou'); ?></label>
           </td>
         </tr>
+
         <tr>
           <th scope="row">
-              <?php _e('Form and Color', 'thankyou'); ?>
+            <?php _e('Color', 'thankyou'); ?>
           </th>
           <td>
+            <select id="thanks_color" name="thanks_color" onchange="refreshPreviewButton();" >
 <?php
-  $i = 0;
-  foreach ($buttonColors as $color) {
-?>
-            <div class="form_color_row">
-              <div class="fli">
-                <input type="radio" name="thanks_color" <?php echo ($thanks_color==$color) ? 'checked="checked"' : ''; ?> value="<?php echo $color; ?>" />
-              </div>
-                <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), $buttonSizeClass, 'thanks_'.$color,
-                                   THANKS_PLUGIN_URL.'/images/thanks_'.$thanks_size.'_'.$color.'.png', '', '', $thanks_caption_style,
-                                   $thanks_caption_color, $i++, ''); ?>
-              <div class="fli" style="margin-left: 15px;">
-                <input type="radio" name="thanks_color" <?php echo ($thanks_color==$color.'1') ? 'checked="checked"' : ''; ?> value="<?php echo $color.'1'; ?>" />
-              </div>
-                <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), $buttonSizeClass, 'thanks_'.$color.'1',
-                                   THANKS_PLUGIN_URL.'/images/thanks_'.$thanks_size.'_'.$color.'1.png', '', '', $thanks_caption_style,
-                                   $thanks_caption_color, $i++, ''); ?>
-            </div>
-<?php
+  foreach ($buttonColors as $key=>$value) {
+    if ($key=='grey') {
+      $color = 'black';
+    } else {
+      $color = 'white';
+    }
+    echo '<option value="'.$key.'" style="background:'.$value.'; color: '.$color.';" '.(($thanks_color==$key) ? 'selected="selected"' : '').' >&nbsp;'.ucfirst($key).'&nbsp;</option>';
   }
 ?>
+            </select>
           </td>
         </tr>
+
         <tr>
           <td>
-            <input type="checkbox" name="thanks_custom" value="1" <?php echo ($thanks_custom=='1') ? 'checked="checked"' : ''; ?> onclick="thanksCustomChange(this);"/>
-            <?php _e('Custom button image URL', 'thankyou'); ?>
+            <input type="checkbox" id="thanks_custom" name="thanks_custom" value="1" <?php echo ($thanks_custom=='1') ? 'checked="checked"' : ''; ?> onclick="refreshPreviewButton();"/>
+            <?php _e('Custom button image URL', 'thankyou'); ?><br />
+            <?php _e('Hover state image URL', 'thankyou'); ?>
           </td>
           <td>
-            <input type="text" name="thanks_custom_url" value="<?php echo $thanks_custom_URL; ?>"  size="50" />
-            <a href="javascript:void(0);" onclick="switchDivDisplay('customButtonDivStyleHelp');"><img src="<?php echo THANKS_PLUGIN_URL.'/images/question_grey.png';?>" alt="question sign" title="http://yourblog.com/wp-content/uploads/2009/10/your-button.png"/></a>
+            <input type="text" id="thanks_custom_url" name="thanks_custom_url" value="<?php echo $thanks_custom_URL; ?>"  size="80" onchange="refreshPreviewButton();" />
+            <a href="javascript:void(0);" onclick="switchDivDisplay('customButtonDivStyleHelp');"><img src="<?php echo THANKS_PLUGIN_URL.'/images/question_grey.png';?>" alt="question sign" title="http://yourblog.com/wp-content/uploads/2009/10/your-button.png"/></a><br />
+            <input type="text" id="thanks_custom_glow_url" name="thanks_custom_glow_url" value="<?php echo $thanks_custom_glow_URL; ?>"  size="80" onchange="refreshPreviewButton();" />
             <div id="customButtonDivStyleHelp" style="display:none;"><?php _e('e.g.,','thankyou'); ?> <code>http://yourblog.com/wp-content/uploads/2009/10/your-button.png</code></div>
             <div>
-              <span style="float:left; width:210px;"><?php _e('Width, px', 'thankyou'); ?> <input type="text" name="thanks_custom_width" value="<?php echo $thanks_custom_width; ?>" size="4" onchange="thanksCustomWidthChange(this.value);"/></span>
-              <span style="float:left; width:210px;"><?php _e('Height, px', 'thankyou'); ?> <input type="text" name="thanks_custom_height" value="<?php echo $thanks_custom_height; ?>" size="4" onchange="thanksCustomHeightChange(this.value);"/></span>
-            </div>
-            <div class="form_color_row" id="thanksCustomButtonDiv" <?php echo (!$thanks_custom) ? 'style="display:none;"':''; ?> >
-              <?php echo thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), 'thanks_custom_button', '',
-                                   $thanks_custom_URL, $thanks_custom_width, $thanks_custom_height, $thanks_caption_style,
-                                   $thanks_caption_color, 'custom', ''); ?>&nbsp;
-            </div>
+              <span style="float:left; width:210px;"><?php _e('Width, px', 'thankyou'); ?> <input type="text" id="thanks_custom_width" name="thanks_custom_width" value="<?php echo $thanks_custom_width; ?>" size="4" onchange="refreshPreviewButton();" /></span>
+              <span style="float:left; width:210px;"><?php _e('Height, px', 'thankyou'); ?> <input type="text" id="thanks_custom_height" name="thanks_custom_height" value="<?php echo $thanks_custom_height; ?>" size="4" onchange="refreshPreviewButton();" /></span>
+            </div>            
           </td>
         </tr>
       </table>
-					<?php thanks_displayBoxEnd(); // I plan other options here
-						thanks_displayBoxStart(__('Misc', 'thankyou')); ?>
+  
+<h3><?php _e('Button DIV Style Preview', 'thankyou'); $thanks_display_anchor = 1; ?></h3>
+								<div class="column-parent" style="background:#FFFFFF; ">
+<?php
+
+  if ($thanks_custom) {
+    $thanks_width = $thanks_custom_width;
+    $thanks_height = $thanks_custom_height;
+  } else {
+    $thanks_width = '';
+    $thanks_height = '';
+  }
+
+  $inputButtonHTML = thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.' '.rand(0, 100), $buttonSizeClass, $buttonColorClass,
+     $imageURL, $thanks_width, $thanks_height, $thanks_caption_style, $thanks_caption_color, 'stylePreview', 'Thank You Counter Button Preview');
+  
+  echo '<div class="thanks_button_div" id="thanks_button_preview" style="'.$thanks_style.'">'.
+      $inputButtonHTML.
+   		'<div id="thanks_settings_shortcuts" class="thanks_settings_shortcuts'.(($thanks_display_settings_shortcuts == '1')?'':'_off').'">'.
+ 			'<a href="javascript:void;" title="'.__('Settings','thankyou').'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
+ 			'<a href="javascript:void;" title="'.esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), __('Post Title','thankyou'))).'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
+ 			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:void;"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
+ 			'</div></div>';
+?>
+                  <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer bibendum turpis vitae lectus semper feugiat. Ut massa ligula, sodales dictum porta ac, varius ut felis. Quisque ultrices elementum ligula euismod auctor. Sed non orci at augue gravida tincidunt dictum sit amet enim. Phasellus ultrices quam ac ligula convallis nec pellentesque ante luctus. Duis aliquet mattis velit, eu blandit nisi euismod et. Suspendisse hendrerit nisl dui. Quisque eu odio felis, id consequat turpis. In rhoncus turpis nec sapien convallis at vehicula dui pharetra. Morbi in nunc ut nibh faucibus dignissim nec sit amet arcu. Nulla facilisi. Praesent suscipit vestibulum ipsum, ut ornare tortor posuere at. Nullam id erat eu sem blandit gravida iaculis faucibus magna. In tempus blandit nulla, in consectetur diam tempor in. Etiam a justo vitae est tristique fermentum vitae at arcu.</p>
+								</div>
+
+      <h3><?php _e('Miscellaneous:', 'thankyou'); ?></h3>
       <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">
         <tr>
           <th scope="row">
@@ -527,36 +548,19 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
           </td>
         </tr>
         </table>
-        <div class="submit" style="float: right; display: inline; padding:0;">
-          <input class="warning" type="button" name="default" value="<?php _e('Return to Defaults', 'thankyou') ?>" title="<?php _e('Restore the default values for all settings','thankyou');?>" onclick="thanks_Settings('default');"/>
-          <input class="warning" type="button" name="reset" value="<?php _e('Reset Counters', 'thankyou') ?>" title="<?php _e('Reset all thanks counters for the all posts','thankyou');?>" onclick="thanks_Settings('resetall');"/>
-        </div>
-        <div id="ajax_loader_options" style="float: right; display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL.'/images/ajax-loader.gif';?>" /></div>
-					<?php thanks_displayBoxEnd(); ?>
-        <div class="fli submit" style="padding-top: 0px;">
+      <div class="submit">
+        <div style="float: left; ">
           <input type="submit" name="submit" value="<?php _e('Save Changes', 'thankyou'); ?>" title="<?php _e('Save Changes', 'thankyou'); ?>" />
-          <input type="button" name="cancel" value="<?php _e('Cancel', 'thankyou') ?>" title="<?php _e('Cancel not saved changes','thankyou');?>" onclick="thanks_Settings('cancel');"/>
+          <input type="button" name="cancel" value="<?php _e('Cancel', 'thankyou') ?>" title="<?php _e('Cancel not saved changes', 'thankyou'); ?>" onclick="thanks_Settings('cancel');"/>
         </div>
-				<?php thanks_displayBoxStart(__('Button DIV Style Preview', 'thankyou')); $thanks_display_anchor = 1; ?>
-								<div class="column-parent" >
-<?php
-  echo '<div class="thanks_button_div" id="thanks_button_preview" style="'.$thanks_style.'">'.
-    thanks_getButtonInputHTML('javascript:void(0);', $thanks_caption.': '.rand(0, 100), $buttonSizeClass, 'thanks_'.$thanks_color,
-                                   THANKS_PLUGIN_URL.'/images/thanks_'.$thanks_size.'_'.$thanks_color.'.png', '', '', $thanks_caption_style,
-                                   $thanks_caption_color, 'stylePreview', '').
-               		'<div id="thanks_settings_shortcuts" class="thanks_settings_shortcuts'.(($thanks_display_settings_shortcuts == '1')?'':'_off').'">'.
-               			'<a href="javascript:void;" title="'.__('Settings','thankyou').'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
-               			'<a href="javascript:void;" title="'.esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), __('Post Title','thankyou'))).'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
-               			'<a title="'.__('Hide these shortcuts', 'thankyou').'" href="javascript:void;"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/disable.png" /></a>'.
-               			'</div>'.
-               		'</div>';
-?>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ipsum nibh, cursus eu imperdiet nec, vestibulum ac arcu. Nulla quis nulla in arcu congue varius vestibulum sit amet purus. Aliquam dui elit, adipiscing laoreet viverra ac, ultricies vitae turpis. Etiam hendrerit, ipsum nec mollis porttitor, nunc orci tempor tortor, nec iaculis nunc sapien quis ipsum. Aenean tincidunt, diam eu fermentum laoreet, nisi enim ornare tellus, vitae malesuada lacus quam ut dolor. Suspendisse tempus malesuada malesuada. Aenean quam mauris, feugiat ut ornare non, pharetra et diam. Sed auctor turpis in urna sagittis cursus. Sed accumsan eros eu magna fringilla elementum. Sed id neque nec sem pulvinar congue et vel turpis. Vivamus vel neque a mauris condimentum gravida ac eu lorem. Integer elementum odio diam. Nam hendrerit condimentum arcu, ut tincidunt felis semper non. Etiam tincidunt urna in tellus varius sit amet sollicitudin erat pharetra. Sed tempor varius fermentum. Nam at enim metus. Curabitur porttitor eleifend ligula, vitae vestibulum purus condimentum a. Sed vel massa purus, at consequat quam. Nulla facilisi. </p>
-								</div>
-<?php
-                thanks_displayBoxEnd();
-?>
-						</div>
-					</div>
-				</div>
-    </form>
+        <div style="float: right; ">
+          <input class="warning" type="button" name="default" value="<?php _e('Return to Defaults', 'thankyou') ?>" title="<?php _e('Restore the default values for all settings', 'thankyou'); ?>" onclick="thanks_Settings('default');"/>
+          <input class="warning" type="button" name="reset" value="<?php _e('Reset Counters', 'thankyou') ?>" title="<?php _e('Reset all thanks counters for the all posts', 'thankyou'); ?>" onclick="thanks_Settings('resetall');"/>
+        </div>             
+      </div>
+          
+      <div id="ajax_loader_options" style="float: right; display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL . '/images/ajax-loader.gif'; ?>" /></div>
+      </div>
+    </div>
+  </div>
+</form> 

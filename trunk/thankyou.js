@@ -48,7 +48,7 @@ function thankYouButtonClick(post_id, done_title) {
     }
     el = document.getElementById('thanksButton_'+ post_id +'_'+ i);
     if (el!=undefined) {
-      el.onclick = "return false;";
+      //el.onclick = "return false;";
       el.title = done_title;
       el.disabled = 'true';
     } else {
@@ -102,4 +102,18 @@ function thankYouButtonClick(post_id, done_title) {
  });
 
 }
+// end of thankYouButtonClick()
+
+
+function thankYouChangeButtonImage(divId, glow) {
+  var bgrImg;
+  
+  if (glow) {
+    document.getElementById(divId).style.backgroundImage = 'url('+ ThanksSettings.button_image_glow_url +')';
+  } else {
+    document.getElementById(divId).style.backgroundImage = 'url('+ ThanksSettings.button_image_url +')';
+  }
+
+}
+// end of thankYouChangeButtonImage()
 

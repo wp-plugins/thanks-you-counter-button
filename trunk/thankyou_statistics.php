@@ -12,7 +12,7 @@ if (!is_user_logged_in() or !current_user_can('level_9')) {
   die('Access is prohibited');
 }
 
-global $wpdb, $wp_locale, $thanksCountersTable, $thanksPostReadersTable;
+global $wpdb, $wp_locale;
 
 // quant of rows per page in stat table
 if (!isset($_GET['rowsperstatpage'])) {
@@ -135,7 +135,7 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
 	}
 ?>
 <div style="float: right; margin-top: 10px;">
-	<a href="./options-general.php?page=thankyou.php&amp;paged=<?php echo $_GET['paged']; ?>#statistics">&laquo;<?php _e('Back to main statistics', 'thankyou'); ?></a>
+	<a href="./tools.php?page=thankyou.php&amp;paged=<?php echo $_GET['paged']; ?>#statistics">&laquo;<?php _e('Back to main statistics', 'thankyou'); ?></a>
 </div>
 <?php
 	if (!$records) {
@@ -325,7 +325,7 @@ if ($cat_id) {
               from $wpdb->posts posts
                 left join $wpdb->term_relationships term_relationships on (posts.ID=term_relationships.object_id)
                 left join $wpdb->term_taxonomy term_taxonomy on (term_relationships.term_taxonomy_id=term_taxonomy.term_taxonomy_id)
-              where (posts.post_type='post' or posts.post_type='page') and
+              where (posts.post_type not in ($thanksNotCountablePostTypes)) and
                    (term_taxonomy.term_id=$cat_id or term_taxonomy.parent=$cat_id) and term_taxonomy.taxonomy='category'";
   $records = $wpdb->get_results($query);
   if ($wpdb->last_error) {
@@ -345,7 +345,7 @@ if ($cat_id) {
 $query = "select count(posts.ID)
             from $wpdb->posts posts
               left join $thanksCountersTable counters on counters.post_id=posts.ID
-            where 1=1 $where1 $where2 and (posts.post_type='post' or posts.post_type='page')";
+            where 1=1 $where1 $where2 and (posts.post_type not in ($thanksNotCountablePostTypes))";
 $thankedPosts = $wpdb->get_var($query);
 if ($wpdb->last_error) {
   thanks_logEvent(THANKS_ERROR.":\n".$wpdb->last_error);
@@ -365,7 +365,7 @@ $fromRecord = max(0,($_GET['paged'] - 1))*$rowsPerStatPage;
 $query = "select posts.ID, posts.post_title, counters.quant, counters.updated
             from $wpdb->posts posts
               left join $thanksCountersTable counters on counters.post_id=posts.ID
-            where 1=1 $where1 $where2 and (posts.post_type='post' or posts.post_type='page')
+            where 1=1 $where1 $where2 and (posts.post_type not in ($thanksNotCountablePostTypes))
             order by $sortField $sortDir
             limit $fromRecord, $rowsPerStatPage";
 $records = $wpdb->get_results($query);
@@ -603,10 +603,10 @@ foreach ($records as $record) {
 ?>
   <tr class="<?php echo $rowClass; ?>">
     <td class="txt_right" width="5%"><?php echo $record->ID; ?></td>
-    <td class="txt_left" style="padding-left:10px;"><a title="<?php echo esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)); ?>" href="<?php echo './options-general.php?page=thankyou.php&amp;post_id='.$record->ID.'&amp;paged='.$_GET['paged'].'#statistics';?>"><?php echo $record->post_title; ?></a>
+    <td class="txt_left" style="padding-left:10px;"><a title="<?php echo esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)); ?>" href="<?php echo './tools.php?page=thankyou.php&post_id='.$record->ID.'&paged='.$_GET['paged'].'#statistics';?>"><?php echo $record->post_title; ?></a>
 <?php
 					$thankyou_actions = array();
-					$thankyou_actions['details'] = '<span class="view"><a href="./options-general.php?page=thankyou.php&amp;post_id='.$record->ID.'&amp;paged='.$_GET['paged'].'#statistics" title="' . esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View details', 'thankyou') . '</a>';
+					$thankyou_actions['details'] = '<span class="view"><a href="./tools.php?page=thankyou.php&post_id='.$record->ID.'&paged='.$_GET['paged'].'#statistics" title="' . esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View details', 'thankyou') . '</a>';
           $thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($record->ID).'" title="' .esc_attr(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
           $thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$record->ID.'" title="' . esc_attr(sprintf(__('Edit "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
           if ( current_user_can('edit_post', $record->ID) ) {

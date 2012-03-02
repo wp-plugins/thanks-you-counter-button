@@ -10,32 +10,24 @@ if (! defined("WPLANG")) {
   die;  // Silence is golden, direct call is prohibited
 }
 
-require_once (ABSPATH.'wp-includes/pluggable.php');
+//require_once (ABSPATH.'wp-includes/pluggable.php');
 
 $thanks_siteURL = get_option( 'siteurl' );
 
-// Pre-2.6 compatibility
-if ( !defined( 'WP_CONTENT_URL' ) )
-      define( 'WP_CONTENT_URL', $thanks_siteURL . '/wp-content' );
-if ( ! defined( 'WP_CONTENT_DIR' ) )
-      define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
-if ( ! defined( 'WP_PLUGIN_URL' ) )
-      define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
-if ( ! defined( 'WP_PLUGIN_DIR' ) )
-      define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
-
-$thanksPluginDirName = substr(dirname(__FILE__), strlen(WP_PLUGIN_DIR)+1, strlen(__FILE__)-strlen(WP_PLUGIN_DIR)-1);
+$thanksPluginDirName = substr(strrchr(dirname(__FILE__), DIRECTORY_SEPARATOR), 1);
 
 define('THANKS_PLUGIN_URL', WP_PLUGIN_URL.'/'.$thanksPluginDirName);
 define('THANKS_PLUGIN_DIR', WP_PLUGIN_DIR.'/'.$thanksPluginDirName);
 define('THANKS_WP_ADMIN_URL', $thanks_siteURL.'/wp-admin');
 define('THANKS_ERROR', 'Error is encountered');
 
-global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
+global $wpdb, $thanksCountersTable, $thanksPostReadersTable, $thanksNotCountablePostTypes;
 
 // MySQL tables to store 'thanks' information
 $thanksCountersTable = $wpdb->prefix .'thanks_counters';
 $thanksPostReadersTable = $wpdb->prefix .'thanks_readers';
+
+$thanksNotCountablePostTypes = "'revision', 'attachment', 'nav_menu_item'";
 
 
 // returns client machine IP address
@@ -137,7 +129,11 @@ function getThanksCaption($postId, $caption = "") {
   if (!$caption) {
     $caption = get_option('thanks_caption');
   }
-	$caption .= ': '.$quant;
+  if ($caption) {
+    $caption .= ' '.$quant;
+  } else {
+    $caption = $quant;
+  }
 	
 	return $caption;
 }
@@ -186,11 +182,16 @@ function thanks_getButtonInputHTML($onButtonClick, $thanksCaption, $buttonSizeCl
     }
     $thanks_custom_height = 'height:'.$thanks_custom_height.';';
   }
-
-  $output = '<div style="float: left; display: inline;"><input type="button" onclick="'.$onButtonClick.'" value="'.$thanksCaption.'"
-                class="thanks_button '.$buttonSizeClass.' '.$buttonColorClass.'"
-                style="background-image:url('.$imageURL.');'.$thanks_custom_width.' '.$thanks_custom_height.' '.$thanks_caption_style.' '.$thanks_caption_color.'"
-                id="thanksButton_'.$thanksButtonId.'" title="'.$buttonTitle.'"/></div>';
+  $divId = 'thanksButtonDiv_'.$thanksButtonId;
+  $output = '<div id="'.$divId.'" style="background-image:url('.$imageURL.'); background-repeat:no-repeat; float: left; display: inline;"
+                onmouseover="javascript:thankYouChangeButtonImage(\''.$divId.'\', true);" 
+                onmouseout="javascript:thankYouChangeButtonImage(\''.$divId.'\', false);"
+                onclick="javascript:thankYouChangeButtonImage(\''.$divId.'\', false);" >
+                <input type="button" onclick="'.$onButtonClick.'" value="'.$thanksCaption.'"
+                  class="thanks_button '.$buttonSizeClass.' '.$buttonColorClass.'"
+                  style="'.$thanks_custom_width.' '.$thanks_custom_height.' '.$thanks_caption_style.' '.$thanks_caption_color.'"
+                  id="thanksButton_'.$thanksButtonId.'" title="'.$buttonTitle.'"/>
+             </div>';
 
   return $output;
 
