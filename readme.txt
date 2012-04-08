@@ -10,10 +10,14 @@ Adds 'Thank You' button to every post/page, counts and shows a total number of v
 
 == Description ==
 
-This is the visitor's 'Thank you' or 'I like it' clicks counter button. Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post which can be seen at the same button.<br/>
-The plugin stores its counters in two own MySQL tables. Only one "thank" for this IP-address can be permitted. Plugin can skip all further "Thank you" clicks from this IP-address once it is automatically registered. IP-address click limit can be set to a time interval in seconds.<br/>
-Plugin has Statistics data table which shows posts list with total thanks quant for every post and time of the latest thank. Rows in the table can be filtered by posting month, category, can be sorted by thanks quant or time of latest thank in the descending or ascending order. Selected post can be viewed or edit directly from this table.<br/>
-Admin dashboard and sidebar widgets with list of latest thanked or the largests thanked posts (between 3 and 15) are available. Total quant of thanks can be shown. Use widgets control panels to change settings according to your preferences.<br/>
+This is the visitor's 'Thank you' or 'I like it' clicks counter button. Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post which can be seen at the same button.
+
+The plugin stores its counters in two own MySQL tables. Only one "thank" for this IP-address can be permitted. Plugin can skip all further "Thank you" clicks from this IP-address once it is automatically registered. IP-address click limit can be set to a time interval in seconds.
+
+Plugin has Statistics data table which shows posts list with total thanks quant for every post and time of the latest thank. Rows in the table can be filtered by posting month, category, can be sorted by thanks quant or time of latest thank in the descending or ascending order. Selected post can be viewed or edit directly from this table.
+
+Admin dashboard and sidebar widgets with list of latest thanked or the largests thanked posts (between 3 and 15) are available. Total quant of thanks can be shown. Use widgets control panels to change settings according to your preferences.
+
 The set of shortcodes and content filters is available for this plugin. Visit http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/ for more details.
 
 
@@ -28,20 +32,6 @@ Attention!
 2. Extract "thanks-you-counter-button.x.x.x.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
 3. Activate "Thank You Counter Button" plugin via 'Plugins' menu in WordPress admin menu. 
 4. Go to the "Settings"-"Thanks CB" menu item and check/change your preferences to customize how this plugin will work for you.
-
-== Frequently Asked Questions ==
-- Plugin doesn't work. What is wrong? 
-
-  The most probable reason is the MySQL database permissions problem for your WordPress installation. This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with.
-  From version 1.6.1. plugin writes any database errors into tycb.log file at plugin folder. Look at this file for more information about your problem.
-
-- I updated plugin to the recent version. Why does it shows button or Settings/Statistics pages wrong way.
-
-  Your browser uses old cashed version of CSS files. Please try to reload full page (use F5 or Refresh button).
-
-- Does this plugin work with Wordpress MU or WordPress Multisite?
-
-  Yes, it does. Plugin is tested with WordPress MU 2.9.1 and WordPress Multisite 3.0.1. Thanks to WordPress developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Screenshots ==
 1. screenshot-1.png The example of "Thank You" button in blue color
@@ -73,6 +63,20 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 * [Arne](http://www.arnebrachhold.de/projects/wordpress-plugins/google-xml-sitemaps-generator/) for setting page layout idea, html markup examples.
 * [DHTMLGoodies](http://www.dhtmlgoodies.com/) for the form input slider code.
 * [Eric](http://www.glassybuttons.com/glassy.php) for the cute online button image generator.
+
+== Frequently Asked Questions ==
+- Plugin doesn't work. What is wrong? 
+
+  The most probable reason is the MySQL database permissions problem for your WordPress installation. This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with.
+  From version 1.6.1. plugin writes any database errors into tycb.log file at plugin folder. Look at this file for more information about your problem.
+
+- I updated plugin to the recent version. Why does it shows button or Settings/Statistics pages wrong way.
+
+  Your browser uses old cashed version of CSS files. Please try to reload full page (use F5 or Refresh button).
+
+- Does this plugin work with Wordpress MU or WordPress Multisite?
+
+  Yes, it does. Plugin is tested with WordPress MU 2.9.1 and WordPress Multisite 3.0.1. Thanks to WordPress developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Changelog ==
 
