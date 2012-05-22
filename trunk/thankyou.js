@@ -37,23 +37,17 @@ function thankYouButtonRemoveSettingsShortcuts() {
 
 
 function thankYouButtonClick(post_id, done_title) {
-  var i = 0;
-  while (true) { // process all thanks buttons included in this post
-    i++;
+
+  for (i=0; i<10; i++) { // process all thanks buttons included in this post
     el = document.getElementById('ajax_loader_'+ post_id +'_'+ i);
     if (el!=undefined) {
       el.style.visibility = 'visible';
-    } else {
-      break;
-    }
-    el = document.getElementById('thanksButton_'+ post_id +'_'+ i);
-    if (el!=undefined) {
-      //el.onclick = "return false;";
-      el.title = done_title;
-      el.disabled = 'true';
-    } else {
-      break;
-    }
+      el = document.getElementById('thanksButton_'+ post_id +'_'+ i);
+      if (el!=undefined) {
+        el.title = done_title;
+        el.disabled = 'true';
+      }
+    }    
   }
   
   jQuery.ajax({
@@ -76,21 +70,15 @@ function thankYouButtonClick(post_id, done_title) {
          return;
        }
        var regExp = new RegExp('\\d+$');
-       var i = 0;
-       while (true) { // process all thanks buttons included in this post
-         i++;
+       for (i=0; i<10; i++) { // process all thanks buttons included in this post
          el = document.getElementById('thanksButton_'+ post_id +'_'+ i);
          if (el!=undefined) {
           el.value = el.value.replace(regExp, msg);
-         } else {
-           break;
-         }
-         el = document.getElementById('ajax_loader_'+ post_id +'_'+ i);
-         if (el!=undefined) {
-           el.style.visibility = 'hidden';
-         } else {
-           break;
-         }
+          el = document.getElementById('ajax_loader_'+ post_id +'_'+ i);
+          if (el!=undefined) {
+            el.style.visibility = 'hidden';
+          }
+         }         
        }
      } else {
        alert(msg);
