@@ -67,7 +67,7 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
         // Remove IPs
         el = document.getElementById('thanks_IPs_body');
         if (el!=undefined) {
-          el.innerHTML = '<tr><td class="txt_center">'+<?php _e('None', 'thankyou'); ?>+'</td><td>&nbsp;</td></tr>';
+          el.innerHTML = '<tr><td class="txt_center"><?php _e('None', 'thankyou'); ?></td><td>&nbsp;</td></tr>';
         }
       } else {
 	        alert(msg);

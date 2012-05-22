@@ -3,8 +3,8 @@ Contributors: shinephp, Whiler
 Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 1.8.1
+Tested up to: 3.4
+Stable tag: 1.8.2
 
 Adds 'Thank You' button to every post/page, counts and shows a total number of visitors 'thanks' for post/page.
 
@@ -79,6 +79,11 @@ if you wish to help me with this plugin translation I very appreciate it. Please
   Yes, it does. Plugin is tested with WordPress MU 2.9.1 and WordPress Multisite 3.0.1. Thanks to WordPress developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Changelog ==
+
+= 1.8.2 =
+* 22.05.2012
+* CSS update for compatibility with WordPress 3.4;
+* JavaScript code update: Reset counter bug was fixed. More universal button HTML elements selection is used. Previous one didn't work if buttons numeration was started for some reason not from 1.
 
 = 1.8.1 =
 * 07.04.2012

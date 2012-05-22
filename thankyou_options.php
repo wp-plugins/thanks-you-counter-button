@@ -45,9 +45,9 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
 }
 ?>
   
-				<div id="poststuff" class="metabox-holder has-right-sidebar">
-					<div class="inner-sidebar" >
-						<div id="side-sortables" class="meta-box-sortables ui-sortable" style="position:relative;">
+				<div id="poststuff">
+					<div class="tycb-sidebar" >
+						
 <?php thanks_displayBoxStart(__('About this Plugin:', 'thankyou')); ?>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb.png'; ?>" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/"><?php _e('Plugin webpage', 'thankyou'); ?></a>
@@ -74,8 +74,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/rene.png'; ?>);" target="_blank" title="<?php _e('for the help with Dutch translation', 'thankyou'); ?>" href="http://wpwebshop.com">Rene</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/whiler.png'; ?>);" target="_blank" title="<?php _e('for the help with French translation, ideas, source code contributions and new versions testing', 'thankyou'); ?>" href="http://blogs.wittwer.fr/whiler/">Whiler</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tolingo.png'; ?>);" target="_blank" title="<?php _e('for the help with German translation', 'thankyou'); ?>" href="http://www.tolingo.com">www.tolingo.com</a>
-              <a class="thanks_rsb_link" title="<?php _e('for the help with Hungarian translation', 'thankyou'); ?>" href="#">Nightmare</a>
-              <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/masoud.png'; ?>);" target="_blank" title="<?php _e('for the help with Iranian translation', 'thankyou'); ?>" href="http://www.7thline.ir">Masoud Golchin</a>
+              <a class="thanks_rsb_link" title="<?php _e('for the help with Hungarian translation', 'thankyou'); ?>" href="#">Nightmare</a>              
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/ugo.png'; ?>);" target="_blank" title="<?php _e('for the help with Italian translation', 'thankyou'); ?>" href="http://www.myeasywp.com">Ugo</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/alessandro.png'; ?>);" target="_blank" title="<?php _e("for the help with Italian translation",'thankyou');?>" href="http://technodin.org">Alessandro Mariani</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/host1free.png'; ?>)" target="_blank" title="<?php _e("For the help with Lithuanian translation", 'ure'); ?>" href="http://host1free.com">Vincent G</a>
@@ -87,16 +86,14 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/dhtmlgoodies.png'; ?>);" target="_blank" title="<?php _e('for the form input slider code', 'thankyou'); ?>" href="http://www.dhtmlgoodies.com/">DHTMLGoodies</a>
               <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/eric.png'; ?>);" target="_blank" title="<?php _e('for the cute online button image generator', 'thankyou'); ?>" href="http://www.glassybuttons.com/glassy.php">Eric</a>
 <?php thanks_displayBoxEnd(); ?>
-          </div>   
-						</div>
+          </div>   						
 					</div>
+
+          <div class="tycb" >
 <form method="post" action="options.php">
 <?php
     settings_fields('thankyoubutton-options');
 ?>            
-
-          <div class="has-sidebar" >
-						<div id="post-body-content" class="has-sidebar-content">
 
 <script language="javascript" type="text/javascript">
   
@@ -316,7 +313,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
 
 </script>
 
-<div class="postbox" style="padding-bottom: 5px;" >
+<div class="postbox" style="padding-bottom: 10px;">
   <h3><?php	_e('Display', 'thankyou'); ?></h3>
         <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">          
           <tr>
@@ -562,6 +559,5 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
           
       <div id="ajax_loader_options" style="float: right; display:inline;visibility: hidden;"><img alt="ajax loader" src="<?php echo THANKS_PLUGIN_URL . '/images/ajax-loader.gif'; ?>" /></div>
       </div>
-    </div>
+    </form> 
   </div>
-</form> 
