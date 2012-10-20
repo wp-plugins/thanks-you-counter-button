@@ -35,11 +35,16 @@ if (!isset($_GET['rowsperstatpage'])) {
 
 // Expecting a specific post detail
 if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
+	if (isset($_GET['paged']) && is_numeric($_GET['paged'])) {
+		$page_number = $_GET['paged'];
+	} else {
+		$page_number = 1;
+	}
 ?>
 <div class="tablenav">
 <form id="posts-filter" action="" method="get">
   <input type="hidden" name="page" value="thankyou.php" />
-  <input type="hidden" name="paged" value="<?php echo $_GET['paged']; ?>" />
+  <input type="hidden" name="paged" value="<?php echo $page_number; ?>" />
 <script language="javascript" type="text/javascript">
   function resetCounter(post_id, message, page) {
     if (!confirm(message)) {
@@ -135,7 +140,7 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
 	}
 ?>
 <div style="float: right; margin-top: 10px;">
-	<a href="./tools.php?page=thankyou.php&amp;paged=<?php echo $_GET['paged']; ?>#statistics">&laquo;<?php _e('Back to main statistics', 'thankyou'); ?></a>
+	<a href="./tools.php?page=thankyou.php&amp;paged=<?php echo $page_number; ?>#statistics">&laquo;<?php _e('Back to main statistics', 'thankyou'); ?></a>
 </div>
 <?php
 	if (!$records) {
@@ -261,13 +266,14 @@ if ( $page_links ) {
 
 if (!isset($_GET['paged']) || !$_GET['paged'] || !is_numeric($_GET['paged'])) {
   if (isset($_SESSION['thanks_paged']) && $_SESSION['thanks_paged'] && is_numeric($_SESSION['thanks_paged'])) {
-    $_GET['paged'] = $_SESSION['thanks_paged'];
+    $page_number = $_SESSION['thanks_paged'];
   } else {
-    $_GET['paged'] = 1;
+    $page_number = 1;
     $_SESSION['thanks_paged'] = 1;
   }
 } else {
-  $_SESSION['thanks_paged'] = $_GET['paged'];
+	$page_number = $_GET['paged'];
+  $_SESSION['thanks_paged'] = $page_number;
 }
 
 if (!isset($_GET['sortfield'])) {
@@ -357,10 +363,10 @@ $rest = $thankedPosts / $rowsPerStatPage - $maxNumPages;
 if ($rest>0) {
   $maxNumPages += 1;
 }
-if ($_GET['paged']>$maxNumPages) {
-  $_GET['paged'] = $maxNumPages;
+if ($page_number>$maxNumPages) {
+  $page_number = $maxNumPages;
 }
-$fromRecord = max(0,($_GET['paged'] - 1))*$rowsPerStatPage;
+$fromRecord = max(0,($page_number - 1))*$rowsPerStatPage;
 
 $query = "select posts.ID, posts.post_title, counters.quant, counters.updated
             from $wpdb->posts posts
@@ -386,14 +392,14 @@ $page_links = paginate_links(array(
 	'prev_text' => '&laquo;',
 	'next_text' => '&raquo;',
 	'total' => $maxNumPages,
-	'current' => $_GET['paged']
+	'current' => $page_number
 ));
 
 ?>
 <div class="alignleft actions">
 <form id="posts-filter" action="" method="get">
   <input type="hidden" name="page" value="thankyou.php" />
-  <input type="hidden" name="paged" value="<?php echo $_GET['paged']; ?>" />
+  <input type="hidden" name="paged" value="<?php echo $page_number; ?>" />
 
 <?php // view filters
 if (!is_singular()) {
@@ -463,8 +469,8 @@ if (isset($_GET['zeroshow'])) {
 <div class="tablenav-pages">
 <?php
   $page_links_text = sprintf( '<span class="displaying-num">' . __( 'Displaying %s&#8211;%s of %s','thankyou' ) . '</span>%s',
-	number_format_i18n(max($_GET['paged'] - 1, 0)*$rowsPerStatPage + 1),
-	number_format_i18n(min( $_GET['paged']*$rowsPerStatPage, $thankedPosts)),
+	number_format_i18n(max($page_number - 1, 0)*$rowsPerStatPage + 1),
+	number_format_i18n(min( $page_number*$rowsPerStatPage, $thankedPosts)),
 	number_format_i18n($thankedPosts),	$page_links );
   echo $page_links_text;
 ?>
@@ -483,7 +489,7 @@ if ($foundPosts) {
   $link = remove_query_arg(array('updated', 'sortdir','sortfield'));  // remove 'updated=true' from URL params in case user go to Statistics tab after saving Settings
   $link = remove_query_arg('updated', $link);
   if (strpos($link, 'paged')===false) {
-    $link = add_query_arg('paged', $_GET['paged'], $link);
+    $link = add_query_arg('paged', $page_number, $link);
   }
   $linkQuant = $link;
   $linkUpdated = $link;
@@ -603,15 +609,15 @@ foreach ($records as $record) {
 ?>
   <tr class="<?php echo $rowClass; ?>">
     <td class="txt_right" width="5%"><?php echo $record->ID; ?></td>
-    <td class="txt_left" style="padding-left:10px;"><a title="<?php echo esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)); ?>" href="<?php echo './tools.php?page=thankyou.php&post_id='.$record->ID.'&paged='.$_GET['paged'].'#statistics';?>"><?php echo $record->post_title; ?></a>
+    <td class="txt_left" style="padding-left:10px;"><a title="<?php echo esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)); ?>" href="<?php echo './tools.php?page=thankyou.php&post_id='.$record->ID.'&paged='.$page_number.'#statistics';?>"><?php echo $record->post_title; ?></a>
 <?php
 					$thankyou_actions = array();
-					$thankyou_actions['details'] = '<span class="view"><a href="./tools.php?page=thankyou.php&post_id='.$record->ID.'&paged='.$_GET['paged'].'#statistics" title="' . esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View details', 'thankyou') . '</a>';
+					$thankyou_actions['details'] = '<span class="view"><a href="./tools.php?page=thankyou.php&post_id='.$record->ID.'&paged='.$page_number.'#statistics" title="' . esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View details', 'thankyou') . '</a>';
           $thankyou_actions['view'] = '<span class="view"><a href="'.get_permalink($record->ID).'" title="' .esc_attr(sprintf(__('View "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('View Post', 'thankyou') . '</a>';
           $thankyou_actions['edit'] = '<span class="view"><a href="'.THANKS_WP_ADMIN_URL.'/post.php?action=edit&post='.$record->ID.'" title="' . esc_attr(sprintf(__('Edit "%s"', 'thankyou'), $record->post_title)) . '" rel="permalink">' . __('Edit Post', 'thankyou') . '</a>';
           if ( current_user_can('edit_post', $record->ID) ) {
 						$thankyou_actions['reset'] = '<span class="delete"><a class="submitdelete" title="'.esc_attr(__('Reset this post counter', 'thankyou')).'"
-                                            href="javascript:void(0);" onclick="resetCounter('.$record->ID.',\''.thanks_esc_js(sprintf( __("You are about to reset this post '%s' thanks counter.\n Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $record->post_title )).'\','.$_GET['paged'].');">'.__('Reset Counter', 'thankyou').'</a>';
+                                            href="javascript:void(0);" onclick="resetCounter('.$record->ID.',\''.thanks_esc_js(sprintf( __("You are about to reset this post '%s' thanks counter.\n Click 'Cancel' to do nothing, 'OK' to reset it.", 'thankyou'), $record->post_title )).'\','.$page_number.');">'.__('Reset Counter', 'thankyou').'</a>';
 					}
 					echo '<div class="row-actions">';
 					echo implode(' | </span>', $thankyou_actions);
@@ -632,16 +638,15 @@ foreach ($records as $record) {
 
 <?php
 if ( $page_links ) { ?>
-<div class="tablenav">
-<div class="tablenav-pages"><?php $page_links_text = sprintf( '<span class="displaying-num">' . __('Displaying %s&#8211;%s of %s','thankyou') . '</span>%s',
-	number_format_i18n( ( $_GET['paged'] - 1 ) * $rowsPerStatPage + 1 ),
-	number_format_i18n( min( $_GET['paged'] * $rowsPerStatPage, $thankedPosts ) ),
-	number_format_i18n( $thankedPosts ),
-	$page_links
-); echo $page_links_text;
-?>
-</div>
-</div>
+		<div class="tablenav">
+				<div class="tablenav-pages">
+					<?php
+					$page_links_text = sprintf('<span class="displaying-num">' . __('Displaying %s&#8211;%s of %s', 'thankyou') . '</span>%s', number_format_i18n(( $page_number - 1 ) * $rowsPerStatPage + 1), number_format_i18n(min($page_number * $rowsPerStatPage, $thankedPosts)), number_format_i18n($thankedPosts), $page_links
+					);
+					echo $page_links_text;
+					?>
+				</div>
+			</div>
 <?php
 }
 ?>

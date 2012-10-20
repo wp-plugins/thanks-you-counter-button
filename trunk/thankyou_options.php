@@ -50,10 +50,10 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
 						
 <?php thanks_displayBoxStart(__('About this Plugin:', 'thankyou')); ?>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo $shinephpFavIcon; ?>);" target="_blank" href="http://www.shinephp.com/"><?php _e("Author's website", 'thankyou'); ?></a>
-											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb.png'; ?>" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/"><?php _e('Plugin webpage', 'thankyou'); ?></a>
-											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_help.png'; ?>" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#filterhooks"><?php _e('Additional documentation', 'thankyou'); ?></a>
+											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb.png'; ?>);" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/"><?php _e('Plugin webpage', 'thankyou'); ?></a>
+											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_help.png'; ?>);" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#filterhooks"><?php _e('Additional documentation', 'thankyou'); ?></a>
 											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_changelog.png'; ?>);" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#changelog"><?php _e('Changelog', 'thankyou'); ?></a>
-											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_faq.png'; ?>)" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#faq"><?php _e('FAQ', 'thankyou'); ?></a>
+											<a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/tycb_faq.png'; ?>);" target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#faq"><?php _e('FAQ', 'thankyou'); ?></a>
                       <a class="thanks_rsb_link" style="background-image:url(<?php echo THANKS_PLUGIN_URL.'/images/greetings.png'; ?>);" onclick="thanks_show_greetings()" href="#">Greetings</a>
                       <hr />
                       <div style="text-align: center;">
