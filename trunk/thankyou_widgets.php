@@ -24,7 +24,11 @@ function widget($args, $instance) {
 
 	$title = apply_filters('widget_title', empty($instance['title']) ? __('Thanks Stat', 'thankyou') : $instance['title']);
 
-  $filter_by_category =  (int) $instance['filter_by_category'];
+	if ( isset($instance['filter_by_category']) ) {
+		$filter_by_category =  (int) $instance['filter_by_category'];
+	} else {
+		$filter_by_category =  0;
+	}
 
 // number of rows to show
 	if ( !$number = (int) $instance['number'] ) {
