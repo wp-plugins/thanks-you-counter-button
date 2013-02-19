@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-02-25 21:10+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Vladimir <vladimir@shinephp.com>\n"
+"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
 "Language-Team: tolingo translations <support@tolingo.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -308,7 +308,7 @@ msgstr "Code <code>[thankyou]</code>"
 
 #: ../thankyou_options.php:408
 msgid "Manual"
-msgstr "Handbuch"
+msgstr "Manuell"
 
 #: ../thankyou_options.php:414
 msgid "Button Caption"
@@ -616,22 +616,31 @@ msgstr "Keine Einträge mit Danksagung gefunden"
 
 #~ msgid "Statistics"
 #~ msgstr "Statistiken"
+
 #~ msgid "Donate"
 #~ msgstr "Spenden"
+
 #~ msgid "Form and Color"
 #~ msgstr "Form und Farbe"
+
 #~ msgid "Misc"
 #~ msgstr "Verschiedenes"
+
 #~ msgid "Unknown Post!"
 #~ msgstr "Unbekannter Eintrag!"
+
 #~ msgid "Default"
 #~ msgstr "Standardeinstellung"
+
 #~ msgid "Reset"
 #~ msgstr "Zurücksetzen"
+
 #~ msgid "Submit"
 #~ msgstr "Absenden"
+
 #~ msgid "Show total quant of thanks"
 #~ msgstr "Gesamtanzahl der Danksagungen zeigen"
+
 #~ msgid ""
 #~ "This plugin installs the Thank You Counter Button for each of your blog "
 #~ "post.\n"
@@ -640,20 +649,25 @@ msgstr "Keine Einträge mit Danksagung gefunden"
 #~ "Dieses Plugin installiert den Thank You Counter Button für jeden "
 #~ "IhrerBlog-Einträge.\n"
 #~ "                Das Aussehen kann für Ihre Blog-Einträge angepasst werden."
+
 #~ msgid ""
 #~ "To exclude Thank You button from particular post use shortcode "
 #~ "[nothankyou] there"
 #~ msgstr ""
 #~ "Um den Thank You Button in einem bestimmten Eintrag nicht zu benutzen, "
 #~ "verwenden Sieden Code <em>[nothankyou]</em>."
+
 #~ msgid "(at most 15)"
 #~ msgstr "(Maximum 15)"
+
 #~ msgid "Before and After"
 #~ msgstr "Davor und danach"
+
 #~ msgid "Filter"
 #~ msgstr "Filtern"
+
 #~ msgid "&laquo;"
 #~ msgstr "&laquo;"
+
 #~ msgid "&raquo;"
 #~ msgstr "&raquo;"
-
