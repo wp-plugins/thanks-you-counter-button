@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.8.4
+Version: 1.8.5
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: thankyou
@@ -231,7 +231,7 @@ function thanks_buildButtonCode($thanksCaption = "", $siteGlobal = false) {
     $buttonTitle = __('You left &ldquo;Thanks&rdquo; already for this post', 'thankyou');
   } else {
     $onButtonClick = 'thankYouButtonClick('.$post_id.', \''.thanks_esc_js(__('You left &ldquo;Thanks&rdquo; already for this post', 'thankyou')).'\')';
-    $buttonTitle = __('Click to left &ldquo;Thanks&rdquo; for this post', 'thankyou');
+    $buttonTitle = __('Click to leave &ldquo;Thanks&rdquo; for this post', 'thankyou');
   }
   $thanksCaption = getThanksCaption($post_id, $thanksCaption);
   if (!isset($thanksOrderNumber[$post_id]) || !$thanksOrderNumber[$post_id]) {

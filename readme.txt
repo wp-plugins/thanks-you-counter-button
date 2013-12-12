@@ -3,7 +3,7 @@ Contributors: shinephp, Whiler
 Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 3.0
-Tested up to: 3.5.1
+Tested up to: 3.8
 Stable tag: trunk
 
 Adds 'Thank You' button to every post/page, counts and shows a total number of visitors 'thanks' for post/page.
@@ -26,8 +26,7 @@ The set of shortcodes and content filters is available for this plugin. Visit ht
 Installing procedure:
 
 Attention! 
-1) Starting from version 1.7 plugin works with WordPress 3.0 and higher only. For older WordPress versions use version 1.6.9. from http://downloads.wordpress.org/plugin/thanks-you-counter-button.1.6.9.zip
-2) This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with.
+This plugin will work properly for that WordPress installation only which has "CREATE" permission on its MySQL database. "Create" permission is needed as plugin creates two own DB tables to work with.
 1. Deactivate plugin if you have the previous version installed. (It is important requirement for switching to this version from a previous one.)
 2. Extract "thanks-you-counter-button.x.x.x.zip" archive content to the "/wp-content/plugins/thanks-you-counter-button" directory.
 3. Activate "Thank You Counter Button" plugin via 'Plugins' menu in WordPress admin menu. 
@@ -50,7 +49,7 @@ Check more screenshots and "Thank You" button in action at [shinephp.com](http:/
 * Italian: [Ugo](http://www.myeasywp.com)
 * Lithuanian: [Vincent G](http://host1free.com)
 * Russian: [ShinePHP](http://shinephp.com)
-* Spanish: [Omi](http://equipajedemano.info)
+* Spanish: Andrew Kurtis [WebHostingHub](http://www.webhostinghub.com/)
 * Turkish: [Sadri Ercan](http://www.faydaliweb.com)
 
 Dear TYCB plugin User,
@@ -79,6 +78,13 @@ if you wish to help me with this plugin translation I very appreciate it. Please
   Yes, it does. Plugin is tested with WordPress MU 2.9.1 and WordPress Multisite 3.0.1. Thanks to WordPress developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Changelog ==
+
+= 1.8.5 =
+* 12.12.2013
+* Minor bug fixes
+* Spanish translation update. Thanks to Andrew Kurtis [WebHostingHub](http://www.webhostinghub.com/)
+* Some English grammar mistake fixes.
+* WordPress version compatibility information is updated to 3.8.
 
 = 1.8.4 =
 * 19.02.2013

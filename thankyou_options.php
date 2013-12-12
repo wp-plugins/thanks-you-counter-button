@@ -313,7 +313,7 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
 
 </script>
 
-<div class="postbox" style="padding-bottom: 10px;">
+<div class="postbox" style="padding: 10px;">
   <h3><?php	_e('Display', 'thankyou'); ?></h3>
         <table class="form-table" style="clear:none;" cellpadding="0" cellspacing="0">          
           <tr>

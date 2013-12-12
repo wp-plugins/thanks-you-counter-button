@@ -27,7 +27,7 @@ if (!isset($_GET['rowsperstatpage'])) {
   if (!is_numeric($rowsPerStatPage)) {
     $rowsPerStatPage = $temp;
   } else {
-    if ($rowPerStatPage!=$temp) {
+    if ($rowsPerStatPage!=$temp) {
       update_option('thanks_rows_per_stat_page', $rowsPerStatPage);
     }
   }
