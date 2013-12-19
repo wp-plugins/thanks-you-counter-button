@@ -5,6 +5,8 @@ Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, wid
 Requires at least: 3.0
 Tested up to: 3.8
 Stable tag: trunk
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Adds 'Thank You' button to every post/page, counts and shows a total number of visitors 'thanks' for post/page.
 
@@ -49,7 +51,7 @@ Check more screenshots and "Thank You" button in action at [shinephp.com](http:/
 * Italian: [Ugo](http://www.myeasywp.com)
 * Lithuanian: [Vincent G](http://host1free.com)
 * Russian: [ShinePHP](http://shinephp.com)
-* Spanish: Andrew Kurtis [WebHostingHub](http://www.webhostinghub.com/)
+* Spanish: WebHostingHub [WebHostingHub](http://www.webhostinghub.com/)
 * Turkish: [Sadri Ercan](http://www.faydaliweb.com)
 
 Dear TYCB plugin User,
@@ -78,6 +80,10 @@ if you wish to help me with this plugin translation I very appreciate it. Please
   Yes, it does. Plugin is tested with WordPress MU 2.9.1 and WordPress Multisite 3.0.1. Thanks to WordPress developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Changelog ==
+
+= 1.8.6 =
+* 19.12.2013
+* CSS fix was applied for compatibility with WordPress default themes: 2012, 2013, 2014
 
 = 1.8.5 =
 * 12.12.2013
@@ -139,6 +145,11 @@ if you wish to help me with this plugin translation I very appreciate it. Please
 - shinephp.com news section is added to the plugin Settings page.
 
 To look on full changes list visit [this page](http://shinephp.com/thank-you-counter-button-wordpress-plugin/2/#changlog).
+
+== Upgrade Notice ==
+= 1.8.6 =
+CSS fix was applied for compatibility with WordPress default themes: 2012, 2013, 2014
+
 
 == Additional Documentation ==
 Additional documentation such as content filter hook list, available shortcodes description can be found at this link http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#filterhooks
