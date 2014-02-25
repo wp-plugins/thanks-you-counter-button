@@ -3,7 +3,7 @@ Contributors: shinephp, Whiler
 Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
 Requires at least: 3.0
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -42,6 +42,7 @@ Check more screenshots and "Thank You" button in action at [shinephp.com](http:/
 
 = Translations =
 * Belarusian: [Marcis Gasuns](http://pc.de/)
+* Brasilian Portuguese: [André Maito](http://www.clickright.com.br)
 * Chinese Simple: [Owen](http://mencase.com)
 * Dutch: [Rene](http://wpwebshop.com)
 * French: [Whiler](http://blogs.wittwer.fr/whiler/)
@@ -80,6 +81,10 @@ if you wish to help me with this plugin translation I very appreciate it. Please
   Yes, it does. Plugin is tested with WordPress MU 2.9.1 and WordPress Multisite 3.0.1. Thanks to WordPress developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Changelog ==
+
+= 1.8.7 =
+* 25.02.2014
+* Brasilian Portuguese translation was added. Thanks to [André Maito](http://www.clickright.com.br)
 
 = 1.8.6 =
 * 19.12.2013
