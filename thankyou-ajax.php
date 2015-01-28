@@ -48,5 +48,3 @@ if ($action=='thankyou') {
 } else {
   echo '<thankyou>error: unknown action '.$action,'</thankyou>';
 }
-
-?>

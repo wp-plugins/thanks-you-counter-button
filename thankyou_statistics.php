@@ -660,4 +660,3 @@ if ( $page_links ) { ?>
 <?php
 }
 }
-?>

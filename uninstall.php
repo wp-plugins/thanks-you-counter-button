@@ -59,6 +59,3 @@ delete_option('thanks_dashboard_content');
 delete_option('thanks_dashboard_statistics_link_show');
 delete_option('thanks_dashboard_author_link_show');
 delete_option('thanks_display_settings_shortcuts');
-
-
-?>

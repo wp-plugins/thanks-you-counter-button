@@ -470,6 +470,3 @@ if (is_admin()) {
   add_action('wp_dashboard_setup','add_thanks_dashboard_widget');
 }
 // end of thanks_cssAction()
-
-
-?>

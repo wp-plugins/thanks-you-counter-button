@@ -6,7 +6,7 @@
  *
  */
 
-if (! defined("WPLANG")) {
+if (!function_exists("get_option")) {
   die;  // Silence is golden, direct call is prohibited
 }
 
@@ -380,5 +380,3 @@ function thanks_logEvent($message) {
   
 }
 // thanks_logEvent()
-
-?>

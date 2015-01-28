@@ -1,0 +1,681 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Thank You Counter Button 1.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-27 22:21+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: jelena kovacevic <jecajeca260@gmail.com>\n"
+"Language-Team: Omi | http://equipajedemano.info <equipajedemano@gmail.com>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.7.4\n"
+
+#: ../thankyou_options.php:38
+msgid "Default Settings are restored"
+msgstr "Podrazumevana podešavanja vraćena su na početne vrednosti"
+
+#: ../thankyou_options.php:40
+msgid "All Thanks Counters are cleared"
+msgstr "Svi brojači zahvalnosti su obrisani"
+
+#: ../thankyou_options.php:51
+msgid "About this Plugin:"
+msgstr "O ovom plugin-u:"
+
+#: ../thankyou_options.php:52
+msgid "Author's website"
+msgstr "Website autora"
+
+#: ../thankyou_options.php:53
+msgid "Plugin webpage"
+msgstr "Web stranica plugin-a"
+
+#: ../thankyou_options.php:54
+msgid "Additional documentation"
+msgstr "Dodatna dokumentacija"
+
+#: ../thankyou_options.php:55 ../thankyou.php:585
+msgid "Changelog"
+msgstr "Dnevnik izmena"
+
+#: ../thankyou_options.php:56
+msgid "FAQ"
+msgstr "Često postavljana pitanja"
+
+#: ../thankyou_options.php:70
+msgid "Greetings:"
+msgstr "Pozdravi:"
+
+#: ../thankyou_options.php:71
+msgid "It's me, the author"
+msgstr "To sam ja, autor"
+
+#: ../thankyou_options.php:72
+msgid "for the help with Belarusian translation"
+msgstr "za pomoć u vezi sa beloruskim prevodom"
+
+#: ../thankyou_options.php:73
+msgid "for the help with Chinese translation"
+msgstr "za pomoć u vezi sa kineskim prevodom"
+
+#: ../thankyou_options.php:74
+msgid "for the help with Dutch translation"
+msgstr "za pomoć u vezi sa holandskim prevodom"
+
+#: ../thankyou_options.php:75
+msgid ""
+"for the help with French translation, ideas, source code contributions and "
+"new versions testing"
+msgstr ""
+"za pomoć u vezi sa francuskim prevodom, idejama, doprinosima izvornom kodu i "
+"novim verzijama za testiranje "
+
+#: ../thankyou_options.php:76
+msgid "for the help with German translation"
+msgstr "za pomoć u vezi sa nemačkim prevodom"
+
+#: ../thankyou_options.php:77
+msgid "for the help with Hungarian translation"
+msgstr "za pomoć u vezi sa mađarskim prevodom"
+
+#: ../thankyou_options.php:78 ../thankyou_options.php:79
+msgid "for the help with Italian translation"
+msgstr "za pomoć u vezi sa italijanskim prevodom"
+
+#: ../thankyou_options.php:80
+msgid "For the help with Lithuanian translation"
+msgstr "za pomoć u vezi sa litvanskim prevodom"
+
+#: ../thankyou_options.php:81
+msgid "for the help with Spanish translation, ideas and new versions testing"
+msgstr ""
+"za pomoć u vezi sa španskim prevodom, idejama i novim verzijama za testiranje"
+
+#: ../thankyou_options.php:82
+msgid "For the help with Turkish translation"
+msgstr "za pomoć u vezi sa turskim prevodom"
+
+#: ../thankyou_options.php:84
+msgid "for setting page layout idea and html markup examples"
+msgstr "za ideje u vezi sa izgledom stranice podešavanja i html markup primere"
+
+#: ../thankyou_options.php:85
+msgid "for the excelent JQuery color picker"
+msgstr "Za odličan JQuery birač boja"
+
+#: ../thankyou_options.php:86
+msgid "for the form input slider code"
+msgstr "za obrazac unosa koda slajdera "
+
+#: ../thankyou_options.php:87
+msgid "for the cute online button image generator"
+msgstr "za ljupki taster online generatora slika"
+
+#: ../thankyou_options.php:131
+msgid ""
+"All settings for TYCB plugin will be return to the default values, Continue?"
+msgstr ""
+"Sva podešavanja za TYCB plugin biće vraćena na podrazumevane vrednosti. "
+"Želite li da nastavite?"
+
+#: ../thankyou_options.php:133
+msgid ""
+"All thanks counters for all posts will be set to 0,\\n all thanks click "
+"history will be cleared, Continue?"
+msgstr ""
+"Svi brojači klikova na taster ‘hvala’ za sve postove biće podešeni na  0,"
+"\\ncela istorija klikova na taster ‘hvala’ biće obrisana. Želite li da "
+"nastavite?"
+
+#: ../thankyou_options.php:317 ../thankyou_options.php:321
+msgid "Display"
+msgstr "Prikaži"
+
+#: ../thankyou_options.php:326
+msgid "Display button at Pages"
+msgstr "Prikaži taster na stranicama"
+
+#: ../thankyou_options.php:329
+msgid "Display button at Home page, Categories/Tags archive pages"
+msgstr ""
+"Prikaži taster na početnoj stranici, na stranici Kategorije/Oznake i na "
+"stranicama arhive"
+
+#: ../thankyou_options.php:334
+msgid "Do not show button for selected categories"
+msgstr "Ne prikazuj taster za odabrane kategorije"
+
+#: ../thankyou_options.php:389
+msgid "Position in the Post text"
+msgstr "Pozicija u tekstu posta"
+
+#: ../thankyou_options.php:393
+msgid "Before"
+msgstr "Pre"
+
+#: ../thankyou_options.php:395
+msgid "At first page of multipaged posts only"
+msgstr "Na prvoj stranici samo onih postova koji imaju više strana"
+
+#: ../thankyou_options.php:399
+msgid "After"
+msgstr "Posle"
+
+#: ../thankyou_options.php:401
+msgid "At last page of multipaged posts only"
+msgstr "Na poslednjoj stranici samo onih postova koji imaju više strana"
+
+#: ../thankyou_options.php:405
+msgid "Shortcode [thankyou]"
+msgstr "Shortcode [thankyou]"
+
+#: ../thankyou_options.php:406
+msgid "Manual"
+msgstr "Manualni"
+
+#: ../thankyou_options.php:412
+msgid "Button Caption"
+msgstr "Natpis na tasteru"
+
+#: ../thankyou_options.php:419
+msgid "Button Styling"
+msgstr "Stilizovanje tastera"
+
+#: ../thankyou_options.php:421
+msgid "Add style to the div:"
+msgstr "Dodaj stil za div:"
+
+#: ../thankyou_options.php:424 ../thankyou_options.php:428
+#: ../thankyou_options.php:484
+msgid "e.g.,"
+msgstr "npr.,"
+
+#: ../thankyou_options.php:425
+msgid "to the Caption font:"
+msgstr "za font natpisa"
+
+#: ../thankyou_options.php:429
+msgid "font color: "
+msgstr "boja fonta:"
+
+#: ../thankyou_options.php:434
+msgid "Button grafics"
+msgstr "Grafika tastera"
+
+#: ../thankyou_options.php:437
+msgid "Size"
+msgstr "Veličina"
+
+#: ../thankyou_options.php:440
+msgid "Normal"
+msgstr "Normalan"
+
+#: ../thankyou_options.php:443
+msgid "Compact"
+msgstr "Kompaktan"
+
+#: ../thankyou_options.php:444
+msgid "Form"
+msgstr "Oblik"
+
+#: ../thankyou_options.php:447
+msgid "Square"
+msgstr "Četvrtast"
+
+#: ../thankyou_options.php:450
+msgid "Rounded"
+msgstr "Zaobljen"
+
+#: ../thankyou_options.php:456
+msgid "Color"
+msgstr "Boja"
+
+#: ../thankyou_options.php:477
+msgid "Custom button image URL"
+msgstr "URL prilagođene slike tastera"
+
+#: ../thankyou_options.php:478
+msgid "Hover state image URL"
+msgstr "URL slike kad kursor pređe preko "
+
+#: ../thankyou_options.php:486
+msgid "Width, px"
+msgstr "Širina, u px"
+
+#: ../thankyou_options.php:487
+msgid "Height, px"
+msgstr "Visina, u px"
+
+#: ../thankyou_options.php:493
+msgid "Button DIV Style Preview"
+msgstr "Pregled DIV stila tastera"
+
+#: ../thankyou_options.php:511 ../thankyou.php:249 ../thankyou.php:575
+msgid "Settings"
+msgstr "Podešavanja"
+
+#: ../thankyou_options.php:512 ../thankyou_statistics.php:612
+#: ../thankyou_statistics.php:615 ../thankyou.php:250
+#, php-format
+msgid "View statistics details for \"%s\""
+msgstr "Pregledaj statističke detalje za \"%s\""
+
+#: ../thankyou_options.php:512 ../thankyou_statistics.php:165
+#: ../thankyou_statistics.php:538
+msgid "Post Title"
+msgstr "Naslov posta"
+
+#: ../thankyou_options.php:513 ../thankyou.php:251
+msgid "Hide these shortcuts"
+msgstr "Sakrij ove prečice"
+
+#: ../thankyou_options.php:519
+msgid "Miscellaneous:"
+msgstr "Razno:"
+
+#: ../thankyou_options.php:523
+msgid "Check IP-address"
+msgstr "Proveri IP adresu"
+
+#: ../thankyou_options.php:528
+msgid "Only one Thanks for post for one IP-address limit"
+msgstr "Ograniči samo na jedno ‘hvala’ za post sa jedne IP adrese"
+
+#: ../thankyou_options.php:529
+msgid "Time limit:"
+msgstr "Vremensko ograničenje:"
+
+#: ../thankyou_options.php:531
+msgid "Forever"
+msgstr "Zauvek"
+
+#: ../thankyou_options.php:533
+msgid "Only for this period"
+msgstr "Samo za ovaj period"
+
+#: ../thankyou_options.php:535
+msgid "seconds"
+msgstr "sekunde"
+
+#: ../thankyou_options.php:540
+msgid "Display settings shortcuts"
+msgstr "Prikaži prečice podešavanja"
+
+#: ../thankyou_options.php:545
+msgid "Add shortcuts next to the buttons for settings quick access"
+msgstr "Dodaj prečice pored tastera za brzi pristup podešavanjima"
+
+#: ../thankyou_options.php:551
+msgid "Save Changes"
+msgstr "Sačuvaj izmene"
+
+#: ../thankyou_options.php:552
+msgid "Cancel"
+msgstr "Otkaži"
+
+#: ../thankyou_options.php:552
+msgid "Cancel not saved changes"
+msgstr "Otkaži nesačuvane izmene"
+
+#: ../thankyou_options.php:555
+msgid "Return to Defaults"
+msgstr "Vrati na podrazumevane vrednosti"
+
+#: ../thankyou_options.php:555
+msgid "Restore the default values for all settings"
+msgstr "Vrati podrazumevane vrednosti za sva podešavanja"
+
+#: ../thankyou_options.php:556
+msgid "Reset Counters"
+msgstr "Vrati brojače na početne vrednosti"
+
+#: ../thankyou_options.php:556
+msgid "Reset all thanks counters for the all posts"
+msgstr "Vrati brojače zahvalnosti za sve postove"
+
+#: ../thankyou_statistics.php:75
+msgid "None"
+msgstr "Nijedan"
+
+#: ../thankyou_statistics.php:143
+msgid "Back to main statistics"
+msgstr "Nazad na glavnu statistiku"
+
+#: ../thankyou_statistics.php:149 ../thankyou_statistics.php:240
+msgid "Not available"
+msgstr "Nije dostupan"
+
+#: ../thankyou_statistics.php:156
+#, php-format
+msgid "Details for &ldquo;%s&rdquo;"
+msgstr "Detalji za &ldquo;%s&rdquo;"
+
+#: ../thankyou_statistics.php:164 ../thankyou_statistics.php:537
+msgid "Post Id"
+msgstr "Id posta"
+
+#: ../thankyou_statistics.php:166 ../thankyou_statistics.php:539
+msgid "Thanks Quant"
+msgstr "Brojač zahvalnosti"
+
+#: ../thankyou_statistics.php:171 ../thankyou_statistics.php:174
+#: ../thankyou_statistics.php:616
+msgid "View Post"
+msgstr "Vidi post"
+
+#: ../thankyou_statistics.php:174 ../thankyou_statistics.php:616
+#, php-format
+msgid "View \"%s\""
+msgstr "Vidi \"%s\""
+
+#: ../thankyou_statistics.php:175 ../thankyou_statistics.php:617
+#, php-format
+msgid "Edit \"%s\""
+msgstr "Uredi \"%s\""
+
+#: ../thankyou_statistics.php:175 ../thankyou_statistics.php:617
+msgid "Edit Post"
+msgstr "Uredi post"
+
+#: ../thankyou_statistics.php:177 ../thankyou_statistics.php:619
+msgid "Reset this post counter"
+msgstr "Vrati na početne vrednosti brojač ovog posta"
+
+#: ../thankyou_statistics.php:178
+#, php-format
+msgid ""
+"You are about to reset this post '%s' thanks counter. Click 'Cancel' to do "
+"nothing, 'OK' to reset it."
+msgstr ""
+"Upravo ćete vratiti brojač zahvalnosti za ovaj post '%s' na početne "
+"vrednosti. Kliknite na ‘Otkaži’ ako ne želite da uradite ništa ili na ‘OK’ "
+"ako želite da ga vratite na početne vrednosti. "
+
+#: ../thankyou_statistics.php:178 ../thankyou_statistics.php:620
+msgid "Reset Counter"
+msgstr "Vrati brojač na početne vrednosti"
+
+#: ../thankyou_statistics.php:207 ../thankyou_statistics.php:471
+#: ../thankyou_statistics.php:644
+#, php-format
+msgid "Displaying %s&#8211;%s of %s"
+msgstr "Prikazivanje %s&#8211;%s od %s"
+
+#: ../thankyou_statistics.php:221
+msgid "IP address"
+msgstr "IP adresa"
+
+#: ../thankyou_statistics.php:222 ../thankyou_statistics.php:540
+msgid "Last Thank Date"
+msgstr "Datum poslednje zahvalnosti"
+
+#: ../thankyou_statistics.php:240
+msgid "Look up IP country"
+msgstr "Potraži IP države"
+
+#: ../thankyou_statistics.php:420
+msgid "Show all post dates"
+msgstr "Prikaži datume svih postova"
+
+#: ../thankyou_statistics.php:441
+msgid "View all categories"
+msgstr "Pregledaj sve kategorije"
+
+#: ../thankyou_statistics.php:451
+msgid "Show Posts without Thanks"
+msgstr "Prikaži postove bez zahvalnosti"
+
+#: ../thankyou_statistics.php:452
+msgid "Rows per page: "
+msgstr "Redova po stranici:"
+
+#: ../thankyou_statistics.php:463
+msgid "Refresh"
+msgstr "Osveži"
+
+#: ../thankyou_statistics.php:499 ../thankyou_statistics.php:514
+msgid "descending"
+msgstr "opadajući"
+
+#: ../thankyou_statistics.php:500 ../thankyou_statistics.php:515
+msgid "Ascending order"
+msgstr "Rastući redosled"
+
+#: ../thankyou_statistics.php:504 ../thankyou_statistics.php:519
+msgid "ascending"
+msgstr "rastući"
+
+#: ../thankyou_statistics.php:505 ../thankyou_statistics.php:520
+msgid "Descending order"
+msgstr "Opadajući redosled"
+
+#: ../thankyou_statistics.php:527
+#, php-format
+msgid "Click to sort in %s order"
+msgstr "Kliknite da biste sortirali po %s redosledu "
+
+#: ../thankyou_statistics.php:615
+msgid "View details"
+msgstr "Vidi detalje"
+
+#: ../thankyou_statistics.php:620
+#, php-format
+msgid ""
+"You are about to reset this post '%s' thanks counter.\n"
+" Click 'Cancel' to do nothing, 'OK' to reset it."
+msgstr ""
+"Vratićete brojač zahvalnosti ovog %s posta. Kliknite na ‘Otkaži’ ako ne "
+"želite da uradite ništa ili na ‘OK’ ako želite da vratite brojač na početne "
+"vrednosti. "
+
+#: ../thankyou_statistics.php:658
+msgid "No posts with thanks found"
+msgstr "Nisu pronađeni postovi sa zahvalnostima"
+
+#: ../thankyou_lib.php:261 ../thankyou_lib.php:299 ../thankyou_lib.php:342
+msgid "operation is prohibited"
+msgstr "operacija je zabranjena"
+
+#: ../thankyou_lib.php:286 ../thankyou.php:459
+msgid "Thank You"
+msgstr "Hvala Vam"
+
+#: ../thankyou_widgets.php:14
+msgid "the latest or the most thanked post titles with total thanks quant"
+msgstr ""
+"poslednji među postovima sa najviše zahvalnosti sa ukupnim brojem zahvalnosti"
+
+#: ../thankyou_widgets.php:15 ../thankyou_widgets.php:25
+msgid "Thanks Stat"
+msgstr "Statistika zahvalnosti"
+
+#: ../thankyou_widgets.php:93 ../thankyou_widgets.php:344
+msgid "Total quant of thanks: "
+msgstr "Ukupan broj zahvalnosti:"
+
+#: ../thankyou_widgets.php:182
+msgid "Title:"
+msgstr "Naslov:"
+
+#: ../thankyou_widgets.php:185
+msgid "Filter by category:"
+msgstr "Filtriraj po kategoriji:"
+
+#: ../thankyou_widgets.php:216
+msgid "Number of posts to show:"
+msgstr "Broj postova za prikazivanje:"
+
+#: ../thankyou_widgets.php:228 ../thankyou_widgets.php:422
+msgid "What posts to show:"
+msgstr "Koje postove treba prikazati:"
+
+#: ../thankyou_widgets.php:230 ../thankyou_widgets.php:425
+msgid "Latest thanked"
+msgstr "Poslednje zahvalnosti"
+
+#: ../thankyou_widgets.php:231 ../thankyou_widgets.php:426
+msgid "Most thanked"
+msgstr "Postovi s najvećim brojem zahvalnosti"
+
+#: ../thankyou_widgets.php:232
+msgid "Total quant of thanks"
+msgstr "Ukupan broj zahvalnosti"
+
+#: ../thankyou_widgets.php:237 ../thankyou_widgets.php:438
+msgid "Display total quant of thanks"
+msgstr "Prikaži ukupan broj zahvalnosti"
+
+#: ../thankyou_widgets.php:350
+msgid "Check Full Statistics"
+msgstr "Proveri punu statistiku"
+
+#: ../thankyou_widgets.php:354
+msgid "Plugin author home page"
+msgstr "Početna stranica autora plugin-a"
+
+#: ../thankyou_widgets.php:361
+msgid "No thanks yet"
+msgstr "Još nema zahvalnosti"
+
+#: ../thankyou_widgets.php:417
+msgid "Posts number to show:"
+msgstr "Broj postova za prikazivanje"
+
+#: ../thankyou_widgets.php:443
+msgid "Display Full Statistics link"
+msgstr "Prikaži link za punu statistiku"
+
+#: ../thankyou_widgets.php:448
+msgid "Display plugin author link"
+msgstr "Prikaži link za autora plugin-a"
+
+#: ../thankyou_widgets.php:459
+msgid "Latest Thanks"
+msgstr "Najnovije zahvalnosti"
+
+#: ../thankyou_widgets.php:461
+msgid "Most Thanked"
+msgstr "Post sa najvećim brojem zahvalnosti"
+
+#: ../thankyou.php:38
+msgid "Thank You Counter Button requires WordPress 3.0 or newer."
+msgstr "Thank You Counter Button zahteva WordPress 3.0 ili noviju verziju"
+
+#: ../thankyou.php:38
+msgid "Please update!"
+msgstr "Molimo vas, ažurirajte!"
+
+#: ../thankyou.php:47
+msgid ""
+"Every time a new visitor clicks the \"Thank you\" button, one point is added "
+"to the total \"thanks\" counter for this post."
+msgstr ""
+"Svaki put kad novi posetilac klikne na taster \"Hvala\", ukupnom broju "
+"zahvalnosti za taj post doda se još jedan poen. "
+
+#: ../thankyou.php:113
+msgid "Thank You Counter Button Plugin"
+msgstr "Thank You Counter Button Plugin"
+
+#: ../thankyou.php:174
+msgid "Thank You Counter Button Statistics"
+msgstr "Thank You Counter Button Statistika"
+
+#: ../thankyou.php:231 ../thankyou.php:233
+msgid "You left &ldquo;Thanks&rdquo; already for this post"
+msgstr "Već ste ostavili &ldquo;Zahvalnost&rdquo; za ovaj post"
+
+#: ../thankyou.php:234
+msgid "Click to leave &ldquo;Thanks&rdquo; for this post"
+msgstr "Kliknite da biste ostavili &ldquo;Zahvalnost&rdquo; za ovaj post"
+
+#: ../thankyou.php:251
+msgid "Do you really want to hide these shortcuts?"
+msgstr "Da li stvarno želite da sakrijete ove prečice?"
+
+#: ../thankyou.php:586
+msgid "Additional Documentation"
+msgstr "Dodatna dokumentacija"
+
+#~ msgid "Statistics"
+#~ msgstr "Estadísticas"
+
+#~ msgid "Donate"
+#~ msgstr "¿Quiere hacer una donación?"
+
+#~ msgid "Form and Color"
+#~ msgstr "Color y Forma"
+
+#~ msgid "Misc"
+#~ msgstr "Miscelánea"
+
+#~ msgid "Unknown Post!"
+#~ msgstr "¡Entrada desconocida!"
+
+#~ msgid "Default"
+#~ msgstr "Defecto"
+
+#~ msgid "Reset"
+#~ msgstr "Resetear"
+
+#~ msgid "Submit"
+#~ msgstr "Enviar"
+
+#~ msgid "Show total quant of thanks"
+#~ msgstr "Mostrar suma total de agradecimientos"
+
+#~ msgid ""
+#~ "This plugin installs the Thank You Counter Button for each of your blog "
+#~ "post.\n"
+#~ "                It can have custom style in your blog posts."
+#~ msgstr ""
+#~ "Este plugin instalará un botón contador de agradecimientos en cada "
+#~ "entrada de su blog.\n"
+#~ "                Su estilo puede personalizarse según sus preferencias."
+
+#~ msgid ""
+#~ "To exclude Thank You button from particular post use shortcode "
+#~ "[nothankyou] there"
+#~ msgstr ""
+#~ "Si no quieres que aparezca el botón \"Gracias\" en un artículo en "
+#~ "particular, puedes utilizar, de forma manual, el código abreviado "
+#~ "[nothankyou]."
+
+#~ msgid "(at most 15)"
+#~ msgstr "(15 como máximo)"
+
+#~ msgid "Before and After"
+#~ msgstr "Antes y después"
+
+#~ msgid "Filter"
+#~ msgstr "Filtrar"
+
+#~ msgid "&laquo;"
+#~ msgstr "&laquo;"
+
+#~ msgid "&raquo;"
+#~ msgstr "&raquo;"
+
+#~ msgid "Position"
+#~ msgstr "Posición"
+
+#~ msgid "Add style to the Thank You button's div, e.g.,"
+#~ msgstr "Personalice el estilo de su botón, por ejemplo:"
+
+#~ msgid "Blue"
+#~ msgstr "Azul"
+
+#~ msgid "Green"
+#~ msgstr "Verde"
+
+#~ msgid "Grey"
+#~ msgstr "Gris"
+
+#~ msgid "Black"
+#~ msgstr "Negro"
