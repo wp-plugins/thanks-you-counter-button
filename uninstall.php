@@ -10,7 +10,9 @@ if (!defined('ABSPATH') || !defined('WP_UNINSTALL_PLUGIN')) {
 	 exit();  // silence is golden
 }
 
-require_once('thankyou_lib.php');
+$dir = dirname(__FILE__);
+
+require_once($dir .'/includes/thankyou_lib.php');
 
 global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 

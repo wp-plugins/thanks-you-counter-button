@@ -10,17 +10,6 @@ if (!function_exists("get_option")) {
   die;  // Silence is golden, direct call is prohibited
 }
 
-//require_once (ABSPATH.'wp-includes/pluggable.php');
-
-$thanks_siteURL = get_option( 'siteurl' );
-
-$thanksPluginDirName = substr(strrchr(dirname(__FILE__), DIRECTORY_SEPARATOR), 1);
-
-define('THANKS_PLUGIN_URL', WP_PLUGIN_URL.'/'.$thanksPluginDirName);
-define('THANKS_PLUGIN_DIR', WP_PLUGIN_DIR.'/'.$thanksPluginDirName);
-define('THANKS_WP_ADMIN_URL', $thanks_siteURL.'/wp-admin');
-define('THANKS_ERROR', 'Error is encountered');
-
 global $wpdb, $thanksCountersTable, $thanksPostReadersTable, $thanksNotCountablePostTypes;
 
 // MySQL tables to store 'thanks' information
@@ -257,7 +246,7 @@ function thanks_add_count($postId) {
 
 
 function thanks_settingsToDefaults() {
-  if (!current_user_can('activate_plugins')) {
+  if (!current_user_can('manage_options')) {
     die(__('operation is prohibited', 'thankyou'));
   }
   update_option('thanks_display_page', 1);
@@ -295,7 +284,7 @@ function thanks_settingsToDefaults() {
 // end of thanks_settingsToDefaults()
 
 function thanks_hideSettingsShortcuts() {
-  if (!current_user_can('edit_post')) {
+  if (!current_user_can('manage_options')) {
     die(__('operation is prohibited', 'thankyou'));
   }
 
@@ -308,7 +297,7 @@ function thanks_hideSettingsShortcuts() {
 function resetCounterForPost($postId) {
   global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 
-  if (!current_user_can('edit_post', $postId)) {
+  if (!current_user_can('manage_options')) {
     echo 'error: operation is prohibited.';
     return false;
   }
@@ -338,7 +327,7 @@ function thanks_resetAllCounters() {
 
   global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 
-  if (!current_user_can('activate_plugins')) {
+  if (!current_user_can('manage_options')) {
     die(__('operation is prohibited', 'thankyou'));
   }
   $query = "delete from $thanksCountersTable";
@@ -361,22 +350,121 @@ function thanks_resetAllCounters() {
 
 function thanks_esc_js($value) {
 
-  $value = esc_js($value);
+    $value = esc_js($value);
 
-  return $value;
+    return $value;
 }
+
 
 function thanks_logEvent($message) {
-  include(ABSPATH .'wp-includes/version.php');
+    include(ABSPATH . 'wp-includes/version.php');
 
-  $fileName = THANKS_PLUGIN_DIR.'/tycb.log';
-  $fh = fopen($fileName,'a');
-  $cr = "\n";
-  $s = $cr.date("d-m-Y H:i:s").$cr.
-      'WordPress version: '.$wp_version.', PHP version: '.phpversion().', MySQL version: '.mysql_get_server_info().$cr;
-  fwrite($fh, $s);
-  fwrite($fh, $message.$cr);
-  fclose($fh);
-  
+    $fileName = THANKS_PLUGIN_DIR . '/tycb.log';
+    $fh = fopen($fileName, 'a');
+    $cr = "\n";
+    $s = $cr . date("d-m-Y H:i:s") . $cr .
+            'WordPress version: ' . $wp_version . ', PHP version: ' . phpversion() . ', MySQL version: ' . mysql_get_server_info() . $cr;
+    fwrite($fh, $s);
+    fwrite($fh, $message . $cr);
+    fclose($fh);
 }
 // thanks_logEvent()
+
+
+function thanks_is_valid_ajax_call() {
+    if (!check_ajax_referer( "thanks-button" )) {
+        echo 'error: wrong request, wp nonce value is not valid';
+        return false;
+    }
+    
+    if (!(isset($_POST['post_id']) && is_numeric($_POST['post_id']) && $_POST['post_id'] >= -1)) {
+        echo 'error: wrong request, post Id is not defined';
+        return false;
+    }
+
+    if (!(isset($_POST['subaction']) && $_POST['subaction'] && 
+          in_array($_POST['subaction'], array('thankyou', 'reset', 'default', 'hideSettingsShortcuts', 'resetall')))) {
+        echo 'error: wrong request, action is invalid';
+        return fasle;
+    }
+    
+    return true;
+}
+// end of thanks_is_valid_ajax_call()
+
+
+// process AJAX requests from the admin back-end
+function thanks_button_ajax_admin() {
+    if (!thanks_is_valid_ajax_call()) {
+        return;
+    }
+    
+    $postId = $_POST['post_id'];
+    $action = $_POST['subaction'];
+    switch ($action) {
+        case 'thankyou': {
+            thanks_add_count($postId);
+            //$result = getThanksCaption($postId);
+            $result = getThanksQuant($postId);
+            echo '<thankyou>' . $result . '</thankyou>';
+            break;
+        }
+        case 'reset': {
+            resetCounterForPost($postId);
+            break;
+        }
+        case 'default': {
+            if (thanks_settingsToDefaults()) {
+                echo '<thankyou>0: settings to default, success</thankyou>';
+            }
+            break;
+        }
+        case 'hideSettingsShortcuts': {
+            if (thanks_hideSettingsShortcuts()) {
+                echo '<thankyou>Settings shortcuts is hidden</thankyou>';
+            }
+            break;
+        }
+        case 'resetall': {
+            if (thanks_resetAllCounters()) {
+                echo '<thankyou>0: all counters are cleared, success</thankyou>';
+            }
+            break;
+        }
+        default: {
+            echo '<thankyou>error: unknown action ' . $action, '</thankyou>';
+        }
+    }
+}
+// end of thanks_button_ajax_admin()
+
+
+// process AJAX requests from the front-end
+function thanks_button_ajax_nopriv() {
+    if (!thanks_is_valid_ajax_call()) {
+        return;
+    }
+    
+    $postId = $_POST['post_id'];
+    $action = $_POST['subaction'];
+    switch ($action) {
+        case 'thankyou': {
+            thanks_add_count($postId);
+            //$result = getThanksCaption($postId);
+            $result = getThanksQuant($postId);
+            echo '<thankyou>' . $result . '</thankyou>';
+            break;
+        }
+        case 'hideSettingsShortcuts': {
+            if (thanks_hideSettingsShortcuts()) {
+                echo '<thankyou>Settings shortcuts is hidden</thankyou>';
+            }
+            break;
+        }
+        default: {
+            echo '<thankyou>error: unknown action ' . $action, '</thankyou>';
+        }
+    }
+    
+}
+// end of thanks_button_ajax()

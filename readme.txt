@@ -1,9 +1,9 @@
 === Thank You Counter Button ===
-Contributors: shinephp, Whiler
+Contributor[32;54;13Ms: shinephp, Whiler
 Donate link: http://www.shinephp.com/donate/
 Tags: thanks, thank you, like, counter, button, tracker, dashboard, sidebar, widget, shortcode, statistics, hook
-Requires at least: 3.0
-Tested up to: 4.1
+Requires at least: 4.0
+Tested up to: 4.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -82,6 +82,14 @@ if you wish to help me with this plugin translation I very appreciate it. Please
   Yes, it does. Plugin is tested with WordPress MU 2.9.1 and WordPress Multisite 3.0.1. Thanks to WordPress developers. Separate tables for thanks counters are created for each blog instance where plugin is activated. Every blog has its own plugin settings to manage its presentation and behaviour.
 
 == Changelog ==
+
+= 1.9 =
+* 24.07.2015
+* Widget constructor was updated to provide the  compatibility with WordPress version 4.3
+* Ajax calls were refactored to work via WordPress API.
+* Plugin's functionality is protected globally by 'manage_options' user capability.
+* Code for plugin deletion via WordPress was updated.
+* Minimal WordPress version required was changed to 4.0.
 
 = 1.8.8 =
 * 28.01.2015

@@ -7,30 +7,32 @@
 function thankYouButtonRemoveSettingsShortcuts() {
 
 	// Update the option
-	jQuery.ajax({
-			type: "POST",
-			url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
-			data: { post_id: -1,
-			action: 'hideSettingsShortcuts',
-			_ajax_nonce: ThanksSettings.ajax_nonce
-		},
-		success: function(msg){
-			if (msg.indexOf('error')<0) {
-				var all = (document.all)?document.all:document.getElementsByTagName('*');
-				for (var i = 0; i < all.length; i++) {
-					// Hide all shortcut settings currently visible
-					if (all[i].className == 'thanks_settings_shortcuts') {
-						all[i].style.display = 'none';
-					}
-				}
-			} else {
-				alert(msg);
-			}
-		},
-		error: function(msg) {
-			alert(msg);
-		}
-	});
+    jQuery.ajax({
+        type: "POST",
+        url: ThanksSettings.ajax_url,
+        data: {
+            post_id: -1,
+            action: 'thanks_button',
+            subaction: 'hideSettingsShortcuts',
+            _ajax_nonce: ThanksSettings.ajax_nonce
+        },
+        success: function (msg) {
+            if (msg.indexOf('error') < 0) {
+                var all = (document.all) ? document.all : document.getElementsByTagName('*');
+                for (var i = 0; i < all.length; i++) {
+                    // Hide all shortcut settings currently visible
+                    if (all[i].className == 'thanks_settings_shortcuts') {
+                        all[i].style.display = 'none';
+                    }
+                }
+            } else {
+                alert(msg);
+            }
+        },
+        error: function (msg) {
+            alert(msg);
+        }
+    });
 	
 }
 
@@ -52,9 +54,10 @@ function thankYouButtonClick(post_id, done_title) {
   
   jQuery.ajax({
    type: "POST",
-   url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
+   url: ThanksSettings.ajax_url,
    data: { post_id: post_id,
-           action: 'thankyou',
+           action: 'thanks_button',
+           subaction: 'thankyou',
            _ajax_nonce: ThanksSettings.ajax_nonce
    },
    success: function(msg){

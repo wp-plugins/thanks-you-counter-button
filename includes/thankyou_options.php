@@ -143,10 +143,11 @@ if (isset($_GET['action']) && isset($_GET['success']) && $_GET['success']==1) {
       }
       jQuery.ajax({
         type: "POST",
-        url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
+        url: ajaxurl,
         data: { 
                 post_id: -1,
-                action: action,
+                action: 'thanks_button',
+                subaction: action,
                 _ajax_nonce: ThanksSettings.ajax_nonce
       },
       success: function(msg){

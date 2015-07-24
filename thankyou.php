@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.8.8
+Version: 1.9
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: thankyou
@@ -11,7 +11,7 @@ Domain Path: /lang/
 */
 
 /*
-Copyright 2009-2013  Vladimir Garagulya  (email: vladimir [at] shinephp.com)
+Copyright 2009-2015  Vladimir Garagulya  (email: vladimir [at] shinephp.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,24 +30,35 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 if (!function_exists("get_option")) {
+  header('HTTP/1.0 403 Forbidden');
   die;  // Silence is golden, direct call is prohibited
 }
 
 global $wp_version;
 
-$exit_msg = __('Thank You Counter Button requires WordPress 3.0 or newer.').'<a href="http://codex.wordpress.org/Upgrading_WordPress">'.__('Please update!').'</a>';
-
-if (version_compare($wp_version,"3.0","<")) {
-  echo $exit_msg;
-	return;
+if (version_compare('4.0', $wp_version)>0) {
+    if (is_admin() && (!defined('DOING_AJAX') || !DOING_AJAX )) {
+        require_once ABSPATH . '/wp-admin/includes/plugin.php';
+        deactivate_plugins(__FILE__);
+        $exit_msg = __('Thank You Counter Button requires WordPress 4.0 or newer.').'<a href="http://codex.wordpress.org/Upgrading_WordPress">'.__('Please update!').'</a>';
+        wp_die($exit_msg);
+    } else {
+        return;
+    }
 }
+$thanks_siteURL = get_option( 'siteurl' );
+$thanksPluginDirName = substr(strrchr(dirname(__FILE__), DIRECTORY_SEPARATOR), 1);
 
+define('THANKS_PLUGIN_URL', WP_PLUGIN_URL.'/'.$thanksPluginDirName);
+define('THANKS_PLUGIN_DIR', WP_PLUGIN_DIR.'/'.$thanksPluginDirName);
+define('THANKS_WP_ADMIN_URL', $thanks_siteURL.'/wp-admin');
+define('THANKS_ERROR', 'Error is encountered');
 // just to have the translation for this string in the .po/.mo files
 if (false) {
   __('Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.', 'thankyou');
 }
 
-require_once('thankyou_lib.php');
+require_once(THANKS_PLUGIN_DIR .'/includes/thankyou_lib.php');
 
 load_plugin_textdomain('thankyou','', $thanksPluginDirName.'/lang');
 
@@ -113,7 +124,7 @@ function thanks_options() {
     <h2><?php _e('Thank You Counter Button Plugin', 'thankyou'); ?></h2>  
 
     <div id="settings" style="clear:both;">
-      <?php require ('thankyou_options.php'); ?>
+      <?php require (THANKS_PLUGIN_DIR .'/includes/thankyou_options.php'); ?>
     </div>
 
   </div>
@@ -174,7 +185,7 @@ function thanks_statistics() {
     <h2><?php _e('Thank You Counter Button Statistics', 'thankyou'); ?></h2>  
       
     <div id="statistics" >
-      <?php require ('thankyou_statistics.php'); ?>
+      <?php require (THANKS_PLUGIN_DIR .'/includes/thankyou_statistics.php'); ?>
     </div>
       
       
@@ -244,7 +255,7 @@ function thanks_buildButtonCode($thanksCaption = "", $siteGlobal = false) {
   $uniqueId = $post_id.'_'.$thanksOrderNumber[$post_id];  
   $button = '<div class="thanks_button_div" 
                   style="'.get_option('thanks_style').'">'.$inputButtonHTML.
-               ((is_user_logged_in() && current_user_can('create_users') && (get_option('thanks_display_settings_shortcuts') == '1'))
+               ((is_user_logged_in() && current_user_can('manage_options') && (get_option('thanks_display_settings_shortcuts') == '1'))
                		?'<div class="thanks_settings_shortcuts">'.
                			'<a href="'.THANKS_WP_ADMIN_URL.'/options-general.php?page=thankyou.php" title="'.__('Settings','thankyou').'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/settings.png" /></a>'.
                			'<a href="'.THANKS_WP_ADMIN_URL.'/tools.php?page=thankyou.php&amp;post_id='.$post_id.'&amp;paged=1#statistics" title="'.esc_attr(sprintf(__('View statistics details for "%s"', 'thankyou'), $post->post_title)).'"><img class="thanks_shortcuts" height="8" width="8" alt="thank_you_settings" src="'.THANKS_PLUGIN_URL.'/images/stats.png" /></a>'.
@@ -342,13 +353,13 @@ function thanks_button($caption = '', $siteGlobal = false) {
 
 // Install plugin
 function thanks_install() {
-	global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
+    global $wpdb, $thanksCountersTable, $thanksPostReadersTable;
 
-  $thanks_db_version = get_option('thanks_db_version');
-  $query = "SHOW TABLES LIKE '$thanksPostReadersTable'";
-  $table = $wpdb->get_var($query);
-	if ($table!=$thanksPostReadersTable) {
-    $query = "CREATE TABLE `$thanksPostReadersTable` (
+    $thanks_db_version = get_option('thanks_db_version');
+    $query = "SHOW TABLES LIKE '$thanksPostReadersTable'";
+    $table = $wpdb->get_var($query);
+    if ($table != $thanksPostReadersTable) {
+        $query = "CREATE TABLE `$thanksPostReadersTable` (
                      `id` bigint(20) NOT NULL auto_increment,
                      `post_id` bigint(20) default NULL,
                      `ip_address` char(15) default NULL,
@@ -357,17 +368,17 @@ function thanks_install() {
                      KEY `post_id` (`post_id`),
                      KEY `ip_address` (`ip_address`)
                    ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8";
-		$wpdb->query($query);
-    if ($wpdb->last_error) {
-      thanks_logEvent(THANKS_ERROR." during plugin installation:\n"."Query: $query \n".$wpdb->last_error);
-      return false;
+        $wpdb->query($query);
+        if ($wpdb->last_error) {
+            thanks_logEvent(THANKS_ERROR . " during plugin installation:\n" . "Query: $query \n" . $wpdb->last_error);
+            return false;
+        }
     }
-	}
 
-  $query = "SHOW TABLES LIKE '$thanksCountersTable'";
-  $table = $wpdb->get_var($query);
-	if ($table!=$thanksCountersTable) {
-    $query = "CREATE TABLE `$thanksCountersTable` (
+    $query = "SHOW TABLES LIKE '$thanksCountersTable'";
+    $table = $wpdb->get_var($query);
+    if ($table != $thanksCountersTable) {
+        $query = "CREATE TABLE `$thanksCountersTable` (
                       `id` bigint(20) NOT NULL auto_increment,
                       `post_id` bigint(20) NOT NULL,
                       `quant` bigint(20) default NULL,
@@ -375,94 +386,93 @@ function thanks_install() {
                       PRIMARY KEY  (`id`),
                       UNIQUE KEY `post_id` (`post_id`)
                     ) ENGINE=MyISAM DEFAULT CHARSET=utf8";
-		$wpdb->query($query);
-    if ($wpdb->last_error) {
-      thanks_logEvent(THANKS_ERROR." during plugin installation:\n"."Query: $query \n".$wpdb->last_error);
-      return false;
-    }
-	} else if ($thanks_db_version=='1.0') {
-    $query = "show columns from `$thanksCountersTable`";
-    $fields = $wpdb->get_results($query);
-    if ($wpdb->last_error) {
-      thanks_logEvent(THANKS_ERROR." during plugin installation:\n".$wpdb->last_error);
-      return false;
-    }    
-    $updatedFound = false;
-    foreach ($fields as $field) {
-      if ($field->Field=='updated') {
-        $updatedFound = true;
-        break;
-      }
-    }
-    if (!$updatedFound) { // add new field 'updated'
-      $query = "alter table `$thanksCountersTable` add column `updated` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL after `quant`";
-      $wpdb->query($query);
-      if ($wpdb->last_error) {
-        thanks_logEvent(THANKS_ERROR." during plugin installation:\n"."Query: $query \n".$wpdb->last_error);
-        return false;
-      }
-      $query = "update `$thanksCountersTable`
+        $wpdb->query($query);
+        if ($wpdb->last_error) {
+            thanks_logEvent(THANKS_ERROR . " during plugin installation:\n" . "Query: $query \n" . $wpdb->last_error);
+            return false;
+        }
+    } else if ($thanks_db_version == '1.0') {
+        $query = "show columns from `$thanksCountersTable`";
+        $fields = $wpdb->get_results($query);
+        if ($wpdb->last_error) {
+            thanks_logEvent(THANKS_ERROR . " during plugin installation:\n" . $wpdb->last_error);
+            return false;
+        }
+        $updatedFound = false;
+        foreach ($fields as $field) {
+            if ($field->Field == 'updated') {
+                $updatedFound = true;
+                break;
+            }
+        }
+        if (!$updatedFound) { // add new field 'updated'
+            $query = "alter table `$thanksCountersTable` add column `updated` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL after `quant`";
+            $wpdb->query($query);
+            if ($wpdb->last_error) {
+                thanks_logEvent(THANKS_ERROR . " during plugin installation:\n" . "Query: $query \n" . $wpdb->last_error);
+                return false;
+            }
+            $query = "update `$thanksCountersTable`
                   set `$thanksCountersTable`.updated = (select MAX(readers.updated)
                                                           from `$thanksPostReadersTable` readers
                                                           where readers.post_id = `$thanksCountersTable`.post_id)";
-      $wpdb->query($query);
-      if ($wpdb->last_error) {
-        thanks_logEvent(THANKS_ERROR." during plugin installation:\n"."Query: $query \n".$wpdb->last_error);
-        return false;
-      }
+            $wpdb->query($query);
+            if ($wpdb->last_error) {
+                thanks_logEvent(THANKS_ERROR . " during plugin installation:\n" . "Query: $query \n" . $wpdb->last_error);
+                return false;
+            }
+        }
+        update_option('thanks_db_version', '1.2');
     }
+
     update_option('thanks_db_version', '1.2');
-  }
-  
-	update_option('thanks_db_version', '1.2');
-  add_option('thanks_display_page', 1);
-  add_option('thanks_display_home', 1);
-  add_option('thanks_not_display_for_categories', 0);
-  add_option('thanks_not_display_for_cat_list', array());
-  $position = get_option('thanks_position');
-  if ($position) {
-    delete_option('thanks_position');
-  }
-  $curPos = ($position=='before' || $position=='beforeandafter') ? 1 : 0;
-  add_option('thanks_position_before', $curPos);
-  $curPos = ($position=='after' || $position=='beforeandafter') ? 1 : 0;
-  add_option('thanks_position_after', $curPos);
-  add_option('thanks_position_firstpageonly', 1);
-  add_option('thanks_position_lastpageonly', 1);
-  $curPos = ($position=='shortcode') ? 1 : 0;
-  add_option('thanks_position_shortcode', $curPos);
-  $curPos = ($position=='manual') ? 1 : 0;
-  add_option('thanks_position_manual', $curPos);
-  add_option('thanks_style', 'float: left; margin-right: 10px;');
-  add_option('thanks_caption_style', 'font-family: Verdana, Arial, Sans-Serif; font-size: 14px; font-weight: normal;');
-  add_option('thanks_caption_color', '#ffffff');
-  add_option('thanks_size', 'large');
-  $thanks_color = get_option('thanks_color');
-  if ($thanks_color && strpos($thanks_color, '1')===false) {
-    $thanks_form = 'square';
-    $thanks_color = str_replace('1','', $thanks_color);
-  } else {
-    $thanks_form = 'rounded';
-    $thanks_color = 'blue';
-  }
-  update_option('thanks_form', $thanks_form);
-  update_option('thanks_color', 'blue');
-  add_option('thanks_custom', 0);
-  add_option('thanks_custom_url', '');
-  add_option('thanks_custom_glow_url', '');
-  add_option('thanks_custom_width', 100);
-  add_option('thanks_custom_height', 26);
-  add_option('thanks_check_ip_address', 1);
-  add_option('thanks_time_limit', 1);
-  add_option('thanks_time_limit_seconds', 60);
-	add_option('thanks_show_last_date', 1);
-	add_option('thanks_caption', __('Thank You','thankyou'));
-  add_option('thanks_dashboard_rows_number', 5);
-  add_option('thanks_dashboard_content', 'latest_thanked');
-  add_option('thanks_dashboard_statistics_link_show', 1);
-  add_option('thanks_dashboard_author_link_show', 1);
-  add_option('thanks_display_settings_shortcuts', 1);
-  
+    add_option('thanks_display_page', 1);
+    add_option('thanks_display_home', 1);
+    add_option('thanks_not_display_for_categories', 0);
+    add_option('thanks_not_display_for_cat_list', array());
+    $position = get_option('thanks_position');
+    if ($position) {
+        delete_option('thanks_position');
+    }
+    $curPos = ($position == 'before' || $position == 'beforeandafter') ? 1 : 0;
+    add_option('thanks_position_before', $curPos);
+    $curPos = ($position == 'after' || $position == 'beforeandafter') ? 1 : 0;
+    add_option('thanks_position_after', $curPos);
+    add_option('thanks_position_firstpageonly', 1);
+    add_option('thanks_position_lastpageonly', 1);
+    $curPos = ($position == 'shortcode') ? 1 : 0;
+    add_option('thanks_position_shortcode', $curPos);
+    $curPos = ($position == 'manual') ? 1 : 0;
+    add_option('thanks_position_manual', $curPos);
+    add_option('thanks_style', 'float: left; margin-right: 10px;');
+    add_option('thanks_caption_style', 'font-family: Verdana, Arial, Sans-Serif; font-size: 14px; font-weight: normal;');
+    add_option('thanks_caption_color', '#ffffff');
+    add_option('thanks_size', 'large');
+    $thanks_color = get_option('thanks_color');
+    if ($thanks_color && strpos($thanks_color, '1') === false) {
+        $thanks_form = 'square';
+        $thanks_color = str_replace('1', '', $thanks_color);
+    } else {
+        $thanks_form = 'rounded';
+        $thanks_color = 'blue';
+    }
+    update_option('thanks_form', $thanks_form);
+    update_option('thanks_color', 'blue');
+    add_option('thanks_custom', 0);
+    add_option('thanks_custom_url', '');
+    add_option('thanks_custom_glow_url', '');
+    add_option('thanks_custom_width', 100);
+    add_option('thanks_custom_height', 26);
+    add_option('thanks_check_ip_address', 1);
+    add_option('thanks_time_limit', 1);
+    add_option('thanks_time_limit_seconds', 60);
+    add_option('thanks_show_last_date', 1);
+    add_option('thanks_caption', __('Thank You', 'thankyou'));
+    add_option('thanks_dashboard_rows_number', 5);
+    add_option('thanks_dashboard_content', 'latest_thanked');
+    add_option('thanks_dashboard_statistics_link_show', 1);
+    add_option('thanks_dashboard_author_link_show', 1);
+    add_option('thanks_display_settings_shortcuts', 1);
 }
 // end of thanks_install()
 
@@ -556,13 +566,14 @@ function thanks_scriptsAction() {
     $imageName = 'thanks_'.$thanks_size.'_'.$thanks_color.(($thanks_form=='rounded') ? '1':'').'.png';
     $imageURL = THANKS_PLUGIN_URL.'/images/'.$imageName;
     $imageGlowName = 'thanks_'.$thanks_size.'_'.$thanks_color.(($thanks_form=='rounded') ? '1':'').'_glow.png';
-    $imageGlowURL = THANKS_PLUGIN_URL.'/images/'.$imageGlowName;
+    $imageGlowURL = THANKS_PLUGIN_URL.'/images/'.$imageGlowName;    
   }  
   
-  wp_enqueue_script('thanks_script', THANKS_PLUGIN_URL.'/thankyou.js', array('jquery','jquery-form'));
+  wp_enqueue_script('thanks_script', THANKS_PLUGIN_URL.'/js/thankyou.js', array('jquery','jquery-form'));
   wp_localize_script('thanks_script', 'ThanksSettings', 
                      array('plugin_url' => THANKS_PLUGIN_URL, 
                      'ajax_nonce' => wp_create_nonce('thanks-button'),
+                     'ajax_url' =>  admin_url( 'admin-ajax.php' ),
                      'button_image_url' => $imageURL,
                      'button_image_glow_url' => $imageGlowURL ));
   
@@ -581,35 +592,37 @@ function thanks_plugin_action_links($links, $file) {
 
 
 function thanks_plugin_row_meta($links, $file) {
-  if ($file == plugin_basename(dirname(__FILE__).'/thankyou.php')){
-		$links[] = '<a target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#changelog">'.__('Changelog', 'thankyou').'</a>';
-		$links[] = '<a target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#filterhooks">'.__('Additional Documentation', 'thankyou').'</a>';
-	}
-	return $links;
-} // end of thanks_plugin_row_meta
+    if ($file == plugin_basename(dirname(__FILE__) . '/thankyou.php')) {
+        $links[] = '<a target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#changelog">' . __('Changelog', 'thankyou') . '</a>';
+        $links[] = '<a target="_blank" href="http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/2/#filterhooks">' . __('Additional Documentation', 'thankyou') . '</a>';
+    }
+    return $links;
+}
+// end of thanks_plugin_row_meta
 
 
 function thanks_menu() {
-  
-  $base_name = 'thankyou.php';
-  if ( function_exists('add_menu_page') ) {        
-    $thanks_page = add_options_page('Thank You Counter Button Settings', 'Thanks CB', 'create_users', $base_name, 'thanks_options');    
-    add_action( "admin_print_styles-$thanks_page", 'thanks_adminCssAction' );
-    add_action( "admin_print_scripts-$thanks_page", 'thanks_settings_scriptsAction' );    
-	}
-  
-  if ( function_exists('add_management_page') ) {
-    $thanks_page = add_management_page('Thank You Counter Button Statistics', 'TYCB Statistics', 'create_users', $base_name, 'thanks_statistics');
-		add_action( "admin_print_styles-$thanks_page", 'thanks_adminCssAction' );
-    add_action( "admin_print_scripts-$thanks_page", 'thanks_settings_scriptsAction' );    
-  }
+
+    $base_name = 'thankyou.php';
+    if (function_exists('add_menu_page')) {
+        $thanks_page = add_options_page('Thank You Counter Button Settings', 'Thanks CB', 'manage_options', $base_name, 'thanks_options');
+        add_action("admin_print_styles-$thanks_page", 'thanks_adminCssAction');
+        add_action("admin_print_scripts-$thanks_page", 'thanks_settings_scriptsAction');
+    }
+
+    if (function_exists('add_management_page')) {
+        $thanks_page = add_management_page('Thank You Counter Button Statistics', 'TYCB Statistics', 'manage_options', $base_name, 'thanks_statistics');
+        add_action("admin_print_styles-$thanks_page", 'thanks_adminCssAction');
+        add_action("admin_print_scripts-$thanks_page", 'thanks_settings_scriptsAction');
+    }
 }
 // end of thanks_settings_menu()
 
+
 function thanks_adminCssAction() {
 
-  wp_enqueue_style('thanks_admin_css', THANKS_PLUGIN_URL.'/css/thankyou_admin.css', array(), false, 'screen');
-  wp_enqueue_style('thanks_user_css', THANKS_PLUGIN_URL.'/css/thankyou.css', array(), false, 'screen');
+  wp_enqueue_style('thanks_admin_css', THANKS_PLUGIN_URL .'/css/thankyou_admin.css', array(), false, 'screen');
+  wp_enqueue_style('thanks_user_css', THANKS_PLUGIN_URL .'/css/thankyou.css', array(), false, 'screen');
 
 }
 // end of thanks_adminCssAction()
@@ -631,23 +644,23 @@ function thanks_settings_scriptsAction() {
     $imageGlowURL = THANKS_PLUGIN_URL.'/images/'.$imageGlowName;
   }  
 
-  wp_enqueue_script('thanks_script', THANKS_PLUGIN_URL.'/thankyou.js', array('jquery','jquery-form'));
+  wp_enqueue_script('thanks_script', THANKS_PLUGIN_URL.'/js/thankyou.js', array('jquery','jquery-form'));
   wp_localize_script('thanks_script', 'ThanksSettings', 
                      array('plugin_url' => THANKS_PLUGIN_URL, 
                      'ajax_nonce' => wp_create_nonce('thanks-button'),
                      'button_image_url' => $imageURL,
                      'button_image_glow_url' => $imageGlowURL ));
-  wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/iColorPicker.js', array('jquery','jquery-form','jquery-ui-tabs','jquery-ui-dialog'));
+  wp_enqueue_script('thanks_js_script1', THANKS_PLUGIN_URL.'/js/iColorPicker.js', array('jquery','jquery-form','jquery-ui-tabs','jquery-ui-dialog'));
   
 }
 // end of thanks_settings_scriptsAction()
 
 
-function thanks_dashboard_scriptsAction() {  
+function thanks_dashboard_scriptsAction() {
 
-  wp_enqueue_style('thanks_dashboard_css', THANKS_PLUGIN_URL.'/css/thankyou_admin.css', array(), false, 'screen');
-  wp_enqueue_script('thanks_js_script2', THANKS_PLUGIN_URL.'/dhtmlgoodies_slider.js');
-  wp_localize_script('thanks_js_script2', 'ThanksSettings', array('plugin_url' => THANKS_PLUGIN_URL));
+    wp_enqueue_style('thanks_dashboard_css', THANKS_PLUGIN_URL . '/css/thankyou_admin.css', array(), false, 'screen');
+    wp_enqueue_script('thanks_js_script2', THANKS_PLUGIN_URL . '/js/dhtmlgoodies_slider.js');
+    wp_localize_script('thanks_js_script2', 'ThanksSettings', array('plugin_url' => THANKS_PLUGIN_URL));
 }
 // end of thanks_dashboard_scriptsAction()
 
@@ -691,7 +704,7 @@ function thanks_button_shortcode_handler($atts, $content, $code) {
 // end of thanks_button_shortcode_handler()
 
 
-require_once('thankyou_widgets.php');
+require_once(THANKS_PLUGIN_DIR .'/includes/thankyou_widgets.php');
 
 // activation action
 register_activation_hook(__FILE__, "thanks_install");
@@ -708,9 +721,11 @@ add_action('admin_menu', 'thanks_menu');
 // tune WP shortcodes api call
 add_shortcode('thanks_total_quant', 'thanks_button_shortcode_handler');
 if (get_option('thanks_position_shortcode')) {
-	add_shortcode('thankyou', 'thanks_button_shortcode_handler');
+    add_shortcode('thankyou', 'thanks_button_shortcode_handler');
 }
 
 add_action('wp_head', 'thanks_cssAction');
 add_action('wp_print_scripts', 'thanks_scriptsAction');
 add_filter('the_content', 'thanks_button_insert');
+add_action('wp_ajax_thanks_button', 'thanks_button_ajax_admin');
+add_action('wp_ajax_nopriv_thanks_button', 'thanks_button_ajax_nopriv');

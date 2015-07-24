@@ -10,9 +10,9 @@
 // Latest Thanks widget class
 class Thanks_Widget_Latest_Thanks extends WP_Widget {
 
-	function Thanks_Widget_Latest_Thanks() {
+	function __construct() {
 		$widget_ops = array('classname' => 'thanks_widget_latest_thanks', 'description' => __('the latest or the most thanked post titles with total thanks quant', 'thankyou'));
-		$this->WP_Widget('thanks-latest-thanks', __('Thanks Stat','thankyou'), $widget_ops);
+		parent::__construct('thanks-latest-thanks', __('Thanks Stat','thankyou'), $widget_ops);
 		$this->alt_option_name = 'thanks_widget_latest_thanks';
 
 	}

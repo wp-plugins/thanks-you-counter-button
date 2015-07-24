@@ -58,9 +58,10 @@ if (isset($_GET['post_id']) && is_numeric($_GET['post_id'])) {
 
     jQuery.ajax({
       type: "POST",
-      url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
+      url: ajaxurl,
       data: { post_id: post_id,
-              action: 'reset',
+              action: 'thanks_button',
+              subaction: 'reset',
               _ajax_nonce: ThanksSettings.ajax_nonce
     },
     success: function(msg){
@@ -557,9 +558,10 @@ function thShow($linkQuant, $linkUpdated, $newSortDirTitle, $newSortDirTitle, $q
 
     jQuery.ajax({
       type: "POST",
-      url: ThanksSettings.plugin_url + '/thankyou-ajax.php',
+      url: ajaxurl,
       data: { post_id: post_id,
-              action: 'reset',
+              action: 'thanks_button',
+              subaction: 'reset',
               _ajax_nonce: ThanksSettings.ajax_nonce
     },
     success: function(msg){
