@@ -68,4 +68,19 @@ img.thanks_shortcuts {
     background: transparent;
     text-transform: none;
     padding: 0;
+    border: none;
+}
+
+.thanks_button_div input[type="button"]:hover, button:hover {
+    background: transparent;
+    text-transform: none;
+    padding: 0;
+    border: none;
+}
+
+.thanks_button_div button:hover {
+    background: transparent;
+    text-transform: none;
+    padding: 0;
+    border: none;
 }

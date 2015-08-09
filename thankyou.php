@@ -3,7 +3,7 @@
 Plugin Name: Thank You Counter Button
 Plugin URI: http://www.shinephp.com/thank-you-counter-button-wordpress-plugin/
 Description: Every time a new visitor clicks the "Thank you" button, one point is added to the total "thanks" counter for this post.
-Version: 1.9
+Version: 1.9.1
 Author: Vladimir Garagulya
 Author URI: http://www.shinephp.com
 Text Domain: thankyou
@@ -533,28 +533,30 @@ if ($table1!=$thanksPostReadersTable || $table2!=$thanksCountersTable) {
 // end of thanks_init()
 
 
-function thanks_cssAction() {
-
-  if (is_admin() ||
-      (get_option('thanks_display_page')==null && is_page()) ||
-      (get_option('thanks_display_home') == null && is_home())) {
-    return;
-  }
-
-  echo '<link rel="stylesheet" href="'.THANKS_PLUGIN_URL.'/css/thankyou.css" type="text/css" media="screen" />'."\n";
-
-}
-// end of thanks_cssAction()
-
-
 function thanks_scriptsAction() {  
 
-  if (is_admin() ||
-      (get_option('thanks_display_page')==null && is_page()) ||
-      (get_option('thanks_display_home') == null && is_home())) {
+  if (is_admin()) {
+      return;
+  }
+  if (get_option('thanks_display_page')==null && is_page()) { 
+      if (!is_front_page()) {
+          return;
+      }
+      $front_page_id = get_option('page_on_front');
+      if (empty($front_page_id)) {
+          return;
+      }
+      $data = get_post($front_page_id);
+      if (strpos($data->post_content, '[thankyou')===false) {
+          return;
+      }
+  }
+  if (get_option('thanks_display_home') == null && is_home()) {
     return;
   }
 
+  wp_enqueue_style( 'style-name', THANKS_PLUGIN_URL.'/css/thankyou.css', array(), false, 'screen');
+  
   $thanks_custom = get_option('thanks_custom');
   if ($thanks_custom) {
     $imageURL = get_option('thanks_custom_url');
@@ -724,8 +726,8 @@ if (get_option('thanks_position_shortcode')) {
     add_shortcode('thankyou', 'thanks_button_shortcode_handler');
 }
 
-add_action('wp_head', 'thanks_cssAction');
-add_action('wp_print_scripts', 'thanks_scriptsAction');
+
+add_action('wp_enqueue_scripts', 'thanks_scriptsAction');
 add_filter('the_content', 'thanks_button_insert');
 add_action('wp_ajax_thanks_button', 'thanks_button_ajax_admin');
 add_action('wp_ajax_nopriv_thanks_button', 'thanks_button_ajax_nopriv');
